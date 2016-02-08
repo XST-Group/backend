@@ -6,8 +6,8 @@ jdbc.password=root
 jdbc.driverClass=com.mysql.jdbc.Driver    
 jdbc.jdbcUrl=jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=UTF-8     
 jdbc.initPoolSize=20    
-jdbc.maxPoolSize=50    
-* Spring MVC测试过了，能访问 http://localhost:8080/XST/index 就算成功了。 
+jdbc.maxPoolSize=50
+* Spring MVC测试过了，能访问 http://localhost:8080/XST/index 就算成功了。   
 
 * 我将hibernate版本降低回来了，因为hibernate5和spring4的整合有点不一样。
 * 对于hibernate，由于数据库的engine是myisam，不支持外键，所以对于一对多等关系，需要我们手动写注解，参考com.xst.bean下的两个例子。例子仅供参考，至于具体怎么写看需求。还有，推荐使用注解，方便，不要用配置文件了。
