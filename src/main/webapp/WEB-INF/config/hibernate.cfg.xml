@@ -5,7 +5,7 @@
 <hibernate-configuration>
 	<session-factory>
 		<!-- hibernate 所使用的数据库方言 -->
-		<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+		<property name="dialect">org.hibernate.dialect.MySQLMyISAMDialect</property>
 
 		<!-- 了进行测试，我们需要打印sql语句 -->
 		<property name="show_sql">true</property>
