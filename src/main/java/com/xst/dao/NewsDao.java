@@ -7,7 +7,7 @@ import com.xst.bean.V9News;
  * @author CrazyCodess
  *
  */
- @Repository("NewsDao")
+ @Repository("newsDao")
 public class NewsDao  extends BaseDao {
 
 	public V9News getById(int id){
