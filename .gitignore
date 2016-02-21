@@ -5,3 +5,4 @@ target/*
 .project
 /target/
 src/main/webapp/WEB-INF/config/mysql.properties
+.idea
