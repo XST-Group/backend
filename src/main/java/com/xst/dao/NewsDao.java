@@ -1,6 +1,7 @@
 package com.xst.dao;
 
 import com.xst.bean.V9News;
+import org.springframework.stereotype.Repository;
 
 /**
  * 
