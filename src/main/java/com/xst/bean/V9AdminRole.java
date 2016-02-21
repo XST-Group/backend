@@ -8,7 +8,7 @@ import java.util.Set;
  * Created by Sloriac on 16/2/21.
  */
 @Entity
-@Table(name = "v9_admin_role", schema = "db_xst", catalog = "")
+@Table(name = "v9_admin_role", schema = "db_xst")
 public class V9AdminRole {
     private byte roleid;
     private String rolename;
