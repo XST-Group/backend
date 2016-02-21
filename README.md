@@ -1,5 +1,6 @@
 * 由于各种原因，我们将项目开发的IDE由eclipse改为了IntelliJ IDEA。IDEA是非常优秀的Java IDE，建议大家使用这个，至于破解方法，总是会有的。
-* 我重新建了项目，大家需要重新开始配置，和eclipse不同的地方大致如下：
+* 我重新建了项目，大家需要重新开始配置，和eclipse不同的地方大致如下：     
+
 > * idea和eclipse最大的区别，直观上是，idea的project对应eclipse里面的workspace，而idea的module对应eclipse的project。其他区别，在使用过程中，你会发现idea是多么智能！
 > * 导入项目之后，要在Project Structure设置里面，Modules的Libraries里面加入Tomact依赖。
 > * 配置Tomcat的话，需要在VM options 加上 -Dfile.encoding=UTF-8 ，不然tomcat的控制台会出现中文乱码，然后Application context 给/xst/。    
