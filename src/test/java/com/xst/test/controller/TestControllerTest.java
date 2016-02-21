@@ -1,9 +1,8 @@
-package com.xst.controller;
+package com.xst.test.controller;
 
-import org.junit.Before;
+import org.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
@@ -17,12 +16,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)  
-@WebAppConfiguration(value = "src/main/webapp")  
-@ContextHierarchy({  
-        @ContextConfiguration(name = "parent", locations = "file:src/main/webapp/WEB-INF/config/spring.xml"),  
-        @ContextConfiguration(name = "child", locations = "file:src/main/webapp/WEB-INF/config/springmvc.xml")  
-}) 
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration(value = "src/main/webapp")
+@ContextHierarchy({
+        @ContextConfiguration(name = "parent", locations = "classpath:conf/spring.xml"),
+        @ContextConfiguration(name = "child", locations = "classpath:conf/springmvc.xml")
+})
 
 public class TestControllerTest {
     @Autowired
@@ -40,7 +39,6 @@ public class TestControllerTest {
                 .perform(get("/index"))
                 .andExpect(view().name("index"))
                 .andExpect(forwardedUrl("/WEB-INF/views/index.jsp"))
-                .andExpect(model().attributeExists("admin"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }

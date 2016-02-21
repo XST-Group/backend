@@ -11,17 +11,18 @@ import com.xst.dao.AdminDao;
 @Controller
 @RequestMapping("/")
 public class TestController {
-	
-	@Autowired
-	private AdminDao adminDao;
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String test() {
-		
-		V9Admin admin = adminDao.getById(1);
-		System.out.println(admin.getV9AdminRole().getRolename());
-		
-		return "index";
-	}
-	
+
+    @Autowired
+    private AdminDao adminDao;
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String test() {
+
+        V9Admin admin = adminDao.getById(1);
+        System.out.println(admin.getUsername());
+        System.out.println(admin.getV9AdminRole().getDescription());
+
+        return "index";
+    }
+
 }
