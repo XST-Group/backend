@@ -20,8 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)  
 @WebAppConfiguration(value = "src/main/webapp")  
 @ContextHierarchy({  
-        @ContextConfiguration(name = "parent", locations = "classpath:spring.xml"),  
-        @ContextConfiguration(name = "child", locations = "classpath:springmvc.xml")  
+        @ContextConfiguration(name = "parent", locations = "file:src/main/webapp/WEB-INF/config/spring.xml"),  
+        @ContextConfiguration(name = "child", locations = "file:src/main/webapp/WEB-INF/config/springmvc.xml")  
 }) 
 
 public class TestControllerTest {
