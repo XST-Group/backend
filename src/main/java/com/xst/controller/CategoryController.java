@@ -1,7 +1,5 @@
 package com.xst.controller;
 
-import com.xst.bean.ThreeCategory;
-import com.xst.bean.ThreeCategoryBase;
 import com.xst.bean.V9Category;
 import com.xst.dao.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,55 +22,57 @@ public class CategoryController {
     @Autowired
     private CategoryDao categoryDao;
 
-    private ThreeCategory threeCategory = new ThreeCategory();
-    private ThreeCategoryBase first_second = new ThreeCategoryBase();
-//    private List<ThreeCategoryBase> first_secondList;
-    private ThreeCategoryBase second_third = new ThreeCategoryBase();
-
 
     /**
      * 展示三级目录
      * value = ???
      * @return
      */
-    @RequestMapping(value = "/category/", method = RequestMethod.GET)
-    public String showThreeCategory(Model model){
+    @RequestMapping(value = "/category/show", method = RequestMethod.GET)
+    public String showCategory(Model model){
 
         //第一级目录
         List<V9Category> firstCategories = categoryDao.getCategory("0");
 
+        model.addAttribute("firstCategories",firstCategories);
+
         for(V9Category firstcate : firstCategories){
 
-            first_second.setCategory(firstcate);
             //第二级目录
             List<V9Category> secondCategories = categoryDao.
                     getCategory(firstcate.getCatid().toString());
 
-            first_second.setChildren(secondCategories);
-
-
+            model.addAttribute("secondCategories", secondCategories);
 
             for(V9Category secondcate : secondCategories){
-                second_third.setCategory(secondcate);
                 //第三级目录
                 List<V9Category> thirdCategories = categoryDao.
                         getCategory(secondcate.getCatid().toString());
 
-                second_third.setChildren(thirdCategories);
+                model.addAttribute("thirdCategories",thirdCategories);
             }
-
-
         }
 
-
-
-        return "";
+        return "category";
     }
 
-    @RequestMapping(value = "/category/:id", method = RequestMethod.GET)
-    public String find(int id){
+    @RequestMapping(value = "/category/id", method = RequestMethod.GET)
+    public String find(Model model , int id){
 
-        return "";
+        List<V9Category> categoryList = new ArrayList<V9Category>();
+        V9Category category = categoryDao.getById(id);
+
+        categoryList.add(category);
+
+        while(category.getParentid()!=0){
+            int parentid = category.getParentid();
+            category = categoryDao.getById(parentid);
+            categoryList.add(category);
+        }
+
+        model.addAttribute("categoryList",categoryList);
+
+        return "/category/id";
     }
 
 
