@@ -14,13 +14,6 @@ import java.util.Set;
 		, schema = "db_xst")
 public class V9NewsData  implements java.io.Serializable{
 
- //主键，不加入报错
-	@Id
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@GeneratedValue(generator = "system-uuid")
-	@Column(length = 32)
-	private String id0;
-
 	private Integer id;
 	private String content;
 	private short readpoint;
@@ -34,14 +27,7 @@ public class V9NewsData  implements java.io.Serializable{
 	private boolean allowComment;
 	private String copyfrom;
 
-	public String getId0() {
-		return id0;
-	}
-
-	public void setId0(String id0) {
-		this.id0 = id0;
-	}
-
+	@Id
 	@Column(name = "id")
 	public Integer getId() {
 		return this.id;
