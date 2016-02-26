@@ -38,7 +38,7 @@ public class TestControllerTest {
         mockMvc
                 .perform(get("/index"))
                 .andExpect(view().name("index"))
-                .andExpect(forwardedUrl("/WEB-INF/views/index.jsp"))
+                .andExpect(forwardedUrl("/index.jsp"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
