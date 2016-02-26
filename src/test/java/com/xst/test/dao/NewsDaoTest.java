@@ -22,16 +22,24 @@ import com.xst.bean.V9News;
 public class NewsDaoTest {
     @Autowired
     private NewsDao newsDao;
+
     @Test
     public void findExistNews(){
         V9News news=newsDao.getById(1);
         Assert.assertNotNull(news);
-        System.out.println("查询的新闻内容："+news.getDescription());
     }
+
     @Test
     public void findNotExistNews(){
         V9News news=newsDao.getById(1000);
         Assert.assertNull(news);
-        System.out.println("查询的新闻不存在！");
+    }
+
+    @Test
+    public void relationBetweenNewsAndData() {
+        V9News news = newsDao.getById(1);
+        // TODO 杩欎釜娴嬭瘯绛変慨鏀瑰畬鍐嶆妸娉ㄩ噴鍘绘帀
+        // Assert.assertNotNull(news.getV9NewsData().getContent());
+        // Assert.assertEquals(news.getV9NewsData().getMaxcharperpage(), 10000);
     }
 }
