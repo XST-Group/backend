@@ -1,6 +1,6 @@
 package com.xst.test.controller;
 
-import org.junit.*;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,13 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+/**
+ * Created by sl on 16-2-26.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration(value = "src/main/webapp")
 @ContextHierarchy({
@@ -23,7 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         @ContextConfiguration(name = "child", locations = "classpath:conf/springmvc.xml")
 })
 
-public class TestControllerTest {
+public class CategoryControllerTest {
+
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
@@ -34,12 +40,23 @@ public class TestControllerTest {
     }
 
     @Test
-    public void testView() throws Exception {
+    public void testShow() throws Exception {
         mockMvc
-                .perform(get("/index"))
-                .andExpect(view().name("index"))
+                .perform(get("/category"))
+                .andExpect(view().name("category"))
                 .andExpect(forwardedUrl("/index.jsp"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+
+    @Test
+    public void testFind() throws Exception{
+        mockMvc
+                .perform(get("/category/id"))
+                .andExpect(view().name("category/id"))
+                .andExpect(forwardedUrl("/index.jsp"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
 }
