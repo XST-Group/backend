@@ -17,6 +17,9 @@
 		<property name="connection.isolation">2</property>
 
 		<property name="connection.characterEncoding">utf8</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/db_xst</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<mapping class="com.xst.entity.V9Category"/>
 
 	</session-factory>
 </hibernate-configuration>

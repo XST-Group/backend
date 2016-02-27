@@ -1,14 +1,15 @@
 package com.xst.controller;
 
-import com.xst.bean.V9Category;
+import com.xst.bean.CateBean;
 import com.xst.dao.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/")
 public class CategoryController {
 
     @Autowired
@@ -28,51 +29,25 @@ public class CategoryController {
      * value = ???
      * @return
      */
-    @RequestMapping(value = "/category/show", method = RequestMethod.GET)
-    public String showCategory(Model model){
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String showFirstCategory(Model model){
 
-        //第一级目录
-        List<V9Category> firstCategories = categoryDao.getCategory("0");
+        //一级目录
+        List<CateBean> firstCategories = categoryDao.getFirstCategory();
 
         model.addAttribute("firstCategories",firstCategories);
 
-        for(V9Category firstcate : firstCategories){
-
-            //第二级目录
-            List<V9Category> secondCategories = categoryDao.
-                    getCategory(firstcate.getCatid().toString());
-
-            model.addAttribute("secondCategories", secondCategories);
-
-            for(V9Category secondcate : secondCategories){
-                //第三级目录
-                List<V9Category> thirdCategories = categoryDao.
-                        getCategory(secondcate.getCatid().toString());
-
-                model.addAttribute("thirdCategories",thirdCategories);
-            }
-        }
-
-        return "category";
+        return "category/list";
     }
 
-    @RequestMapping(value = "/category/id", method = RequestMethod.GET)
-    public String find(Model model , int id){
+    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
+    public String find(Model model , @PathVariable("id") int id){
 
-        List<V9Category> categoryList = new ArrayList<V9Category>();
-        V9Category category = categoryDao.getById(id);
+        List<CateBean> cateChildren = categoryDao.getChildren((short)id);
 
-        categoryList.add(category);
+        model.addAttribute("categoryList",cateChildren);
 
-        while(category.getParentid()!=0){
-            int parentid = category.getParentid();
-            category = categoryDao.getById(parentid);
-            categoryList.add(category);
-        }
-
-        model.addAttribute("categoryList",categoryList);
-
-        return "/category/id";
+        return "category/list";
     }
 
 

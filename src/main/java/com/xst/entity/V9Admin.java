@@ -1,7 +1,6 @@
-package com.xst.bean;
+package com.xst.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by Sloriac on 16/2/21.

@@ -1,6 +1,6 @@
 package com.xst.test.dao;
 
-import com.xst.bean.V9Admin;
+import com.xst.entity.V9Admin;
 import com.xst.dao.AdminDao;
 import junit.framework.Assert;
 import org.junit.Test;

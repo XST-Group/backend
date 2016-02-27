@@ -1,4 +1,4 @@
-package com.xst.bean;
+package com.xst.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;

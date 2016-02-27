@@ -30,6 +30,7 @@
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/views/"/>
+
         <property name="suffix" value=".jsp"/>
     </bean>
 

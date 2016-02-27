@@ -1,4 +1,4 @@
-package com.xst.bean;
+package com.xst.entity;
 // Generated 2016-2-20 22:32:32 by Hibernate Tools 3.2.2.GA
 
 import javax.persistence.*;

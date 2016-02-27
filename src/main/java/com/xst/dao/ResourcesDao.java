@@ -1,6 +1,6 @@
 package com.xst.dao;
 
-import com.xst.bean.V9Resources;
+import com.xst.entity.V9Resources;
 import org.springframework.stereotype.Repository;
 
 /**
