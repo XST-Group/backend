@@ -1,9 +1,11 @@
 package com.xst.dao;
 
-import com.xst.bean.V9Category;
+import com.xst.bean.CateBean;
+import com.xst.entity.V9Category;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,20 +16,58 @@ import java.util.List;
 @Repository("categoryDao")
 public class CategoryDao extends BaseDao{
 
-    public V9Category getById(int id){
+    private V9Category v9Category;
+
+
+    public V9Category getById(short id){
         return get(V9Category.class,id);
     }
 
+    public List<CateBean> getChildren(short id){
+
+        List<CateBean> children = new ArrayList<>();
+
+        v9Category = this.getById(id);
+        String childrenString = v9Category.getArrchildid();
+
+        String[] childrenID = childrenString.split(",");
+
+        for(String childID : childrenID){
+            CateBean cateBean = new CateBean();
+
+            short childIDTurn = new Short(childID);
+            System.out.println(childIDTurn);
+
+            cateBean.setId(childIDTurn);
+            cateBean.setName(this.getById(childIDTurn).getCatname());
+            children.add(cateBean);
+        }
+
+        return children;
+    }
+
+
     /**
-     * 获取三级目录
+     * 获取一级目录
      */
-    public List<V9Category> getCategory(String id){
+    public List<CateBean> getFirstCategory(){
+
+        List<CateBean> children = new ArrayList<>();
+
 
         String hql = "from V9Category as cate where cate.parentid=?";
         Query query = query(hql);
-        query.setString(0,id);
-//        List<V9Category> firstCategories = query.list();
-        return query.list();
+        query.setString(0, "0");
+        List<V9Category> results = query.list();
+
+        for(V9Category res : results){
+            CateBean cateBean = new CateBean();
+            cateBean.setId(res.getCatid());
+            cateBean.setName(res.getCatname());
+            children.add(cateBean);
+        }
+
+        return children;
     }
 
 

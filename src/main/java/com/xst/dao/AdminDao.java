@@ -2,7 +2,7 @@ package com.xst.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.xst.bean.V9Admin;
+import com.xst.entity.V9Admin;
 
 @Repository("adminDao")
 public class AdminDao extends BaseDao {

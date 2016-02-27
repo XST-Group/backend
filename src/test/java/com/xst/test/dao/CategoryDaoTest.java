@@ -1,7 +1,8 @@
 package com.xst.test.dao;
 
-import com.xst.bean.V9Category;
+import com.xst.bean.CateBean;
 import com.xst.dao.CategoryDao;
+import com.xst.entity.V9Category;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,14 +31,14 @@ public class CategoryDaoTest {
 
     @Test
     public void findExistCat(){
-        V9Category v9Category = categoryDao.getById(3847);
+        V9Category v9Category = categoryDao.getById((short)3847);
         Assert.assertNotNull(v9Category);
         Assert.assertEquals(v9Category.getCatname(), "1972年纪录片作品-中国");
     }
 
     @Test
     public void findFather(){
-        V9Category category1 = categoryDao.getById(3849);
+        V9Category category1 = categoryDao.getById((short)3849);
         V9Category v9Category = categoryDao.getById(category1.getParentid());
         Assert.assertNotNull(v9Category);
         Assert.assertEquals(v9Category.getCatname(), "感恩教育");
@@ -45,25 +46,34 @@ public class CategoryDaoTest {
 
     @Test
     public void findChild(){
-        V9Category category1 = categoryDao.getById(3849);
-        V9Category v9Category = categoryDao.getById(category1.getChild());
-        Assert.assertNotNull(v9Category);
-        Assert.assertEquals(v9Category.getCatname(), "不要让爱你的人失望");
+        V9Category category = categoryDao.getById((short)3849);
+
+        List<CateBean> children = categoryDao.getChildren((short)3849);
+        for(CateBean child : children){
+            V9Category v9Category = categoryDao.getById(child.getId());
+//            System.out.println((short)category.getChild());
+//            System.out.println(v9Category);
+            Assert.assertNotNull(v9Category);
+
+            Assert.assertEquals(v9Category.getCatname(), "不要让爱你的人失望");
+        }
+
+
 
         // TODO 修改后去掉注释
-//        Assert.assertEquals(category.getParent().getCatename(), "感恩教育");
+//        Assert.assertEquals(categoryDao.getById(category.getParent()).getChild(), "感恩教育");
 
     }
 
     @Test
     public void getFirstCate(){
-        List<V9Category> firstCate  = categoryDao.getCategory("");
+        List<CateBean> firstCate  = categoryDao.getFirstCategory();
         int count=0;
-        for(V9Category cate : firstCate){
+        for(CateBean cate : firstCate){
             Assert.assertNotNull(cate);
             count++;
         }
-        System.out.println("test: "+count);
+        System.out.println("一级目录个数: "+count);
 
     }
 

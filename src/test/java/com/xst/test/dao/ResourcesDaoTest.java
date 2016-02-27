@@ -1,6 +1,6 @@
 package com.xst.test.dao;
 
-import com.xst.bean.V9Resources;
+import com.xst.entity.V9Resources;
 import com.xst.dao.ResourcesDao;
 import junit.framework.Assert;
 import org.junit.Test;
