@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +57,8 @@ public class CategoryController {
         return "category";
     }
 
-    @RequestMapping(value = "/category/id", method = RequestMethod.GET)
-    public String find(Model model , int id){
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String find(Model model , @RequestParam(required = false) int id){
 
         List<V9Category> categoryList = new ArrayList<V9Category>();
         V9Category category = categoryDao.getById(id);

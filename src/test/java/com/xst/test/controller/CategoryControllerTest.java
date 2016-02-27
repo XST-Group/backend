@@ -52,7 +52,7 @@ public class CategoryControllerTest {
     @Test
     public void testFind() throws Exception{
         mockMvc
-                .perform(get("/category/id"))
+                .perform(get("/category/{id}",3847))
                 .andExpect(view().name("category/id"))
                 .andExpect(forwardedUrl("/index.jsp"))
                 .andExpect(status().isOk())

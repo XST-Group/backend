@@ -22,11 +22,7 @@ public class CategoryDao extends BaseDao{
      * 获取三级目录
      */
     public List<V9Category> getCategory(String id){
-//        String hqlString = "from Courses as course where course.enabled=?";
-//        Query query = query(hqlString);
-//        query.setString(0, "1");
-//        List<Course> ts = query.list();
-//        return ts;
+
         String hql = "from V9Category as cate where cate.parentid=?";
         Query query = query(hql);
         query.setString(0,id);

@@ -15,9 +15,9 @@ public class V9Category {
     private String module;
     private Integer type;
     private Integer modelid;
-    private Integer parentid;
+    private V9Category parent;
     private String  arrparentid;
-    private Integer child;
+    private V9Category child;
     private String arrchildid;
     private String catname;
     private String style;
@@ -87,28 +87,29 @@ public class V9Category {
     }
 
 
-    /**
-     * ????
-     * @return
-     */
-    @Basic
-    @Column(name = "parentid")
-    public Integer getParentid() {
-        return parentid;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parentid" , nullable = true)
+    public V9Category getParent() {
+        return parent;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParent(V9Category parent) {
+        this.parent = parent;
     }
 
 
-    /**
-     * ????
-     * @return
-     */
-    @Basic
-    @Column(name = "arrparentid")
+
+//    @Basic
+//    @Column(name = "arrparentid")
     public String getArrparentid() {
+        //        String hqlString = "from Courses as course where course.enabled=?";
+//        Query query = query(hqlString);
+//        query.setString(0, "1");
+//        List<Course> ts = query.list();
+//        return ts;
+        String hqlString = "from V9Category as cate where cate.enabled=?";
+        
         return arrparentid;
     }
 
@@ -117,26 +118,18 @@ public class V9Category {
     }
 
 
-    /**
-     * ????
-     * @return
-     */
-    @Basic
-    @Column(name = "child")
-    public Integer getChild() {
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "child" , nullable = true)
+    public V9Category getChild() {
         return child;
     }
 
-    public void setChild(Integer child) {
+    public void setChild(V9Category child) {
         this.child = child;
     }
 
 
 
-    /**
-     * ????
-     * @return
-     */
     @Basic
     @Column(name = "arrchildid")
     public String  getArrchildid() {
