@@ -49,6 +49,10 @@ public class CategoryDaoTest {
         V9Category v9Category = categoryDao.getById(category1.getChild());
         Assert.assertNotNull(v9Category);
         Assert.assertEquals(v9Category.getCatname(), "不要让爱你的人失望");
+
+        // TODO 修改后去掉注释
+//        Assert.assertEquals(category.getParent().getCatename(), "感恩教育");
+
     }
 
     @Test
