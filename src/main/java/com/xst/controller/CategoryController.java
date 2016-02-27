@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class CategoryController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    @RequestMapping(value = "/root", method = RequestMethod.GET)
     public  List<CateBean> showFirstCategory(){
 
         //一级目录
@@ -39,7 +39,7 @@ public class CategoryController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}.json", method = RequestMethod.GET)
     public List<CateBean> find( @PathVariable("id") int id){
 
         List<CateBean> cateChildren = categoryDao.getChildren((short)id);
