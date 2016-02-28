@@ -1,7 +1,9 @@
 package com.xst.dao;
 
+import com.xst.entity.V9Category;
 import com.xst.entity.V9Resources;
 import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +14,9 @@ import java.util.List;
 @Repository("resourcesDao")
 public class ResourcesDao extends BaseDao {
 
+
+    @Autowired
+    private CategoryDao categoryDao;
 
     public V9Resources getById(int id){
         return get(V9Resources.class,id);
@@ -43,6 +48,47 @@ public class ResourcesDao extends BaseDao {
         }
 
         return resourcesList;
+    }
+
+
+    /**
+     *查询这个资源的父目录(最近的父目录)下的其他资源(除了它自己)
+     * @param id
+     * @return
+     */
+    public List<V9Resources> getBrotherResources(int id){
+
+        V9Resources self = this.getById(id);
+
+        int parentid;
+
+        if(self.getCategory4Id() != null){
+            parentid = self.getCategory4Id();
+        }else if(self.getCategory3Id() != null){
+            parentid = self.getCategory3Id();
+        }else if(self.getCategory2Id() != null){
+            parentid = self.getCategory2Id();
+        }else if(self.getCategory1Id() != null){
+            parentid = self.getCategory1Id();
+        }else{
+            return null;
+        }
+
+        List<V9Resources> brothers = this.getResourcesOfLeaf(parentid);
+
+        int indexToRemove = -1;
+
+        for(V9Resources resources : brothers){
+            if(resources.getId() == id){
+                indexToRemove = brothers.indexOf(resources);
+                break;
+            }
+        }
+
+        if(indexToRemove != -1)
+            brothers.remove(indexToRemove);
+
+        return brothers;
     }
 
 

@@ -3,6 +3,8 @@ package com.xst.controller;
 import com.xst.annotations.Link;
 import com.xst.bean.CateBean;
 import com.xst.dao.CategoryDao;
+import com.xst.dao.ResourcesDao;
+import com.xst.entity.V9Resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ public class CourseController {
     @Autowired
     private CategoryDao categoryDao;
 
+    @Autowired
+    private ResourcesDao resourcesDao;
+
     @Link(label = "全部课程", family = "CourseController", parent = "")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model){
@@ -37,8 +42,10 @@ public class CourseController {
     @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
     public String list(Model model, @PathVariable int id){
 
+        List<V9Resources> resourceList = resourcesDao.getResourcesOfLeaf(id);
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
         model.addAttribute("rootCategories", firstCategories);
+        model.addAttribute("resourceList", resourceList);
         return "course/list";
     }
 }

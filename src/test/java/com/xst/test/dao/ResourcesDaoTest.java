@@ -43,10 +43,25 @@ public class ResourcesDaoTest {
         Assert.assertNotNull(v9ResourcesList);
         int count=0;
         for(V9Resources resources : v9ResourcesList){
+            System.out.println(resources.getId());
             System.out.println(resources.getTitle());
             count++;
         }
         System.out.println("count = "+count);
+    }
+
+    @Test
+    public void testGetPageResources() {
+
+        List<V9Resources> resources = resourcesDao.getBrotherResources(39024);
+        System.out.println("resources.size()"+resources.size());
+        Assert.assertNotNull(resources);
+
+        for(V9Resources res : resources){
+            System.out.println(res.getId());
+            System.out.println(res.getTitle());
+        }
+
     }
 
 }

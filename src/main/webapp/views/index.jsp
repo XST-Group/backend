@@ -7,7 +7,7 @@
 <title>首页</title>
 <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
-<body>
+<body onload="onLoad()">
     <jsp:include page="common/header.jsp" />
     <section class="poster">
         <div class="slider">
