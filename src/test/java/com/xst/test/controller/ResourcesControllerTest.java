@@ -1,7 +1,5 @@
 package com.xst.test.controller;
 
-import com.xst.bean.CateBean;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,18 +9,17 @@ import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.List;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
- * Created by sl on 16-2-26.
+ * Created by sl on 16-2-28.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration(value = "src/main/webapp")
@@ -30,8 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         @ContextConfiguration(name = "parent", locations = "classpath:conf/spring.xml"),
         @ContextConfiguration(name = "child", locations = "classpath:conf/springmvc.xml")
 })
-
-public class CategoryControllerTest {
+public class ResourcesControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -43,27 +39,14 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void testShowFirstCategory() throws Exception {
+    public void testGetResourcesOfLeafy() throws Exception {
         mockMvc
-                .perform(get("/category/{id}",3849))
+                .perform(get("/resources/{id}.json",3728))
+//                .andExpect(view().name("category/{id}.json"))
+//                .andExpect(forwardedUrl("/views/category/list.jsp"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
 
-    @Test
-    public void testFind() throws Exception{
-
-        MvcResult result = mockMvc
-                .perform(get("/category/{id}",3849))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andReturn();
-
-
-//        Assert.assertEquals(cateBean.getName(), "不要让爱你的人失望");
-
-        // TODO 修改后去掉注释
-//        Assert.assertEquals(cateBean.getParent().getCatename(), "感恩教育");
-    }
 
 }
