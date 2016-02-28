@@ -19,8 +19,7 @@ public class TestController {
     public String test() {
 
         V9Admin admin = adminDao.getById(1);
-        System.out.println(admin.getUsername());
-        System.out.println(admin.getV9AdminRole().getDescription());
+        System.out.println(admin.getV9AdminRole().getRolename());
 
         return "index";
     }
