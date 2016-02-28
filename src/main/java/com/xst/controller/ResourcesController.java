@@ -23,10 +23,13 @@ public class ResourcesController {
     private ResourcesDao resourcesDao;
 
     @ResponseBody
-    @RequestMapping(value = "/{id}.json" , method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
     public List<V9Resources> getResourcesOfLeaf(@PathVariable("id") int id){
 
         return resourcesDao.getResourcesOfLeaf(id);
     }
+
+//    @ResponseBody
+
 
 }

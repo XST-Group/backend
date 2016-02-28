@@ -41,9 +41,7 @@ public class ResourcesControllerTest {
     @Test
     public void testGetResourcesOfLeafy() throws Exception {
         mockMvc
-                .perform(get("/resources/{id}.json",3728))
-//                .andExpect(view().name("category/{id}.json"))
-//                .andExpect(forwardedUrl("/views/category/list.jsp"))
+                .perform(get("/resources/{id}",3728))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
