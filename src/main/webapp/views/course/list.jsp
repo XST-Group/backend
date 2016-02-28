@@ -12,7 +12,7 @@
     <title>课程</title>
     <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
-<body>
+<body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
     <div class="main">
         <jsp:include page="../common/breadcrumb.jsp" />
@@ -33,7 +33,23 @@
                 <div class="col-xs-9">
                     <div class="course-list">
                         <div class="row course">
-
+                            <c:forEach items="${resourceList}" var="resource">
+                                <div class="col-md-4">
+                                    <div class="course-item">
+                                        <div class="course-thumb">
+                                            <a href="/resources/${resource.id}"><img src="/assets/images/course.jpg" alt=""></a>
+                                        </div>
+                                        <div class="course-info">
+                                            <div class="title"><a href="/resources/${resource.id}">${resource.title}</a></div>
+                                            <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
+                                            <div class="addon">
+                                                <span class="author">作者</span>
+                                                <span class="pull-right free">免费</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                     <!-- end of course-list -->

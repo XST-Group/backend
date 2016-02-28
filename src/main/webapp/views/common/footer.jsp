@@ -15,8 +15,8 @@
                     <div class="col-xs-6">
                         <h3>统计信息</h3>
                         <p>网站总访问量 : 1365544</p>
-                        <p>当前在线人数 : 42554</p>
-                        <p>页面加载时间 : 0.000234</p>
+                        <p>当前在线人数 : ${OnlineCount}</p>
+                        <p id="timeStat">页面加载时间 : 0.000234</p>
                     </div>
                     <div class="col-xs-6">
                         <h3>主办单位</h3>
@@ -46,3 +46,13 @@
     </div>
 </footer>
 <!-- end of footer -->
+
+<script type="text/javascript">
+    var t0 = new Date().getTime();
+    function onLoad() {
+        var now = new Date().getTime();
+        var latency = now - t0;
+        var stat = document.getElementById("timeStat");
+        stat.innerHTML = "页面加载时间 : " + latency/1000 + " 秒";
+    }
+</script>
