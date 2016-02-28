@@ -11,8 +11,12 @@
     <title>Title</title>
 </head>
 <body>
+
 ${newsList}
 <p>
 ${newsMsg}
+<p>
+${newsPageMsg}
+<p>pagebean:${newsPageBean}
 </body>
 </html>
