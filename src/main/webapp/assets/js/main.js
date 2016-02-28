@@ -1,17 +1,3 @@
-function qiehuan(value){
-	if(value==0){//相关
-		$("#xg").show();
-		$("#ph").hide();
-		$("#xgclass").removeClass("object_tab").addClass("object_tab");
-		$("#phclass").removeClass("object_tab");
-	}else{//片花
-		$("#ph").show();
-		$("#xg").hide();
-		$("#phclass").removeClass("object_tab").addClass("object_tab");
-		$("#xgclass").removeClass("object_tab");
-	}
-}
-
 function playVideo(vid){
    var href = window.location.href;
    var rowId=0;
@@ -81,68 +67,8 @@ function getFlashHtml(playObj,replaceObj){
     checkDownLoad(playObj.downUrl);
 }
 
-function checkDownLoad(downurl){
-	if(downurl.length==0){
-		$(".xz").click(function(){
-			alert("抱歉，您没权限下载");
-			return false;
-		});
-	}else{
-		//表示可以下载
-		$(".xz").attr("download",downurl);
-	}
-}
 
-function getError(replaceObj,msg,url){
-	$(".deduction_sure").find("p:first").text(msg);
-	var atagObj = $(".deduction_sure").find("a");
-	var replaceImg = $("#replaceImg");
-	if(url=="needPoints"){
-		atagObj.on('click',function(){
-			$.ajax({
-		        url : "/vod/deducting.json",
-		        data : {"videoId":vid},
-		        dataType : "json",
-		        type : "POST",
-		        async:"false",
-		        success : function(data) {
-		        	if(data.status==1){
-		        		playVideo(vid);
-		        	}else if(data.status==0){
-		        		 getError(replaceImg,'余额不足，请先去充值?','/person/pay/recharge');
-		        	}else{
-		        		alert("扣费出错==>"+data.error);
-		        	}
-		        }
-		    });
-        });
-	}else{
-		atagObj.attr("href",url+"?back_url="+window.location.href);
-	}
-	replaceObj.replaceWith($(".deduction"));
-	$(".deduction").show();
-	$(".deduction").attr("id","replaceImg");
-	checkDownLoad("");
-}
 
-function statistics(){
-	$.getJSON('/common/statistics.json',{id:vid},function(data){});
-}
-
-function _downLoad(type){
-	var permstr=$(".xz").attr("download");
-	$.getJSON('/vod/download.json'
-			,{videoId:vid,type:type,permstr:permstr}
-			,function(data){
-			var _url = data.url;
-			if(_url.length == 0){
-				alert("未找到下载路径");
-			}else{
-				window.open(_url);
-				$.getJSON('/vod/updDownLoadNum.json',{videoId:vid},function(data){});
-			}
-	});
-}
 /* =========================================================
  * bootstrap-treeview.js v1.2.0
  * =========================================================
@@ -177,6 +103,7 @@ function _downLoad(type){
 		injectStyle: true,
 
 		levels: 2,
+		categoryUrl: undefined,
 
 		expandIcon: 'fa fa-plus',
 		collapseIcon: 'fa fa-minus',
@@ -287,7 +214,10 @@ function _downLoad(type){
 
 			// Search methods
 			search: $.proxy(this.search, this),
-			clearSearch: $.proxy(this.clearSearch, this)
+			clearSearch: $.proxy(this.clearSearch, this),
+
+			// Render
+			render: $.proxy(this.render, this)
 		};
 	};
 
@@ -400,8 +330,7 @@ function _downLoad(type){
 		index nodes in a flattened structure
 	*/
 	Tree.prototype.setInitialStates = function (node, level) {
-
-		if (!node.nodes) return;
+		if (!node.nodes) return;	
 		level += 1;
 
 		var parent = node;
@@ -459,6 +388,37 @@ function _downLoad(type){
 		});
 	};
 
+	// Tree.prototype.clickHandler = function (event) {
+
+	// 	if (!this.options.enableLinks) event.preventDefault();
+
+	// 	var target = $(event.target);
+	// 	var node = this.findNode(target);
+	// 	if (!node || node.state.disabled) return;
+		
+	// 	var classList = target.attr('class') ? target.attr('class').split(' ') : [];
+	// 	if ((classList.indexOf('expand-icon') !== -1)) {
+
+	// 		this.toggleExpandedState(node, _default.options);
+	// 		this.render();
+	// 	}
+	// 	else if ((classList.indexOf('check-icon') !== -1)) {
+			
+	// 		this.toggleCheckedState(node, _default.options);
+	// 		this.render();
+	// 	}
+	// 	else {
+			
+	// 		if (node.selectable) {
+	// 			this.toggleSelectedState(node, _default.options);
+	// 		} else {
+	// 			this.toggleExpandedState(node, _default.options);
+	// 		}
+
+	// 		this.render();
+	// 	}
+	// };
+
 	Tree.prototype.clickHandler = function (event) {
 
 		if (!this.options.enableLinks) event.preventDefault();
@@ -466,10 +426,10 @@ function _downLoad(type){
 		var target = $(event.target);
 		var node = this.findNode(target);
 		if (!node || node.state.disabled) return;
-		
+
+
 		var classList = target.attr('class') ? target.attr('class').split(' ') : [];
 		if ((classList.indexOf('expand-icon') !== -1)) {
-
 			this.toggleExpandedState(node, _default.options);
 			this.render();
 		}
@@ -479,16 +439,52 @@ function _downLoad(type){
 			this.render();
 		}
 		else {
-			
 			if (node.selectable) {
 				this.toggleSelectedState(node, _default.options);
 			} else {
-				this.toggleExpandedState(node, _default.options);
+				console.log(node);
+				if(!node.nodes && node.hasChild) {
+					this.addChild(node, node.id);
+				} else {
+					this.toggleExpandedState(node, _default.options);
+				}
 			}
-
 			this.render();
 		}
 	};
+
+	Tree.prototype.addChild = function (node, id) {
+		var parent = node,
+			_this = this;
+		$.getJSON(this.options.categoryUrl + id, function(data) {
+			var subtree = new Array();	
+			$.each(data, function(i, item) {
+				if (i > 0) {
+					if(item.existChild) {
+						subtree.push({
+							id: item.id,
+							text: item.name,
+							hasChild: true,
+							selectable: false
+						})
+					} else {
+						subtree.push({
+							id: item.id,
+							text: item.name,
+							hasChild: false,
+							selectable: false,
+							href: _this.options.resourceUrl + item.id
+						})
+					}
+
+				}
+			});
+			node.nodes = subtree;
+			_this.setInitialStates(node, _this.options.level);
+			_this.toggleExpandedState(node, _default.options);
+			_this.render();
+		});
+	}
 
 	// Looks up the DOM for the closest parent list item to retrieve the
 	// data attribute nodeid, which is used to lookup the node in the flattened structure.

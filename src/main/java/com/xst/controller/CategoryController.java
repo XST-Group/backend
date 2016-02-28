@@ -39,7 +39,7 @@ public class CategoryController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{id}.json", method = RequestMethod.GET)
+    @RequestMapping(value = "/node/{id}", method = RequestMethod.GET)
     public List<CateBean> find( @PathVariable("id") int id){
 
         List<CateBean> cateChildren = categoryDao.getChildren((short)id);

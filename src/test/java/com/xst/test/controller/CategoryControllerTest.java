@@ -56,8 +56,7 @@ public class CategoryControllerTest {
     public void testFind() throws Exception{
 
         MvcResult result = mockMvc
-                .perform(get("/category/{id}",3849))
-                .andExpect(view().name("category/list"))
+                .perform(get("/category/node/{id}",3849))
                 .andExpect(forwardedUrl("/views/category/list.jsp"))
                 .andExpect(model().attributeExists("categoryList"))
                 .andExpect(status().isOk())
