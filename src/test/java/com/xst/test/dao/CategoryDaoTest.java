@@ -46,12 +46,13 @@ public class CategoryDaoTest {
 
     @Test
     public void findChild(){
-        V9Category category = categoryDao.getById((short)3849);
+//        V9Category category = categoryDao.getById((short)3849);
 
         List<CateBean> children = categoryDao.getChildren((short)3849);
+
         for(CateBean child : children){
             V9Category v9Category = categoryDao.getById(child.getId());
-//            System.out.println((short)category.getChild());
+//            System.out.println(child.isExistChild());
 //            System.out.println(v9Category);
             Assert.assertNotNull(v9Category);
 

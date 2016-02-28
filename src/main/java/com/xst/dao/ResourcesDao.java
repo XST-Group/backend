@@ -12,4 +12,6 @@ public class ResourcesDao extends BaseDao {
     public V9Resources getById(int id){
         return get(V9Resources.class,id);
     }
+
+//
 }
