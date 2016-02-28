@@ -23,7 +23,6 @@ public class CategoryController {
 
     /**
      * 展示三级目录
-     * value = ???
      * @return
      */
     @ResponseBody

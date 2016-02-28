@@ -64,6 +64,8 @@ public class CategoryDao extends BaseDao{
             CateBean cateBean = new CateBean();
             cateBean.setId(res.getCatid());
             cateBean.setName(res.getCatname());
+
+            cateBean.setIsExistChild(this.getChildrenString(res.getCatid()).length!=1);
             children.add(cateBean);
         }
 

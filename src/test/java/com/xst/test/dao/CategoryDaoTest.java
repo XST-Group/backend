@@ -73,6 +73,7 @@ public class CategoryDaoTest {
         for(CateBean cate : firstCate){
             Assert.assertNotNull(cate);
             count++;
+            System.out.println("cate.isExistChild() = "+cate.isExistChild());
         }
         System.out.println("一级目录个数: "+count);
 
