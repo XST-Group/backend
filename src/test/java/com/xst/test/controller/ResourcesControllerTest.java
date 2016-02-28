@@ -1,5 +1,7 @@
 package com.xst.test.controller;
 
+import com.xst.entity.V9Resources;
+import com.xst.page.Page;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +43,15 @@ public class ResourcesControllerTest {
     @Test
     public void testGetResourcesOfLeafy() throws Exception {
         mockMvc
-                .perform(get("/resources/{id}",3728))
+                .perform(get("/resources/{id}", 3728))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    public void testGetPageResources() throws Exception {
+        mockMvc
+                .perform(get("/resources/page/{pageNum}/{pageSize}",2,4))
                 .andExpect(status().isOk())
                 .andDo(print());
     }

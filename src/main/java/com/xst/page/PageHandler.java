@@ -31,7 +31,6 @@ public class PageHandler<T> {
      */
     public Page<T> getPage(int pageNow, int pageSize, Class<T> c) {
         Page<T> page = initPage(pageNow, pageSize, c);
-        // 没有数据
         if (page == null) {
             Page<T> emptyPage = new Page<T>();
             emptyPage.setPageNow(1);

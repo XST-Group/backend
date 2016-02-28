@@ -1,6 +1,5 @@
 package com.xst.dao;
 
-import com.xst.entity.V9Category;
 import com.xst.entity.V9Resources;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -12,6 +11,7 @@ import java.util.List;
  */
 @Repository("resourcesDao")
 public class ResourcesDao extends BaseDao {
+
 
     public V9Resources getById(int id){
         return get(V9Resources.class,id);
@@ -53,7 +53,7 @@ public class ResourcesDao extends BaseDao {
      * @return
      */
     private List<V9Resources> HQuery(String colume , int value){
-        String hql = "from V9Resources as cate where cate."+colume+"=?";
+        String hql = "from V9Resources as resources where resources."+colume+"=?";
         Query query = query(hql);
         query.setString(0, String.valueOf(value));
         List<V9Resources> results = query.list();
