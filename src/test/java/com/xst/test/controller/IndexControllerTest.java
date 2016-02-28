@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         @ContextConfiguration(name = "child", locations = "classpath:conf/springmvc.xml")
 })
 
-public class TestControllerTest {
+public class IndexControllerTest {
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
