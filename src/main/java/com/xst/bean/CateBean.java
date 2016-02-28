@@ -7,6 +7,9 @@ public class CateBean {
     private short id;
     private String name;
 
+    //是否存在子结点，1：有
+    private boolean isExistChild;
+
     public String getName() {
         return name;
     }
@@ -21,5 +24,13 @@ public class CateBean {
 
     public void setId(short id) {
         this.id = id;
+    }
+
+    public boolean isExistChild() {
+        return isExistChild;
+    }
+
+    public void setIsExistChild(boolean isExistChild) {
+        this.isExistChild = isExistChild;
     }
 }

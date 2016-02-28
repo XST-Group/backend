@@ -27,10 +27,7 @@ public class CategoryDao extends BaseDao{
 
         List<CateBean> children = new ArrayList<>();
 
-        v9Category = this.getById(id);
-        String childrenString = v9Category.getArrchildid();
-
-        String[] childrenID = childrenString.split(",");
+        String[] childrenID = this.getChildrenString(id);
 
         for(String childID : childrenID){
             CateBean cateBean = new CateBean();
@@ -40,6 +37,9 @@ public class CategoryDao extends BaseDao{
 
             cateBean.setId(childIDTurn);
             cateBean.setName(this.getById(childIDTurn).getCatname());
+
+            //判断该child是否有子结点（判断arrchildid中除了自己外是否还有其他结点）
+            cateBean.setIsExistChild(this.getChildrenString(childIDTurn).length!=1);
             children.add(cateBean);
         }
 
@@ -68,6 +68,20 @@ public class CategoryDao extends BaseDao{
         }
 
         return children;
+    }
+
+
+    /**
+     * 获取arrchildid的String数组
+     * @return
+     */
+    private String[] getChildrenString(short id){
+        v9Category = this.getById(id);
+        String childrenString = v9Category.getArrchildid();
+
+        String[] childrenID = childrenString.split(",");
+
+        return childrenID;
     }
 
 
