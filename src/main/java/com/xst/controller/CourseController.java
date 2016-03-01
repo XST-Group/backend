@@ -3,13 +3,10 @@ package com.xst.controller;
 import com.xst.annotations.Link;
 import com.xst.bean.CateBean;
 import com.xst.dao.CategoryDao;
-import com.xst.dao.QueryDao;
 import com.xst.dao.ResourcesDao;
-import com.xst.dao.daoInterface.QueryDaoInterface;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
-import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,12 +32,6 @@ public class CourseController {
     @Autowired
     private ResourcesDao resourcesDao;
 
-    @Autowired(required = false)
-    @Qualifier("queryDao")
-    private QueryDaoInterface queryDao;
-
-    @Autowired
-    private PageHandler<V9Resources> pageHandler;
 
     /**
      * 查看所有资源(第一页)
