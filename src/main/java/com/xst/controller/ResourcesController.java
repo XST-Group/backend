@@ -59,24 +59,12 @@ public class ResourcesController {
     /**
      * 分页查询所有资源
      */
-//    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Throwable.class)
     @ResponseBody
     @RequestMapping(value = "/page/{pageNum}/{pageSize}" , method = RequestMethod.GET)
     public Page<V9Resources> getPageResources(@PathVariable("pageNum") int pageNum,
                                               @PathVariable("pageSize") int pageSize) {
 
-        String hql = "from V9Resources as resources";
-
-        System.out.println(queryDao);
-        Query query = queryDao.getQuery(hql);
-
-        if (query == null)
-            return null;
-
-        Page<V9Resources> page = pageHandler.getPage(pageNum,pageSize,
-                V9Resources.class,query);
-
-        return page;
+        return resourcesDao.getPageResources(pageNum,pageSize);
     }
 
 

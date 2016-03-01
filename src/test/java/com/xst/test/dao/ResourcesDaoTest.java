@@ -69,8 +69,9 @@ public class ResourcesDaoTest {
     @Test
     public void testGetPageResources() {
 
-        List<V9Resources> resources = resourcesDao.getBrotherResources(35692);
-        System.out.println("resources.size()"+resources.size());
+        List<V9Resources> resources = resourcesDao.getPageResources(5,16)
+                .getList();
+        System.out.println("resources.size() = "+resources.size());
         Assert.assertNotNull(resources);
 
         for(V9Resources res : resources){
