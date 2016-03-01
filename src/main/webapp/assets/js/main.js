@@ -20,8 +20,11 @@ function getFlashHtml(playUrl,replaceObj){
 	}
     var player = new Player(config);
     var flashhtml = player.showflashplayer();
+
+	console.log(flashhtml);
     cg.player=flashhtml;
-    replaceObj.replaceWith(flashhtml);
+    console.log(replaceObj);
+	replaceObj.replaceWith(flashhtml);
 }
 
 

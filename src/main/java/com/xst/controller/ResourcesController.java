@@ -48,6 +48,7 @@ public class ResourcesController {
 
         V9Resources resource = resourcesDao.getById(id);
         List<V9Resources> siblings = resourcesDao.getBrotherResources(id);
+        System.out.println(siblings.size());
         model.addAttribute("resource", resource);
         model.addAttribute("siblings", siblings);
 

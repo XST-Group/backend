@@ -53,7 +53,7 @@ public class ResourcesDaoTest {
     @Test
     public void testGetPageResources() {
 
-        List<V9Resources> resources = resourcesDao.getBrotherResources(39024);
+        List<V9Resources> resources = resourcesDao.getBrotherResources(35692);
         System.out.println("resources.size()"+resources.size());
         Assert.assertNotNull(resources);
 
@@ -61,7 +61,7 @@ public class ResourcesDaoTest {
             System.out.println(res.getId());
             System.out.println(res.getTitle());
         }
-
     }
+
 
 }

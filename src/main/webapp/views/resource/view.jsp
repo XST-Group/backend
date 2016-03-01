@@ -12,7 +12,7 @@
     <title>课程</title>
     <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
-<body onload="onLoad()">
+<body>
 <jsp:include page="../common/header.jsp" />
 <div class="main">
     <jsp:include page="../common/breadcrumb.jsp" />
@@ -29,13 +29,14 @@
                         <a href="#">相关</a>
                     </div>
                     <ul class="related">
-                        <c:forEach items="${siblings}" var="sibling" >
-                            <li class="related-item"><a href="/resources/${sibling.id}">
-                                <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
-                                <span class="video-title">${sibling.title}</span>
-                                <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
-                            </a></li>
-                        </c:forEach>
+                        ${siblings.size()}
+                        <%--<c:forEach items="${siblings}" var="sibling" >--%>
+                            <%--<li class="related-item"><a href="/resources/${sibling.id}">--%>
+                                <%--<span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>--%>
+                                <%--<span class="video-title">${sibling.title}</span>--%>
+                                <%--<span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>--%>
+                            <%--</a></li>--%>
+                        <%--</c:forEach>--%>
                     </ul>
                 </div>
             </div>
@@ -48,7 +49,6 @@
             $(function(){
                 var replaceImg = $("#replaceImg");
                 url = replaceImg.attr("data-url");
-                getFlashHtml(url, replaceImg);
             });
         </script>
 </body>
