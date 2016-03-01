@@ -50,4 +50,13 @@ public class NewsDao  extends BaseDao {
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;
 	}
+
+	public Page<V9News> queryFirstFiveNews() {
+		String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
+		Query query = query(hql);
+		query.setFirstResult(1);
+		query.setMaxResults(5);
+		Page<V9News> newsPage = newsPageHandler.getPage(1,5,V9News.class,query);
+		return newsPage;
+	}
 }

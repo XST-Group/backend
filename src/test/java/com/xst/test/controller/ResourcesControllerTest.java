@@ -1,7 +1,5 @@
 package com.xst.test.controller;
 
-import com.xst.entity.V9Resources;
-import com.xst.page.Page;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  * Created by sl on 16-2-28.
@@ -41,7 +37,7 @@ public class ResourcesControllerTest {
     }
 
     @Test
-    public void testGetResourcesOfLeafy() throws Exception {
+    public void testGetResourcesOfLeaf() throws Exception {
         mockMvc
                 .perform(get("/resources/{id}", 3728))
                 .andExpect(status().isOk())
@@ -60,6 +56,14 @@ public class ResourcesControllerTest {
     public void testGetBrotherResources() throws Exception{
         mockMvc
                 .perform(get("/resources/brother/{id}",39024))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    public void testGetPageResourcesOfLeaf() throws Exception{
+        mockMvc
+                .perform(get("/resources/pageleaf/{id}/{pageNum}/{pageSize}",3738,1,15))
                 .andExpect(status().isOk())
                 .andDo(print());
     }

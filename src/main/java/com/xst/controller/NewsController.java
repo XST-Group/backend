@@ -25,13 +25,6 @@ public class NewsController {
     private PageHandler<V9News> newsPageHandler;
     @Autowired
     private NewsDao newsDao;
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model){
-        List<V9News> newsList=newsDao.queryForNewsList();
-        model.addAttribute("newsList",new ArrayList<>(newsList));
-        model.addAttribute("newsMsg","newsList");
-        return "news/list";
-}
 
     /**
      * 默认的分页，第一页，10条
@@ -40,7 +33,7 @@ public class NewsController {
      */
     @RequestMapping(value = "/list",method=RequestMethod.GET)
     public String view(Model model){
-        Page<V9News> page = newsDao.queryForNewsListByPage(1, 10);
+        Page<V9News> page = newsDao.queryForNewsListByPage(1, 15);
         model.addAttribute("page",page);
         return "news/list";
     }
@@ -51,9 +44,9 @@ public class NewsController {
      * @param pageNum 页码
      * @return
      */
-    @RequestMapping(value="/view/{pageNum}",method=RequestMethod.GET)
+    @RequestMapping(value="/list/{pageNum}",method=RequestMethod.GET)
     public String view(Model model, @PathVariable("pageNum") int pageNum){
-        Page<V9News> page = newsDao.queryForNewsListByPage(pageNum, 10);
+        Page<V9News> page = newsDao.queryForNewsListByPage(pageNum, 15);
         model.addAttribute("page",page);
         return "news/list";
     }

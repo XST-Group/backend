@@ -51,12 +51,43 @@ public class ResourcesDao extends BaseDao {
     }
 
 
+
+    /**
+     * 获取叶子结点下的所有资源(分页查询)
+     */
+    public Page<V9Resources> getPageResourcesOfLeaf(int id , int pageNum , int pageSize){
+
+        if(this.HQuery("category4Id", id).size() != 0){
+
+            return this.PageQuery("category4Id", id, pageNum, pageSize);
+
+        }else if(this.HQuery("category3Id", id).size() != 0){
+
+//            System.out.println("sizeszieszie = "+this.HQuery("category3Id", id).size());
+
+            return this.PageQuery("category3Id", id , pageNum , pageSize);
+
+        }else if(this.HQuery("category2Id", id).size() != 0){
+
+            return this.PageQuery("category2Id", id , pageNum , pageSize);
+
+        }else if(this.HQuery("category1Id", id).size() != 0){
+
+            return this.PageQuery("category1Id", id , pageNum , pageSize);
+
+        }else {
+            return null;
+        }
+    }
+
+
+
+
     /**
      *查询这个资源的父目录(最近的父目录)下的其他资源(除了它自己)
      * @param id
      * @return
      */
-
     public List<V9Resources> getBrotherResources(int id){
 
         V9Resources self = this.getById(id);
@@ -74,6 +105,7 @@ public class ResourcesDao extends BaseDao {
         }else{
             return null;
         }
+
 
         List<V9Resources> brothers = this.getResourcesOfLeaf(parentid);
 
@@ -118,6 +150,17 @@ public class ResourcesDao extends BaseDao {
         query.setString(0, String.valueOf(value));
         List<V9Resources> results = query.list();
         return results;
+    }
+
+
+    private Page<V9Resources> PageQuery(String colume , int value , int pageNum , int pageSize){
+        String hql = "from V9Resources as resources where resources."+colume+"=?";
+
+        Query query = query(hql);
+        query.setString(0, String.valueOf(value));
+
+        return pageHandler.getPage(pageNum,pageSize,
+                V9Resources.class,query);
     }
 
 }
