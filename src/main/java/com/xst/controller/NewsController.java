@@ -27,7 +27,9 @@ public class NewsController {
     private NewsDao newsDao;
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model){
-        List<V9News> newsList=newsDao.queryForNewsList();
+        String hql="from V9News as news order by news.listorder desc,news.updatetime desc";
+        Query query=newsDao.query(hql);
+        List<V9News> newsList=newsDao.queryForNewsList(query);
         model.addAttribute("newsList",new ArrayList<>(newsList));
         model.addAttribute("newsMsg","newsList");
         return "news/list";
@@ -83,15 +85,14 @@ public class NewsController {
      */
     @RequestMapping(value="/view/five",method=RequestMethod.GET)
     public String view_five(Model model){
-        int pagenow=1;
-        int pagesize=5;
         String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
         Query query=newsDao.query(hql);
         query.setFirstResult(1);
         query.setMaxResults(5);
-        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
-        model.addAttribute("newsPageBean",newsPage);
-        System.out.println(newsPage);
+        List<V9News> newsList=newsDao.queryForNewsList(query);
+        model.addAttribute("newsList",new ArrayList<>(newsList));
+        System.out.println("newsSize="+newsList.size());
+        model.addAttribute("newsMsg","newsList");
         return "news/list";
     }
 }
