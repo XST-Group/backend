@@ -33,7 +33,6 @@ public class ResourcesController {
     @Autowired
     private PageHandler<V9Resources> pageHandler;
 
-
     @Autowired
     private ResourcesDao resourcesDao;
 
@@ -41,7 +40,9 @@ public class ResourcesController {
     @Qualifier("queryDao")
     private QueryDaoInterface queryDao;
 
-
+    /**
+     * 查看某一个课程(给定Id)
+     */
     @Link(label = "查看课程", family = "CourseController", parent = "全部课程")
     @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
     public String find(Model model, @PathVariable("id") int id){
@@ -59,20 +60,16 @@ public class ResourcesController {
     /**
      * 分页查询所有资源
      */
-//    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Throwable.class)
     @ResponseBody
     @RequestMapping(value = "/page/{pageNum}/{pageSize}" , method = RequestMethod.GET)
     public Page<V9Resources> getPageResources(@PathVariable("pageNum") int pageNum,
                                               @PathVariable("pageSize") int pageSize) {
 
         String hql = "from V9Resources as resources";
-
-        System.out.println(queryDao);
         Query query = queryDao.getQuery(hql);
 
         if (query == null)
             return null;
-
         Page<V9Resources> page = pageHandler.getPage(pageNum,pageSize,
                 V9Resources.class,query);
 
@@ -86,11 +83,6 @@ public class ResourcesController {
     @ResponseBody
     @RequestMapping(value = "/brother/{id}" , method = RequestMethod.GET)
     public List<V9Resources> getBrotherResources(@PathVariable("id") int id){
-
         return resourcesDao.getBrotherResources(id);
-
     }
-
-
-
 }
