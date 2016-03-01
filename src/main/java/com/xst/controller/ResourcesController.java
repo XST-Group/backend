@@ -65,15 +65,8 @@ public class ResourcesController {
     public Page<V9Resources> getPageResources(@PathVariable("pageNum") int pageNum,
                                               @PathVariable("pageSize") int pageSize) {
 
-        String hql = "from V9Resources as resources";
-        Query query = queryDao.getQuery(hql);
 
-        if (query == null)
-            return null;
-        Page<V9Resources> page = pageHandler.getPage(pageNum,pageSize,
-                V9Resources.class,query);
-
-        return page;
+        return resourcesDao.getPageResources(pageNum,pageSize);
     }
 
 

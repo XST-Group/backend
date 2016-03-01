@@ -50,15 +50,8 @@ public class CourseController {
     public String list(Model model){
 
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
-        String hql = "from V9Resources as resources";
 
-        Query query = queryDao.getQuery(hql);
-
-        if (query == null)
-            return null;
-
-        Page<V9Resources> page = pageHandler.getPage(1,15,
-                V9Resources.class,query);
+        Page<V9Resources> page = resourcesDao.getPageResources(1,15);
 
         model.addAttribute("page", page);
         model.addAttribute("currentPage", 1);
@@ -71,15 +64,8 @@ public class CourseController {
     public String listByPage(Model model, @PathVariable("pageNum") int pageNum){
 
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
-        String hql = "from V9Resources as resources";
 
-        Query query = queryDao.getQuery(hql);
-
-        if (query == null)
-            return null;
-
-        Page<V9Resources> page = pageHandler.getPage(pageNum,15,
-                V9Resources.class,query);
+        Page<V9Resources> page = resourcesDao.getPageResources(pageNum,15);
 
         model.addAttribute("page", page);
         model.addAttribute("currentPage", pageNum);
