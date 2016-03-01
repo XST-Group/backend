@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jeff
@@ -28,26 +29,13 @@
                         <a href="#">相关</a>
                     </div>
                     <ul class="related">
-                        <li class="related-item"><a href="">
-                            <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
-                            <span class="video-title">相关的视频1</span>
-                            <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
-                        </a></li>
-                        <li class="related-item"><a href="">
-                            <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
-                            <span class="video-title">相关的视频1</span>
-                            <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
-                        </a></li>
-                        <li class="related-item"><a href="">
-                            <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
-                            <span class="video-title">相关的视频1</span>
-                            <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
-                        </a></li>
-                        <li class="related-item"><a href="">
-                            <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
-                            <span class="video-title">相关的视频1</span>
-                            <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
-                        </a></li>
+                        <c:forEach items="${siblings}" var="sibling" >
+                            <li class="related-item"><a href="/resources/${sibling.id}">
+                                <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
+                                <span class="video-title">${sibling.title}</span>
+                                <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
+                            </a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

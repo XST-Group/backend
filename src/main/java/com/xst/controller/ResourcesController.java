@@ -42,13 +42,14 @@ public class ResourcesController {
     private QueryDaoInterface queryDao;
 
 
-    @ResponseBody
     @Link(label = "查看课程", family = "CourseController", parent = "全部课程")
     @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
     public String find(Model model, @PathVariable("id") int id){
 
         V9Resources resource = resourcesDao.getById(id);
+        List<V9Resources> siblings = resourcesDao.getBrotherResources(id);
         model.addAttribute("resource", resource);
+        model.addAttribute("siblings", siblings);
 
         return "resource/view";
     }

@@ -46,13 +46,3 @@
     </div>
 </footer>
 <!-- end of footer -->
-
-<script type="text/javascript">
-    var t0 = new Date().getTime();
-    function onLoad() {
-        var now = new Date().getTime();
-        var latency = now - t0;
-        var stat = document.getElementById("timeStat");
-        stat.innerHTML = "页面加载时间 : " + latency/1000 + " 秒";
-    }
-</script>

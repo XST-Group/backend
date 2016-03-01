@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * Created by CrazyCodess on 2016/2/28.
  */
 @Service
-public class PageHandler<T> {
+public class PageHandler2<T> {
 
     @Autowired
     private NewsDao newsDao;

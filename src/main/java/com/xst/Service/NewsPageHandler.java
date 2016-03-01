@@ -15,7 +15,7 @@ public class NewsPageHandler {
     @Autowired
     private NewsDao newsDao;
     @Autowired
-    private PageHandler<V9News> newsPageHandler;
+    private PageHandler2<V9News> newsPageHandler;
     public PageBean<V9News> getNews(int pageNow,int pageSize){
         //按listorder和updatetime递减排序
         String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
