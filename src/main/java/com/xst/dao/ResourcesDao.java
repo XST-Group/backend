@@ -1,6 +1,5 @@
 package com.xst.dao;
 
-import com.xst.entity.V9Category;
 import com.xst.entity.V9Resources;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;

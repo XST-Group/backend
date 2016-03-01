@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * Created by sl on 16-2-24.
  */
-
 @Repository("categoryDao")
 public class CategoryDao extends BaseDao{
 

@@ -1,8 +1,7 @@
 package com.xst.test.controller;
 
-import com.xst.bean.CateBean;
-import com.xst.bean.PageBean;
 import com.xst.entity.V9News;
+import com.xst.page.Page;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -48,11 +46,19 @@ public class NewsControllerTest {
         MvcResult result = mockMvc
                 .perform(get("/news/list"))
                 .andExpect(view().name("news/list"))
-                .andExpect(forwardedUrl("/WEB-INF/views/news/list.jsp"))
+                .andExpect(forwardedUrl("/views/news/list.jsp"))
                 .andExpect(model().attributeExists("newsList"))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
+
+
+        mockMvc
+                .perform(get("/index"))
+                .andExpect(view().name("index"))
+                .andExpect(forwardedUrl("/views/index.jsp"))
+                .andExpect(status().isOk())
+                .andDo(print());
 
 
         ArrayList<V9News> cates =  (ArrayList<V9News>)result.getModelAndView().getModel().get("newsList");
@@ -64,16 +70,16 @@ public class NewsControllerTest {
         MvcResult result = mockMvc
                 .perform(get("/news/view/{pageNow}/{pageSize}",1,10))
                 .andExpect(view().name("news/list"))
-                .andExpect(forwardedUrl("/WEB-INF/views/news/list.jsp"))
+                .andExpect(forwardedUrl("/views/news/list.jsp"))
                 .andExpect(model().attributeExists("newsPageBean"))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
 
 
-        PageBean<V9News> pageBean =  (PageBean<V9News>)result.getModelAndView().getModel().get("newsPageBean");
+        Page<V9News> newsPage =  (Page<V9News>)result.getModelAndView().getModel().get("newsPageBean");
 
-        Assert.assertNotNull(pageBean);
+        Assert.assertNotNull(newsPage);
 
 
 
@@ -83,15 +89,15 @@ public class NewsControllerTest {
         MvcResult result = mockMvc
                 .perform(get("/news/view"))
                 .andExpect(view().name("news/list"))
-                .andExpect(forwardedUrl("/WEB-INF/views/news/list.jsp"))
-                .andExpect(model().attributeExists("newsPageBean0"))
+                .andExpect(forwardedUrl("/views/news/list.jsp"))
+                .andExpect(model().attributeExists("newsPageBean"))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
 
 
-        PageBean<V9News> pageBean =  (PageBean<V9News>)result.getModelAndView().getModel().get("newsPageBean0");
+        Page<V9News> newsPage =  (Page<V9News>)result.getModelAndView().getModel().get("newsPageBean");
 
-        Assert.assertNotNull(pageBean);
+        Assert.assertNotNull(newsPage);
     }
 }
