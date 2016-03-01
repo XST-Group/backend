@@ -27,6 +27,12 @@ public class ResourcesController {
     @Autowired
     private ResourcesDao resourcesDao;
 
+
+
+    /**
+     * 查看某一个课程(给定Id)
+     */
+
     @Link(label = "查看课程", family = "CourseController", parent = "全部课程")
     @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
     public String find(Model model, @PathVariable("id") int id){
@@ -49,6 +55,7 @@ public class ResourcesController {
     public Page<V9Resources> getPageResources(@PathVariable("pageNum") int pageNum,
                                               @PathVariable("pageSize") int pageSize) {
 
+
         return resourcesDao.getPageResources(pageNum,pageSize);
     }
 
@@ -59,10 +66,9 @@ public class ResourcesController {
     @ResponseBody
     @RequestMapping(value = "/brother/{id}" , method = RequestMethod.GET)
     public List<V9Resources> getBrotherResources(@PathVariable("id") int id){
-
         return resourcesDao.getBrotherResources(id);
-
     }
+
 
 
     /**

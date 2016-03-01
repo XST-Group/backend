@@ -1,9 +1,9 @@
 package com.xst.controller;
 
-import com.xst.Service.NewsPageHandler;
-import com.xst.bean.PageBean;
 import com.xst.entity.V9News;
 import com.xst.dao.NewsDao;
+import com.xst.page.Page;
+import com.xst.page.PageHandler;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +22,9 @@ import java.util.List;
 @RequestMapping("/news")
 public class NewsController {
     @Autowired
-    private NewsDao newsDao;
+    private PageHandler<V9News> newsPageHandler;
     @Autowired
-    private NewsPageHandler newsPageHandler;
+    private NewsDao newsDao;
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model){
         List<V9News> newsList=newsDao.queryForNewsList();
@@ -32,15 +32,31 @@ public class NewsController {
         model.addAttribute("newsMsg","newsList");
         return "news/list";
 }
+
+    /**
+     * 默认的分页，1页，10条
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/view",method=RequestMethod.GET)
     public String view(Model model){
         int pagenow=1;
         int pagesize=10;
-        PageBean<V9News> pageBean=newsPageHandler.getNews(pagenow,pagesize);
-        model.addAttribute("newsPageBean0",pageBean);
-        System.out.println(pageBean);
+        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
+        Query query=newsDao.query(hql);
+        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
+        model.addAttribute("newsPageBean",newsPage);
+        System.out.println(newsPage);
         return "news/list";
     }
+
+    /**
+     * 分页查询新闻
+     * @param model
+     * @param pageNow
+     * @param pageSize
+     * @return
+     */
     @RequestMapping(value="/view/{pageNow}/{pageSize}",method=RequestMethod.GET)
     public String view(Model model, @PathVariable("pageNow") String pageNow,@PathVariable("pageSize") String pageSize){
         int pagenow=1;
@@ -52,9 +68,11 @@ public class NewsController {
         if(pageSize!=null){
             pagesize=Integer.valueOf(pageSize);
         }
-        PageBean<V9News> pageBean=newsPageHandler.getNews(pagenow,pagesize);
-        model.addAttribute("newsPageBean",pageBean);
-        System.out.println(pageBean);
+        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
+        Query query=newsDao.query(hql);
+        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
+        model.addAttribute("newsPageBean",newsPage);
+        System.out.println(newsPage);
         return "news/list";
     }
 }

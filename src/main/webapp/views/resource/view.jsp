@@ -29,14 +29,13 @@
                         <a href="#">相关</a>
                     </div>
                     <ul class="related">
-                        ${siblings.size()}
-                        <%--<c:forEach items="${siblings}" var="sibling" >--%>
-                            <%--<li class="related-item"><a href="/resources/${sibling.id}">--%>
-                                <%--<span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>--%>
-                                <%--<span class="video-title">${sibling.title}</span>--%>
-                                <%--<span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>--%>
-                            <%--</a></li>--%>
-                        <%--</c:forEach>--%>
+                        <c:forEach items="${siblings}" var="sibling" >
+                            <li class="related-item"><a href="/resources/${sibling.id}">
+                                <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
+                                <span class="video-title">${sibling.title}</span>
+                                <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
+                            </a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -48,7 +47,8 @@
         <script type="text/javascript">
             $(function(){
                 var replaceImg = $("#replaceImg");
-                url = replaceImg.attr("data-url");
+                var url = replaceImg.attr("data-url");
+                getFlashHtml(url,replaceImg);
             });
         </script>
 </body>

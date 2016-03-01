@@ -33,7 +33,7 @@
                 <div class="col-xs-9">
                     <div class="course-list">
                         <div class="row course">
-                            <c:forEach items="${resourceList}" var="resource">
+                            <c:forEach items="${page.list}" var="resource">
                                 <div class="col-md-4">
                                     <div class="course-item">
                                         <div class="course-thumb">
@@ -53,20 +53,8 @@
                         </div>
                     </div>
                     <!-- end of course-list -->
-
-                    <nav>
-                        <ul class="pagination">
-                            <li><a href="#">上一页</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#">下一页</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    
+                    <jsp:include page="../common/pagination.jsp" />
                 </div>
             </div>
         </div>
