@@ -62,17 +62,20 @@ public class ResourcesDao extends BaseDao {
 
         int parentid;
 
-        if(self.getCategory4Id() != null){
+        if(self.getCategory4Id() != 0){
             parentid = self.getCategory4Id();
-        }else if(self.getCategory3Id() != null){
+        }else if(self.getCategory3Id() != 0){
             parentid = self.getCategory3Id();
-        }else if(self.getCategory2Id() != null){
+//            System.out.println();
+        }else if(self.getCategory2Id() != 0){
             parentid = self.getCategory2Id();
-        }else if(self.getCategory1Id() != null){
+        }else if(self.getCategory1Id() != 0){
             parentid = self.getCategory1Id();
         }else{
             return null;
         }
+
+//        System.out.println("parentid = "+parentid);
 
         List<V9Resources> brothers = this.getResourcesOfLeaf(parentid);
 

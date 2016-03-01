@@ -39,7 +39,7 @@ public class ResourcesDaoTest {
 
     @Test
     public void testGetResourcesOfLeaf(){
-        List<V9Resources> v9ResourcesList = resourcesDao.getResourcesOfLeaf(3728);
+        List<V9Resources> v9ResourcesList = resourcesDao.getResourcesOfLeaf(2742);
         Assert.assertNotNull(v9ResourcesList);
         int count=0;
         for(V9Resources resources : v9ResourcesList){
@@ -49,6 +49,22 @@ public class ResourcesDaoTest {
         }
         System.out.println("count = "+count);
     }
+
+
+    @Test
+    public void testGetBrotherResources(){
+        List<V9Resources> resourcesList = resourcesDao.getBrotherResources(31114);
+        Assert.assertNotNull(resourcesList);
+        int count=0;
+        for(V9Resources resources : resourcesList){
+            System.out.println(resources.getId());
+            System.out.println(resources.getTitle());
+            count++;
+        }
+        System.out.println("count = "+count);
+
+    }
+
 
     @Test
     public void testGetPageResources() {
