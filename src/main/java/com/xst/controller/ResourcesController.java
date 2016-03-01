@@ -3,16 +3,10 @@ package com.xst.controller;
 
 import com.xst.annotations.Link;
 import com.xst.dao.ResourcesDao;
-import com.xst.dao.daoInterface.QueryDaoInterface;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
-import com.xst.page.PageHandler;
-import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,16 +25,7 @@ public class ResourcesController {
 
 
     @Autowired
-    private PageHandler<V9Resources> pageHandler;
-
-
-    @Autowired
     private ResourcesDao resourcesDao;
-
-    @Autowired(required = false)
-    @Qualifier("queryDao")
-    private QueryDaoInterface queryDao;
-
 
     @Link(label = "查看课程", family = "CourseController", parent = "全部课程")
     @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
@@ -77,6 +62,20 @@ public class ResourcesController {
 
         return resourcesDao.getBrotherResources(id);
 
+    }
+
+
+    /**
+     * 分页查询 叶子结点下的所有资源
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/pageleaf/{id}/{pageNum}/{pageSize}" ,
+            method = RequestMethod.GET)
+    public Page<V9Resources> getPageResourcesOfLeaf(@PathVariable("id") int id,
+                                                    @PathVariable("pageNum") int pageNum,
+                                                    @PathVariable("pageSize") int pageSize){
+        return resourcesDao.getPageResourcesOfLeaf(id,pageNum,pageSize);
     }
 
 
