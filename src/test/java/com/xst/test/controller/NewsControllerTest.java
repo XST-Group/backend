@@ -100,4 +100,20 @@ public class NewsControllerTest {
 
         Assert.assertNotNull(newsPage);
     }
+    @Test
+    public void testView_five()throws Exception{
+        MvcResult result = mockMvc
+                .perform(get("/news/view/five"))
+                .andExpect(view().name("news/list"))
+                .andExpect(forwardedUrl("/views/news/list.jsp"))
+                .andExpect(model().attributeExists("newsPageBean"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+
+
+        Page<V9News> newsPage =  (Page<V9News>)result.getModelAndView().getModel().get("newsPageBean");
+
+        Assert.assertNotNull(newsPage);
+    }
 }

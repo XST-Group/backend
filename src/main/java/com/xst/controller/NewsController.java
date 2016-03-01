@@ -75,4 +75,23 @@ public class NewsController {
         System.out.println(newsPage);
         return "news/list";
     }
+
+    /**
+     * 查询前5条新闻
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/view/five",method=RequestMethod.GET)
+    public String view_five(Model model){
+        int pagenow=1;
+        int pagesize=5;
+        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
+        Query query=newsDao.query(hql);
+        query.setFirstResult(1);
+        query.setMaxResults(5);
+        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
+        model.addAttribute("newsPageBean",newsPage);
+        System.out.println(newsPage);
+        return "news/list";
+    }
 }

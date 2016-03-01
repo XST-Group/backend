@@ -225,24 +225,7 @@ public class V9News implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "V9News{" +
-				"id=" + id +
-				", catid=" + catid +
-				", typeid=" + typeid +
-				", title='" + title + '\'' +
-				", style='" + style + '\'' +
-				", thumb='" + thumb + '\'' +
-				", keywords='" + keywords + '\'' +
-				", description='" + description + '\'' +
-				", posids=" + posids +
-				", url='" + url + '\'' +
-				", listorder=" + listorder +
-				", status=" + status +
-				", sysadd=" + sysadd +
-				", islink=" + islink +
-				", username='" + username + '\'' +
-				", inputtime=" + inputtime +
-				", updatetime=" + updatetime +
-				", v9NewsData=" + v9NewsData +
-				'}'+"<br>";
+				"id=" + id
+				+"<br>";
 	}
 }
