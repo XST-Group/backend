@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by sl on 16-2-28.
  */
-@Transactional
 @Service
 public class PageHandler<T> {
 
