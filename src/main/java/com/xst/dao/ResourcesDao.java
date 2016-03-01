@@ -100,14 +100,11 @@ public class ResourcesDao extends BaseDao {
 
         String hql = "from V9Resources as resources";
 
-//        System.out.println(queryDao);
         Query query = query(hql);
 
         return pageHandler.getPage(pageNum,pageSize,
                 V9Resources.class,query);
     }
-
-
 
     /**
      * 查询
