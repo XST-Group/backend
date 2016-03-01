@@ -32,6 +32,12 @@ public class NewsController {
         model.addAttribute("newsMsg","newsList");
         return "news/list";
 }
+
+    /**
+     * 默认的分页，1页，10条
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/view",method=RequestMethod.GET)
     public String view(Model model){
         int pagenow=1;
