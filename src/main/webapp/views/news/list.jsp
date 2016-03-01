@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
 <body onload="onLoad()">
-    <jsp:include page="../common/header.jsp" />
-    <jsp:include page="../common/breadcrumb.jsp" />
-    <div class="main">
-        <div class="container">
-        </div>
+<jsp:include page="../common/header.jsp" />
+<jsp:include page="../common/breadcrumb.jsp" />
+<div class="main">
+    <div class="container">
     </div>
-    <jsp:include page="../common/footer.jsp" />
-    <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript"src="/assets/js/main.min.js"></script>
+</div>
+<jsp:include page="../common/footer.jsp" />
+<script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript"src="/assets/js/main.min.js"></script>
 </body>
 </html>
