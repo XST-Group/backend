@@ -2,6 +2,8 @@ package com.xst.dao;
 
 import com.xst.entity.V9Category;
 import com.xst.entity.V9Resources;
+import com.xst.page.Page;
+import com.xst.page.PageHandler;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,9 +16,8 @@ import java.util.List;
 @Repository("resourcesDao")
 public class ResourcesDao extends BaseDao {
 
-
     @Autowired
-    private CategoryDao categoryDao;
+    private PageHandler<V9Resources> pageHandler;
 
     public V9Resources getById(int id){
         return get(V9Resources.class,id);
@@ -56,6 +57,7 @@ public class ResourcesDao extends BaseDao {
      * @param id
      * @return
      */
+
     public List<V9Resources> getBrotherResources(int id){
 
         V9Resources self = this.getById(id);
@@ -93,6 +95,22 @@ public class ResourcesDao extends BaseDao {
 
         return brothers;
     }
+
+
+    /**
+     * 分页查询所有资源
+     */
+    public Page<V9Resources> getPageResources(int pageNum , int pageSize){
+
+        String hql = "from V9Resources as resources";
+
+//        System.out.println(queryDao);
+        Query query = query(hql);
+
+        return pageHandler.getPage(pageNum,pageSize,
+                V9Resources.class,query);
+    }
+
 
 
     /**
