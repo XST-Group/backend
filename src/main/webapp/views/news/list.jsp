@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>资讯</title>
-    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <link rel="stylesheet" href="/xst/assets/css/app.min.css">
 </head>
 <body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
@@ -20,14 +20,14 @@
             <div id="adv-img" class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 img-left">
-                        <a href="/news/view/${news.id}"><img src="${page.list.get(0).thumb}" alt="${page.list.get(0).title}"/></a>
+                        <a href="/xst/news/view/${news.id}"><img src="${page.list.get(0).thumb}" alt="${page.list.get(0).title}"/></a>
                         <p>${page.list.get(0).title}</p>
                     </div>
                     <div class="col-md-6 img-right">
                         <div class="row">
                             <c:forEach begin="2" end="5" items="${page.list}" var="news" >
                                 <div class="col-xs-6 img-right-small">
-                                    <a href="/news/view/${news.id}"><img src="${news.thumb}" alt="${news.title}"/></a>
+                                    <a href="/xst/news/view/${news.id}"><img src="${news.thumb}" alt="${news.title}"/></a>
                                     <p>${news.title}</p>
                                 </div>
                             </c:forEach>
@@ -42,7 +42,7 @@
                             <div class="col-md-12 floor">
                                 <div class="row adv-article">
                                     <div class="col-md-4">
-                                        <a href="/news/view/${news.id}" class="transition">
+                                        <a href="/xst/news/view/${news.id}" class="transition">
                                         <span class="image-wrapper">
                                             <img src="${news.thumb}" alt="${news.title}"/>
                                         </span>
@@ -60,10 +60,11 @@
                     </c:forEach>
                 </div>
             </div>
+            <jsp:include page="../common/pagination.jsp" />
         </div>
     </div>
 <jsp:include page="../common/footer.jsp" />
 <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-<script type="text/javascript"src="/assets/js/main.min.js"></script>
+<script type="text/javascript"src="/xst/assets/js/main.min.js"></script>
 </body>
 </html>

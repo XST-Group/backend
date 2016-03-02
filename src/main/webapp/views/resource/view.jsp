@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>课程</title>
-    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <link rel="stylesheet" href="/xst/assets/css/app.min.css">
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
@@ -22,7 +22,7 @@
         <div class="video-wrapper">
             <div class="container">
                 <div class="video">
-                    <img src="/assets/images/bof.jpg" id="replaceImg" data-url="${resource.url}"/>
+                    <img src="/xst/assets/images/bof.jpg" id="replaceImg" data-url="${resource.url}"/>
                 </div>
                 <div class="list">
                     <div class="tabs">
@@ -31,7 +31,7 @@
                     <ul class="related">
                         <c:forEach items="${siblings}" var="sibling" >
                             <li class="related-item"><a href="/resources/${sibling.id}">
-                                <span class="video-img"> <img src="/assets/images/course.jpg" alt=""> </span>
+                                <span class="video-img"> <img src="/xst/assets/images/course.jpg" alt=""> </span>
                                 <span class="video-title">${sibling.title}</span>
                                 <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
                             </a></li>
@@ -43,7 +43,7 @@
 </div>
         <jsp:include page="../common/footer.jsp" />
         <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-        <script type="text/javascript"src="/assets/js/main.min.js"></script>
+        <script type="text/javascript"src="/xst/assets/js/main.min.js"></script>
         <script type="text/javascript">
             $(function(){
                 var replaceImg = $("#replaceImg");

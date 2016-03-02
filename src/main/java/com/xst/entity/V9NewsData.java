@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "v9_news_data"
-		, schema = "db_xst")
+		, schema = "db_xst_new")
 public class V9NewsData  implements java.io.Serializable{
 
 	private Integer id;

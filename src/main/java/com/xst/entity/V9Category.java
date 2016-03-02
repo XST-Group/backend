@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by sl on 16-2-27.
  */
 @Entity
-@Table(name = "v9_category", schema = "", catalog = "db_xst")
+@Table(name = "v9_category", schema = "", catalog = "db_xst_new")
 public class V9Category {
 
     private short catid;

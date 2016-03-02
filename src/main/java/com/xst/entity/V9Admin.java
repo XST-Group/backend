@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Sloriac on 16/2/21.
  */
 @Entity
-@Table(name = "v9_admin", schema = "db_xst")
+@Table(name = "v9_admin", schema = "db_xst_new")
 public class V9Admin {
     private Integer userid;
     private String username;
