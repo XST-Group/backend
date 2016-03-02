@@ -26,6 +26,7 @@ public class V9Resources {
     private Integer category5Id;
     private String category4;
     private String category5;
+    private String thumb;
 
     @Id
     @Column(name = "id")
@@ -187,6 +188,15 @@ public class V9Resources {
 
     public void setCategory5(String category5) {
         this.category5 = category5;
+    }
+
+    @Column(name = "thumb", nullable = false, length = 100)
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 
     @Override

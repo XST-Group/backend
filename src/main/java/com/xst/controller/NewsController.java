@@ -25,6 +25,12 @@ public class NewsController {
     private PageHandler<V9News> newsPageHandler;
     @Autowired
     private NewsDao newsDao;
+
+    /**
+     * 按照listorder和updatetime降序排列查出全部news
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model){
         String hql="from V9News as news order by news.listorder desc,news.updatetime desc";

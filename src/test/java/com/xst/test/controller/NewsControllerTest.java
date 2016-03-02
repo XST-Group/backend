@@ -53,14 +53,6 @@ public class NewsControllerTest {
                 .andReturn();
 
 
-        mockMvc
-                .perform(get("/index"))
-                .andExpect(view().name("index"))
-                .andExpect(forwardedUrl("/views/index.jsp"))
-                .andExpect(status().isOk())
-                .andDo(print());
-
-
         ArrayList<V9News> cates =  (ArrayList<V9News>)result.getModelAndView().getModel().get("newsList");
 
         Assert.assertNotNull(cates);
