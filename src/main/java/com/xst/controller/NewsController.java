@@ -25,54 +25,29 @@ public class NewsController {
     private PageHandler<V9News> newsPageHandler;
     @Autowired
     private NewsDao newsDao;
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model){
-        List<V9News> newsList=newsDao.queryForNewsList();
-        model.addAttribute("newsList",new ArrayList<>(newsList));
-        model.addAttribute("newsMsg","newsList");
-        return "news/list";
-}
 
     /**
-     * 默认的分页，1页，10条
+     * 默认的分页，第一页，10条
      * @param model
      * @return
      */
-    @RequestMapping(value = "/view",method=RequestMethod.GET)
+    @RequestMapping(value = "/list",method=RequestMethod.GET)
     public String view(Model model){
-        int pagenow=1;
-        int pagesize=10;
-        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
-        Query query=newsDao.query(hql);
-        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
-        model.addAttribute("newsPageBean",newsPage);
-        System.out.println(newsPage);
+        Page<V9News> page = newsDao.queryForNewsListByPage(1, 15);
+        model.addAttribute("page",page);
         return "news/list";
     }
 
     /**
      * 分页查询新闻
      * @param model
-     * @param pageNow
-     * @param pageSize
+     * @param pageNum 页码
      * @return
      */
-    @RequestMapping(value="/view/{pageNow}/{pageSize}",method=RequestMethod.GET)
-    public String view(Model model, @PathVariable("pageNow") String pageNow,@PathVariable("pageSize") String pageSize){
-        int pagenow=1;
-        int pagesize=10;
-        if(pageNow!=null){
-            pagenow=Integer.valueOf(pageNow);
-
-        }
-        if(pageSize!=null){
-            pagesize=Integer.valueOf(pageSize);
-        }
-        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
-        Query query=newsDao.query(hql);
-        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
-        model.addAttribute("newsPageBean",newsPage);
-        System.out.println(newsPage);
+    @RequestMapping(value="/list/{pageNum}",method=RequestMethod.GET)
+    public String view(Model model, @PathVariable("pageNum") int pageNum){
+        Page<V9News> page = newsDao.queryForNewsListByPage(pageNum, 15);
+        model.addAttribute("page",page);
         return "news/list";
     }
 }

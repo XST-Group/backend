@@ -13,8 +13,9 @@
             <c:when test="${page.hasPre}"><li><a href="/course/list/${currentPage-1}">上一页</a></li></c:when>
             <c:otherwise><li class="disabled"><a href="#">上一页</a></li></c:otherwise>
         </c:choose>
-
-        <li><a href="/course/list/1">1</a></li>
+        <c:if test="${currentPage != 1}" >
+            <li><a href="/course/list/1">1</a></li>
+        </c:if>
 
         <c:choose>
             <c:when test="${currentPage <= 5}">
@@ -24,7 +25,7 @@
             </c:when>
             <c:otherwise>
                 <li class="disabled"><a href="#">...</a></li>
-                <c:forEach var="i" begin="${currentPage-3}"
+                <c:forEach var="i" begin="${currentPage-2}"
                            end="${currentPage-1}">
                     <li><a href="/course/list/${i}">${i}</a></li>
                 </c:forEach>
@@ -40,7 +41,7 @@
                 </c:forEach>
             </c:when>
             <c:otherwise>
-                <c:forEach var="i" begin="${currentPage+1}" end="${currentPage+3}">
+                <c:forEach var="i" begin="${currentPage+1}" end="${currentPage+2}">
                     <li><a href="/course/list/${i}">${i}</a></li>
                 </c:forEach>
                 <li class="disabled"><a href="#">...</a></li>

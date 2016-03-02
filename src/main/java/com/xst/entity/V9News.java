@@ -243,6 +243,6 @@ public class V9News implements java.io.Serializable {
 				", inputtime=" + inputtime +
 				", updatetime=" + updatetime +
 				", v9NewsData=" + v9NewsData +
-				'}'+"<br>";
+				'}';
 	}
 }
