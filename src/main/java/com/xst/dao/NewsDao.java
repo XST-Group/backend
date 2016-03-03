@@ -27,9 +27,6 @@ public class NewsDao  extends BaseDao {
 	public V9News getById(int id){
 		return get(V9News.class,id);
 	}
-<<<<<<< HEAD
-	public List<V9News> queryForNewsList(Query query){
-=======
 
 	/**
 	 * 查询所有的news
@@ -38,7 +35,6 @@ public class NewsDao  extends BaseDao {
 	public List<V9News> queryForNewsList(){
 		String hql="from V9News as news order by news.listorder desc,news.updatetime desc";
 		Query query = query(hql);
->>>>>>> upstream/master
 		return query.list();
 	}
 

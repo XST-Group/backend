@@ -27,62 +27,19 @@ public class NewsController {
     private NewsDao newsDao;
 
     /**
-     * 按照listorder和updatetime降序排列查出全部news
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model){
-        String hql="from V9News as news order by news.listorder desc,news.updatetime desc";
-        Query query=newsDao.query(hql);
-        List<V9News> newsList=newsDao.queryForNewsList(query);
-        model.addAttribute("newsList",new ArrayList<>(newsList));
-        model.addAttribute("newsMsg","newsList");
-        return "news/list";
-}
-
-    /**
-     * 默认的分页，1页，10条
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/view",method=RequestMethod.GET)
-    public String view(Model model){
-        int pagenow=1;
-        int pagesize=10;
-        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
-        Query query=newsDao.query(hql);
-        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
-        model.addAttribute("newsPageBean",newsPage);
-        System.out.println(newsPage);
-        return "news/list";
-    }
-    /**
      * 分页查询新闻
      * @param model
      * @param page 页码
      * @return
      */
-    /**
-     * 查询前5条新闻
-     * @param model
-     * @return
-     */
-    @RequestMapping(value="/view/five",method=RequestMethod.GET)
-    public String view_five(Model model){
-        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
-        Query query=newsDao.query(hql);
-        query.setFirstResult(1);
-        query.setMaxResults(5);
-        List<V9News> newsList=newsDao.queryForNewsList(query);
-        model.addAttribute("newsList",new ArrayList<>(newsList));
-        System.out.println("newsSize="+newsList.size());
-        model.addAttribute("newsMsg","newsList");
+    @RequestMapping(value="/list",method=RequestMethod.GET)
+    public String view(Model model, String page){
+
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
 
         Page<V9News> pageNews = newsDao.queryForNewsListByPage(pageNum, 15);
         model.addAttribute("page",pageNews);
         model.addAttribute("currentPage", pageNum);
-
         return "news/list";
     }
 }

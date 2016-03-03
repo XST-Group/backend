@@ -60,6 +60,7 @@
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
     <!-- 自动装配 -->
     <bean
             class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
