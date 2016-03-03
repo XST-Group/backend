@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by sl on 16-2-28.
  */
 @Entity
-@Table(name = "v9_resources", schema = "", catalog = "db_xst")
+@Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
 public class V9Resources {
     private int id;
     private String title;

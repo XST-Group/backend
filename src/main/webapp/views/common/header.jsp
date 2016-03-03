@@ -8,22 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
     <div class="container">
-        <div class="navbar-header pull-left"><a href="/index" class="navbar-brand">
-            <img src="/assets/images/logo.png" alt="Logo" class="img-responsive" width="90"></a>
+        <div class="navbar-header pull-left"><a href="/xst/index" class="navbar-brand">
+            <img src="/xst/assets/images/logo.png" alt="Logo" class="img-responsive" width="90"></a>
         </div>
         <nav class="collapse navbar-collapse pull-left">
             <ul class="navbar-nav nav topmenu">
-                <li><a href="/course/list">课程</a></li>
-                <li><a href="/groups">小组</a></li>
-                <li><a href="/activies">活动</a></li>
-                <li><a href="/news">资讯</a></li>
-                <li><a href="/resources">文库</a></li>
+                <li><a href="/xst/course/list">课程</a></li>
+                <li><a href="#">小组</a></li>
+                <li><a href="#">活动</a></li>
+                <li><a href="/xst/news/list">资讯</a></li>
+                <li><a href="#">文库</a></li>
             </ul>
         </nav>
         <div class="pull-right user-nav clearfix">
             <ul class="nav nav-login">
-                <li><a href="">登录</a></li>
-                <li><a href="">注册</a></li>
+                <li><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
             </ul>
         </div>
     </div>

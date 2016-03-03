@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>课程</title>
-    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <link rel="stylesheet" href="/xst/assets/css/app.min.css">
 </head>
 <body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
@@ -33,11 +33,11 @@
                 <div class="col-xs-9">
                     <div class="course-list">
                         <div class="row course">
-                            <c:forEach items="${resourceList}" var="resource">
+                            <c:forEach items="${page.list}" var="resource">
                                 <div class="col-md-4">
                                     <div class="course-item">
                                         <div class="course-thumb">
-                                            <a href="/resources/${resource.id}"><img src="/assets/images/course.jpg" alt=""></a>
+                                            <a href="/xst/resources/${resource.id}"><img src="/xst/assets/images/course.jpg" alt=""></a>
                                         </div>
                                         <div class="course-info">
                                             <div class="title"><a href="/resources/${resource.id}">${resource.title}</a></div>
@@ -53,27 +53,15 @@
                         </div>
                     </div>
                     <!-- end of course-list -->
+                    <jsp:include page="../common/pagination.jsp" />
 
-                    <nav>
-                        <ul class="pagination">
-                            <li><a href="#">上一页</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#">下一页</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>
     </div>
     <jsp:include page="../common/footer.jsp" />
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript"src="/assets/js/main.min.js"></script>
+    <script type="text/javascript"src="/xst/assets/js/main.min.js"></script>
     <script>
         var treeData = initTree();
         var tree = $('#treeview').treeview({
@@ -81,8 +69,8 @@
             selectedColor: '#15c288',
             level: 5,
             selectedBackColor: '#fff',
-            categoryUrl: '/category/node/',
-            resourceUrl: '/course/view/',
+            categoryUrl: '/xst/category/node/',
+            resourceUrl: '/xst/course/view/',
             enableLinks: true
         });
 

@@ -37,18 +37,18 @@ public class ResourcesDaoTest {
         System.out.println(v9Resources.getCreatime());
     }
 
-    @Test
-    public void testGetResourcesOfLeaf(){
-        List<V9Resources> v9ResourcesList = resourcesDao.getResourcesOfLeaf(2742);
-        Assert.assertNotNull(v9ResourcesList);
-        int count=0;
-        for(V9Resources resources : v9ResourcesList){
-            System.out.println(resources.getId());
-            System.out.println(resources.getTitle());
-            count++;
-        }
-        System.out.println("count = "+count);
-    }
+//    @Test
+//    public void testGetResourcesOfLeaf(){
+//        List<V9Resources> v9ResourcesList = resourcesDao.getResourcesOfLeaf(2742);
+//        Assert.assertNotNull(v9ResourcesList);
+//        int count=0;
+//        for(V9Resources resources : v9ResourcesList){
+//            System.out.println(resources.getId());
+//            System.out.println(resources.getTitle());
+//            count++;
+//        }
+//        System.out.println("count = "+count);
+//    }
 
 
     @Test
@@ -69,8 +69,22 @@ public class ResourcesDaoTest {
     @Test
     public void testGetPageResources() {
 
-        List<V9Resources> resources = resourcesDao.getBrotherResources(35692);
-        System.out.println("resources.size()"+resources.size());
+        List<V9Resources> resources = resourcesDao.getPageResources(5,16)
+                .getList();
+        System.out.println("resources.size() = "+resources.size());
+        Assert.assertNotNull(resources);
+
+        for(V9Resources res : resources){
+            System.out.println(res.getId());
+            System.out.println(res.getTitle());
+        }
+    }
+
+    @Test
+    public void testGetPageResourcesOfLeaf(){
+        List<V9Resources> resources = resourcesDao.getPageResourcesOfLeaf(3738,1,15)
+                .getList();
+        System.out.println("resources.size() = "+resources.size());
         Assert.assertNotNull(resources);
 
         for(V9Resources res : resources){

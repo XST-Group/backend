@@ -9,7 +9,7 @@
 <footer>
     <div class="container site-info">
         <div class="row">
-            <div class="col-xs-2"><a href="/"><img src="/assets/images/logo.png" alt="" width="120"></a></div>
+            <div class="col-xs-2"><a href="/xst/index"><img src="/xst/assets/images/logo.png" alt="" width="120"></a></div>
             <div class="col-xs-6">
                 <div class="row">
                     <div class="col-xs-6">
@@ -46,3 +46,8 @@
     </div>
 </footer>
 <!-- end of footer -->
+
+<script>
+
+
+</script>

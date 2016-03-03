@@ -57,33 +57,12 @@ public class NewsController {
         System.out.println(newsPage);
         return "news/list";
     }
-
     /**
      * 分页查询新闻
      * @param model
-     * @param pageNow
-     * @param pageSize
+     * @param page 页码
      * @return
      */
-    @RequestMapping(value="/view/{pageNow}/{pageSize}",method=RequestMethod.GET)
-    public String view(Model model, @PathVariable("pageNow") String pageNow,@PathVariable("pageSize") String pageSize){
-        int pagenow=1;
-        int pagesize=10;
-        if(pageNow!=null){
-            pagenow=Integer.valueOf(pageNow);
-
-        }
-        if(pageSize!=null){
-            pagesize=Integer.valueOf(pageSize);
-        }
-        String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
-        Query query=newsDao.query(hql);
-        Page<V9News> newsPage=newsPageHandler.getPage(pagenow,pagesize,V9News.class,query);
-        model.addAttribute("newsPageBean",newsPage);
-        System.out.println(newsPage);
-        return "news/list";
-    }
-
     /**
      * 查询前5条新闻
      * @param model
@@ -99,6 +78,11 @@ public class NewsController {
         model.addAttribute("newsList",new ArrayList<>(newsList));
         System.out.println("newsSize="+newsList.size());
         model.addAttribute("newsMsg","newsList");
+
+        Page<V9News> pageNews = newsDao.queryForNewsListByPage(pageNum, 15);
+        model.addAttribute("page",pageNews);
+        model.addAttribute("currentPage", pageNum);
+
         return "news/list";
     }
 }
