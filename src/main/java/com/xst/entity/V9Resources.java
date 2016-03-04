@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by sl on 16-2-28.
  */
 @Entity
-@Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
+@Table(name = "v9_resources", schema = "db_xst_new")
 public class V9Resources {
     private int id;
     private String title;
@@ -26,9 +26,10 @@ public class V9Resources {
     private Integer category5Id;
     private String category4;
     private String category5;
+    private String thumb;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -38,7 +39,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "title")
+    @Column(name = "title", nullable = true, length = 200)
     public String getTitle() {
         return title;
     }
@@ -48,7 +49,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "creatime")
+    @Column(name = "creatime", nullable = true, length = 11)
     public String getCreatime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new Date(Long.parseLong(creatime)));
@@ -60,7 +61,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "url")
+    @Column(name = "url", nullable = true, length = -1)
     public String getUrl() {
         return url;
     }
@@ -70,7 +71,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_1")
+    @Column(name = "category_1", nullable = true, length = 100)
     public String getCategory1() {
         return category1;
     }
@@ -80,7 +81,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_2")
+    @Column(name = "category_2", nullable = true, length = 100)
     public String getCategory2() {
         return category2;
     }
@@ -90,7 +91,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_3")
+    @Column(name = "category_3", nullable = true, length = 100)
     public String getCategory3() {
         return category3;
     }
@@ -100,7 +101,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "rgroup")
+    @Column(name = "rgroup", nullable = true, length = 10)
     public String getRgroup() {
         return rgroup;
     }
@@ -110,7 +111,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "rstatus")
+    @Column(name = "rstatus", nullable = true)
     public Integer getRstatus() {
         return rstatus;
     }
@@ -120,7 +121,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_1_id")
+    @Column(name = "category_1_id", nullable = true)
     public Integer getCategory1Id() {
         return category1Id;
     }
@@ -130,7 +131,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_2_id")
+    @Column(name = "category_2_id", nullable = true)
     public Integer getCategory2Id() {
         return category2Id;
     }
@@ -140,7 +141,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_3_id")
+    @Column(name = "category_3_id", nullable = true)
     public Integer getCategory3Id() {
         return category3Id;
     }
@@ -150,7 +151,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_4_id")
+    @Column(name = "category_4_id", nullable = true)
     public Integer getCategory4Id() {
         return category4Id;
     }
@@ -160,7 +161,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_5_id")
+    @Column(name = "category_5_id", nullable = true)
     public Integer getCategory5Id() {
         return category5Id;
     }
@@ -170,7 +171,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_4")
+    @Column(name = "category_4", nullable = true, length = 100)
     public String getCategory4() {
         return category4;
     }
@@ -180,7 +181,7 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name = "category_5")
+    @Column(name = "category_5", nullable = true, length = 100)
     public String getCategory5() {
         return category5;
     }
@@ -235,5 +236,15 @@ public class V9Resources {
         result = 31 * result + (category4 != null ? category4.hashCode() : 0);
         result = 31 * result + (category5 != null ? category5.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "thumb", nullable = true, length = 200)
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 }
