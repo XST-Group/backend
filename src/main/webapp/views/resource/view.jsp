@@ -30,7 +30,7 @@
                     </div>
                     <ul class="related">
                         <c:forEach items="${siblings}" var="sibling" >
-                            <li class="related-item"><a href="/resources/${sibling.id}">
+                            <li class="related-item"><a href="/xst/resources/${sibling.id}">
                                 <span class="video-img"> <img src="/xst/assets/images/course.jpg" alt=""> </span>
                                 <span class="video-title">${sibling.title}</span>
                                 <span class="video-stat"><i class="fa fa-play-circle"></i>200<i class="fa fa-comment"></i>20</span>
