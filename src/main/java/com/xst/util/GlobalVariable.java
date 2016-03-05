@@ -6,6 +6,6 @@ package com.xst.util;
  */
 public class GlobalVariable {
 
-    public String index = "/xst/assets";
+    public String assetsPath = "/xst/assets";
 
 }

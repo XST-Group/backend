@@ -28,7 +28,9 @@ public class FirstInterceptor extends HandlerInterceptorAdapter {
             System.out.println("进入拦截器...");
 
             session.setAttribute("isHasGlobalVar",1);
-            session.setAttribute("index",globalVar.index);
+            session.setAttribute("assetsPath",globalVar.assetsPath);
+
+
             System.out.println(session.getAttribute("index"));
 
         }

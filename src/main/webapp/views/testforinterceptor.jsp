@@ -17,7 +17,7 @@
 %>
     <%
 //        session.setAttribute("index","123");
-      index = session.getAttribute("index").toString();
+      index = session.getAttribute("assetsPath").toString();
     %>
       <%= index %>
 
