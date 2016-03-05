@@ -33,48 +33,35 @@ public class CourseController {
     private ResourcesDao resourcesDao;
 
 
-    /**
-     * 查看所有资源(第一页)
-     */
     @Link(label = "全部课程", family = "CourseController", parent = "")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model){
+    public String listByPage(Model model, String page){
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        System.out.println(pageNum);
 
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
 
-        Page<V9Resources> page = resourcesDao.getPageResources(1,15);
+        Page<V9Resources> pageCourse = resourcesDao.getPageResources(pageNum,15);
 
-        model.addAttribute("page", page);
-        model.addAttribute("currentPage", 1);
-        model.addAttribute("rootCategories", firstCategories);
-        return "course/list";
-    }
-
-    @Link(label = "全部课程", family = "CourseController", parent = "")
-    @RequestMapping(value = "/list/{pageNum}", method = RequestMethod.GET)
-    public String listByPage(Model model, @PathVariable("pageNum") int pageNum){
-
-        List<CateBean> firstCategories = categoryDao.getFirstCategory();
-
-        Page<V9Resources> page = resourcesDao.getPageResources(pageNum,15);
-
-        model.addAttribute("page", page);
+        model.addAttribute("page", pageCourse);
         model.addAttribute("currentPage", pageNum);
         model.addAttribute("rootCategories", firstCategories);
         return "course/list";
     }
 
-    /**
-     * 查看某个目录,给定目录id
-     */
-    @Link(label = "查看课程", family = "CourseController", parent = "全部课程")
     @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
-    public String list(Model model, @PathVariable int id){
+    public String list(Model model, @PathVariable int id, String page){
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        System.out.println(pageNum);
 
-        List<V9Resources> resourceList = resourcesDao.getResourcesOfLeaf(id);
+        Page<V9Resources> pageCourse = resourcesDao.getPageResourcesOfLeaf(id, pageNum, 15);
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
+
+        model.addAttribute("currentPage", pageNum);
         model.addAttribute("rootCategories", firstCategories);
-        model.addAttribute("resourceList", resourceList);
+        model.addAttribute("courseId", id);
+        model.addAttribute("page", pageCourse);
+
         return "course/list";
     }
 }

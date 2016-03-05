@@ -3,12 +3,13 @@ package com.xst.entity;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by sl on 16-3-3.
  */
 @Entity
-@javax.persistence.Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
+@Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
 public class V9Resources {
     private int id;
 

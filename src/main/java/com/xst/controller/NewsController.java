@@ -27,27 +27,19 @@ public class NewsController {
     private NewsDao newsDao;
 
     /**
-     * 默认的分页，第一页，10条
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/list",method=RequestMethod.GET)
-    public String view(Model model){
-        Page<V9News> page = newsDao.queryForNewsListByPage(1, 15);
-        model.addAttribute("page",page);
-        return "news/list";
-    }
-
-    /**
      * 分页查询新闻
      * @param model
-     * @param pageNum 页码
+     * @param page 页码
      * @return
      */
-    @RequestMapping(value="/list/{pageNum}",method=RequestMethod.GET)
-    public String view(Model model, @PathVariable("pageNum") int pageNum){
-        Page<V9News> page = newsDao.queryForNewsListByPage(pageNum, 15);
-        model.addAttribute("page",page);
+    @RequestMapping(value="/list",method=RequestMethod.GET)
+    public String view(Model model, String page){
+
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+
+        Page<V9News> pageNews = newsDao.queryForNewsListByPage(pageNum, 15);
+        model.addAttribute("page",pageNews);
+        model.addAttribute("currentPage", pageNum);
         return "news/list";
     }
 }
