@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
@@ -21,15 +22,25 @@
 
     <!-- 拦截器 -->
     <mvc:interceptors>
-        <mvc:interceptor>
-            <!-- 匹配路径 -->
-            <mvc:mapping path="/index/**" />
-            <mvc:mapping path="/course/**" />
-            <mvc:mapping path="/resource/**" />
-            <mvc:mapping path="/group/**" />
-            <bean
-                    class="com.xst.interceptor.BreadCrumbInterceptor" />
-        </mvc:interceptor>
+
+        <!-- 全局变量注入拦截器 -->
+        <bean class="com.xst.interceptor.FirstInterceptor"/>
+
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/resource/**" />-->
+        <!--</mvc:interceptor>-->
+
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash; 匹配路径 &ndash;&gt;-->
+            <!--<mvc:mapping path="/index/**" />-->
+            <!--<mvc:mapping path="/course/**" />-->
+            <!--<mvc:mapping path="/resource/**" />-->
+            <!--<mvc:mapping path="/group/**" />-->
+            <!--<bean-->
+                    <!--class="com.xst.interceptor.BreadCrumbInterceptor" />-->
+        <!--</mvc:interceptor>-->
+
+
     </mvc:interceptors>
 
     <!-- 系统配置 -->
