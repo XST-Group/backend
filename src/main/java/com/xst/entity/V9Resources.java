@@ -1,34 +1,20 @@
 package com.xst.entity;
 
-import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
- * Created by sl on 16-2-28.
+ * Created by sl on 16-3-3.
  */
 @Entity
 @Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
 public class V9Resources {
     private int id;
-    private String title;
-    private String creatime;
-    private String url;
-    private String category1;
-    private String category2;
-    private String category3;
-    private String rgroup;
-    private Integer rstatus;
-    private Integer category1Id;
-    private Integer category2Id;
-    private Integer category3Id;
-    private Integer category4Id;
-    private Integer category5Id;
-    private String category4;
-    private String category5;
 
     @Id
-    @Column(name = "id")
+    @javax.persistence.Column(name = "id")
     public int getId() {
         return id;
     }
@@ -37,8 +23,10 @@ public class V9Resources {
         this.id = id;
     }
 
+    private String title;
+
     @Basic
-    @Column(name = "title")
+    @javax.persistence.Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -47,20 +35,22 @@ public class V9Resources {
         this.title = title;
     }
 
+    private String creatime;
+
     @Basic
-    @Column(name = "creatime")
+    @javax.persistence.Column(name = "creatime")
     public String getCreatime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(new Date(Long.parseLong(creatime)));
-        return date;
+        return creatime;
     }
 
     public void setCreatime(String creatime) {
         this.creatime = creatime;
     }
 
+    private String url;
+
     @Basic
-    @Column(name = "url")
+    @javax.persistence.Column(name = "url")
     public String getUrl() {
         return url;
     }
@@ -69,8 +59,10 @@ public class V9Resources {
         this.url = url;
     }
 
+    private String category1;
+
     @Basic
-    @Column(name = "category_1")
+    @javax.persistence.Column(name = "category_1")
     public String getCategory1() {
         return category1;
     }
@@ -79,8 +71,10 @@ public class V9Resources {
         this.category1 = category1;
     }
 
+    private String category2;
+
     @Basic
-    @Column(name = "category_2")
+    @javax.persistence.Column(name = "category_2")
     public String getCategory2() {
         return category2;
     }
@@ -89,8 +83,10 @@ public class V9Resources {
         this.category2 = category2;
     }
 
+    private String category3;
+
     @Basic
-    @Column(name = "category_3")
+    @javax.persistence.Column(name = "category_3")
     public String getCategory3() {
         return category3;
     }
@@ -99,8 +95,10 @@ public class V9Resources {
         this.category3 = category3;
     }
 
+    private String rgroup;
+
     @Basic
-    @Column(name = "rgroup")
+    @javax.persistence.Column(name = "rgroup")
     public String getRgroup() {
         return rgroup;
     }
@@ -109,8 +107,10 @@ public class V9Resources {
         this.rgroup = rgroup;
     }
 
+    private Integer rstatus;
+
     @Basic
-    @Column(name = "rstatus")
+    @javax.persistence.Column(name = "rstatus")
     public Integer getRstatus() {
         return rstatus;
     }
@@ -119,8 +119,10 @@ public class V9Resources {
         this.rstatus = rstatus;
     }
 
+    private Integer category1Id;
+
     @Basic
-    @Column(name = "category_1_id")
+    @javax.persistence.Column(name = "category_1_id")
     public Integer getCategory1Id() {
         return category1Id;
     }
@@ -129,8 +131,10 @@ public class V9Resources {
         this.category1Id = category1Id;
     }
 
+    private Integer category2Id;
+
     @Basic
-    @Column(name = "category_2_id")
+    @javax.persistence.Column(name = "category_2_id")
     public Integer getCategory2Id() {
         return category2Id;
     }
@@ -139,8 +143,10 @@ public class V9Resources {
         this.category2Id = category2Id;
     }
 
+    private Integer category3Id;
+
     @Basic
-    @Column(name = "category_3_id")
+    @javax.persistence.Column(name = "category_3_id")
     public Integer getCategory3Id() {
         return category3Id;
     }
@@ -149,8 +155,10 @@ public class V9Resources {
         this.category3Id = category3Id;
     }
 
+    private Integer category4Id;
+
     @Basic
-    @Column(name = "category_4_id")
+    @javax.persistence.Column(name = "category_4_id")
     public Integer getCategory4Id() {
         return category4Id;
     }
@@ -159,8 +167,10 @@ public class V9Resources {
         this.category4Id = category4Id;
     }
 
+    private Integer category5Id;
+
     @Basic
-    @Column(name = "category_5_id")
+    @javax.persistence.Column(name = "category_5_id")
     public Integer getCategory5Id() {
         return category5Id;
     }
@@ -169,8 +179,10 @@ public class V9Resources {
         this.category5Id = category5Id;
     }
 
+    private String category4;
+
     @Basic
-    @Column(name = "category_4")
+    @javax.persistence.Column(name = "category_4")
     public String getCategory4() {
         return category4;
     }
@@ -179,8 +191,10 @@ public class V9Resources {
         this.category4 = category4;
     }
 
+    private String category5;
+
     @Basic
-    @Column(name = "category_5")
+    @javax.persistence.Column(name = "category_5")
     public String getCategory5() {
         return category5;
     }
@@ -189,29 +203,47 @@ public class V9Resources {
         this.category5 = category5;
     }
 
+    private String thumb;
+
+    @Basic
+    @javax.persistence.Column(name = "thumb")
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        V9Resources that = (V9Resources) o;
+        V9Resources resources = (V9Resources) o;
 
-        if (id != that.id) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (creatime != null ? !creatime.equals(that.creatime) : that.creatime != null) return false;
-        if (url != null ? !url.equals(that.url) : that.url != null) return false;
-        if (category1 != null ? !category1.equals(that.category1) : that.category1 != null) return false;
-        if (category2 != null ? !category2.equals(that.category2) : that.category2 != null) return false;
-        if (category3 != null ? !category3.equals(that.category3) : that.category3 != null) return false;
-        if (rgroup != null ? !rgroup.equals(that.rgroup) : that.rgroup != null) return false;
-        if (rstatus != null ? !rstatus.equals(that.rstatus) : that.rstatus != null) return false;
-        if (category1Id != null ? !category1Id.equals(that.category1Id) : that.category1Id != null) return false;
-        if (category2Id != null ? !category2Id.equals(that.category2Id) : that.category2Id != null) return false;
-        if (category3Id != null ? !category3Id.equals(that.category3Id) : that.category3Id != null) return false;
-        if (category4Id != null ? !category4Id.equals(that.category4Id) : that.category4Id != null) return false;
-        if (category5Id != null ? !category5Id.equals(that.category5Id) : that.category5Id != null) return false;
-        if (category4 != null ? !category4.equals(that.category4) : that.category4 != null) return false;
-        if (category5 != null ? !category5.equals(that.category5) : that.category5 != null) return false;
+        if (id != resources.id) return false;
+        if (title != null ? !title.equals(resources.title) : resources.title != null) return false;
+        if (creatime != null ? !creatime.equals(resources.creatime) : resources.creatime != null) return false;
+        if (url != null ? !url.equals(resources.url) : resources.url != null) return false;
+        if (category1 != null ? !category1.equals(resources.category1) : resources.category1 != null) return false;
+        if (category2 != null ? !category2.equals(resources.category2) : resources.category2 != null) return false;
+        if (category3 != null ? !category3.equals(resources.category3) : resources.category3 != null) return false;
+        if (rgroup != null ? !rgroup.equals(resources.rgroup) : resources.rgroup != null) return false;
+        if (rstatus != null ? !rstatus.equals(resources.rstatus) : resources.rstatus != null) return false;
+        if (category1Id != null ? !category1Id.equals(resources.category1Id) : resources.category1Id != null)
+            return false;
+        if (category2Id != null ? !category2Id.equals(resources.category2Id) : resources.category2Id != null)
+            return false;
+        if (category3Id != null ? !category3Id.equals(resources.category3Id) : resources.category3Id != null)
+            return false;
+        if (category4Id != null ? !category4Id.equals(resources.category4Id) : resources.category4Id != null)
+            return false;
+        if (category5Id != null ? !category5Id.equals(resources.category5Id) : resources.category5Id != null)
+            return false;
+        if (category4 != null ? !category4.equals(resources.category4) : resources.category4 != null) return false;
+        if (category5 != null ? !category5.equals(resources.category5) : resources.category5 != null) return false;
+        if (thumb != null ? !thumb.equals(resources.thumb) : resources.thumb != null) return false;
 
         return true;
     }
@@ -234,6 +266,7 @@ public class V9Resources {
         result = 31 * result + (category5Id != null ? category5Id.hashCode() : 0);
         result = 31 * result + (category4 != null ? category4.hashCode() : 0);
         result = 31 * result + (category5 != null ? category5.hashCode() : 0);
+        result = 31 * result + (thumb != null ? thumb.hashCode() : 0);
         return result;
     }
 }

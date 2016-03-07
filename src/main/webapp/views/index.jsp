@@ -13,9 +13,9 @@
         <div class="slider">
             <div class="banner">
                 <ul>
+                    <li style="background-image: url('/xst/assets/images/01.jpg');"></li>
                     <li style="background-image: url('/xst/assets/images/03.jpg');"></li>
                     <li style="background-image: url('/xst/assets/images/02.jpg');"></li>
-                    <li style="background-image: url('/xst/assets/images/01.jpg');"></li>
                     <li style="background-image: url('/xst/assets/images/04.jpg');"></li>
                 </ul>
             </div>
