@@ -40,7 +40,7 @@
                                             <a href="/xst/resources/${resource.id}"><img src="/xst/assets/images/course.jpg" alt=""></a>
                                         </div>
                                         <div class="course-info">
-                                            <div class="title"><a href="/resources/${resource.id}">${resource.title}</a></div>
+                                            <div class="title"><a href="/xst/resources/${resource.id}">${resource.title}</a></div>
                                             <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
                                             <div class="addon">
                                                 <span class="author">作者</span>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <!-- end of course-list -->
-                    <jsp:include page="../common/pagination.jsp" />
+                    <%--<jsp:include page="/xst/views/course/common/pagination.jsp" />--%>
 
                 </div>
             </div>

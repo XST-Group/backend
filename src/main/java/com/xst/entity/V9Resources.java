@@ -1,20 +1,35 @@
 package com.xst.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by sl on 16-3-3.
  */
 @Entity
-@Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
+@Table(name = "v9_resources", schema = "db_xst_new")
 public class V9Resources {
     private int id;
+    private String title;
+    private String creatime;
+    private String url;
+    private String category1;
+    private String category2;
+    private String category3;
+    private String rgroup;
+    private Integer rstatus;
+    private Integer category1Id;
+    private Integer category2Id;
+    private Integer category3Id;
+    private Integer category4Id;
+    private Integer category5Id;
+    private String category4;
+    private String category5;
+    private String thumb;
 
     @Id
-    @javax.persistence.Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,10 +38,8 @@ public class V9Resources {
         this.id = id;
     }
 
-    private String title;
-
     @Basic
-    @javax.persistence.Column(name = "title")
+    @Column(name = "title", nullable = true, length = 200)
     public String getTitle() {
         return title;
     }
@@ -35,22 +48,20 @@ public class V9Resources {
         this.title = title;
     }
 
-    private String creatime;
-
     @Basic
-    @javax.persistence.Column(name = "creatime")
+    @Column(name = "creatime", nullable = true, length = 11)
     public String getCreatime() {
-        return creatime;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date(Long.parseLong(creatime)));
+        return date;
     }
 
     public void setCreatime(String creatime) {
         this.creatime = creatime;
     }
 
-    private String url;
-
     @Basic
-    @javax.persistence.Column(name = "url")
+    @Column(name = "url", nullable = true, length = -1)
     public String getUrl() {
         return url;
     }
@@ -59,10 +70,8 @@ public class V9Resources {
         this.url = url;
     }
 
-    private String category1;
-
     @Basic
-    @javax.persistence.Column(name = "category_1")
+    @Column(name = "category_1", nullable = true, length = 100)
     public String getCategory1() {
         return category1;
     }
@@ -71,10 +80,8 @@ public class V9Resources {
         this.category1 = category1;
     }
 
-    private String category2;
-
     @Basic
-    @javax.persistence.Column(name = "category_2")
+    @Column(name = "category_2", nullable = true, length = 100)
     public String getCategory2() {
         return category2;
     }
@@ -83,10 +90,8 @@ public class V9Resources {
         this.category2 = category2;
     }
 
-    private String category3;
-
     @Basic
-    @javax.persistence.Column(name = "category_3")
+    @Column(name = "category_3", nullable = true, length = 100)
     public String getCategory3() {
         return category3;
     }
@@ -95,10 +100,8 @@ public class V9Resources {
         this.category3 = category3;
     }
 
-    private String rgroup;
-
     @Basic
-    @javax.persistence.Column(name = "rgroup")
+    @Column(name = "rgroup", nullable = true, length = 10)
     public String getRgroup() {
         return rgroup;
     }
@@ -107,10 +110,8 @@ public class V9Resources {
         this.rgroup = rgroup;
     }
 
-    private Integer rstatus;
-
     @Basic
-    @javax.persistence.Column(name = "rstatus")
+    @Column(name = "rstatus", nullable = true)
     public Integer getRstatus() {
         return rstatus;
     }
@@ -119,10 +120,8 @@ public class V9Resources {
         this.rstatus = rstatus;
     }
 
-    private Integer category1Id;
-
     @Basic
-    @javax.persistence.Column(name = "category_1_id")
+    @Column(name = "category_1_id", nullable = true)
     public Integer getCategory1Id() {
         return category1Id;
     }
@@ -131,10 +130,8 @@ public class V9Resources {
         this.category1Id = category1Id;
     }
 
-    private Integer category2Id;
-
     @Basic
-    @javax.persistence.Column(name = "category_2_id")
+    @Column(name = "category_2_id", nullable = true)
     public Integer getCategory2Id() {
         return category2Id;
     }
@@ -143,10 +140,8 @@ public class V9Resources {
         this.category2Id = category2Id;
     }
 
-    private Integer category3Id;
-
     @Basic
-    @javax.persistence.Column(name = "category_3_id")
+    @Column(name = "category_3_id", nullable = true)
     public Integer getCategory3Id() {
         return category3Id;
     }
@@ -155,10 +150,8 @@ public class V9Resources {
         this.category3Id = category3Id;
     }
 
-    private Integer category4Id;
-
     @Basic
-    @javax.persistence.Column(name = "category_4_id")
+    @Column(name = "category_4_id", nullable = true)
     public Integer getCategory4Id() {
         return category4Id;
     }
@@ -167,10 +160,8 @@ public class V9Resources {
         this.category4Id = category4Id;
     }
 
-    private Integer category5Id;
-
     @Basic
-    @javax.persistence.Column(name = "category_5_id")
+    @Column(name = "category_5_id", nullable = true)
     public Integer getCategory5Id() {
         return category5Id;
     }
@@ -179,10 +170,8 @@ public class V9Resources {
         this.category5Id = category5Id;
     }
 
-    private String category4;
-
     @Basic
-    @javax.persistence.Column(name = "category_4")
+    @Column(name = "category_4", nullable = true, length = 100)
     public String getCategory4() {
         return category4;
     }
@@ -191,10 +180,8 @@ public class V9Resources {
         this.category4 = category4;
     }
 
-    private String category5;
-
     @Basic
-    @javax.persistence.Column(name = "category_5")
+    @Column(name = "category_5", nullable = true, length = 100)
     public String getCategory5() {
         return category5;
     }
@@ -203,47 +190,29 @@ public class V9Resources {
         this.category5 = category5;
     }
 
-    private String thumb;
-
-    @Basic
-    @javax.persistence.Column(name = "thumb")
-    public String getThumb() {
-        return thumb;
-    }
-
-    public void setThumb(String thumb) {
-        this.thumb = thumb;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        V9Resources resources = (V9Resources) o;
+        V9Resources that = (V9Resources) o;
 
-        if (id != resources.id) return false;
-        if (title != null ? !title.equals(resources.title) : resources.title != null) return false;
-        if (creatime != null ? !creatime.equals(resources.creatime) : resources.creatime != null) return false;
-        if (url != null ? !url.equals(resources.url) : resources.url != null) return false;
-        if (category1 != null ? !category1.equals(resources.category1) : resources.category1 != null) return false;
-        if (category2 != null ? !category2.equals(resources.category2) : resources.category2 != null) return false;
-        if (category3 != null ? !category3.equals(resources.category3) : resources.category3 != null) return false;
-        if (rgroup != null ? !rgroup.equals(resources.rgroup) : resources.rgroup != null) return false;
-        if (rstatus != null ? !rstatus.equals(resources.rstatus) : resources.rstatus != null) return false;
-        if (category1Id != null ? !category1Id.equals(resources.category1Id) : resources.category1Id != null)
-            return false;
-        if (category2Id != null ? !category2Id.equals(resources.category2Id) : resources.category2Id != null)
-            return false;
-        if (category3Id != null ? !category3Id.equals(resources.category3Id) : resources.category3Id != null)
-            return false;
-        if (category4Id != null ? !category4Id.equals(resources.category4Id) : resources.category4Id != null)
-            return false;
-        if (category5Id != null ? !category5Id.equals(resources.category5Id) : resources.category5Id != null)
-            return false;
-        if (category4 != null ? !category4.equals(resources.category4) : resources.category4 != null) return false;
-        if (category5 != null ? !category5.equals(resources.category5) : resources.category5 != null) return false;
-        if (thumb != null ? !thumb.equals(resources.thumb) : resources.thumb != null) return false;
+        if (id != that.id) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (creatime != null ? !creatime.equals(that.creatime) : that.creatime != null) return false;
+        if (url != null ? !url.equals(that.url) : that.url != null) return false;
+        if (category1 != null ? !category1.equals(that.category1) : that.category1 != null) return false;
+        if (category2 != null ? !category2.equals(that.category2) : that.category2 != null) return false;
+        if (category3 != null ? !category3.equals(that.category3) : that.category3 != null) return false;
+        if (rgroup != null ? !rgroup.equals(that.rgroup) : that.rgroup != null) return false;
+        if (rstatus != null ? !rstatus.equals(that.rstatus) : that.rstatus != null) return false;
+        if (category1Id != null ? !category1Id.equals(that.category1Id) : that.category1Id != null) return false;
+        if (category2Id != null ? !category2Id.equals(that.category2Id) : that.category2Id != null) return false;
+        if (category3Id != null ? !category3Id.equals(that.category3Id) : that.category3Id != null) return false;
+        if (category4Id != null ? !category4Id.equals(that.category4Id) : that.category4Id != null) return false;
+        if (category5Id != null ? !category5Id.equals(that.category5Id) : that.category5Id != null) return false;
+        if (category4 != null ? !category4.equals(that.category4) : that.category4 != null) return false;
+        if (category5 != null ? !category5.equals(that.category5) : that.category5 != null) return false;
 
         return true;
     }
@@ -266,7 +235,16 @@ public class V9Resources {
         result = 31 * result + (category5Id != null ? category5Id.hashCode() : 0);
         result = 31 * result + (category4 != null ? category4.hashCode() : 0);
         result = 31 * result + (category5 != null ? category5.hashCode() : 0);
-        result = 31 * result + (thumb != null ? thumb.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "thumb", nullable = true, length = 200)
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 }

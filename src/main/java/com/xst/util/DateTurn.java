@@ -14,7 +14,7 @@ public class DateTurn {
      * @param time:String
      * @return
      */
-    public String Turn(long time) {
+    public static String Turn(long time) {
 
         Calendar calendar = Calendar.getInstance();
         Date nowDate = calendar.getTime();
@@ -38,10 +38,10 @@ public class DateTurn {
     }
 
 
-    public String Turn(Date date){
+    public static String Turn(Date date){
 
         long time = date.getTime();
-        return this.Turn(time);
+        return Turn(time);
 
     }
 
