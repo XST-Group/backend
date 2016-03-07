@@ -7,10 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>课程</title>
-    <link rel="stylesheet" href="/xst/assets/css/app.min.css">
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
@@ -37,7 +38,7 @@
                                 <div class="col-md-4">
                                     <div class="course-item">
                                         <div class="course-thumb">
-                                            <a href="/xst/resources/${resource.id}"><img src="/xst/assets/images/course.jpg" alt=""></a>
+                                            <a href="/xst/resources/${resource.id}"><img src="${assetsPath}/images/course.jpg" alt=""></a>
                                         </div>
                                         <div class="course-info">
                                             <div class="title"><a href="/xst/resources/${resource.id}">${resource.title}</a></div>
@@ -61,7 +62,7 @@
     </div>
     <jsp:include page="../common/footer.jsp" />
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript"src="/xst/assets/js/main.min.js"></script>
+    <script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
     <script>
         var treeData = initTree();
         var tree = $('#treeview').treeview({

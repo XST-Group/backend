@@ -6,10 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <footer>
     <div class="container site-info">
         <div class="row">
-            <div class="col-xs-2"><a href="/xst/index"><img src="/xst/assets/images/logo.png" alt="" width="120"></a></div>
+            <div class="col-xs-2"><a href="/xst/index"><img src="${assetsPath}/images/logo.png" alt="" width="120"></a></div>
             <div class="col-xs-6">
                 <div class="row">
                     <div class="col-xs-6">
