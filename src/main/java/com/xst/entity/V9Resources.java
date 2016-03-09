@@ -1,11 +1,9 @@
 package com.xst.entity;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
- * Created by sl on 16-3-3.
+ * Created by CrazyCodess on 2016/3/8.
  */
 @Entity
 @Table(name = "v9_resources", schema = "db_xst_new")
@@ -27,6 +25,7 @@ public class V9Resources {
     private String category4;
     private String category5;
     private String thumb;
+    private Integer hits;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -51,9 +50,7 @@ public class V9Resources {
     @Basic
     @Column(name = "creatime", nullable = true, length = 11)
     public String getCreatime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(new Date(Long.parseLong(creatime)));
-        return date;
+        return creatime;
     }
 
     public void setCreatime(String creatime) {
@@ -190,6 +187,26 @@ public class V9Resources {
         this.category5 = category5;
     }
 
+    @Basic
+    @Column(name = "thumb", nullable = true, length = 200)
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
+
+    @Basic
+    @Column(name = "hits", nullable = true)
+    public Integer getHits() {
+        return hits;
+    }
+
+    public void setHits(Integer hits) {
+        this.hits = hits;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -213,6 +230,8 @@ public class V9Resources {
         if (category5Id != null ? !category5Id.equals(that.category5Id) : that.category5Id != null) return false;
         if (category4 != null ? !category4.equals(that.category4) : that.category4 != null) return false;
         if (category5 != null ? !category5.equals(that.category5) : that.category5 != null) return false;
+        if (thumb != null ? !thumb.equals(that.thumb) : that.thumb != null) return false;
+        if (hits != null ? !hits.equals(that.hits) : that.hits != null) return false;
 
         return true;
     }
@@ -235,16 +254,8 @@ public class V9Resources {
         result = 31 * result + (category5Id != null ? category5Id.hashCode() : 0);
         result = 31 * result + (category4 != null ? category4.hashCode() : 0);
         result = 31 * result + (category5 != null ? category5.hashCode() : 0);
+        result = 31 * result + (thumb != null ? thumb.hashCode() : 0);
+        result = 31 * result + (hits != null ? hits.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "thumb", nullable = true, length = 200)
-    public String getThumb() {
-        return thumb;
-    }
-
-    public void setThumb(String thumb) {
-        this.thumb = thumb;
     }
 }
