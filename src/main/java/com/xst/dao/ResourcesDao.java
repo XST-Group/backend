@@ -190,4 +190,15 @@ public class ResourcesDao extends BaseDao {
                 V9Resources.class,query);
     }
 
+    /**
+     * hits自增1
+     * @param resource
+     */
+    public void addHitsByOne(V9Resources resource){
+        int hits=resource.getHits();
+        hits++;
+        resource.setHits(hits);
+        update(resource);
+    }
+
 }
