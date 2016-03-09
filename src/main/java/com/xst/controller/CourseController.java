@@ -6,15 +6,12 @@ import com.xst.dao.CategoryDao;
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
-import com.xst.page.PageHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 

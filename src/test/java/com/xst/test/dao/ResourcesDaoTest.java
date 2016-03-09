@@ -2,7 +2,6 @@ package com.xst.test.dao;
 
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Resources;
-import com.xst.page.Page;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

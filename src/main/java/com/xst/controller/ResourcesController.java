@@ -38,6 +38,7 @@ public class ResourcesController {
     public String find(Model model, @PathVariable("id") int id){
 
         V9Resources resource = resourcesDao.getById(id);
+        resourcesDao.addHitsByOne(resource);
         List<V9Resources> siblings = resourcesDao.getBrotherResources(id);
         System.out.println(siblings.size());
         model.addAttribute("resource", resource);
