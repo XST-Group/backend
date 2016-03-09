@@ -6,10 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <header>
     <div class="container">
         <div class="navbar-header pull-left"><a href="/xst/index" class="navbar-brand">
-            <img src="/xst/assets/images/logo.png" alt="Logo" class="img-responsive" width="90"></a>
+            <img src="${assetsPath}/images/logo.png" alt="Logo" class="img-responsive" width="90"></a>
         </div>
         <nav class="collapse navbar-collapse pull-left">
             <ul class="navbar-nav nav topmenu">

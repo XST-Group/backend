@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%--
   Created by IntelliJ IDEA.
   User: jeff
@@ -10,7 +11,7 @@
 <html>
 <head>
     <title>资讯</title>
-    <link rel="stylesheet" href="/xst/assets/css/app.min.css">
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
@@ -65,6 +66,6 @@
     </div>
 <jsp:include page="../common/footer.jsp" />
 <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-<script type="text/javascript"src="/xst/assets/js/main.min.js"></script>
+<script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
 </body>
 </html>
