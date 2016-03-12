@@ -42,4 +42,11 @@ public class NewsController {
         model.addAttribute("currentPage", pageNum);
         return "news/list";
     }
+    @RequestMapping(value= "/view/{newsId}",method = RequestMethod.GET)
+    public String viewNews(Model model,@PathVariable("newsId") int newsId){
+        V9News news=newsDao.getById(newsId);
+        model.addAttribute("news",news);
+        System.out.println(news);
+        return "news/list";
+    }
 }

@@ -28,7 +28,6 @@ public class V9Resources {
     private String category4;
     private String category5;
     private String thumb;
-
     private Integer hits;
 
     @Id
