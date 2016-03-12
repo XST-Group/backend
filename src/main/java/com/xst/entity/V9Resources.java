@@ -1,18 +1,13 @@
 package com.xst.entity;
 
 import javax.persistence.*;
-<<<<<<< HEAD
-
-/**
- * Created by sl on 16-3-9.
-=======
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by sl on 2016/3/8.
->>>>>>> JetMuffin/master
  */
+
 @Entity
 @Table(name = "v9_resources", schema = "db_xst_new")
 public class V9Resources {
@@ -33,16 +28,11 @@ public class V9Resources {
     private String category4;
     private String category5;
     private String thumb;
-<<<<<<< HEAD
 
-    @Id
-    @Column(name = "id")
-=======
     private Integer hits;
 
     @Id
     @Column(name = "id", nullable = false)
->>>>>>> JetMuffin/master
     public int getId() {
         return id;
     }
@@ -52,11 +42,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "title")
-=======
     @Column(name = "title", nullable = true, length = 200)
->>>>>>> JetMuffin/master
     public String getTitle() {
         return title;
     }
@@ -66,11 +52,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "creatime")
-=======
     @Column(name = "creatime", nullable = true, length = 11)
->>>>>>> JetMuffin/master
     public String getCreatime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new Date(Long.parseLong(creatime)));
@@ -82,11 +64,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "url")
-=======
     @Column(name = "url", nullable = true, length = -1)
->>>>>>> JetMuffin/master
     public String getUrl() {
         return url;
     }
@@ -96,11 +74,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_1")
-=======
     @Column(name = "category_1", nullable = true, length = 100)
->>>>>>> JetMuffin/master
     public String getCategory1() {
         return category1;
     }
@@ -110,11 +84,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_2")
-=======
     @Column(name = "category_2", nullable = true, length = 100)
->>>>>>> JetMuffin/master
     public String getCategory2() {
         return category2;
     }
@@ -124,11 +94,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_3")
-=======
     @Column(name = "category_3", nullable = true, length = 100)
->>>>>>> JetMuffin/master
     public String getCategory3() {
         return category3;
     }
@@ -138,11 +104,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "rgroup")
-=======
     @Column(name = "rgroup", nullable = true, length = 10)
->>>>>>> JetMuffin/master
     public String getRgroup() {
         return rgroup;
     }
@@ -152,11 +114,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "rstatus")
-=======
     @Column(name = "rstatus", nullable = true)
->>>>>>> JetMuffin/master
     public Integer getRstatus() {
         return rstatus;
     }
@@ -166,11 +124,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_1_id")
-=======
     @Column(name = "category_1_id", nullable = true)
->>>>>>> JetMuffin/master
     public Integer getCategory1Id() {
         return category1Id;
     }
@@ -180,11 +134,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_2_id")
-=======
     @Column(name = "category_2_id", nullable = true)
->>>>>>> JetMuffin/master
     public Integer getCategory2Id() {
         return category2Id;
     }
@@ -194,11 +144,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_3_id")
-=======
     @Column(name = "category_3_id", nullable = true)
->>>>>>> JetMuffin/master
     public Integer getCategory3Id() {
         return category3Id;
     }
@@ -208,11 +154,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_4_id")
-=======
     @Column(name = "category_4_id", nullable = true)
->>>>>>> JetMuffin/master
     public Integer getCategory4Id() {
         return category4Id;
     }
@@ -222,11 +164,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_5_id")
-=======
     @Column(name = "category_5_id", nullable = true)
->>>>>>> JetMuffin/master
     public Integer getCategory5Id() {
         return category5Id;
     }
@@ -236,11 +174,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_4")
-=======
     @Column(name = "category_4", nullable = true, length = 100)
->>>>>>> JetMuffin/master
     public String getCategory4() {
         return category4;
     }
@@ -250,11 +184,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "category_5")
-=======
     @Column(name = "category_5", nullable = true, length = 100)
->>>>>>> JetMuffin/master
     public String getCategory5() {
         return category5;
     }
@@ -264,11 +194,7 @@ public class V9Resources {
     }
 
     @Basic
-<<<<<<< HEAD
-    @Column(name = "thumb")
-=======
     @Column(name = "thumb", nullable = true, length = 200)
->>>>>>> JetMuffin/master
     public String getThumb() {
         return thumb;
     }
@@ -311,10 +237,7 @@ public class V9Resources {
         if (category4 != null ? !category4.equals(that.category4) : that.category4 != null) return false;
         if (category5 != null ? !category5.equals(that.category5) : that.category5 != null) return false;
         if (thumb != null ? !thumb.equals(that.thumb) : that.thumb != null) return false;
-<<<<<<< HEAD
-=======
         if (hits != null ? !hits.equals(that.hits) : that.hits != null) return false;
->>>>>>> JetMuffin/master
 
         return true;
     }

@@ -36,19 +36,6 @@ public class ResourcesDaoTest {
         System.out.println(v9Resources.getCreatime());
     }
 
-//    @Test
-//    public void testGetResourcesOfLeaf(){
-//        List<V9Resources> v9ResourcesList = resourcesDao.getResourcesOfLeaf(2742);
-//        Assert.assertNotNull(v9ResourcesList);
-//        int count=0;
-//        for(V9Resources resources : v9ResourcesList){
-//            System.out.println(resources.getId());
-//            System.out.println(resources.getTitle());
-//            count++;
-//        }
-//        System.out.println("count = "+count);
-//    }
-
 
     @Test
     public void testGetBrotherResources(){
