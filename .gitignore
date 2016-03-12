@@ -4,4 +4,3 @@ sql
 target/
 src/main/resources/conf/mysql.properties
 *.iml
-
