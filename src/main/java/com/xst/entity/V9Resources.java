@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * Created by sl on 2016/3/8.
  */
+
 @Entity
 @Table(name = "v9_resources", schema = "db_xst_new")
 public class V9Resources {
