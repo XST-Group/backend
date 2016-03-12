@@ -42,6 +42,13 @@ public class NewsController {
         model.addAttribute("currentPage", pageNum);
         return "news/list";
     }
+
+    /**
+     * 查看一条新闻
+     * @param model
+     * @param newsId
+     * @return
+     */
     @RequestMapping(value= "/view/{newsId}",method = RequestMethod.GET)
     public String viewNews(Model model,@PathVariable("newsId") int newsId){
         V9News news=newsDao.getById(newsId);
