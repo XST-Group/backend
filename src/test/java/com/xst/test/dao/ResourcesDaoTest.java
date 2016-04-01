@@ -2,7 +2,6 @@ package com.xst.test.dao;
 
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Resources;
-import com.xst.page.Page;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,19 +35,6 @@ public class ResourcesDaoTest {
         Assert.assertNotNull(v9Resources);
         System.out.println(v9Resources.getCreatime());
     }
-
-//    @Test
-//    public void testGetResourcesOfLeaf(){
-//        List<V9Resources> v9ResourcesList = resourcesDao.getResourcesOfLeaf(2742);
-//        Assert.assertNotNull(v9ResourcesList);
-//        int count=0;
-//        for(V9Resources resources : v9ResourcesList){
-//            System.out.println(resources.getId());
-//            System.out.println(resources.getTitle());
-//            count++;
-//        }
-//        System.out.println("count = "+count);
-//    }
 
 
     @Test
@@ -91,6 +77,28 @@ public class ResourcesDaoTest {
             System.out.println(res.getId());
             System.out.println(res.getTitle());
         }
+    }
+
+    @Test
+    public void testAddResource(){
+        V9Resources resources = new V9Resources();
+        resources.setId(3);
+        resources.setTitle("test");
+        resourcesDao.addResource(resources);
+    }
+
+    @Test
+    public void testDeleteResource(){
+        resourcesDao.delete(resourcesDao.getById(3));
+
+    }
+
+    @Test
+    public void testModifyResource(){
+        V9Resources resources = resourcesDao.getById(3);
+        resources.setTitle("test2");
+        resourcesDao.saveOrUpdate(resources);
+
     }
 
 

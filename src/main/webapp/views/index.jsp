@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>首页</title>
-<link rel="stylesheet" href="/xst/assets/css/app.min.css">
+<link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">
     <jsp:include page="common/header.jsp" />
@@ -13,10 +15,10 @@
         <div class="slider">
             <div class="banner">
                 <ul>
-                    <li style="background-image: url('/xst/assets/images/03.jpg');"></li>
-                    <li style="background-image: url('/xst/assets/images/02.jpg');"></li>
-                    <li style="background-image: url('/xst/assets/images/01.jpg');"></li>
-                    <li style="background-image: url('/xst/assets/images/04.jpg');"></li>
+                    <li style="background-image: url('${assetsPath}/images/01.jpg');"></li>
+                    <li style="background-image: url('${assetsPath}/images/03.jpg');"></li>
+                    <li style="background-image: url('${assetsPath}/images/02.jpg');"></li>
+                    <li style="background-image: url('${assetsPath}/images/04.jpg');"></li>
                 </ul>
             </div>
             <a href="#" class="unslider-arrow prev"><i class="fa fa-angle-left"></i></a>
@@ -33,7 +35,7 @@
                     <div class="col-sm-3 col-xs-6">
                         <div class="course-item">
                             <div class="course-thumb">
-                                <a href=""><img src="/xst/assets/images/course.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
                             </div>
                             <div class="course-info">
                                 <div class="title"><a href="">课程课程课程</a></div>
@@ -48,7 +50,7 @@
                     <div class="col-sm-3 col-xs-6">
                         <div class="course-item">
                             <div class="course-thumb">
-                                <a href=""><img src="/xst/assets/images/course.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
                             </div>
                             <div class="course-info">
                                 <div class="title"><a href="">课程课程课程</a></div>
@@ -63,7 +65,7 @@
                     <div class="col-sm-3 col-xs-6">
                         <div class="course-item">
                             <div class="course-thumb">
-                                <a href=""><img src="/xst/assets/images/course.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
                             </div>
                             <div class="course-info">
                                 <div class="title"><a href="">课程课程课程</a></div>
@@ -78,7 +80,7 @@
                     <div class="col-sm-3 col-xs-6">
                         <div class="course-item">
                             <div class="course-thumb">
-                                <a href=""><img src="/xst/assets/images/course.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
                             </div>
                             <div class="course-info">
                                 <div class="title"><a href="">课程课程课程</a></div>
@@ -104,7 +106,7 @@
                     <div class="col-xs-6 col-sm-3">
                         <div class="group-item">
                             <div class="group-thumb">
-                                <a href=""><img src="/xst/assets/images/group.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
                             </div>
                             <div class="group-info">
                                 <div class="title">小组名称</div>
@@ -116,7 +118,7 @@
                     <div class="col-xs-6 col-sm-3">
                         <div class="group-item">
                             <div class="group-thumb">
-                                <a href=""><img src="/xst/assets/images/group.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
                             </div>
                             <div class="group-info">
                                 <div class="title">小组名称</div>
@@ -128,7 +130,7 @@
                     <div class="col-xs-6 col-sm-3">
                         <div class="group-item">
                             <div class="group-thumb">
-                                <a href=""><img src="/xst/assets/images/group.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
                             </div>
                             <div class="group-info">
                                 <div class="title">小组名称</div>
@@ -140,7 +142,7 @@
                     <div class="col-xs-6 col-sm-3">
                         <div class="group-item">
                             <div class="group-thumb">
-                                <a href=""><img src="/xst/assets/images/group.jpg" alt=""></a>
+                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
                             </div>
                             <div class="group-info">
                                 <div class="title">小组名称</div>
@@ -189,7 +191,7 @@
 
     <jsp:include page="common/footer.jsp" />
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript"src="/xst/assets/js/main.min.js"></script>
+    <script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
     <script>
         $(function() {
             var unslider = $('.banner').unslider({

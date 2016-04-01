@@ -51,6 +51,10 @@ public class NewsDao  extends BaseDao {
 		return newsPage;
 	}
 
+	/**
+	 * 从表中查前5条News
+	 * @return
+     */
 	public Page<V9News> queryFirstFiveNews() {
 		String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
 		Query query = query(hql);
@@ -58,5 +62,30 @@ public class NewsDao  extends BaseDao {
 		query.setMaxResults(5);
 		Page<V9News> newsPage = newsPageHandler.getPage(1,5,V9News.class,query);
 		return newsPage;
+	}
+
+	/**
+	 * 增加News
+	 * @param news
+     */
+	public void addNews(V9News news){
+		save(news);
+
+	}
+
+	/**
+	 * 删除News
+	 * @param news
+     */
+	public void deleteNews(V9News news){
+		delete(news);
+	}
+
+	/**
+	 * 修改News
+	 * @param news
+     */
+	public void modifyNews(V9News news){
+		saveOrUpdate(news);
 	}
 }
