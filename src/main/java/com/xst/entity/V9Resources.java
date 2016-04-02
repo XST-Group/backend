@@ -1,10 +1,13 @@
 package com.xst.entity;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
- * Created by CrazyCodess on 2016/3/8.
+ * Created by sl on 2016/3/8.
  */
+
 @Entity
 @Table(name = "v9_resources", schema = "db_xst_new")
 public class V9Resources {
@@ -50,6 +53,9 @@ public class V9Resources {
     @Basic
     @Column(name = "creatime", nullable = true, length = 11)
     public String getCreatime() {
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //String date = sdf.format(new Date(Long.parseLong(creatime)));
+        //return date;
         return creatime;
     }
 

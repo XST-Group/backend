@@ -153,6 +153,33 @@ public class ResourcesDao extends BaseDao {
     }
 
 
+    /**
+     * 增加
+     * @param resources
+     */
+    public void addResource(V9Resources resources){
+        save(resources);
+    }
+
+
+    /**
+     * 删除
+     * @param resources
+     */
+    public void deleteResource(V9Resources resources){
+        delete(resources);
+    }
+
+
+    /**
+     * 修改
+     * @param resources
+     */
+    public void modifyResource(V9Resources resources){
+        saveOrUpdate(resources);
+    }
+
+
     private Page<V9Resources> PageQuery(String colume , int value , int pageNum , int pageSize){
         String hql = "from V9Resources as resources where resources."+colume+"=?";
 
