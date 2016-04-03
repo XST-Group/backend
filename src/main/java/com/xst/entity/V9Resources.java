@@ -53,9 +53,10 @@ public class V9Resources {
     @Basic
     @Column(name = "creatime", nullable = true, length = 11)
     public String getCreatime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(new Date(Long.parseLong(creatime)));
-        return date;
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //String date = sdf.format(new Date(Long.parseLong(creatime)));
+        //return date;
+        return creatime;
     }
 
     public void setCreatime(String creatime) {
