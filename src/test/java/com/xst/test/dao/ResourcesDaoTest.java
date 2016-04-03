@@ -101,5 +101,11 @@ public class ResourcesDaoTest {
 
     }
 
+    @Test
+    public void testGetById(){
+        V9Resources resources = resourcesDao.getById(1);
+        Assert.assertNotNull(resources);
+    }
+
 
 }

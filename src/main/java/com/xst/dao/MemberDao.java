@@ -1,6 +1,8 @@
 package com.xst.dao;
 
 import com.xst.entity.V9Member;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
