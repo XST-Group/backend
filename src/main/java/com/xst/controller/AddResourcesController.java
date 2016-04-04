@@ -2,6 +2,7 @@ package com.xst.controller;
 
 import com.xst.bean.CateBean;
 import com.xst.dao.CategoryDao;
+import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Resources;
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class AddResourcesController {
     @Qualifier("categoryDao")
     private CategoryDao categoryDao;
 
+    @Autowired
+    @Qualifier("resourcesDao")
+    private ResourcesDao resourcesDao;
+
 
     /**
      * 添加课程，GET
@@ -42,38 +47,27 @@ public class AddResourcesController {
 
         model.addAttribute("firstCategorys",fisrtCategorys);
 
-        return  "/addresource";
+        return  "/resource/view";
     }
 
 
     @ResponseBody
     @RequestMapping(value = "/addresource" , method = RequestMethod.POST)
-    public String addResource(String title , int category1 , int category2 , int category3 ,
+    public String addResource(String title , int category1id , int category2id , int category3id ,
                               MultipartFile video , RedirectAttributes redirectAttributes ,
                               HttpSession session){
 
-        V9Resources resource = new V9Resources();
-
-        resource.setTitle(title);
-        resource.setCategory1Id(category1);
-        resource.setCategory1(categoryDao.getById((short)category1).getCatname());
-
-        resource.setCategory2Id(category2);
-        resource.setCategory2(categoryDao.getById((short) category2).getCatname());
-
-        resource.setCategory3Id(category3);
-        resource.setCategory3(categoryDao.getById((short) category3).getCatname());
-
-
         if(!video.isEmpty()){
 
-            String filePath = session.getAttribute("upfilepath").toString();
+            String filePath = session.getAttribute("upFilePath").toString();
             String videoUrl = MultipartFileUtils.saveFile(video,filePath);
 
-            resource.setUrl(videoUrl);
+            resourcesDao.addResource(title,category1id,category2id,category3id,videoUrl);
         }
 
-        return "";
+        redirectAttributes.addAttribute("resourceMsg","添加课程成功");
+        return "redirect:/resource/view";
+
     }
 
 

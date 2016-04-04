@@ -5,6 +5,7 @@ import com.xst.page.Page;
 import com.xst.page.PageHandler;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +18,11 @@ public class ResourcesDao extends BaseDao {
 
     @Autowired
     private PageHandler<V9Resources> pageHandler;
+
+    @Autowired
+    @Qualifier("categoryDao")
+    private CategoryDao categoryDao;
+
 
     public V9Resources getById(int id){
         return get(V9Resources.class,id);
@@ -155,12 +161,26 @@ public class ResourcesDao extends BaseDao {
 
     /**
      * 增加
-     * @param resources
+     * @param
      */
-    public void addResource(V9Resources resources){
+    public void addResource(String title , int category1id , int category2id , int category3id ,
+                            String url){
+        V9Resources resource = new V9Resources();
 
-        resources.setCreatime(String.valueOf(System.currentTimeMillis()));
-        save(resources);
+        resource.setTitle(title);
+        resource.setCategory1Id(category1id);
+        resource.setCategory1(categoryDao.getById((short) category1id).getCatname());
+
+        resource.setCategory2Id(category2id);
+        resource.setCategory2(categoryDao.getById((short) category2id).getCatname());
+
+        resource.setCategory3Id(category3id);
+        resource.setCategory3(categoryDao.getById((short) category3id).getCatname());
+
+        resource.setUrl(url);
+
+        resource.setCreatime(String.valueOf(System.currentTimeMillis()));
+        save(resource);
     }
 
 

@@ -29,6 +29,7 @@ public class FirstInterceptor extends HandlerInterceptorAdapter {
 
             session.setAttribute("isHasGlobalVar",1);
             session.setAttribute("assetsPath",globalVar.assetsPath);
+            session.setAttribute("upFilePath",globalVar.upFilePath);
 
 
             System.out.println(session.getAttribute("index"));
