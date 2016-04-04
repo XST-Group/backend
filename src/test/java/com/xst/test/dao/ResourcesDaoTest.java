@@ -82,7 +82,7 @@ public class ResourcesDaoTest {
     @Test
     public void testAddResource(){
         V9Resources resources = new V9Resources();
-        resources.setId(3);
+    //    resources.setId(3);
         resources.setTitle("test");
         resourcesDao.addResource(resources);
     }
