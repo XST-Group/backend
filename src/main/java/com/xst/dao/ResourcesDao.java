@@ -158,6 +158,8 @@ public class ResourcesDao extends BaseDao {
      * @param resources
      */
     public void addResource(V9Resources resources){
+
+        resources.setCreatime(String.valueOf(System.currentTimeMillis()));
         save(resources);
     }
 
