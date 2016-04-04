@@ -31,9 +31,9 @@ public class CategoryDaoTest {
 
     @Test
     public void findExistCat(){
-        V9Category v9Category = categoryDao.getById((short)3847);
+        V9Category v9Category = categoryDao.getById((short)1);
         Assert.assertNotNull(v9Category);
-        Assert.assertEquals(v9Category.getCatname(), "1972年纪录片作品-中国");
+        Assert.assertEquals(v9Category.getCatname(), "高中学习资源汇总");
     }
 
     @Test

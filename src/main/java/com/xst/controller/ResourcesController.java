@@ -2,10 +2,13 @@ package com.xst.controller;
 
 
 import com.xst.annotations.Link;
+import com.xst.bean.CateBean;
+import com.xst.dao.CategoryDao;
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 
@@ -25,6 +29,7 @@ public class ResourcesController {
 
 
     @Autowired
+    @Qualifier("resourcesDao")
     private ResourcesDao resourcesDao;
 
 
@@ -56,7 +61,6 @@ public class ResourcesController {
     public Page<V9Resources> getPageResources(@PathVariable("pageNum") int pageNum,
                                               @PathVariable("pageSize") int pageSize) {
 
-
         return resourcesDao.getPageResources(pageNum,pageSize);
     }
 
@@ -84,7 +88,5 @@ public class ResourcesController {
                                                     @PathVariable("pageSize") int pageSize){
         return resourcesDao.getPageResourcesOfLeaf(id,pageNum,pageSize);
     }
-
-
 
 }
