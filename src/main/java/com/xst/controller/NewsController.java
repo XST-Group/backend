@@ -54,6 +54,6 @@ public class NewsController {
         V9News news=newsDao.getById(newsId);
         model.addAttribute("news",news);
         System.out.println(news);
-        return "news/list";
+        return "news/view";
     }
 }

@@ -82,9 +82,9 @@ public class ResourcesDaoTest {
     @Test
     public void testAddResource(){
         V9Resources resources = new V9Resources();
-        resources.setId(3);
+    //    resources.setId(3);
         resources.setTitle("test");
-        resourcesDao.addResource(resources);
+//        resourcesDao.addResource(resources);
     }
 
     @Test
@@ -99,6 +99,12 @@ public class ResourcesDaoTest {
         resources.setTitle("test2");
         resourcesDao.saveOrUpdate(resources);
 
+    }
+
+    @Test
+    public void testGetById(){
+        V9Resources resources = resourcesDao.getById(1);
+        Assert.assertNotNull(resources);
     }
 
 

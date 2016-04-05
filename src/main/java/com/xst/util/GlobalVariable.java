@@ -7,5 +7,6 @@ package com.xst.util;
 public class GlobalVariable {
 
     public String assetsPath = "/xst/assets";
+    public String upFilePath = "/usr/local/xst";
 
 }

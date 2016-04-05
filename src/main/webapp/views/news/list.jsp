@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false" %>
 <%--
   Created by IntelliJ IDEA.
   User: jeff
@@ -8,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>资讯</title>
@@ -21,7 +21,7 @@
             <div id="adv-img" class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 img-left">
-                        <a href="/xst/news/view/${news.id}"><img src="${page.list.get(0).thumb}" alt="${page.list.get(0).title}"/></a>
+                        <a href="/xst/news/view/${page.list.get(0).id}"><img src="${page.list.get(0).thumb}" alt="${page.list.get(0).title}"/></a>
                         <p>${page.list.get(0).title}</p>
                     </div>
                     <div class="col-md-6 img-right">
