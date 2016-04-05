@@ -2,6 +2,7 @@ package com.xst.test.dao;
 
 import com.xst.dao.NewsDao;
 import com.xst.entity.V9NewsData;
+import com.xst.page.Page;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,9 +47,9 @@ public class NewsDaoTest {
     @Test
     public void testAddNews(){
         V9NewsData newsData=new V9NewsData();
-        V9News news=new V9News((short)1584,(short)0,"河北高考改革2018启动：文理不分科",""
+        V9News news=new V9News((short)1584,(short)0,"分河北高考改革2018启动：文理不分科",""
                 ,"http://e.36krcnd.com/nil_class/bfbdbaca-8213-48e5-ad13-9aea66c50b10/QQ20160301-12.png!slider"
-        ,"","高考",false,"",(byte)8,(byte)1,false,false,"",1416498100,1429505965,newsData);
+        ,"","高考",false,"",(byte)8,(byte)1,false,false,"",1416498100,1429505965,newsData,",1,5,6,");
         newsDao.addNews(news);
     }
     @Test
@@ -60,7 +61,13 @@ public class NewsDaoTest {
         V9NewsData newsData=new V9NewsData();
         V9News news=new V9News((short)1584,(short)0,"高考取消加分项",""
                 ,"http://e.36krcnd.com/nil_class/bfbdbaca-8213-48e5-ad13-9aea66c50b10/QQ20160301-12.png!slider"
-                ,"","高考",false,"",(byte)8,(byte)1,false,false,"",1416498100,1429505965,newsData);
+                ,"","高考",false,"",(byte)8,(byte)1,false,false,"",1416498100,1429505965,newsData,",1,3,5,");
         newsDao.modifyNews(news);
+    }
+    @Test
+    public void testQueryGroupNews(){
+        Page<V9News> groupNews = newsDao.queryGroupNews(1,1,10);
+        Assert.assertNotNull(groupNews);
+        System.out.println(groupNews);
     }
 }

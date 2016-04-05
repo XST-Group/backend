@@ -58,6 +58,10 @@
             <td>用户名</td>
             <td><input type="text" name="username"/></td>
         </tr>
+        <tr>
+            <td>所属分组</td>
+            <td><input type="text" name="arr_group_id"/></td>
+        </tr>
     </table>
     <button type="submit" name="submit">提交</button>
 </form>

@@ -29,6 +29,7 @@ public class V9Resources {
     private String category5;
     private String thumb;
     private Integer hits;
+    private String arr_group_id;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -211,6 +212,15 @@ public class V9Resources {
 
     public void setHits(Integer hits) {
         this.hits = hits;
+    }
+
+    @Column(name = "arr_group_id", nullable = false)
+    public String getArr_group_id() {
+        return this.arr_group_id;
+    }
+
+    public void setArr_group_id(String arr_group_id) {
+        this.arr_group_id = arr_group_id;
     }
 
     @Override

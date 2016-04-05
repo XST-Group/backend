@@ -1,5 +1,6 @@
 package com.xst.dao;
 
+import com.xst.entity.V9News;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
@@ -221,6 +222,21 @@ public class ResourcesDao extends BaseDao {
         hits++;
         resource.setHits(hits);
         update(resource);
+    }
+
+    /**
+     * 分组查询
+     * @param groupId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Page<V9Resources> queryGroupResources(int groupId,int pageNum , int pageSize){
+        String hql="from V9Resources as resources where resources.arr_group_id like ?";
+        Query  query = query(hql);
+        query.setString(0,"%,"+groupId+",%");
+        Page<V9Resources> resourcesPage = pageHandler.getPage(pageNum, pageSize, V9Resources.class, query);
+        return resourcesPage;
     }
 
 }

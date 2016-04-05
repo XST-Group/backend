@@ -42,11 +42,12 @@ public class AddNewsController {
     @RequestMapping(value = "/add" , method = RequestMethod.POST)
     public String addNews( int catid, int typeid,String title, String style, String thumb,
                            String keywords, String description, String url, int listorder,byte status, String username,
-                           RedirectAttributes redirectAttributes){
+                           RedirectAttributes redirectAttributes,String arr_group_id){
         long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
         System.out.println("时间戳"+currentTime);
         V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
-                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,new V9NewsData());
+                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,new V9NewsData(),
+                arr_group_id);
         newsDao.addNews(news);
         redirectAttributes.addFlashAttribute("addNewsMsg","资讯添加成功");//session在跳到页面后马上移除对象
         return "redirect:/addNews/success";

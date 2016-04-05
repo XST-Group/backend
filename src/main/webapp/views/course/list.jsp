@@ -38,7 +38,7 @@
                                 <div class="col-md-4">
                                     <div class="course-item">
                                         <div class="course-thumb">
-                                            <a href="/xst/resources/${resource.id}"><img src="${assetsPath}/images/course.jpg" alt=""></a>
+                                            <a href="/xst/resources/${resource.id}"><img src="${resource.thumb}" alt=""></a>
                                         </div>
                                         <div class="course-info">
                                             <div class="title"><a href="/xst/resources/${resource.id}">${resource.title}</a></div>
