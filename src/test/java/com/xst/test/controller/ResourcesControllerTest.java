@@ -36,6 +36,15 @@ public class ResourcesControllerTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
+
+    @Test
+    public void testFind() throws Exception {
+        mockMvc.perform(get("/resources/{id}",1))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+
     @Test
     public void testGetResourcesOfLeaf() throws Exception {
         mockMvc

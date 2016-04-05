@@ -22,7 +22,7 @@ import java.util.List;
  * Created by sl on 16-4-4.
  */
 @Controller
-//@RequestMapping("/add")
+@RequestMapping("/resource")
 public class AddResourcesController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class AddResourcesController {
      * @param model
      * @return 一级目录
      */
-    @ResponseBody
+   // @ResponseBody
     @RequestMapping(value = "/addresource" , method = RequestMethod.GET)
     public String addResource(Model model){
 
@@ -47,7 +47,7 @@ public class AddResourcesController {
 
         model.addAttribute("firstCategorys",fisrtCategorys);
 
-        return  "/resource/view";
+        return  "resource/addresource";
     }
 
 
