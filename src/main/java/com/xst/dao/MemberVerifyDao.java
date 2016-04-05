@@ -33,4 +33,5 @@ public class MemberVerifyDao extends BaseDao {
     public V9MemberVerify getById(int userid){
         return get(V9MemberVerify.class,userid);
     }
+
 }
