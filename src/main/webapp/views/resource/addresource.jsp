@@ -15,8 +15,8 @@
     <meta name="author" content="">
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="css/app.min.css"/>
-    <link rel="stylesheet" href="css/admin_manage.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/app.css"/>
+    <%--<link rel="stylesheet" href="css/admin_manage.css"/>--%>
 
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -131,25 +131,18 @@
           <div class="select">
             <div class="">
               <span>一级目录</span>
-              <select class="form-control">
+              <select class="form-control" id="firstCategoryId">
                   <c:forEach items="${firstCategorys}" var="category">
-                      <option value="${category.id}">${category.name}</option>
+                      <option cateId="${category.id}">${category.name}</option>
                   </c:forEach>
-
-                <%--<option>Option 2</option>--%>
-                <%--<option>Option 3</option>--%>
-                <%--<option>Option 4</option>--%>
-                <%--<option>Option 5</option>--%>
               </select>
             </div>
             <div class="">
               <span>二级目录</span>
-              <select class="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-                <option>Option 4</option>
-                <option>Option 5</option>
+              <select class="form-control" id="secondCategoryId">
+                  <c:forEach items="${categoryList}" var="category2">
+                      <option cateId="${category2.id}">${category2.name}</option>
+                  </c:forEach>
               </select>
             </div>
             <div class="">
@@ -200,6 +193,57 @@
                 increaseArea: '20%' // optional
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        function ajaxFunction( url ) {
+            var xmlHttp;
+            try {
+                // Firefox, Opera 8.0+, Safari
+                xmlHttp = new XMLHttpRequest();    // 实例化对象
+            }
+            catch( e ) {
+                // Internet Explorer
+                try {
+                    xmlHttp = new ActiveXObject( "Msxml2.XMLHTTP" );
+                }
+                catch ( e ) {
+                    try {
+                        xmlHttp = new ActiveXObject( "Microsoft.XMLHTTP" );
+                    }
+                    catch( e ) {
+                        alert("您的浏览器不支持AJAX！");
+                        return false;
+                    }
+                }
+            }
+
+            xmlHttp.onreadystatechange = function() {
+                if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) {
+                    document.getElementByIdx_x_x_x( 'sub' ).value =  xmlHttp.responseText;
+                }
+            }
+            xmlHttp.open( "GET", url, true );
+            xmlHttp.send( null );
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        function firstCategoryChange(){
+            var objS = document.getElementById("firstCategoryId");
+            var selectedCateId = objS.options[objS.selectedIndex].cateId;
+
+            alert(selectedCateId);
+
+//            var xmlHttp;
+//            try{
+//                xmlHttp = new XMLHttpRequest();
+//            }catch(e){
+//            }
+            ajaxFunction("/category/node/"+selectedCateId);
+
+        }
     </script>
 </div>
   </body>
