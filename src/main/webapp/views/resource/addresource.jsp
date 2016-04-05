@@ -195,56 +195,7 @@
         });
     </script>
 
-    <script type="text/javascript">
-        function ajaxFunction( url ) {
-            var xmlHttp;
-            try {
-                // Firefox, Opera 8.0+, Safari
-                xmlHttp = new XMLHttpRequest();    // 实例化对象
-            }
-            catch( e ) {
-                // Internet Explorer
-                try {
-                    xmlHttp = new ActiveXObject( "Msxml2.XMLHTTP" );
-                }
-                catch ( e ) {
-                    try {
-                        xmlHttp = new ActiveXObject( "Microsoft.XMLHTTP" );
-                    }
-                    catch( e ) {
-                        alert("您的浏览器不支持AJAX！");
-                        return false;
-                    }
-                }
-            }
 
-            xmlHttp.onreadystatechange = function() {
-                if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) {
-                    document.getElementByIdx_x_x_x( 'sub' ).value =  xmlHttp.responseText;
-                }
-            }
-            xmlHttp.open( "GET", url, true );
-            xmlHttp.send( null );
-        }
-
-    </script>
-
-    <script type="text/javascript">
-        function firstCategoryChange(){
-            var objS = document.getElementById("firstCategoryId");
-            var selectedCateId = objS.options[objS.selectedIndex].cateId;
-
-            alert(selectedCateId);
-
-//            var xmlHttp;
-//            try{
-//                xmlHttp = new XMLHttpRequest();
-//            }catch(e){
-//            }
-            ajaxFunction("/category/node/"+selectedCateId);
-
-        }
-    </script>
 </div>
   </body>
 </html>
