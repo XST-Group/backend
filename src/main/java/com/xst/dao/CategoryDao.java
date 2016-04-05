@@ -52,8 +52,7 @@ public class CategoryDao extends BaseDao{
     public List<CateBean> getFirstCategory(){
 
         List<CateBean> children = new ArrayList<>();
-
-
+        
         String hql = "from V9Category as cate where cate.parentid=?";
         Query query = query(hql);
         query.setString(0, "0");
