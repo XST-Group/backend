@@ -39,14 +39,16 @@ public class CategoryController {
 
     @ResponseBody
     @RequestMapping(value = "/node/{id}", method = RequestMethod.GET)
-    public List<CateBean> find( @PathVariable("id") int id){
+    public List<CateBean> find( @PathVariable("id") int id,Model model){
 
         List<CateBean> cateChildren = categoryDao.getChildren((short)id);
 
-//        model.addAttribute("categoryList",cateChildren);
+        model.addAttribute("categoryList",cateChildren);
+        System.out.println("CategoryController : "+id);
 
         return cateChildren;
     }
+
 
 
 

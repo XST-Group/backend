@@ -22,6 +22,12 @@ public class CategoryDao extends BaseDao{
         return get(V9Category.class,id);
     }
 
+
+    /**
+     * 获取儿子节点，不含后代子孙
+     * @param id
+     * @return
+     */
     public List<CateBean> getChildren(short id){
 
         List<CateBean> children = new ArrayList<>();
@@ -53,7 +59,6 @@ public class CategoryDao extends BaseDao{
 
         List<CateBean> children = new ArrayList<>();
 
-
         String hql = "from V9Category as cate where cate.parentid=?";
         Query query = query(hql);
         query.setString(0, "0");
@@ -83,6 +88,7 @@ public class CategoryDao extends BaseDao{
 
         return childrenID;
     }
+
 
 
 }
