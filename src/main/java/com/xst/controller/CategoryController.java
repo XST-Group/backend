@@ -29,11 +29,8 @@ public class CategoryController {
     @RequestMapping(value = "/root", method = RequestMethod.GET)
     public  List<CateBean> showFirstCategory(){
 
-        //一级目录
+        // 获取一级目录
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
-
-//        model.addAttribute("firstCategories",firstCategories);
-
         return firstCategories;
     }
 

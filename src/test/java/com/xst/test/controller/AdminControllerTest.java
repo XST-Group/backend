@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         @ContextConfiguration(name = "parent", locations = "classpath:conf/spring.xml"),
         @ContextConfiguration(name = "child", locations = "classpath:conf/springmvc.xml")
 })
-public class AddResourcesControllerTest {
+public class AdminControllerTest {
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
