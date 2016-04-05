@@ -17,9 +17,7 @@
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="${assetsPath}/css/app.css"/>
     <%--<link rel="stylesheet" href="css/admin_manage.css"/>--%>
-
-    <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/iCheck/1.0.2/skins/square/blue.css"/>
 </head>
 <body>
 
@@ -46,10 +44,10 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a href="./">个人中心</a></li>
+                        <li><a href="../resource">个人中心</a></li>
                         <li class="divider"></li>
-                        <li><a href="./">账号设置</a></li>
-                        <li><a href="./">意见反馈</a></li>
+                        <li><a href="../resource">账号设置</a></li>
+                        <li><a href="../resource">意见反馈</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="sign-in.html">登出</a></li>
                     </ul>
@@ -131,28 +129,19 @@
           <div class="select">
             <div class="">
               <span>一级目录</span>
-              <select class="form-control" id="firstCategoryId">
+              <select class="form-control" id="category-select">
+                  <option selected value="">请选择</option>
                   <c:forEach items="${firstCategorys}" var="category">
-                      <option cateId="${category.id}">${category.name}</option>
+                      <option value="${category.id}">${category.name}</option>
                   </c:forEach>
               </select>
             </div>
             <div class="">
               <span>二级目录</span>
-              <select class="form-control" id="secondCategoryId">
+              <select class="form-control" id="second-category-select">
                   <c:forEach items="${categoryList}" var="category2">
-                      <option cateId="${category2.id}">${category2.name}</option>
+                      <option value="${category2.id}">${category2.name}</option>
                   </c:forEach>
-              </select>
-            </div>
-            <div class="">
-              <span>三级目录</span>
-              <select class="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-                <option>Option 4</option>
-                <option>Option 5</option>
               </select>
             </div>
           </div>
@@ -166,7 +155,9 @@
         <!--  END 课程添加-->
     </div>
 
-
+    <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
     <script>
         $(document).ready(function () {
             $(".sidebar-nav a").click(function(){
@@ -178,72 +169,46 @@
                     $(this).addClass("collapsed");
                 }
             })
-        });
-    </script>
 
-    <link rel="stylesheet" href="//cdn.bootcss.com/iCheck/1.0.2/skins/square/blue.css"/>
-
-    <script src="//cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
-    <!--icheck-->
-    <script>
-        $(document).ready(function(){
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue',
                 increaseArea: '20%' // optional
             });
+
+            var category_select = $("#category-select"),
+                    second_category_select = $("#second-category-select");
+            category_select.change(function(){
+                if(category_select.val() != "") {
+                    loadCategory(category_select.val(),second_category_select);
+                } else {
+                    clearCategory(second_category_select);
+                }
+            });
         });
-    </script>
 
-    <script type="text/javascript">
-        function ajaxFunction( url ) {
-            var xmlHttp;
-            try {
-                // Firefox, Opera 8.0+, Safari
-                xmlHttp = new XMLHttpRequest();    // 实例化对象
-            }
-            catch( e ) {
-                // Internet Explorer
-                try {
-                    xmlHttp = new ActiveXObject( "Msxml2.XMLHTTP" );
-                }
-                catch ( e ) {
-                    try {
-                        xmlHttp = new ActiveXObject( "Microsoft.XMLHTTP" );
-                    }
-                    catch( e ) {
-                        alert("您的浏览器不支持AJAX！");
-                        return false;
-                    }
-                }
-            }
-
-            xmlHttp.onreadystatechange = function() {
-                if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) {
-                    document.getElementByIdx_x_x_x( 'sub' ).value =  xmlHttp.responseText;
-                }
-            }
-            xmlHttp.open( "GET", url, true );
-            xmlHttp.send( null );
+        function loadCategory(id , selector){
+//            var url = "http://" + host + uri + id + ".json";
+            var url = "http://localhost:8080/xst/category/node/"+id;
+            $.getJSON(url , function(data){
+                selector.empty();
+                $.each(data,function(i, category){
+                    var option = "<option value='" + category.id + "'>" + category.name + "</option>";
+                    selector.append(option);
+                });
+            });
         }
 
+        function clearCategory(selector) {
+            selector.empty();
+        }
     </script>
 
     <script type="text/javascript">
         function firstCategoryChange(){
-            var objS = document.getElementById("firstCategoryId");
-            var selectedCateId = objS.options[objS.selectedIndex].cateId;
-
-            alert(selectedCateId);
-
-//            var xmlHttp;
-//            try{
-//                xmlHttp = new XMLHttpRequest();
-//            }catch(e){
-//            }
-            ajaxFunction("/category/node/"+selectedCateId);
 
         }
+
     </script>
 </div>
   </body>
