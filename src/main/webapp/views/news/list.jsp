@@ -56,14 +56,14 @@
                                 <div class="row adv-article">
                                     <c:choose>
                                         <c:when test="${news.thumb != ''}" >
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <a href="/xst/news/view/${news.id}" class="transition">
                                             <span class="image-wrapper">
                                                 <img src="${news.thumb}" alt="${news.title}"/>
                                             </span>
                                             </a>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="title"><a href="/xst/news/view/${page.list.get(0).id}">${news.title}</a></div>
                                             <div class="decs">${news.description}</div>
                                             <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${news.inputtime}</div>
@@ -71,7 +71,7 @@
                                         </c:when>
                                         <c:otherwise>
                                             <div class="col-md-12">
-                                                <div class="title"><a href="">${news.title}</a></div>
+                                                <div class="title"><a href="/xst/news/view/${page.list.get(0).id}">${news.title}</a></div>
                                                 <div class="decs">${news.description}</div>
                                                 <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${news.inputtime}</div>
                                             </div>

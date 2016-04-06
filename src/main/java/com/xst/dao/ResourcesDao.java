@@ -96,11 +96,14 @@ public class ResourcesDao extends BaseDao {
      * @return
      */
     public List<V9Resources> getBrotherResources(int id){
-
+        System.out.println(id);
         V9Resources self = this.getById(id);
 
         int parentid;
-
+        if(self == null) {
+            System.err.println("null");
+        }
+        System.out.println(self.getCategory4());
         if(self.getCategory4Id() != 0){
             parentid = self.getCategory4Id();
         }else if(self.getCategory3Id() != 0){
