@@ -12,18 +12,35 @@
 <head>
     <title>课程</title>
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
+    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
 <div class="main">
-    <jsp:include page="../common/breadcrumb.jsp" />
         <div class="container">
+            <div class="breadcrumb-wrapper">
+                <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                        <li><a href="${rootPath}/index">首页</a></li>
+                        <li><a href="${rootPath}/course/list">课程</a></li>
+                        <li class="active"><a>${resource.title}</a></li>
+                    </ol>
+                </div>
+            </div>
             <h3 class="main-title">${resource.title}</h3>
         </div>
         <div class="video-wrapper">
             <div class="container">
                 <div class="video">
-                    <img src="${assetsPath}/images/bof.jpg" id="replaceImg" data-url="${resource.url}"/>
+                    <video id="really-cool-video" class="video-js vjs-default-skin" controls
+                           preload="auto" poster="really-cool-video-poster.jpg"
+                           data-setup='{}'>
+                        <source src="${resource.url}" type="video/mp4">
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a web browser
+                            that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
+                    </video>
                 </div>
                 <div class="list">
                     <div class="tabs">
@@ -45,12 +62,20 @@
         <jsp:include page="../common/footer.jsp" />
         <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
         <script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
-        <script type="text/javascript">
-            $(function(){
-                var replaceImg = $("#replaceImg");
-                var url = replaceImg.attr("data-url");
-                getFlashHtml(url,replaceImg);
+<script src="//vjs.zencdn.net/5.8/video.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var player = videojs('really-cool-video', { /* Options */ }, function() {
+            console.log('Good to go!');
+
+            this.play(); // if you don't trust autoplay for some reason
+
+            // How about an event listener?
+            this.on('ended', function() {
+                console.log('awww...over so soon?');
             });
-        </script>
+        });
+    });
+</script>
 </body>
 </html>

@@ -45,7 +45,7 @@ public class NewsDao  extends BaseDao {
      * @return
      */
 	public Page<V9News> queryForNewsListByPage(int pageNum , int pageSize) {
-		String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
+		String hql="from V9News as news order by news.listorder desc,news.updatetime desc ";
 		Query query = query(hql);
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;
@@ -87,5 +87,20 @@ public class NewsDao  extends BaseDao {
      */
 	public void modifyNews(V9News news){
 		saveOrUpdate(news);
+	}
+
+	/**
+	 * 分组查询
+	 * @param groupId
+	 * @param pageNum
+	 * @param pageSize
+     * @return
+     */
+	public Page<V9News> queryGroupNews(int groupId,int pageNum , int pageSize){
+		String hql="from V9News as news where news.arr_group_id like ?";
+		Query  query = query(hql);
+		query.setString(0,"%,"+groupId+",%");
+		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
+		return newsPage;
 	}
 }

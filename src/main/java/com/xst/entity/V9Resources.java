@@ -29,7 +29,8 @@ public class V9Resources {
     private String category5;
     private String thumb;
     private Integer hits;
-
+    private String arr_group_id;
+    private String description;
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
@@ -211,6 +212,25 @@ public class V9Resources {
 
     public void setHits(Integer hits) {
         this.hits = hits;
+    }
+
+    @Basic
+    @Column(name="description",nullable = true)
+    public String getDescription(){
+        return this.description;
+    }
+
+    public void setDescription(String desc){
+        this.description=description;
+    }
+
+    @Column(name = "arr_group_id", nullable = true)
+    public String getArr_group_id() {
+        return this.arr_group_id;
+    }
+
+    public void setArr_group_id(String arr_group_id) {
+        this.arr_group_id = arr_group_id;
     }
 
     @Override

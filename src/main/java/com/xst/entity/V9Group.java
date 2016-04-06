@@ -9,11 +9,24 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "v9_group", schema = "", catalog = "db_xst_new")
 public class V9Group {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String type;
     private Integer userNumber;
     private Timestamp createTime;
     private String createUser;
+    private String thumb;
+    public V9Group() {
+    }
+
+    public V9Group( String type, Integer userNumber, Timestamp createTime, String createUser,String thumb) {
+        this.type = type;
+        this.userNumber = userNumber;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.thumb=thumb;
+    }
 
     @Id
     @Column(name = "id")
@@ -63,6 +76,16 @@ public class V9Group {
 
     public void setCreateUser(String createUser) {
         this.createUser = createUser;
+    }
+
+    @Basic
+    @Column(name = "thumb")
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 
     @Override

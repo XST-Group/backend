@@ -10,14 +10,19 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>课程</title>
+    <title>小组</title>
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
     <div class="main">
-        <jsp:include page="../common/breadcrumb.jsp" />
         <div class="container">
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb">
+                    <li><a href="${rootPath}/index">首页</a></li>
+                    <li class="active"><a href="${rootPath}/course/list">所有课程</a></li>
+                </ol>
+            </div>
             <div class="row">
                 <div class="col-xs-3">
                     <div class="aside">
@@ -42,7 +47,7 @@
                                         </div>
                                         <div class="course-info">
                                             <div class="title"><a href="/xst/resources/${resource.id}">${resource.title}</a></div>
-                                            <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
+                                            <div class="desc"><p>${resource.description}</p></div>
                                             <div class="addon">
                                                 <span class="author">作者</span>
                                                 <span class="pull-right free">免费</span>
