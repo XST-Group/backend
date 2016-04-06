@@ -24,6 +24,9 @@ public class V9NewsData  implements java.io.Serializable{
 	private boolean allowComment;
 	private String copyfrom;
 
+	public V9NewsData() {
+	}
+
 	@Id
 	@Column(name = "id")
 	public Integer getId() {
