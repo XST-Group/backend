@@ -37,7 +37,7 @@ public class GroupDaoTest {
 
     @Test
     public void testAddGroup(){
-        V9Group group=new V9Group("分组2",new Integer(123456),new Timestamp(System.currentTimeMillis()),"x","www.baidu.com");
+        V9Group group=new V9Group("分组2",new Integer(123456),new Timestamp(System.currentTimeMillis()),"x","www.baidu.com","这是分组2");
         groupDao.addGroup(group);
     }
 
