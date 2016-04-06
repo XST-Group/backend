@@ -41,7 +41,7 @@ public class ResourcesDaoTest {
 
     @Test
     public void testGetBrotherResources(){
-        List<V9Resources> resourcesList = resourcesDao.getBrotherResources(31114);
+        List<V9Resources> resourcesList = resourcesDao.getBrotherResources(1);
         Assert.assertNotNull(resourcesList);
         int count=0;
         for(V9Resources resources : resourcesList){
