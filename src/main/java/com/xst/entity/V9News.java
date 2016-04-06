@@ -29,6 +29,7 @@ public class V9News implements java.io.Serializable {
 	private String username;
 	private int inputtime;
 	private int updatetime;
+	private String arr_group_id;
 
 	private V9NewsData v9NewsData;
 
@@ -38,7 +39,7 @@ public class V9News implements java.io.Serializable {
 	public V9News(short catid, short typeid, String title, String style,
 			String thumb, String keywords, String description, boolean posids,
 			String url, byte listorder, byte status, boolean sysadd,
-			boolean islink, String username, int inputtime, int updatetime,V9NewsData v9NewsData) {
+			boolean islink, String username, int inputtime, int updatetime,V9NewsData v9NewsData,String arr_group_id) {
 		this.catid = catid;
 		this.typeid = typeid;
 		this.title = title;
@@ -56,6 +57,7 @@ public class V9News implements java.io.Serializable {
 		this.inputtime = inputtime;
 		this.updatetime = updatetime;
 		this.v9NewsData=v9NewsData;
+		this.arr_group_id=arr_group_id;
 	}
 
 	@Id
@@ -213,6 +215,15 @@ public class V9News implements java.io.Serializable {
 		this.updatetime = updatetime;
 	}
 
+	@Column(name = "arr_group_id", nullable = false)
+	public String getArr_group_id() {
+		return this.arr_group_id;
+	}
+
+	public void setArr_group_id(String arr_group_id) {
+		this.arr_group_id = arr_group_id;
+	}
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id", nullable = true)
 	public V9NewsData getV9NewsData(){
@@ -242,6 +253,7 @@ public class V9News implements java.io.Serializable {
 				", username='" + username + '\'' +
 				", inputtime=" + inputtime +
 				", updatetime=" + updatetime +
+				", arr_group_id='" + arr_group_id + '\'' +
 				", v9NewsData=" + v9NewsData +
 				'}';
 	}
