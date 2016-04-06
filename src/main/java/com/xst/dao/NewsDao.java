@@ -45,7 +45,7 @@ public class NewsDao  extends BaseDao {
      * @return
      */
 	public Page<V9News> queryForNewsListByPage(int pageNum , int pageSize) {
-		String hql="from V9News as news where news.thumb!='' order by news.listorder desc,news.updatetime desc ";
+		String hql="from V9News as news order by news.listorder desc,news.updatetime desc ";
 		Query query = query(hql);
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;

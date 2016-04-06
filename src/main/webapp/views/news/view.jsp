@@ -15,44 +15,7 @@
             <div class="row">
                 <div  class="topic col-md-12">
                     <div class="row">
-                        <div class="aside col-md-3">
-                            <div class="treedata">
-                                <ul>
-                                    <li>
-                                        <a class="title" href="">感恩教育</a>
-                                        <p class="text">相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容</p>
-                                        <p class="docs pull-right"><a href="">更多&gt;&gt;</a></p>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <a class="title" href="">百家讲坛</a>
-                                        <p class="text">相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容</p>
-                                        <p class="docs pull-right"><a href="">更多&gt;&gt;</a></p>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <a class="title" href="">高中课程专修</a>
-                                        <p class="text">相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容</p>
-                                        <p class="docs pull-right"><a href="">更多&gt;&gt;</a></p>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <a class="title" href="">高中专题</a>
-                                        <p class="text">相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容</p>
-                                        <p class="docs pull-right"><a href="">更多&gt;&gt;</a></p>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <a class="title" href="">德育教育</a>
-                                        <p class="text">相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容相关内容</p>
-                                        <p class="docs pull-right"><a href="">更多&gt;&gt;</a></p>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="treeview"></div>
-                        </div>
-                        <div class="topic-main col-md-9">
+                        <div class="topic-main col-md-12">
                             <div class="article">
                                 <h3>
                                     ${news.title}
