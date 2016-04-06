@@ -176,9 +176,6 @@
                 increaseArea: '20%' // optional
             });
 
-<<<<<<< HEAD:src/main/webapp/views/resource/addresource.jsp
-
-=======
             var category_select = $("#category-select"),
                     second_category_select = $("#second-category-select");
             category_select.change(function(){
@@ -213,7 +210,6 @@
         }
 
     </script>
->>>>>>> JetMuffin/master:src/main/webapp/views/admin/addresource.jsp
 </div>
   </body>
 </html>
