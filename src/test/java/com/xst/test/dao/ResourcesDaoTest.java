@@ -97,9 +97,9 @@ public class ResourcesDaoTest {
 
     @Test
     public void testModifyResource(){
-        V9Resources resources = resourcesDao.getById(3);
+        V9Resources resources = resourcesDao.getById(1);
         resources.setTitle("test2");
-        resourcesDao.saveOrUpdate(resources);
+        resourcesDao.modifyResource(resources);
 
     }
 

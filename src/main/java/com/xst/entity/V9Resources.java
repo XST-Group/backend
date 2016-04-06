@@ -30,7 +30,7 @@ public class V9Resources {
     private String thumb;
     private Integer hits;
     private String arr_group_id;
-    private String desc;
+    private String description;
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
@@ -215,16 +215,16 @@ public class V9Resources {
     }
 
     @Basic
-    @Column(name="desc",nullable = false)
-    public String getDesc(){
-        return this.desc;
+    @Column(name="description",nullable = true)
+    public String getDescription(){
+        return this.description;
     }
 
-    public void setDesc(String desc){
-        this.desc=desc;
+    public void setDescription(String desc){
+        this.description=description;
     }
 
-    @Column(name = "arr_group_id", nullable = false)
+    @Column(name = "arr_group_id", nullable = true)
     public String getArr_group_id() {
         return this.arr_group_id;
     }
