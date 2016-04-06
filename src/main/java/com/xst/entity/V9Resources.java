@@ -220,7 +220,7 @@ public class V9Resources {
         return this.description;
     }
 
-    public void setDescription(String desc){
+    public void setDescription(String description){
         this.description=description;
     }
 
