@@ -15,9 +15,16 @@
 </head>
 <body onload="onLoad()">
     <jsp:include page="../common/header.jsp" />
-    <jsp:include page="../common/breadcrumb.jsp" />
     <div class="main">
         <div class="container">
+            <div class="breadcrumb-wrapper">
+                <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                        <li><a href="${rootPath}/index">首页</a></li>
+                        <li class="active"><a>所有资讯</a></li>
+                    </ol>
+                </div>
+            </div>
             <div id="adv-img" class="container-fluid">
                 <c:set var="listStart" value="0"></c:set>
                 <c:if test="${page.pageNow == 1}" >

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
@@ -32,66 +33,23 @@
             <h2><span>推荐课程</span></h2>
             <div class="index-course-list course">
                 <div class="row clearfix">
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="course-item">
-                            <div class="course-thumb">
-                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
-                            </div>
-                            <div class="course-info">
-                                <div class="title"><a href="">课程课程课程</a></div>
-                                <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
-                                <div class="addon">
-                                    <span class="author">作者</span>
-                                    <span class="pull-right free">免费</span>
+                    <c:forEach var="resource" items="${resources.list}">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="course-item">
+                                <div class="course-thumb">
+                                    <a href="${rootPath}/resources/${resource.id}"><img src="${resource.thumb}" alt=""></a>
+                                </div>
+                                <div class="course-info">
+                                    <div class="title"><a href="">${resource.title}</a></div>
+                                    <div class="desc"><p>${resource.description}</p></div>
+                                    <div class="addon">
+                                        <span class="author">作者</span>
+                                        <span class="pull-right free">免费</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="course-item">
-                            <div class="course-thumb">
-                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
-                            </div>
-                            <div class="course-info">
-                                <div class="title"><a href="">课程课程课程</a></div>
-                                <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
-                                <div class="addon">
-                                    <span class="author">作者</span>
-                                    <span class="pull-right free">免费</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="course-item">
-                            <div class="course-thumb">
-                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
-                            </div>
-                            <div class="course-info">
-                                <div class="title"><a href="">课程课程课程</a></div>
-                                <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
-                                <div class="addon">
-                                    <span class="author">作者</span>
-                                    <span class="pull-right free">免费</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="course-item">
-                            <div class="course-thumb">
-                                <a href=""><img src="${assetsPath}/images/course.jpg" alt=""></a>
-                            </div>
-                            <div class="course-info">
-                                <div class="title"><a href="">课程课程课程</a></div>
-                                <div class="desc"><p>课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述</p></div>
-                                <div class="addon">
-                                    <span class="author">作者</span>
-                                    <span class="pull-right free">免费</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -103,54 +61,20 @@
             <h2><span>热门小组</span></h2>
             <div class="index-group-list group">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="group-item">
-                            <div class="group-thumb">
-                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
-                            </div>
-                            <div class="group-info">
-                                <div class="title">小组名称</div>
-                                <div class="desc">小组描述小组描述小组描述小组描述小组描述小组描述小组描述小组描述</div>
-                                <a href="#" class="btn btn-primary">立即加入</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="group-item">
-                            <div class="group-thumb">
-                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
-                            </div>
-                            <div class="group-info">
-                                <div class="title">小组名称</div>
-                                <div class="desc">小组描述小组描述小组描述小组描述小组描述小组描述小组描述小组描述</div>
-                                <a href="#" class="btn btn-primary">立即加入</a>
+                    <c:forEach var="group" items="${groups.list}">
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="group-item">
+                                <div class="group-thumb">
+                                    <a href="${rootPath}/group/${group.id}/resources}"><img src="${group.thumb}" alt=""></a>
+                                </div>
+                                <div class="group-info">
+                                    <div class="title">${group.type}</div>
+                                    <a href="#" class="btn btn-primary">立即加入</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="group-item">
-                            <div class="group-thumb">
-                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
-                            </div>
-                            <div class="group-info">
-                                <div class="title">小组名称</div>
-                                <div class="desc">小组描述小组描述小组描述小组描述小组描述小组描述小组描述小组描述</div>
-                                <a href="#" class="btn btn-primary">立即加入</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="group-item">
-                            <div class="group-thumb">
-                                <a href=""><img src="${assetsPath}/images/group.jpg" alt=""></a>
-                            </div>
-                            <div class="group-info">
-                                <div class="title">小组名称</div>
-                                <div class="desc">小组描述小组描述小组描述小组描述小组描述小组描述小组描述小组描述</div>
-                                <a href="#" class="btn btn-primary">立即加入</a>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+
                 </div>
             </div>
         </div>
@@ -185,7 +109,7 @@
                 <p>校视通是一家从事互联网免费教学的网络公益教育公司秉承“开拓、创新、公平、分享”的精神致力于为教育机构及求学者打造教育品牌</p>
             </div>
         </div>
-        <div class="index-ad-button"><a href="" class="btn btn-default">立即开始学习</a></div>
+        <div class="index-ad-button"><a href="${rootPath}/course/list" class="btn btn-default">立即开始学习</a></div>
     </section>
     <!-- end of index ad -->
 
