@@ -28,7 +28,7 @@
 <div class="admin">
     <div class="navbar" role="navigation">
         <div class="navbar-header">
-            <a class="" href="index.html">
+            <a class="" href="index">
             <span class="navbar-brand">
                 <span class="fa fa-book"></span> 校视通
             </span>
