@@ -15,7 +15,7 @@
 
     <div class="not-found-content">
       <div class="not-found">
-        <img src="images/404.png" alt="" />
+        <img src="${assetsPath}/images/404.png" alt="" />
         <div class="">
           <h1>404</h1>
           <p>
