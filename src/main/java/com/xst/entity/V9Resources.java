@@ -250,6 +250,34 @@ public class V9Resources {
         this.description = description;
     }
 
+    public V9Resources() {
+    }
+
+    public V9Resources(String title, String creatime, String url, String category1, String category2,
+                       String category3, String rgroup, Integer rstatus, Integer category1Id,
+                       Integer category2Id, Integer category3Id, Integer category4Id, Integer category5Id,
+                       String category4, String category5, String thumb, Integer hits, String arrGroupId, String description) {
+        this.title = title;
+        this.creatime = creatime;
+        this.url = url;
+        this.category1 = category1;
+        this.category2 = category2;
+        this.category3 = category3;
+        this.rgroup = rgroup;
+        this.rstatus = rstatus;
+        this.category1Id = category1Id;
+        this.category2Id = category2Id;
+        this.category3Id = category3Id;
+        this.category4Id = category4Id;
+        this.category5Id = category5Id;
+        this.category4 = category4;
+        this.category5 = category5;
+        this.thumb = thumb;
+        this.hits = hits;
+        this.arrGroupId = arrGroupId;
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

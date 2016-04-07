@@ -97,15 +97,17 @@ public class ResourcesDaoTest {
 
     @Test
     public void testModifyResource(){
-        V9Resources resources = resourcesDao.getById(1);
+        V9Resources resources = resourcesDao.getById(5);
         resources.setTitle("test2");
+        resources.setDescription("课程");
         resourcesDao.modifyResource(resources);
 
     }
 
     @Test
     public void testGetById(){
-        V9Resources resources = resourcesDao.getById(1);
+        V9Resources resources = resourcesDao.getById(4);
+        System.out.println(resources.getDescription());
         Assert.assertNotNull(resources);
     }
 
