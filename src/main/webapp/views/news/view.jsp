@@ -10,7 +10,15 @@
 <jsp:include page="../common/header.jsp" />
 <div class="main">
     <div class="container">
-        <jsp:include page="../common/breadcrumb.jsp" />
+        <div class="breadcrumb-wrapper">
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb">
+                    <li><a href="${rootPath}/index">首页</a></li>
+                    <li><a href="${rootPath}/news/list">资讯</a></li>
+                    <li class="active"><a>查看资讯</a></li>
+                </ol>
+            </div>
+        </div>
         <div id="advisory-hit-topic" class="container-fluid">
             <div class="row">
                 <div  class="topic col-md-12">
@@ -22,44 +30,14 @@
                                 </h3>
                                 <blockquote>
                                     <p>
-                                        36 氪独家获悉，互联网 + 兼职公司 “兼职猫” 已于日前完成金额为 6300 万人民币的 A+ 轮融资，由赛曼基金领投，梅花天使创投、匹克高管跟投。
-                                    </p> <small>来源 <cite>小标题</cite></small>
+                                        ${news.description}
+                                    </p>
                                 </blockquote>
 
                                 <div class="img"><img src="${news.thumb}" alt=""/></div>
 
                                 <div class="article-main">
-                                    <div class="paragraphy">
-                                        ${news.description}
-                                        我的同事徐宁曾有表述：作为万亿人力资源市场的一个切入点，兼职同时属于企业服务、蓝领用工、共享经济等多个热门领域，据统计，仅在 2014年 下半年到 2015年 上半年间，全国范围内就涌现了近百个 “互联网 + 兼职” 创业团队。其中大学生兼职市场规模在 200 亿以上，常见的比如派单、促销、会展等。目前洗牌现象初现，2016年 将大浪淘沙。
-                                    </div>
-                                    <div class="paragraphy">
-                                        36 氪对兼职猫此前的报道曾提到，在同类产品数量过剩、学生用户选择多、粘性低的情况下，兼职猫更着重于企业用户的招聘服务，在他们身上赚钱。
-                                    </div>
-                                    <div class="paragraphy">
-                                        目前该产品已有 640 万注册用户，其中有 19 万个企业级用户，平均日活用户量 18 万，每天平均有 11 万个岗位信息在平台上发布。兼职猫已经开通了 200 多个城市的信息服务，并在 11 个城市设有办事处。
-                                    </div>
-                                    <div class="paragraphy">
-                                        兼职猫 COO 甄蔼仪向 36 氪表示，大学生兼职已经成为买方（企业）市场，企业兼职用人缺口并不难填补，其真正需求是用更低的成本、更快的时间招到合适的人。在此背景下，兼职猫的思路是：先聚拢足够多的 C 端用户，从服务少量大客户开始逐渐开放 B 端市场，再积累标准化数据来提升匹配效率，而非从一开始便追求流水额。
-                                    </div>
-                                    <div class="paragraphy">
-                                        该公司对 C 端用户的平均获客成本不到 2 元，主要方式就是口碑营销、社交媒体推广和地推。在兼职猫的用户中，有 60%是学生，40%为社会人士，有趣的是有 15%的用户是在毕业后没有参与全职工作而是以兼职为生的人。
-                                    </div>
-                                    <div class="paragraphy">
-                                        获取 C 端用户之后，兼职猫试图用打 tag、填信息的方式做求职者标准化，包括信用评价、能力评价、身高体重、语言能力、是否有健康证等维度，可以根据企业的需求将信息推送给相对匹配的用户。
-                                    </div>
-                                    <div class="paragraphy">
-                                        除了直接推送给用户之外，兼职猫也面向诸如优衣库、Coach 等大 B 客户提供 B2L2C 服务，即客户发送订单需求后，兼职猫将订单分发给平台上的劳务中介，由他们在平台上招聘求职者。与传统的分包模式不同，中介可以在兼职猫的人才库里挑选求职者，并在 app 中组织群聊，不用跳出产品即可完成工作。
-                                    </div>
-                                    <div class="paragraphy">
-                                        对于大 B 客户业务，兼职猫会承接部分买保险、发工资的职能，盈利方式是抽取流水 20%的佣金（一半会分给劳务中介）。兼职猫的另一个盈利方式是增值服务，比如企业预付款的话可以保证提升其 4 倍招聘速度。
-                                    </div>
-                                    <div class="paragraphy">
-                                        目前平台每月承接订单总量为 150 万，招聘完成率 80%。自 2015年9月 开始收费后，每月流水两千多万，可以带来一百多万的净收入。
-                                    </div>
-                                    <div class="paragraphy">
-                                        总体来讲，互联网的介入的确在不同程度上去除掉了一些不必要的中介环节，提升企业招聘效率。但平台在信息匹配之外的扩展上还没有什么动作，比如早就开始讲的消费金融、职业规划、大数据应用等，尚且处于产业完成内部信息化的阶段，短期的动作主要也还是在市场扩张上。
-                                    </div>
+                                    ${news.v9NewsData.content}
 
                                     <div class="label-ad">
                                         <ul>
