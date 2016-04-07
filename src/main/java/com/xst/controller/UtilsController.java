@@ -13,13 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * Created by sl on 16-4-5.
  */
 @Controller
-public class BaseController implements HandlerExceptionResolver {
+public class UtilsController implements HandlerExceptionResolver {
 
-//    @RequestMapping(value = "*")
-//    public String notfound(){
-//
-//        return "error";
-//    }
 
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
