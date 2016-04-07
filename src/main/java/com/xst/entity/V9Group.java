@@ -17,15 +17,17 @@ public class V9Group {
     private Timestamp createTime;
     private String createUser;
     private String thumb;
+    private String description;
     public V9Group() {
     }
 
-    public V9Group( String type, Integer userNumber, Timestamp createTime, String createUser,String thumb) {
+    public V9Group( String type, Integer userNumber, Timestamp createTime, String createUser,String thumb,String description) {
         this.type = type;
         this.userNumber = userNumber;
         this.createTime = createTime;
         this.createUser = createUser;
         this.thumb=thumb;
+        this.description=description;
     }
 
     @Id
@@ -86,6 +88,16 @@ public class V9Group {
 
     public void setThumb(String thumb) {
         this.thumb = thumb;
+    }
+
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
