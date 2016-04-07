@@ -34,8 +34,6 @@
                                     </p>
                                 </blockquote>
 
-                                <div class="img"><img src="${news.thumb}" alt=""/></div>
-
                                 <div class="article-main">
                                     ${news.v9NewsData.content}
 
