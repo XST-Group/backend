@@ -1,28 +1,29 @@
 package com.xst.controller;
 
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * Created by sl on 16-4-5.
  */
-public class BaseController {
+//@Controller
+public class BaseController implements HandlerExceptionResolver {
 
-    /** 基于@ExceptionHandler异常处理 */
-    @ExceptionHandler
-    public String exp(HttpServletRequest request, Exception ex){
+//    @RequestMapping(value = "*")
+//    public String notfound(){
+//
+//        return "error";
+//    }
 
-        request.setAttribute("ex", ex);
-
-//        // 根据不同错误转向不同页面
-//        if(ex instanceof BusinessException) {
-//            return "error-business";
-//        }else if(ex instanceof ParameterException) {
-//            return "error-parameter";
-//        } else {
-            return "error";
-//        }
+    @Override
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+        return new ModelAndView("404");
+      //  return null;
     }
-
 }
