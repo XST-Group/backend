@@ -22,7 +22,7 @@
         <div class="pull-right user-nav clearfix">
             <ul class="nav nav-login">
                 <li><a href="#" id="loginButton">登录</a></li>
-                <li><a href="${rootPath}/register">注册</a></li>
+                <li><a href="${rootPath}/user/register">注册</a></li>
             </ul>
         </div>
     </div>
