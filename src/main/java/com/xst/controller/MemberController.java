@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
  * Created by sl on 16-4-5.
  */
 @Controller
-@RequestMapping(value = "/member")
 public class MemberController {
 
 
@@ -27,6 +26,13 @@ public class MemberController {
     @Autowired
     @Qualifier("memberDao")
     private MemberDao memberDao;
+
+
+
+    @RequestMapping(value = "/register" , method = RequestMethod.GET)
+    public String register(){
+        return "register";
+    }
 
 
 
