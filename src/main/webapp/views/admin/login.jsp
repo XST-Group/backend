@@ -40,7 +40,7 @@
                 <h2 class="text-center col-md-4 col-md-offset-2">后台登录系统</h2>
             </div>
             <div class="modal-body">
-                <form action="" class="form center-block center-block">
+                <form action="" class="form center-block center-block" method="post">
                     <div class="input-group col-md-6">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                         <input type="text" class="form-control input-lg" id="examInputEmail1" name="username"

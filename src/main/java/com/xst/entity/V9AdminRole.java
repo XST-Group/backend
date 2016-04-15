@@ -1,33 +1,21 @@
 package com.xst.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
- * Created by Sloriac on 16/2/21.
+ * Created by sl on 16-4-15.
  */
 @Entity
-@Table(name = "v9_admin_role", schema = "db_xst")
+@Table(name = "v9_admin_role", schema = "", catalog = "db_xst_new")
 public class V9AdminRole {
     private byte roleid;
     private String rolename;
     private String description;
     private short listorder;
     private byte disabled;
-    private Set<V9Admin> v9Admins = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "v9AdminRole")
-    public Set<V9Admin> getV9Admins() {
-        return v9Admins;
-    }
-
-    public void setV9Admins(Set<V9Admin> v9Admins) {
-        this.v9Admins = v9Admins;
-    }
 
     @Id
-    @Column(name = "roleid")
+    @Column(name = "roleid", nullable = false, insertable = true, updatable = true)
     public byte getRoleid() {
         return roleid;
     }
@@ -37,7 +25,7 @@ public class V9AdminRole {
     }
 
     @Basic
-    @Column(name = "rolename")
+    @Column(name = "rolename", nullable = false, insertable = true, updatable = true, length = 50)
     public String getRolename() {
         return rolename;
     }
@@ -47,7 +35,7 @@ public class V9AdminRole {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, insertable = true, updatable = true, length = 65535)
     public String getDescription() {
         return description;
     }
@@ -57,7 +45,7 @@ public class V9AdminRole {
     }
 
     @Basic
-    @Column(name = "listorder")
+    @Column(name = "listorder", nullable = false, insertable = true, updatable = true)
     public short getListorder() {
         return listorder;
     }
@@ -67,7 +55,7 @@ public class V9AdminRole {
     }
 
     @Basic
-    @Column(name = "disabled")
+    @Column(name = "disabled", nullable = false, insertable = true, updatable = true)
     public byte getDisabled() {
         return disabled;
     }
