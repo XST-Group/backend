@@ -15,7 +15,7 @@ public class AdminDao extends BaseDao {
 	}
 
 	public V9Admin getByName(String username){
-		String hql = "from V9Admin as admin where username=?";
+		String hql = "from V9Admin as admin where admin.username=?";
 		Query query = query(hql);
 		query.setString(0,username);
 		List<V9Admin> admin = query.list();

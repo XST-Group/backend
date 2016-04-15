@@ -115,7 +115,7 @@
 
     <jsp:include page="common/footer.jsp" />
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
+    <script type="text/javascript"src="${assetsPath}/js/main.js"></script>
     <script>
         $(function() {
             var unslider = $('.banner').unslider({

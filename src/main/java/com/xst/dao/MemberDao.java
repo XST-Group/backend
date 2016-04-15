@@ -1,10 +1,7 @@
 package com.xst.dao;
 
 import com.xst.entity.V9Member;
-import com.xst.entity.V9MemberVerify;
 import org.hibernate.Query;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,6 +20,14 @@ public class MemberDao extends BaseDao{
         save(member);
     }
 
+
+    public V9Member getByName(String username){
+        String hql = "from V9Member as admin where admin.username=?";
+        Query query = query(hql);
+        query.setString(0,username);
+        List<V9Member> member = query.list();
+        return member.get(0);
+    }
 
 
     /**

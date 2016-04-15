@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 /**
- * Created by sl on 16-3-12.
+ * Created by sl on 16-4-15.
  */
 @Entity
 @javax.persistence.Table(name = "v9_member", schema = "", catalog = "db_xst_new")
@@ -15,7 +15,7 @@ public class V9Member {
     private int userid;
 
     @Id
-    @javax.persistence.Column(name = "userid")
+    @javax.persistence.Column(name = "userid", nullable = false, insertable = true, updatable = true)
     public int getUserid() {
         return userid;
     }
@@ -27,7 +27,7 @@ public class V9Member {
     private int phpssouid;
 
     @Basic
-    @javax.persistence.Column(name = "phpssouid")
+    @javax.persistence.Column(name = "phpssouid", nullable = false, insertable = true, updatable = true)
     public int getPhpssouid() {
         return phpssouid;
     }
@@ -39,7 +39,7 @@ public class V9Member {
     private String username;
 
     @Basic
-    @javax.persistence.Column(name = "username")
+    @javax.persistence.Column(name = "username", nullable = true, insertable = true, updatable = true, length = 100)
     public String getUsername() {
         return username;
     }
@@ -51,7 +51,7 @@ public class V9Member {
     private String password;
 
     @Basic
-    @javax.persistence.Column(name = "password")
+    @javax.persistence.Column(name = "password", nullable = false, insertable = true, updatable = true, length = 32)
     public String getPassword() {
         return password;
     }
@@ -63,7 +63,7 @@ public class V9Member {
     private String encrypt;
 
     @Basic
-    @javax.persistence.Column(name = "encrypt")
+    @javax.persistence.Column(name = "encrypt", nullable = false, insertable = true, updatable = true, length = 6)
     public String getEncrypt() {
         return encrypt;
     }
@@ -75,7 +75,7 @@ public class V9Member {
     private String nickname;
 
     @Basic
-    @javax.persistence.Column(name = "nickname")
+    @javax.persistence.Column(name = "nickname", nullable = false, insertable = true, updatable = true, length = 20)
     public String getNickname() {
         return nickname;
     }
@@ -87,7 +87,7 @@ public class V9Member {
     private int regdate;
 
     @Basic
-    @javax.persistence.Column(name = "regdate")
+    @javax.persistence.Column(name = "regdate", nullable = false, insertable = true, updatable = true)
     public int getRegdate() {
         return regdate;
     }
@@ -99,7 +99,7 @@ public class V9Member {
     private int lastdate;
 
     @Basic
-    @javax.persistence.Column(name = "lastdate")
+    @javax.persistence.Column(name = "lastdate", nullable = false, insertable = true, updatable = true)
     public int getLastdate() {
         return lastdate;
     }
@@ -111,7 +111,7 @@ public class V9Member {
     private String regip;
 
     @Basic
-    @javax.persistence.Column(name = "regip")
+    @javax.persistence.Column(name = "regip", nullable = false, insertable = true, updatable = true, length = 15)
     public String getRegip() {
         return regip;
     }
@@ -123,7 +123,7 @@ public class V9Member {
     private String lastip;
 
     @Basic
-    @javax.persistence.Column(name = "lastip")
+    @javax.persistence.Column(name = "lastip", nullable = false, insertable = true, updatable = true, length = 15)
     public String getLastip() {
         return lastip;
     }
@@ -135,7 +135,7 @@ public class V9Member {
     private short loginnum;
 
     @Basic
-    @javax.persistence.Column(name = "loginnum")
+    @javax.persistence.Column(name = "loginnum", nullable = false, insertable = true, updatable = true)
     public short getLoginnum() {
         return loginnum;
     }
@@ -147,7 +147,7 @@ public class V9Member {
     private String email;
 
     @Basic
-    @javax.persistence.Column(name = "email")
+    @javax.persistence.Column(name = "email", nullable = false, insertable = true, updatable = true, length = 32)
     public String getEmail() {
         return email;
     }
@@ -159,7 +159,7 @@ public class V9Member {
     private byte groupid;
 
     @Basic
-    @javax.persistence.Column(name = "groupid")
+    @javax.persistence.Column(name = "groupid", nullable = false, insertable = true, updatable = true)
     public byte getGroupid() {
         return groupid;
     }
@@ -171,7 +171,7 @@ public class V9Member {
     private short areaid;
 
     @Basic
-    @javax.persistence.Column(name = "areaid")
+    @javax.persistence.Column(name = "areaid", nullable = false, insertable = true, updatable = true)
     public short getAreaid() {
         return areaid;
     }
@@ -183,7 +183,7 @@ public class V9Member {
     private BigDecimal amount;
 
     @Basic
-    @javax.persistence.Column(name = "amount")
+    @javax.persistence.Column(name = "amount", nullable = false, insertable = true, updatable = true, precision = 2)
     public BigDecimal getAmount() {
         return amount;
     }
@@ -195,7 +195,7 @@ public class V9Member {
     private short point;
 
     @Basic
-    @javax.persistence.Column(name = "point")
+    @javax.persistence.Column(name = "point", nullable = false, insertable = true, updatable = true)
     public short getPoint() {
         return point;
     }
@@ -207,7 +207,7 @@ public class V9Member {
     private short modelid;
 
     @Basic
-    @javax.persistence.Column(name = "modelid")
+    @javax.persistence.Column(name = "modelid", nullable = false, insertable = true, updatable = true)
     public short getModelid() {
         return modelid;
     }
@@ -219,7 +219,7 @@ public class V9Member {
     private byte message;
 
     @Basic
-    @javax.persistence.Column(name = "message")
+    @javax.persistence.Column(name = "message", nullable = false, insertable = true, updatable = true)
     public byte getMessage() {
         return message;
     }
@@ -231,7 +231,7 @@ public class V9Member {
     private byte islock;
 
     @Basic
-    @javax.persistence.Column(name = "islock")
+    @javax.persistence.Column(name = "islock", nullable = false, insertable = true, updatable = true)
     public byte getIslock() {
         return islock;
     }
@@ -243,7 +243,7 @@ public class V9Member {
     private byte vip;
 
     @Basic
-    @javax.persistence.Column(name = "vip")
+    @javax.persistence.Column(name = "vip", nullable = false, insertable = true, updatable = true)
     public byte getVip() {
         return vip;
     }
@@ -255,7 +255,7 @@ public class V9Member {
     private int overduedate;
 
     @Basic
-    @javax.persistence.Column(name = "overduedate")
+    @javax.persistence.Column(name = "overduedate", nullable = false, insertable = true, updatable = true)
     public int getOverduedate() {
         return overduedate;
     }
@@ -267,7 +267,7 @@ public class V9Member {
     private short siteid;
 
     @Basic
-    @javax.persistence.Column(name = "siteid")
+    @javax.persistence.Column(name = "siteid", nullable = false, insertable = true, updatable = true)
     public short getSiteid() {
         return siteid;
     }
@@ -279,7 +279,7 @@ public class V9Member {
     private String uparent;
 
     @Basic
-    @javax.persistence.Column(name = "Uparent")
+    @javax.persistence.Column(name = "Uparent", nullable = true, insertable = true, updatable = true, length = 20)
     public String getUparent() {
         return uparent;
     }
@@ -291,7 +291,7 @@ public class V9Member {
     private Integer utype;
 
     @Basic
-    @javax.persistence.Column(name = "Utype")
+    @javax.persistence.Column(name = "Utype", nullable = true, insertable = true, updatable = true)
     public Integer getUtype() {
         return utype;
     }
@@ -303,7 +303,7 @@ public class V9Member {
     private Integer ustate;
 
     @Basic
-    @javax.persistence.Column(name = "Ustate")
+    @javax.persistence.Column(name = "Ustate", nullable = true, insertable = true, updatable = true)
     public Integer getUstate() {
         return ustate;
     }
@@ -315,7 +315,7 @@ public class V9Member {
     private String utel;
 
     @Basic
-    @javax.persistence.Column(name = "Utel")
+    @javax.persistence.Column(name = "Utel", nullable = true, insertable = true, updatable = true, length = 20)
     public String getUtel() {
         return utel;
     }
@@ -327,7 +327,7 @@ public class V9Member {
     private String ubegin;
 
     @Basic
-    @javax.persistence.Column(name = "Ubegin")
+    @javax.persistence.Column(name = "Ubegin", nullable = true, insertable = true, updatable = true, length = 30)
     public String getUbegin() {
         return ubegin;
     }
@@ -339,7 +339,7 @@ public class V9Member {
     private String upower;
 
     @Basic
-    @javax.persistence.Column(name = "Upower")
+    @javax.persistence.Column(name = "Upower", nullable = true, insertable = true, updatable = true, length = 30)
     public String getUpower() {
         return upower;
     }
@@ -351,7 +351,7 @@ public class V9Member {
     private String ucraete;
 
     @Basic
-    @javax.persistence.Column(name = "Ucraete")
+    @javax.persistence.Column(name = "Ucraete", nullable = true, insertable = true, updatable = true, length = 30)
     public String getUcraete() {
         return ucraete;
     }
@@ -363,7 +363,7 @@ public class V9Member {
     private String ustart;
 
     @Basic
-    @javax.persistence.Column(name = "Ustart")
+    @javax.persistence.Column(name = "Ustart", nullable = true, insertable = true, updatable = true, length = 20)
     public String getUstart() {
         return ustart;
     }
@@ -375,7 +375,7 @@ public class V9Member {
     private String ustop;
 
     @Basic
-    @javax.persistence.Column(name = "Ustop")
+    @javax.persistence.Column(name = "Ustop", nullable = true, insertable = true, updatable = true, length = 20)
     public String getUstop() {
         return ustop;
     }
@@ -387,7 +387,7 @@ public class V9Member {
     private String ugroup;
 
     @Basic
-    @javax.persistence.Column(name = "Ugroup")
+    @javax.persistence.Column(name = "Ugroup", nullable = true, insertable = true, updatable = true, length = 10)
     public String getUgroup() {
         return ugroup;
     }
@@ -399,7 +399,7 @@ public class V9Member {
     private String ulockip;
 
     @Basic
-    @javax.persistence.Column(name = "Ulockip")
+    @javax.persistence.Column(name = "Ulockip", nullable = true, insertable = true, updatable = true, length = 255)
     public String getUlockip() {
         return ulockip;
     }
@@ -411,7 +411,7 @@ public class V9Member {
     private String urequest;
 
     @Basic
-    @javax.persistence.Column(name = "Urequest")
+    @javax.persistence.Column(name = "Urequest", nullable = true, insertable = true, updatable = true, length = 255)
     public String getUrequest() {
         return urequest;
     }
@@ -423,7 +423,7 @@ public class V9Member {
     private String uanswer;
 
     @Basic
-    @javax.persistence.Column(name = "Uanswer")
+    @javax.persistence.Column(name = "Uanswer", nullable = true, insertable = true, updatable = true, length = 255)
     public String getUanswer() {
         return uanswer;
     }
@@ -435,7 +435,7 @@ public class V9Member {
     private String ugrade;
 
     @Basic
-    @javax.persistence.Column(name = "Ugrade")
+    @javax.persistence.Column(name = "Ugrade", nullable = true, insertable = true, updatable = true, length = 100)
     public String getUgrade() {
         return ugrade;
     }
@@ -447,7 +447,7 @@ public class V9Member {
     private String uoffice;
 
     @Basic
-    @javax.persistence.Column(name = "Uoffice")
+    @javax.persistence.Column(name = "Uoffice", nullable = true, insertable = true, updatable = true, length = 100)
     public String getUoffice() {
         return uoffice;
     }
@@ -459,7 +459,7 @@ public class V9Member {
     private String uorgan;
 
     @Basic
-    @javax.persistence.Column(name = "Uorgan")
+    @javax.persistence.Column(name = "Uorgan", nullable = true, insertable = true, updatable = true, length = 100)
     public String getUorgan() {
         return uorgan;
     }
@@ -471,7 +471,7 @@ public class V9Member {
     private String repass;
 
     @Basic
-    @javax.persistence.Column(name = "repass")
+    @javax.persistence.Column(name = "repass", nullable = true, insertable = true, updatable = true, length = 100)
     public String getRepass() {
         return repass;
     }
@@ -483,7 +483,7 @@ public class V9Member {
     private Integer totaltime;
 
     @Basic
-    @javax.persistence.Column(name = "totaltime")
+    @javax.persistence.Column(name = "totaltime", nullable = true, insertable = true, updatable = true)
     public Integer getTotaltime() {
         return totaltime;
     }
@@ -495,7 +495,7 @@ public class V9Member {
     private int relAdminUserid;
 
     @Basic
-    @javax.persistence.Column(name = "rel_admin_userid")
+    @javax.persistence.Column(name = "rel_admin_userid", nullable = false, insertable = true, updatable = true)
     public int getRelAdminUserid() {
         return relAdminUserid;
     }
@@ -507,7 +507,7 @@ public class V9Member {
     private String relAdminUsername;
 
     @Basic
-    @javax.persistence.Column(name = "rel_admin_username")
+    @javax.persistence.Column(name = "rel_admin_username", nullable = false, insertable = true, updatable = true, length = 30)
     public String getRelAdminUsername() {
         return relAdminUsername;
     }
@@ -519,7 +519,7 @@ public class V9Member {
     private String contacts;
 
     @Basic
-    @javax.persistence.Column(name = "contacts")
+    @javax.persistence.Column(name = "contacts", nullable = true, insertable = true, updatable = true, length = 50)
     public String getContacts() {
         return contacts;
     }
@@ -531,7 +531,7 @@ public class V9Member {
     private String qq;
 
     @Basic
-    @javax.persistence.Column(name = "qq")
+    @javax.persistence.Column(name = "qq", nullable = true, insertable = true, updatable = true, length = 20)
     public String getQq() {
         return qq;
     }
@@ -543,7 +543,7 @@ public class V9Member {
     private String telphone;
 
     @Basic
-    @javax.persistence.Column(name = "telphone")
+    @javax.persistence.Column(name = "telphone", nullable = true, insertable = true, updatable = true, length = 11)
     public String getTelphone() {
         return telphone;
     }
@@ -555,7 +555,7 @@ public class V9Member {
     private String schoolmaster;
 
     @Basic
-    @javax.persistence.Column(name = "schoolmaster")
+    @javax.persistence.Column(name = "schoolmaster", nullable = true, insertable = true, updatable = true, length = 30)
     public String getSchoolmaster() {
         return schoolmaster;
     }
@@ -567,7 +567,7 @@ public class V9Member {
     private String schoolAddress;
 
     @Basic
-    @javax.persistence.Column(name = "school_address")
+    @javax.persistence.Column(name = "school_address", nullable = true, insertable = true, updatable = true, length = 100)
     public String getSchoolAddress() {
         return schoolAddress;
     }
@@ -579,7 +579,7 @@ public class V9Member {
     private Float servicemoney;
 
     @Basic
-    @javax.persistence.Column(name = "servicemoney")
+    @javax.persistence.Column(name = "servicemoney", nullable = true, insertable = true, updatable = true, precision = 0)
     public Float getServicemoney() {
         return servicemoney;
     }
@@ -591,7 +591,7 @@ public class V9Member {
     private String invoicetitle;
 
     @Basic
-    @javax.persistence.Column(name = "invoicetitle")
+    @javax.persistence.Column(name = "invoicetitle", nullable = true, insertable = true, updatable = true, length = 50)
     public String getInvoicetitle() {
         return invoicetitle;
     }
@@ -603,7 +603,7 @@ public class V9Member {
     private String postalcode;
 
     @Basic
-    @javax.persistence.Column(name = "postalcode")
+    @javax.persistence.Column(name = "postalcode", nullable = true, insertable = true, updatable = true, length = 10)
     public String getPostalcode() {
         return postalcode;
     }
@@ -615,7 +615,7 @@ public class V9Member {
     private Date renewtime;
 
     @Basic
-    @javax.persistence.Column(name = "renewtime")
+    @javax.persistence.Column(name = "renewtime", nullable = true, insertable = true, updatable = true)
     public Date getRenewtime() {
         return renewtime;
     }
@@ -627,7 +627,7 @@ public class V9Member {
     private String remark;
 
     @Basic
-    @javax.persistence.Column(name = "remark")
+    @javax.persistence.Column(name = "remark", nullable = true, insertable = true, updatable = true, length = 65535)
     public String getRemark() {
         return remark;
     }
@@ -639,7 +639,7 @@ public class V9Member {
     private Byte vouchStatus;
 
     @Basic
-    @javax.persistence.Column(name = "vouch_status")
+    @javax.persistence.Column(name = "vouch_status", nullable = true, insertable = true, updatable = true)
     public Byte getVouchStatus() {
         return vouchStatus;
     }
@@ -651,7 +651,7 @@ public class V9Member {
     private Date vouchTime;
 
     @Basic
-    @javax.persistence.Column(name = "vouch_time")
+    @javax.persistence.Column(name = "vouch_time", nullable = true, insertable = true, updatable = true)
     public Date getVouchTime() {
         return vouchTime;
     }
@@ -663,7 +663,7 @@ public class V9Member {
     private int ktdate;
 
     @Basic
-    @javax.persistence.Column(name = "ktdate")
+    @javax.persistence.Column(name = "ktdate", nullable = false, insertable = true, updatable = true)
     public int getKtdate() {
         return ktdate;
     }
@@ -675,7 +675,7 @@ public class V9Member {
     private byte relBank;
 
     @Basic
-    @javax.persistence.Column(name = "rel_bank")
+    @javax.persistence.Column(name = "rel_bank", nullable = false, insertable = true, updatable = true)
     public byte getRelBank() {
         return relBank;
     }
@@ -687,7 +687,7 @@ public class V9Member {
     private String moneyInfo;
 
     @Basic
-    @javax.persistence.Column(name = "money_info")
+    @javax.persistence.Column(name = "money_info", nullable = false, insertable = true, updatable = true, length = 65535)
     public String getMoneyInfo() {
         return moneyInfo;
     }
@@ -699,7 +699,7 @@ public class V9Member {
     private String visitOpinion;
 
     @Basic
-    @javax.persistence.Column(name = "visit_opinion")
+    @javax.persistence.Column(name = "visit_opinion", nullable = false, insertable = true, updatable = true, length = 65535)
     public String getVisitOpinion() {
         return visitOpinion;
     }
