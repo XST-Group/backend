@@ -11,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xst.entity.V9Admin;
-import com.xst.dao.AdminDao;
-
 @Controller
 @RequestMapping("/")
 public class IndexController {
