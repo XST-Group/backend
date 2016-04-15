@@ -1,6 +1,5 @@
 package com.xst.dao;
 
-import com.xst.entity.V9News;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
