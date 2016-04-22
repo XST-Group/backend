@@ -1,6 +1,7 @@
 package com.xst.test.dao;
 
 import com.xst.dao.MemberDao;
+import com.xst.entity.V9Admin;
 import com.xst.entity.V9Member;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -50,6 +51,13 @@ public class MemberDaoTest {
         member.setInvoicetitle("1213");
         member.setIslock((byte) 123);
         memberDao.save(member);
+    }
+
+    @Test
+    public void testGetByName(){
+        V9Member member = memberDao.getByName("lqzxxx@123.com");
+        org.junit.Assert.assertNotNull(member);
+        System.out.println(member.getUsername()+"  "+member.getPassword());
     }
 
 }

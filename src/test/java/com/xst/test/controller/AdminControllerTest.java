@@ -58,18 +58,22 @@ public class AdminControllerTest {
                 .andDo(print())
                 .andReturn();
 
-
-
         mockMvc.perform(post("/addresource","1",11,22,33))
                 .andExpect(status().isOk())
                 .andDo(print());
-
 
 //        ArrayList<V9News> cates =  (ArrayList<V9News>)result.getModelAndView().getModel().get("newsList");
 
 //        ArrayList<V9Category> categories = (ArrayList<V9Category>) result.getModelAndView().getModel().get("firstCategorys");
 
       //  Assert.assertNotNull(categories);
+    }
+
+    @Test
+    public void testLogin() throws Exception {
+        mockMvc.perform(post("/admin/login","test","123456"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
 }
