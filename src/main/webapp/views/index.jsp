@@ -65,7 +65,7 @@
                         <div class="col-xs-6 col-sm-3">
                             <div class="group-item">
                                 <div class="group-thumb">
-                                    <a href="${rootPath}/group/${group.id}/resources}"><img src="${group.thumb}" alt=""></a>
+                                    <a href="${rootPath}/group/${group.id}/resources"><img src="${group.thumb}" alt=""></a>
                                 </div>
                                 <div class="group-info">
                                     <div class="title">${group.type}</div>
