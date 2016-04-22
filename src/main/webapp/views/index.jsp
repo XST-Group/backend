@@ -30,10 +30,23 @@
 
     <section class="index-course index-section">
         <div class="container">
-            <h2><span>推荐课程</span></h2>
+            <div class="head-course">
+              <h2><span>推荐课程</span></h2>
+              <div class="pull-right clearfix">
+                <ul class="nav">
+                  <li><a href=""  class="active">类别</a></li>
+                  <li><a href="">类别</a></li>
+                  <li><a href="">类别</a></li>
+                  <li><a href="">类别</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="button-course button-left">
+              <button type="button" name="button"><i class="fa fa-chevron-left"></i></button>
+            </div>
             <div class="index-course-list course">
                 <div class="row clearfix">
-                    <c:forEach var="resource" items="${resources.list}">
+                    <c:forEach var="resource" items="${resources.list}" begin="0" end="3">
                         <div class="col-sm-3 col-xs-6">
                             <div class="course-item">
                                 <div class="course-thumb">
@@ -41,7 +54,6 @@
                                 </div>
                                 <div class="course-info">
                                     <div class="title"><a href="">${resource.title}</a></div>
-                                    <div class="desc"><p>${resource.description}</p></div>
                                     <div class="addon">
                                         <span class="author">作者</span>
                                         <span class="pull-right free">免费</span>
@@ -51,33 +63,81 @@
                         </div>
                     </c:forEach>
                 </div>
+                <div class="row clearfix">
+                    <c:forEach var="resource" items="${resources.list}" begin="4" end="6">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="course-item">
+                                <div class="course-thumb">
+                                    <a href="${rootPath}/resources/${resource.id}"><img src="${resource.thumb}" alt=""></a>
+                                </div>
+                                <div class="course-info">
+                                    <div class="title"><a href="">${resource.title}</a></div>
+                                    <div class="addon">
+                                        <span class="author">作者</span>
+                                        <span class="pull-right free">免费</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>                
             </div>
         </div>
     </section>
     <!-- end of index course -->
 
-    <section class="index-group index-section">
-        <div class="container">
-            <h2><span>热门小组</span></h2>
-            <div class="index-group-list group">
-                <div class="row">
-                    <c:forEach var="group" items="${groups.list}">
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="group-item">
-                                <div class="group-thumb">
-                                    <a href="${rootPath}/group/${group.id}/resources"><img src="${group.thumb}" alt=""></a>
-                                </div>
-                                <div class="group-info">
-                                    <div class="title">${group.type}</div>
-                                    <a href="#" class="btn btn-primary">立即加入</a>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-
-                </div>
-            </div>
+   <section class="index-group index-section">
+      <div class="container">
+        <div class="head-course">
+          <h2><span>热门小组</span></h2>
+          <div class="pull-right clearfix">
+            <ul class="nav">
+              <li><a href=""  class="active">类别</a></li>
+              <li><a href="">类别</a></li>
+              <li><a href="">类别</a></li>
+              <li><a href="">类别</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="button-course button-left">
+          <button type="button" name="button"><i class="fa fa-chevron-left"></i></button>
+        </div>
+        <div class="index-group-list group">
+          <div class="row">
+            <c:forEach var="group" items="${groups.list}" begin="0" end="3">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="group-item">
+                        <div class="group-thumb">
+                            <a href="${rootPath}/group/${group.id}/resources"><img src="${group.thumb}" alt=""></a>
+                        </div>
+                        <div class="group-info">
+                            <div class="title">${group.type}</div>
+                            <a href="#" class="btn btn-primary">立即加入</a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>     
+        </div>   
+          <div class="row">
+            <c:forEach var="group" items="${groups.list}" begin="4" end="7">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="group-item">
+                        <div class="group-thumb">
+                            <a href="${rootPath}/group/${group.id}/resources"><img src="${group.thumb}" alt=""></a>
+                        </div>
+                        <div class="group-info">
+                            <div class="title">${group.type}</div>
+                            <a href="#" class="btn btn-primary">立即加入</a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>     
+        </div>            
+        </div>
+        <div class="button-course button-right">
+          <button type="button" name="button"><i class="fa fa-chevron-right"></i></button>
+        </div>
+      </div>
     </section>
     <!-- end of index group -->
 

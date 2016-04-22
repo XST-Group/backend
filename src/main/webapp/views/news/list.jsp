@@ -25,29 +25,62 @@
                     </ol>
                 </div>
             </div>
-            <div id="adv-img" class="container-fluid">
-                <c:set var="listStart" value="0"></c:set>
-                <c:if test="${page.pageNow == 1}" >
-                    <div class="row">
-                        <div class="col-md-6 img-left">
-                            <a href="/xst/news/view/${page.list.get(0).id}"><img src="${page.list.get(0).thumb}" alt="${page.list.get(0).title}"/></a>
-                            <p>${page.list.get(0).title}</p>
-                        </div>
-                        <div class="col-md-6 img-right">
-                            <div class="row">
-                                <c:forEach begin="2" end="5" items="${page.list}" var="news" >
-                                    <div class="col-xs-6 img-right-small">
-                                        <a href="/xst/news/view/${news.id}"><img src="${news.thumb}" alt="${news.title}"/></a>
-                                        <p>${news.title}</p>
+
+        <div id="adv-img" class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 no-gap">
+                    <div class="img-left">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                            <ul class="img-listButton list-inline carousel-indicators">        <!--赋予了图形-->
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>     <!--改写active?-->
+                                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                            </ul>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <div class="img-block">
+                                    <a href="/xst/news/view/${page.list.get(0).id}"><img src="${page.list.get(0).thumb}" alt=""/></a>
+                                        <p>${page.list.get(0).title}</p>                        <!--与carousel-caption无法共存-->
                                     </div>
+                                </div>                            
+                                <c:forEach begin="1" end="5" items="${page.list}" var="news">
+                                <div class="item">
+                                    <div class="img-block">
+                                         <a href="/xst/news/view/${news.id}"><img src="${news.thumb}" alt=""/></a>
+                                        <p>${news.title}</p>                        <!--与carousel-caption无法共存-->
+                                    </div>
+                                </div>
+
                                 </c:forEach>
                             </div>
-                            <div class="clearfix visible-xs-block"></div>
+
                         </div>
                     </div>
-                    <c:set var="listStart" value="6"></c:set>
-                </c:if>
+                </div>
 
+                <div class="col-md-6 no-gap">
+                    <div class="img-right">
+                        <ul>
+                            <div class="title">主标题</div>
+                                <div class="item active">
+                                    <li><a href="/xst/news/view/${page.list.get(0).id}">${page.list.get(0).title}</a></li>
+                                </div>
+                                <c:forEach begin="1" end="5" items="${page.list}" var="news" varStatus="status">
+
+                                <div class="item">
+                                    <li><a href="/xst/news/view/${news.id}">${news.title}</a></li>
+                                </div>
+
+                                </c:forEach>                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            </div>
 
                 <div id="adv-article">
                     <c:forEach begin="${listStart}" end="${page.list.size()}" items="${page.list}" var="news">
@@ -90,5 +123,16 @@
 <jsp:include page="../common/footer.jsp" />
 <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $(".navmenu").mouseover(function () {
+            $(this).children("ul").show();
+        })
+        $(".navmenu").mouseout(function () {
+            $(this).children("ul").hide();
+        })
+    })
+</script>
 </body>
 </html>
