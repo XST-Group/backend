@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <!-- end of course-list -->
-                    <%--<jsp:include page="/xst/views/course/common/pagination.jsp" />--%>
+                    <jsp:include page="../common/pagination.jsp" />
 
                 </div>
             </div>
