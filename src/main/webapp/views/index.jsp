@@ -34,10 +34,10 @@
               <h2><span>推荐课程</span></h2>
               <div class="pull-right clearfix">
                 <ul class="nav">
-                  <li><a href=""  class="active">类别</a></li>
-                  <li><a href="">类别</a></li>
-                  <li><a href="">类别</a></li>
-                  <li><a href="">类别</a></li>
+                  <li><a href=""  class="active">学习资源</a></li>
+                  <li><a href="">专题辅导</a></li>
+                  <li><a href="">海外调研</a></li>
+                  <li><a href="">名师讲解</a></li>
                 </ul>
               </div>
             </div>
@@ -64,7 +64,7 @@
                     </c:forEach>
                 </div>
                 <div class="row clearfix">
-                    <c:forEach var="resource" items="${resources.list}" begin="4" end="6">
+                    <c:forEach var="resource" items="${resources.list}" begin="4" end="7">
                         <div class="col-sm-3 col-xs-6">
                             <div class="course-item">
                                 <div class="course-thumb">
@@ -92,10 +92,10 @@
           <h2><span>热门小组</span></h2>
           <div class="pull-right clearfix">
             <ul class="nav">
-              <li><a href=""  class="active">类别</a></li>
-              <li><a href="">类别</a></li>
-              <li><a href="">类别</a></li>
-              <li><a href="">类别</a></li>
+              <li><a href=""  class="active">教师中心</a></li>
+              <li><a href="">学习辅导</a></li>
+              <li><a href="">课外研修</a></li>
+              <li><a href="">文学创作</a></li>
             </ul>
           </div>
         </div>
