@@ -34,8 +34,8 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
-        Page<V9Resources> resources = resourcesDao.getPageResources(1,4);
-        Page<V9Group> groups = groupDao.queryGpListByPage(1,4);
+        Page<V9Resources> resources = resourcesDao.getPageResources(1,8);
+        Page<V9Group> groups = groupDao.queryGpListByPage(1,8);
 
         model.addAttribute("resources", resources);
         model.addAttribute("groups", groups);
