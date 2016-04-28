@@ -61,6 +61,7 @@
                         </ul>
                     </div>
                     <div class="course list">
+                        <div class="row">
                         <c:forEach items="${page.list}" var="course">
                             <div class="col-md-4 col-xs-6">
                                 <div class="course-item">
@@ -78,6 +79,7 @@
                                 </div>
                             </div>
                         </c:forEach>
+                    </div>
                     </div>
                     <div class="clearfix"></div>
                     <jsp:include page="../common/pagination.jsp" />
