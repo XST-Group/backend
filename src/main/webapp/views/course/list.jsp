@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="col-xs-9">
-                    <div class="course-list">
-                        <div class="row course">
+                    <div class="course-list course">
+                        <div class="row">
                             <c:forEach items="${page.list}" var="resource">
                                 <div class="col-md-4">
                                     <div class="course-item">
@@ -47,7 +47,6 @@
                                         </div>
                                         <div class="course-info">
                                             <div class="title"><a href="/xst/resources/${resource.id}">${resource.title}</a></div>
-                                            <div class="desc"><p>${resource.description}</p></div>
                                             <div class="addon">
                                                 <span class="author">作者</span>
                                                 <span class="pull-right free">免费</span>
