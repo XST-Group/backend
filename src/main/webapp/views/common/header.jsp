@@ -25,6 +25,10 @@
                 <li><a href="${rootPath}/user/register">注册</a></li>
             </ul>
         </div>
+        <form class="header-search  pull-right " action="index.html" method="post">
+          <input type="text" name="name" value="" placeholder="搜索...">
+          <button type="submit" name="button"><i class="fa fa-search"></i></button>
+        </form>        
     </div>
 </header>
 <!-- end of header -->

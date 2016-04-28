@@ -46,7 +46,7 @@
             <div class="col-md-3">
                 <div class="group-side">
                     <h3>小组介绍</h3>
-                    <p>Android作为目前最热门的技术之一，工作前景一片大好！不是不想学，只是不知从何学起？没关系！由小慕</p>
+                    <p>这是一个测试的小组,该小组并非实际小组!</p>
                     <a href="" class="btn btn-primary join-btn">加入小组</a>
                 </div>
                 <!-- group-side -->
