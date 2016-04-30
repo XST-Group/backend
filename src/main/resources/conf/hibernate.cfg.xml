@@ -22,6 +22,6 @@
 		<mapping class="com.xst.entity.V9Category"/>
 		<mapping class="com.xst.entity.V9Resources"/>
 		<mapping class="com.xst.entity.V9Member" />
-
 	</session-factory>
 </hibernate-configuration>
+

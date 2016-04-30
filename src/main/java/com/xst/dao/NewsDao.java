@@ -1,5 +1,6 @@
 package com.xst.dao;
 
+import com.xst.entity.V9Group;
 import com.xst.entity.V9News;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
@@ -69,8 +70,10 @@ public class NewsDao  extends BaseDao {
 	 * @param news
      */
 	public void addNews(V9News news){
+		//save(news.getV9NewsData());
 		save(news);
 
+		//save(news.getV9NewsData());
 	}
 
 	/**
@@ -100,6 +103,21 @@ public class NewsDao  extends BaseDao {
 		String hql="from V9News as news where news.arr_group_id like ?";
 		Query  query = query(hql);
 		query.setString(0,"%,"+groupId+",%");
+		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
+		return newsPage;
+	}
+
+	/**
+	 * 按分类分页查询
+	 * @param type
+	 * @param pageNum
+	 * @param pageSize
+     * @return
+     */
+	public Page<V9News> queryForTNewsListByPage(String type,int pageNum , int pageSize){
+		String hql="from V9News as news where news.type=? order by news.listorder desc,news.updatetime desc ";
+		Query query = query(hql);
+		query.setString(0,type);
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;
 	}

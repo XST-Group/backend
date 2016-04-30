@@ -35,7 +35,7 @@
                                 </blockquote>
 
                                 <div class="article-main">
-                                    ${news.v9NewsData.content}
+                                    ${news.content}
 
                                     <div class="label-ad">
                                         <ul>
