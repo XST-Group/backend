@@ -66,9 +66,6 @@ public class MemberController {
         String message = "";
         StatusMessage statusMessage = new StatusMessage(status,message);
 
-
-        System.out.println("1111111111111111111111"+username+"  "+password);
-
         if(username == ""){
             message = "请输入用户名";
         }else{
@@ -93,7 +90,7 @@ public class MemberController {
         statusMessage.setStatus(status);
         statusMessage.setMessage(message);
 //        redirectAttributes.addAttribute("loginMsg","登录失败");
-        return "redirect://index";
+        return "redirect:/index";
     }
 
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -46,6 +47,11 @@ public class ResourcesController {
         resourcesDao.addHitsByOne(resource);
         List<V9Resources> siblings = resourcesDao.getBrotherResources(id);
         System.out.println(siblings.size());
+
+        File video = new File(resource.getUrl());
+        model.addAttribute("video",video);
+
+        
         model.addAttribute("resource", resource);
         model.addAttribute("siblings", siblings);
 
