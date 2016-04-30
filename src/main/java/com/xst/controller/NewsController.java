@@ -56,4 +56,33 @@ public class NewsController {
         System.out.println(news);
         return "news/view";
     }
+
+    /**
+     * 资讯分类
+     * @param model
+     * @param type
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "/list/{type}",method = RequestMethod.GET)
+    public String viewTypeNews(Model model,@PathVariable("type")int  type,String page){
+
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        String type1=null;
+        switch (type){
+            case 1:type1="教研";
+                break;
+            case 2:type1="管理";
+                break;
+            case 3:type1="综合";
+                break;
+            case 4:type1="海外";
+                break;
+            default:break;
+        }
+        Page<V9News> pageNews = newsDao.queryForTNewsListByPage(type1,pageNum,15);
+        model.addAttribute("page",pageNews);
+        model.addAttribute("currentPage", pageNum);
+        return "news/list";
+    }
 }

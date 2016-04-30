@@ -30,8 +30,11 @@ public class V9News implements java.io.Serializable {
 	private int inputtime;
 	private int updatetime;
 	private String arr_group_id;
+	private String type;
+	private String content;
 
-	private V9NewsData v9NewsData;
+
+	//private V9NewsData v9NewsData;
 
 	public V9News() {
 	}
@@ -39,7 +42,7 @@ public class V9News implements java.io.Serializable {
 	public V9News(short catid, short typeid, String title, String style,
 			String thumb, String keywords, String description, boolean posids,
 			String url, byte listorder, byte status, boolean sysadd,
-			boolean islink, String username, int inputtime, int updatetime,V9NewsData v9NewsData,String arr_group_id) {
+			boolean islink, String username, int inputtime, int updatetime,String arr_group_id,String type,String content) {
 		this.catid = catid;
 		this.typeid = typeid;
 		this.title = title;
@@ -56,8 +59,9 @@ public class V9News implements java.io.Serializable {
 		this.username = username;
 		this.inputtime = inputtime;
 		this.updatetime = updatetime;
-		this.v9NewsData=v9NewsData;
 		this.arr_group_id=arr_group_id;
+		this.type=type;
+		this.content=content;
 	}
 
 	@Id
@@ -224,13 +228,31 @@ public class V9News implements java.io.Serializable {
 		this.arr_group_id = arr_group_id;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
+/*	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "id", nullable = true)
 	public V9NewsData getV9NewsData(){
 		return v9NewsData;
 	}
 	public void setV9NewsData(V9NewsData v9NewsData){
 		this.v9NewsData=v9NewsData;
+	}*/
+
+	@Column(name = "type", nullable = false, length = 10)
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Column(name = "content", nullable = true, length = 16777215)
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	@Override
@@ -254,7 +276,8 @@ public class V9News implements java.io.Serializable {
 				", inputtime=" + inputtime +
 				", updatetime=" + updatetime +
 				", arr_group_id='" + arr_group_id + '\'' +
-				", v9NewsData=" + v9NewsData +
+				", v9NewsData="  +'\''+
+				",type= " + type+
 				'}';
 	}
 }
