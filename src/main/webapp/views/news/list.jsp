@@ -86,10 +86,23 @@
                     <div class="nav">
                         <ul>
                             <span>分类:</span>
-                            <li><a href="" class="active">全部</a></li>
-                            <li><a href="">分类1</a></li>
-                            <li><a href="">分类2</a></li>
-                            <li><a href="">分类3</a></li>
+                            <c:if test="${type==null}"> <li><a href="${rootPath}/news/list" class="active">全部</a></li></c:if>
+                            <c:if test="${type!=null}"> <li><a href="${rootPath}/news/list" >全部</a></li></c:if>
+
+                            <c:if test="${type==1}"> <li><a href="${rootPath}/news/list/1" class="active">教研</a></li></c:if>
+                            <c:if test="${type!=1}"> <li><a href="${rootPath}/news/list/1" >教研</a></li></c:if>
+
+                            <c:if test="${type==2}"> <li><a href="${rootPath}/news/list/2" class="active">管理</a></li></c:if>
+                            <c:if test="${type!=2}"> <li><a href="${rootPath}/news/list/2" >管理</a></li></c:if>
+
+                            <c:if test="${type==3}"> <li><a href="${rootPath}/news/list/3" class="active">综合</a></li></c:if>
+                            <c:if test="${type!=3}"> <li><a href="${rootPath}/news/list/3" >综合</a></li></c:if>
+
+                            <c:if test="${type==4}"> <li><a href="${rootPath}/news/list/4" class="active">海外</a></li></c:if>
+                            <c:if test="${type!=4}"> <li><a href="${rootPath}/news/list/4" >海外</a></li></c:if>
+                            <%--<li><a href="${rootPath}/news/list/2">管理</a></li>--%>
+                            <%--<li><a href="${rootPath}/news/list/3">综合</a></li>--%>
+                            <%--<li><a href="${rootPath}/news/list/4">海外</a></li>--%>
                         </ul>
                     </div>
 
