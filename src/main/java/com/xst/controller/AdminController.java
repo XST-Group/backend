@@ -151,16 +151,17 @@ public class AdminController {
     @RequestMapping(value = "/news/add" , method = RequestMethod.POST)
     public String addNews( int catid, int typeid,String title, String style, String thumb,
                            String keywords, String description, String url, int listorder,byte status, String username,
-                           RedirectAttributes redirectAttributes,String arr_group_id,String type,String content){
+                           RedirectAttributes redirectAttributes,String arr_group_id,String type,String content, HttpSession session){
 
         long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
         System.out.println("时间戳"+currentTime);
 
         System.out.println(content);
 
+        V9Admin admin = (V9Admin) session.getAttribute("loginUser");
         V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
                 , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,
-                arr_group_id,type,content);
+                arr_group_id,type,content,admin.getUsername());
         //news.setV9NewsData(newsData);
         //newsData.setId(new Integer(news.getId()));
         //news.setV9NewsData(newsData);

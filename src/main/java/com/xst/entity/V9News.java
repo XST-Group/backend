@@ -32,7 +32,7 @@ public class V9News implements java.io.Serializable {
 	private String arr_group_id;
 	private String type;
 	private String content;
-
+	private String createName;
 
 	//private V9NewsData v9NewsData;
 
@@ -42,7 +42,7 @@ public class V9News implements java.io.Serializable {
 	public V9News(short catid, short typeid, String title, String style,
 			String thumb, String keywords, String description, boolean posids,
 			String url, byte listorder, byte status, boolean sysadd,
-			boolean islink, String username, int inputtime, int updatetime,String arr_group_id,String type,String content) {
+			boolean islink, String username, int inputtime, int updatetime,String arr_group_id,String type,String content,String createName) {
 		this.catid = catid;
 		this.typeid = typeid;
 		this.title = title;
@@ -62,6 +62,7 @@ public class V9News implements java.io.Serializable {
 		this.arr_group_id=arr_group_id;
 		this.type=type;
 		this.content=content;
+		this.createName=createName;
 	}
 
 	@Id
@@ -253,6 +254,15 @@ public class V9News implements java.io.Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	@Column(name = "createusename", nullable = true, length = 10)
+	public String getCreateName() {
+		return createName;
+	}
+
+	public void setCreateName(String createName) {
+		this.createName = createName;
 	}
 
 	@Override
