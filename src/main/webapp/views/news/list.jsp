@@ -83,6 +83,16 @@
             </div>
 
                 <div id="adv-article">
+                    <div class="nav">
+                        <ul>
+                            <span>分类:</span>
+                            <li><a href="" class="active">全部</a></li>
+                            <li><a href="">分类1</a></li>
+                            <li><a href="">分类2</a></li>
+                            <li><a href="">分类3</a></li>
+                        </ul>
+                    </div>
+
                     <c:forEach begin="${listStart}" end="${page.list.size()}" items="${page.list}" var="news">
                         <div class="row">
                             <div class="col-md-12 floor">
