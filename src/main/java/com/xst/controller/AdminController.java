@@ -4,8 +4,12 @@ import com.xst.bean.CateBean;
 import com.xst.bean.StatusMessage;
 import com.xst.dao.AdminDao;
 import com.xst.dao.CategoryDao;
+import com.xst.dao.NewsDao;
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Admin;
+import com.xst.entity.V9News;
+import com.xst.entity.V9NewsData;
+
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sl on 16-4-4.
@@ -26,6 +31,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
+    @Autowired
+    private NewsDao newsDao;
 
     @Autowired
     @Qualifier("categoryDao")
@@ -122,6 +130,58 @@ public class AdminController {
     @RequestMapping(value = "/index" , method = RequestMethod.GET)
     public String index(){
         return "admin/index";
+    }
+
+    /**
+     * 添加资讯
+     * @param catid
+     * @param typeid
+     * @param title
+     * @param style
+     * @param thumb
+     * @param keywords
+     * @param description
+     * @param url
+     * @param listorder
+     * @param status
+     * @param username
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/news/add" , method = RequestMethod.POST)
+    public String addNews( int catid, int typeid,String title, String style, String thumb,
+                           String keywords, String description, String url, int listorder,byte status, String username,
+                           RedirectAttributes redirectAttributes,String arr_group_id,String type,String content, HttpSession session){
+
+        long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
+        System.out.println("时间戳"+currentTime);
+
+        System.out.println(content);
+
+        V9Admin admin = (V9Admin) session.getAttribute("loginUser");
+        V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
+                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,
+                arr_group_id,type,content,admin.getUsername());
+        //news.setV9NewsData(newsData);
+        //newsData.setId(new Integer(news.getId()));
+        //news.setV9NewsData(newsData);
+        newsDao.addNews(news);
+        redirectAttributes.addFlashAttribute("addNewsMsg","资讯添加成功");//session在跳到页面后马上移除对象
+        return "redirect:/admin/news/success";
+    }
+
+    /**
+     * 重定向
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/news/success",method = RequestMethod.GET)
+    public String success(Model model,RedirectAttributes redirectAttributes){
+        Map<String,String> map=(Map<String, String>)redirectAttributes.getFlashAttributes();
+        System.out.println(map.get("addNewsMsg"));
+        model.addAttribute("addNewsMsg",map.get("addNewsMsg"));
+        model.addAttribute("Msg","添加成功！");
+        return "news/success";
     }
 
 }
