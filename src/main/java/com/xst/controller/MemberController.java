@@ -93,7 +93,7 @@ public class MemberController {
         statusMessage.setStatus(status);
         statusMessage.setMessage(message);
 //        redirectAttributes.addAttribute("loginMsg","登录失败");
-        return "redirect://index";
+        return "redirect:/index";
     }
 
 

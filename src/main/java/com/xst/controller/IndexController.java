@@ -33,12 +33,19 @@ public class IndexController {
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(Model model) {
+
+    public String index(Model model , HttpSession session) {
+
         Page<V9Resources> resources = resourcesDao.getPageResources(1,8);
         Page<V9Group> groups = groupDao.queryGpListByPage(1,8);
 
         model.addAttribute("resources", resources);
         model.addAttribute("groups", groups);
+
+        String path=session
+                .getServletContext().getRealPath("/usr/local/xst/video");
+
+        System.out.println("11111111   "+path);
         return "index";
     }
 

@@ -9,6 +9,7 @@ import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Admin;
 import com.xst.entity.V9News;
 import com.xst.entity.V9NewsData;
+
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -130,7 +131,6 @@ public class AdminController {
     public String index(){
         return "admin/index";
     }
-
 
     /**
      * 添加资讯

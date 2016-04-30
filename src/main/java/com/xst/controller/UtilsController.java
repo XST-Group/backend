@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by sl on 16-4-5.
  */
-/*@Controller
+
+@Controller
 public class UtilsController implements HandlerExceptionResolver {
+
 
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
@@ -21,4 +23,5 @@ public class UtilsController implements HandlerExceptionResolver {
       //  return null;
     }
 
-}*/
+
+}
