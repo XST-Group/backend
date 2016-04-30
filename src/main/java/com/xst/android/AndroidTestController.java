@@ -20,7 +20,7 @@ import java.util.Map;
 public class AndroidTestController {
 
     @RequestMapping(value="/login",method = RequestMethod.POST)
-    public String success(HttpServletResponse response,String name,String psd,RedirectAttributes redirectAttributes){
+    public void success(HttpServletResponse response,String name,String psd,RedirectAttributes redirectAttributes){
         System.out.println("username : " + name+"password : "+psd);
         try {
             if(name.equals("123")&&psd.equals("123"))
@@ -30,6 +30,5 @@ public class AndroidTestController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "news/success";
     }
 }
