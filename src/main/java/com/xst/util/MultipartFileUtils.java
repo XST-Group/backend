@@ -19,6 +19,7 @@ public class MultipartFileUtils {
      * @return 文件的绝对路径
      */
     public static String saveFile(MultipartFile multipartFile,String path){
+
         long unixTime = System.currentTimeMillis();
         String name = HashUtils.HashPath(multipartFile.getOriginalFilename()+unixTime);
         String multipartUrl = path+"/"+name;
