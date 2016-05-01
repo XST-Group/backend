@@ -3,7 +3,7 @@ package com.xst.entity;
 import javax.persistence.*;
 
 /**
- * Created by sl on 16-4-15.
+ * Created by sl on 16-5-1.
  */
 @Entity
 @Table(name = "v9_admin", schema = "", catalog = "db_xst_new")
@@ -135,20 +135,20 @@ public class V9Admin {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        V9Admin v9Admin = (V9Admin) o;
+        V9Admin admin = (V9Admin) o;
 
-        if (userid != v9Admin.userid) return false;
-        if (username != null ? !username.equals(v9Admin.username) : v9Admin.username != null) return false;
-        if (password != null ? !password.equals(v9Admin.password) : v9Admin.password != null) return false;
-        if (roleid != null ? !roleid.equals(v9Admin.roleid) : v9Admin.roleid != null) return false;
-        if (encrypt != null ? !encrypt.equals(v9Admin.encrypt) : v9Admin.encrypt != null) return false;
-        if (lastloginip != null ? !lastloginip.equals(v9Admin.lastloginip) : v9Admin.lastloginip != null) return false;
-        if (lastlogintime != null ? !lastlogintime.equals(v9Admin.lastlogintime) : v9Admin.lastlogintime != null)
+        if (userid != admin.userid) return false;
+        if (username != null ? !username.equals(admin.username) : admin.username != null) return false;
+        if (password != null ? !password.equals(admin.password) : admin.password != null) return false;
+        if (roleid != null ? !roleid.equals(admin.roleid) : admin.roleid != null) return false;
+        if (encrypt != null ? !encrypt.equals(admin.encrypt) : admin.encrypt != null) return false;
+        if (lastloginip != null ? !lastloginip.equals(admin.lastloginip) : admin.lastloginip != null) return false;
+        if (lastlogintime != null ? !lastlogintime.equals(admin.lastlogintime) : admin.lastlogintime != null)
             return false;
-        if (email != null ? !email.equals(v9Admin.email) : v9Admin.email != null) return false;
-        if (realname != null ? !realname.equals(v9Admin.realname) : v9Admin.realname != null) return false;
-        if (card != null ? !card.equals(v9Admin.card) : v9Admin.card != null) return false;
-        if (lang != null ? !lang.equals(v9Admin.lang) : v9Admin.lang != null) return false;
+        if (email != null ? !email.equals(admin.email) : admin.email != null) return false;
+        if (realname != null ? !realname.equals(admin.realname) : admin.realname != null) return false;
+        if (card != null ? !card.equals(admin.card) : admin.card != null) return false;
+        if (lang != null ? !lang.equals(admin.lang) : admin.lang != null) return false;
 
         return true;
     }

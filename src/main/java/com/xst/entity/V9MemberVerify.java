@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
- * Created by CrazyCodess on 2016/4/1.
+ * Created by sl on 16-5-1.
  */
 @Entity
-@Table(name = "v9_member_verify", schema = "db_xst_new")
+@Table(name = "v9_member_verify", schema = "", catalog = "db_xst_new")
 public class V9MemberVerify {
     private int userid;
     private String username;
@@ -27,34 +27,8 @@ public class V9MemberVerify {
     private String contacts;
     private String telphone;
 
-    public V9MemberVerify(){
-
-    }
-
-    public V9MemberVerify(String username, String password, String encrypt, String nickname,
-                          int regdate, String regip, String email, byte modelid, short point,
-                          BigDecimal amount, String modelinfo, byte status, byte siteid, String message,
-                          String contacts, String telphone) {
-        this.username = username;
-        this.password = password;
-        this.encrypt = encrypt;
-        this.nickname = nickname;
-        this.regdate = regdate;
-        this.regip = regip;
-        this.email = email;
-        this.modelid = modelid;
-        this.point = point;
-        this.amount = amount;
-        this.modelinfo = modelinfo;
-        this.status = status;
-        this.siteid = siteid;
-        this.message = message;
-        this.contacts = contacts;
-        this.telphone = telphone;
-    }
-
     @Id
-    @Column(name = "userid", nullable = false)
+    @Column(name = "userid", nullable = false, insertable = true, updatable = true)
     public int getUserid() {
         return userid;
     }
@@ -64,7 +38,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "username", nullable = false, length = 50)
+    @Column(name = "username", nullable = false, insertable = true, updatable = true, length = 50)
     public String getUsername() {
         return username;
     }
@@ -74,7 +48,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "password", nullable = false, length = 32)
+    @Column(name = "password", nullable = false, insertable = true, updatable = true, length = 32)
     public String getPassword() {
         return password;
     }
@@ -84,7 +58,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "encrypt", nullable = false, length = 6)
+    @Column(name = "encrypt", nullable = false, insertable = true, updatable = true, length = 6)
     public String getEncrypt() {
         return encrypt;
     }
@@ -94,7 +68,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "nickname", nullable = false, length = 20)
+    @Column(name = "nickname", nullable = false, insertable = true, updatable = true, length = 20)
     public String getNickname() {
         return nickname;
     }
@@ -104,7 +78,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "regdate", nullable = false)
+    @Column(name = "regdate", nullable = false, insertable = true, updatable = true)
     public int getRegdate() {
         return regdate;
     }
@@ -114,7 +88,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "regip", nullable = false, length = 15)
+    @Column(name = "regip", nullable = false, insertable = true, updatable = true, length = 15)
     public String getRegip() {
         return regip;
     }
@@ -124,7 +98,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "email", nullable = false, length = 32)
+    @Column(name = "email", nullable = false, insertable = true, updatable = true, length = 32)
     public String getEmail() {
         return email;
     }
@@ -134,7 +108,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "modelid", nullable = false)
+    @Column(name = "modelid", nullable = false, insertable = true, updatable = true)
     public byte getModelid() {
         return modelid;
     }
@@ -144,7 +118,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "point", nullable = false)
+    @Column(name = "point", nullable = false, insertable = true, updatable = true)
     public short getPoint() {
         return point;
     }
@@ -154,7 +128,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "amount", nullable = false, precision = 2)
+    @Column(name = "amount", nullable = false, insertable = true, updatable = true, precision = 2)
     public BigDecimal getAmount() {
         return amount;
     }
@@ -164,7 +138,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "modelinfo", nullable = false, length = 255)
+    @Column(name = "modelinfo", nullable = false, insertable = true, updatable = true, length = 255)
     public String getModelinfo() {
         return modelinfo;
     }
@@ -174,7 +148,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, insertable = true, updatable = true)
     public byte getStatus() {
         return status;
     }
@@ -184,7 +158,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "siteid", nullable = false)
+    @Column(name = "siteid", nullable = false, insertable = true, updatable = true)
     public byte getSiteid() {
         return siteid;
     }
@@ -194,7 +168,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "message", nullable = true, length = 100)
+    @Column(name = "message", nullable = true, insertable = true, updatable = true, length = 100)
     public String getMessage() {
         return message;
     }
@@ -204,7 +178,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "contacts", nullable = true, length = 10)
+    @Column(name = "contacts", nullable = true, insertable = true, updatable = true, length = 10)
     public String getContacts() {
         return contacts;
     }
@@ -214,7 +188,7 @@ public class V9MemberVerify {
     }
 
     @Basic
-    @Column(name = "telphone", nullable = true, length = 11)
+    @Column(name = "telphone", nullable = true, insertable = true, updatable = true, length = 11)
     public String getTelphone() {
         return telphone;
     }
