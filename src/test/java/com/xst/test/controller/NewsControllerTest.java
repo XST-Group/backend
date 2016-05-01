@@ -47,7 +47,7 @@ public class NewsControllerTest {
                 .perform(get("/news/list"))
                 .andExpect(view().name("news/list"))
                 .andExpect(forwardedUrl("/views/news/list.jsp"))
-                .andExpect(model().attributeExists("newsList"))
+                .andExpect(model().attributeExists("page"))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
@@ -61,7 +61,7 @@ public class NewsControllerTest {
                 .andDo(print());
 
 
-        ArrayList<V9News> cates =  (ArrayList<V9News>)result.getModelAndView().getModel().get("newsList");
+        Page<V9News> cates =  (Page<V9News>)result.getModelAndView().getModel().get("page");
 
         Assert.assertNotNull(cates);
     }

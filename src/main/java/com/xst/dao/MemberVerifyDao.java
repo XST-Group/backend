@@ -1,7 +1,10 @@
 package com.xst.dao;
 
 import com.xst.entity.V9MemberVerify;
+import com.xst.entity.V9News;
 import com.xst.entity.V9Resources;
+import com.xst.page.Page;
+import com.xst.page.PageHandler;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,6 +22,8 @@ public class MemberVerifyDao extends BaseDao {
     @Qualifier("memberDao")
     private MemberDao memberDao;
 
+    @Autowired
+    private PageHandler<V9MemberVerify> verifyPage;
 
     /**
      * 增加MemberVerify
@@ -77,6 +82,39 @@ public class MemberVerifyDao extends BaseDao {
         List<V9MemberVerify> results = query.list();
         return results;
     }
+
+    /**
+     * 分页查询待验证用户
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Page<V9MemberVerify> queryVerifyListByPage(int pageNum,int pageSize){
+        String hql="from V9MemberVerify as verify order by verify.regdate desc";
+        Query query = query(hql);
+        Page<V9MemberVerify> verifypage = verifyPage.getPage(pageNum, pageSize, V9MemberVerify.class, query);
+        return verifypage;
+    }
+
+    /**
+     * 批量删除
+     * @param select
+     */
+    public void deteteAll(int[] select){
+        String hql="";
+        for(int i=0;i<select.length;i++){
+            if(i==0){
+                hql="userid="+select[i];
+            }
+            else{
+                hql=hql+" or userid ="+select[i];
+            }
+        }
+        hql="delete from V9MemberVerify where "+ hql;
+        Query query = query(hql);
+        query.executeUpdate();
+    }
+
 
 
 }

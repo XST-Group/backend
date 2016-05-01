@@ -92,7 +92,7 @@ public class NewsDao  extends BaseDao {
 		news.setUpdatetime(String.valueOf(currentTime));
 		String thumb=RegexUtils.getPicPath(content);
 		if(thumb==null||thumb.length()==0){
-			thumb="${assetsPath}/images/new_default_page.png";
+			thumb="";
 		}
 		news.setThumb(thumb);
 		//System.out.println("时间戳"+currentTime);
@@ -144,6 +144,25 @@ public class NewsDao  extends BaseDao {
 		query.setString(0,type);
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;
+	}
+
+	/**
+	 * 批量或删除一条
+	 * @param id
+     */
+	public void deleteAll(int[] id){
+		String hql="";
+		for(int i=0;i<id.length;i++){
+				if(i==0){
+					hql="id="+id[i];
+				}
+				else{
+					hql=hql+" or id ="+id[i];
+				}
+		}
+
+		hql="delete from V9News where "+hql;
+		query(hql).executeUpdate();
 	}
 
 }
