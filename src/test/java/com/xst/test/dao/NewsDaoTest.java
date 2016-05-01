@@ -46,7 +46,8 @@ public class NewsDaoTest {
     }
     @Test
     public void testAddNews(){
-        V9NewsData newsData=new V9NewsData();
+        //V9NewsData newsData=new V9NewsData();
+        newsDao.addNews("高考","高考改革了","</br>",",1,2,3,","教研","ew");
 //        V9News news=new V9News((short)1584,(short)0,"分河北高考改革2018启动：文理不分科",""
 //                ,"http://e.36krcnd.com/nil_class/bfbdbaca-8213-48e5-ad13-9aea66c50b10/QQ20160301-12.png!slider"
 //        ,"","高考",false,"",(byte)8,(byte)1,false,false,"",1416498100,1429505965,",1,5,6,","教研","hdsj");

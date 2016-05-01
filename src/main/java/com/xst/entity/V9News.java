@@ -32,8 +32,6 @@ public class V9News implements java.io.Serializable {
 	private String type;
 	private String content;
 
-	//private V9NewsData v9NewsData;
-
 	public V9News() {
 	}
 
@@ -185,10 +183,11 @@ public class V9News implements java.io.Serializable {
 
 	@Column(name = "inputtime", nullable = true)
 	public String getInputtime() {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 
-        String sd = sdf.format(new Date(Long.valueOf(this.inputtime)));
-		return sd;
+//        String sd = sdf.format(new Date(Long.valueOf(this.inputtime)));
+//		return sd;
+		return this.inputtime;
 	}
 
 	public void setInputtime(String inputtime) {
@@ -197,10 +196,11 @@ public class V9News implements java.io.Serializable {
 
 	@Column(name = "updatetime", nullable = true)
 	public String getUpdatetime() {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 
-        String sd = sdf.format(new Date(Long.valueOf(this.updatetime)));
-        return sd;
+//        String sd = sdf.format(new Date(Long.valueOf(this.updatetime)));
+//        return sd;
+		return this.updatetime;
 	}
 
 	public void setUpdatetime(String updatetime) {
@@ -225,6 +225,7 @@ public class V9News implements java.io.Serializable {
 		this.v9NewsData=v9NewsData;
 	}*/
 
+
 	@Column(name = "type", nullable = true, length = 10)
 	public String getType() {
 		return type;
@@ -242,6 +243,7 @@ public class V9News implements java.io.Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 
 	@Override
 	public String toString() {
