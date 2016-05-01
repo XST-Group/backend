@@ -129,7 +129,7 @@ public class NewsDao  extends BaseDao {
      * @return
      */
 	public Page<V9News> queryGroupNews(int groupId,int pageNum , int pageSize){
-		String hql="from V9News as news where news.arr_group_id like ?";
+		String hql="from V9News as news where news.arrGroupId like ?";
 		Query  query = query(hql);
 		query.setString(0,"%,"+groupId+",%");
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);

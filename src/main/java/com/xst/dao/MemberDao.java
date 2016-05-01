@@ -4,7 +4,10 @@ import com.xst.entity.V9Member;
 import com.xst.entity.V9MemberVerify;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
+import org.hibernate.CacheMode;
 import org.hibernate.Query;
+import org.hibernate.ScrollMode;
+import org.hibernate.ScrollableResults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -71,13 +74,43 @@ public class MemberDao extends BaseDao{
      * 分页查询用户列表
      * @param pageNum
      * @param pageSize
+     * @param verify
      * @return
      */
-    public Page<V9Member> queryForMemList(int pageNum , int pageSize){
-        String hql="from V9Member as member order by member.regdate desc";
+    public Page<V9Member> queryForMemList(int pageNum , int pageSize,int verify){
+        String hql="from V9Member  where verify=? order by regdate desc ";// as member where member.verify=? order by member.regdate desc
         Query query = query(hql);
+        query.setString(0,String.valueOf(verify).trim());
+        System.out.println(query.getQueryString());
         Page<V9Member> memberpage = memberPage.getPage(pageNum, pageSize, V9Member.class, query);
         return memberpage;
+    }
+
+    public void acceptMember(int[] userid){
+        String hql="";
+        for(int i=0;i<userid.length;i++){
+            if(i==0){
+                hql="userid="+userid[i];
+            }
+            else{
+                hql=hql+" or userid ="+userid[i];
+            }
+        }
+
+        query("update V9Member set verify=1 where "+hql).executeUpdate();
+    }
+
+    public void refuseMember(int[] userid){
+        String hql="";
+        for(int i=0;i<userid.length;i++){
+            if(i==0){
+                hql="userid="+userid[i];
+            }
+            else{
+                hql=hql+" or userid ="+userid[i];
+            }
+        }
+        query("delete from  V9Member where "+hql).executeUpdate();
     }
 
 }

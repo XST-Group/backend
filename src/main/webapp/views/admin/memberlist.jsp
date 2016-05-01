@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%--
   Created by IntelliJ IDEA.
   User: CrazyCodess
@@ -13,7 +13,6 @@
 </head>
 <body>
 ${page}
-=======
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,8 +24,8 @@ ${page}
     <meta name="author" content="">
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="css/app.min.css"/>
-    <link rel="stylesheet" href="css/admin_manage.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>
 
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -213,8 +212,5 @@ ${page}
                 });
             });
         </script>
-
-
->>>>>>> upstream/master
 </body>
 </html>

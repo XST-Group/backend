@@ -42,12 +42,12 @@ public class AdminController {
     @Qualifier("adminDao")
     private AdminDao adminDao;
 
-    @Autowired
-    private MemberVerifyDao MemVerifyDao;
+/*    @Autowired
+    private MemberVerifyDao MemVerifyDao;*/
 
 
     @Autowired
-    private MemberDao MemberDao;
+    private MemberDao memberDao;
 
 
     @RequestMapping(value = "/resource/list" , method = RequestMethod.GET)
@@ -195,40 +195,60 @@ public class AdminController {
     @RequestMapping(value = "/verify/list" ,method = RequestMethod.GET)
     public String viewMemberVerify(Model model,String page){
         int pageNum = page == null ? 1 : Integer.valueOf(page);
-        Page<V9MemberVerify> verifyPage=MemVerifyDao.queryVerifyListByPage(pageNum,15);
-        model.addAttribute("page",verifyPage);
+        Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,0);
+        model.addAttribute("page",memberPage);
         model.addAttribute("currentPage", pageNum);
-        return "admin/verifylist";
+        return "admin/membercheck";
     }
 
     /**
-     *批量或者删除一个
-     * @param model
-     * @param userid
-     * @return
-     */
-    @RequestMapping(value = "/verify/delete",method = RequestMethod.GET)
-    public String deleteVerify(Model model , @RequestParam(value = "userid[]")int[]  userid){
-        MemVerifyDao.deteteAll(userid);
-        model.addAttribute("msg","删除成功！");
-        return "admin/deleteverifySuccess";
-    }
-
-    /**
-     * 分页显示用户
+     * 分页显示通过验证用户
      * @param model
      * @param page
      * @return
      */
     @RequestMapping(value = "/member/list",method = RequestMethod.GET)
     public String viewMemberList(Model model, String page){
+
         int pageNum = page == null ? 1 : Integer.valueOf(page);
-        Page<V9Member> memberPage=MemberDao.queryForMemList(pageNum,15);
+        Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,1);
         model.addAttribute("page",memberPage);
         model.addAttribute("currentPage", pageNum);
         return "admin/memberlist";
     }
 
+    /**
+     *批量拒绝一个待验证用户
+     * @param model
+     * @param userid
+     * @return
+     */
+    @RequestMapping(value = "/member/refuse",method = RequestMethod.GET)
+    public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
+        memberDao.refuseMember(userid);
+        model.addAttribute("verifyMsg","已拒绝！");
+        return "admin/verify";
+    }
+
+    /**
+     * 批量通过一个待验证的用户
+     * @param model
+     * @param userid
+     * @return
+     */
+    @RequestMapping(value = "/member/accept",method = RequestMethod.GET)
+    public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
+        memberDao.acceptMember(userid);
+        model.addAttribute("verifyMsg","已通过");
+        return "admin/verify";
+    }
+
+    /**
+     * 批量或删除新闻
+     * @param model
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/news/delete",method = RequestMethod.GET)
     public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id){
         newsDao.deleteAll(id);
