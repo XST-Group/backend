@@ -1,4 +1,8 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,8 +13,8 @@
     <meta name="author" content="">
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="css/app.min.css"/>
-    <link rel="stylesheet" href="css/admin_manage.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>
 
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -23,36 +27,8 @@
 --------------------->
 <div class="main">
     <div class="admin">
-        <div class="navbar" role="navigation">
-            <div class="navbar-header">
-                <a class="" href="index.html">
-            <span class="navbar-brand">
-                <span class="fa fa-book"></span> 校视通
-            </span>
-                </a>
-            </div>
 
-            <div class="navbar-user" style="height: 1px;">
-                <ul id="main-menu" class="nav navbar-nav navbar-right">
-                    <li class="dropdown hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> xuzhao***.com
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="./">个人中心</a></li>
-                            <li class="divider"></li>
-                            <li><a href="./">账号设置</a></li>
-                            <li><a href="./">意见反馈</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="sign-in.html">登出</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+        <jsp:include page="header.jsp"/>
 
         <!--------------------
                nav
@@ -81,7 +57,7 @@
                         <li><a href="web-latest.html"><span class="fa fa-caret-right"></span> 资源1</a></li>
                         <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
                         <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
-                        <li><a href="web-courselist.html"><span class="fa fa-caret-right"></span> 课程列表</a></li>
+                        <li><a href="courselist.jsp"><span class="fa fa-caret-right"></span> 课程列表</a></li>
                         <li><a href="courseadd.jsp"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                     </ul>
                 </li>

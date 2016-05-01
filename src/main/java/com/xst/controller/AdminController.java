@@ -48,12 +48,19 @@ public class AdminController {
     private AdminDao adminDao;
 
 
+
+    @RequestMapping(value = "/resource/list" , method = RequestMethod.GET)
+    public String listResource(Model model){
+
+        return "admin/courselist";
+    }
+
+
     /**
      * 添加课程，GET
      * @param model
      * @return 一级目录
      */
-   // @ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.GET)
     public String addResource(Model model){
 
@@ -131,6 +138,20 @@ public class AdminController {
     public String index(){
         return "admin/index";
     }
+
+
+
+
+
+
+
+
+    @RequestMapping(value = "/news/list" , method = RequestMethod.GET)
+    public String listNews(Model model){
+
+        return "admin/newslist";
+    }
+
 
     /**
      * 添加资讯
