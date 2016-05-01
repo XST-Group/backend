@@ -31,18 +31,34 @@
         </div>
         <div class="video-wrapper">
             <div class="container">
+
+                <%--支持本地播放mp4，但是本地没有mp4--%>
                 <div class="video">
                     <video id="really-cool-video" class="video-js vjs-default-skin" controls
                            preload="auto" poster="really-cool-video-poster.jpg"
                            data-setup='{}'>
-                        <source src="${resource.url}" type="video/flv">
-
+                        <source src="${assetsPath}/player/video.mp4" type="video/mp4">
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a web browser
                             that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
                         </p>
                     </video>
                 </div>
+
+                <%--旧版的视频播放先保留--%>
+                <%--<div class="video">--%>
+                    <%--<video id="really-cool-video" class="video-js vjs-default-skin" controls--%>
+                           <%--preload="auto" poster="really-cool-video-poster.jpg"--%>
+                           <%--data-setup='{}'>--%>
+                        <%--<source src="${resource.url}" type="video/flv">--%>
+
+                        <%--<p class="vjs-no-js">--%>
+                            <%--To view this video please enable JavaScript, and consider upgrading to a web browser--%>
+                            <%--that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>--%>
+                        <%--</p>--%>
+                    <%--</video>--%>
+                <%--</div>--%>
+
                 <div class="list">
                     <div class="tabs">
                         <a href="#">相关</a>
@@ -57,6 +73,7 @@
                         </c:forEach>
                     </ul>
                 </div>
+
             </div>
         </div>
 </div>
