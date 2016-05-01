@@ -83,7 +83,7 @@
                     <li><a href="web-latest.html"><span class="fa fa-caret-right"></span> 资源1</a></li>
                     <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
                     <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
-                    <li><a href="web-courselist.html"><span class="fa fa-caret-right"></span> 课程列表</a></li>
+                    <li><a href="courselist.jsp"><span class="fa fa-caret-right"></span> 课程列表</a></li>
                     <li><a href="courseadd.jsp"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                 </ul>
             </li>
@@ -203,12 +203,6 @@
         }
     </script>
 
-    <script type="text/javascript">
-        function firstCategoryChange(){
-
-        }
-
-    </script>
 </div>
   </body>
 </html>
