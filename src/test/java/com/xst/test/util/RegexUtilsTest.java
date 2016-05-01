@@ -10,8 +10,8 @@ public class RegexUtilsTest {
 
     @Test
     public void testGetPicPath(){
-        String s = RegexUtils.getPicPath("ashdgskaj src=\"http://my." +
-                "csdn.net/uploads/201606/027/ahsh_902.png\" style=\"dhaksh");
+        String s = RegexUtils.getPicPath("<img sdhgfgh c  sdas  alt=\"123\" src=\"http://my." +
+                "csdn.net/uploads/201606/027/ahsh_902.png\" style=\"dhaksh />");
         System.out.println(s);
     }
 }
