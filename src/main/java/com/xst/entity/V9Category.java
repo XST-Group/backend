@@ -1,42 +1,19 @@
 package com.xst.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by sl on 16-2-27.
+ * Created by sl on 16-5-1.
  */
 @Entity
-@Table(name = "v9_category", schema = "", catalog = "db_xst_new")
+@javax.persistence.Table(name = "v9_category", schema = "", catalog = "db_xst_new")
 public class V9Category {
-
     private short catid;
-    private short siteid;
-    private String module;
-    private byte type;
-    private short modelid;
-    private short parentid;
-    private String arrparentid;
-    private int child;
-    private String arrchildid;
-    private String catname;
-    private String style;
-    private String image;
-    private String description;
-    private String parentdir;
-    private String catdir;
-    private String url;
-    private int items;
-    private int hits;
-    private String setting;
-    private short listorder;
-    private byte ismenu;
-    private byte sethtml;
-    private String letter;
-    private String usableType;
-    private String rgroup;
 
     @Id
-    @Column(name = "catid")
+    @javax.persistence.Column(name = "catid", nullable = false, insertable = true, updatable = true)
     public short getCatid() {
         return catid;
     }
@@ -45,8 +22,10 @@ public class V9Category {
         this.catid = catid;
     }
 
+    private short siteid;
+
     @Basic
-    @Column(name = "siteid")
+    @javax.persistence.Column(name = "siteid", nullable = false, insertable = true, updatable = true)
     public short getSiteid() {
         return siteid;
     }
@@ -55,8 +34,10 @@ public class V9Category {
         this.siteid = siteid;
     }
 
+    private String module;
+
     @Basic
-    @Column(name = "module")
+    @javax.persistence.Column(name = "module", nullable = false, insertable = true, updatable = true, length = 15)
     public String getModule() {
         return module;
     }
@@ -65,8 +46,10 @@ public class V9Category {
         this.module = module;
     }
 
+    private byte type;
+
     @Basic
-    @Column(name = "type")
+    @javax.persistence.Column(name = "type", nullable = false, insertable = true, updatable = true)
     public byte getType() {
         return type;
     }
@@ -75,8 +58,10 @@ public class V9Category {
         this.type = type;
     }
 
+    private short modelid;
+
     @Basic
-    @Column(name = "modelid")
+    @javax.persistence.Column(name = "modelid", nullable = false, insertable = true, updatable = true)
     public short getModelid() {
         return modelid;
     }
@@ -85,8 +70,10 @@ public class V9Category {
         this.modelid = modelid;
     }
 
+    private short parentid;
+
     @Basic
-    @Column(name = "parentid")
+    @javax.persistence.Column(name = "parentid", nullable = false, insertable = true, updatable = true)
     public short getParentid() {
         return parentid;
     }
@@ -95,8 +82,10 @@ public class V9Category {
         this.parentid = parentid;
     }
 
+    private String arrparentid;
+
     @Basic
-    @Column(name = "arrparentid")
+    @javax.persistence.Column(name = "arrparentid", nullable = false, insertable = true, updatable = true, length = 255)
     public String getArrparentid() {
         return arrparentid;
     }
@@ -105,18 +94,22 @@ public class V9Category {
         this.arrparentid = arrparentid;
     }
 
+    private byte child;
+
     @Basic
-    @Column(name = "child")
-    public int getChild() {
+    @javax.persistence.Column(name = "child", nullable = false, insertable = true, updatable = true)
+    public byte getChild() {
         return child;
     }
 
-    public void setChild(int child) {
+    public void setChild(byte child) {
         this.child = child;
     }
 
+    private String arrchildid;
+
     @Basic
-    @Column(name = "arrchildid")
+    @javax.persistence.Column(name = "arrchildid", nullable = false, insertable = true, updatable = true, length = 16777215)
     public String getArrchildid() {
         return arrchildid;
     }
@@ -125,8 +118,10 @@ public class V9Category {
         this.arrchildid = arrchildid;
     }
 
+    private String catname;
+
     @Basic
-    @Column(name = "catname")
+    @javax.persistence.Column(name = "catname", nullable = false, insertable = true, updatable = true, length = 30)
     public String getCatname() {
         return catname;
     }
@@ -135,8 +130,10 @@ public class V9Category {
         this.catname = catname;
     }
 
+    private String style;
+
     @Basic
-    @Column(name = "style")
+    @javax.persistence.Column(name = "style", nullable = false, insertable = true, updatable = true, length = 5)
     public String getStyle() {
         return style;
     }
@@ -145,8 +142,10 @@ public class V9Category {
         this.style = style;
     }
 
+    private String image;
+
     @Basic
-    @Column(name = "image")
+    @javax.persistence.Column(name = "image", nullable = false, insertable = true, updatable = true, length = 100)
     public String getImage() {
         return image;
     }
@@ -155,8 +154,10 @@ public class V9Category {
         this.image = image;
     }
 
+    private String description;
+
     @Basic
-    @Column(name = "description")
+    @javax.persistence.Column(name = "description", nullable = false, insertable = true, updatable = true, length = 16777215)
     public String getDescription() {
         return description;
     }
@@ -165,8 +166,10 @@ public class V9Category {
         this.description = description;
     }
 
+    private String parentdir;
+
     @Basic
-    @Column(name = "parentdir")
+    @javax.persistence.Column(name = "parentdir", nullable = false, insertable = true, updatable = true, length = 100)
     public String getParentdir() {
         return parentdir;
     }
@@ -175,8 +178,10 @@ public class V9Category {
         this.parentdir = parentdir;
     }
 
+    private String catdir;
+
     @Basic
-    @Column(name = "catdir")
+    @javax.persistence.Column(name = "catdir", nullable = false, insertable = true, updatable = true, length = 30)
     public String getCatdir() {
         return catdir;
     }
@@ -185,8 +190,10 @@ public class V9Category {
         this.catdir = catdir;
     }
 
+    private String url;
+
     @Basic
-    @Column(name = "url")
+    @javax.persistence.Column(name = "url", nullable = false, insertable = true, updatable = true, length = 100)
     public String getUrl() {
         return url;
     }
@@ -195,8 +202,10 @@ public class V9Category {
         this.url = url;
     }
 
+    private int items;
+
     @Basic
-    @Column(name = "items")
+    @javax.persistence.Column(name = "items", nullable = false, insertable = true, updatable = true)
     public int getItems() {
         return items;
     }
@@ -205,8 +214,10 @@ public class V9Category {
         this.items = items;
     }
 
+    private int hits;
+
     @Basic
-    @Column(name = "hits")
+    @javax.persistence.Column(name = "hits", nullable = false, insertable = true, updatable = true)
     public int getHits() {
         return hits;
     }
@@ -215,8 +226,10 @@ public class V9Category {
         this.hits = hits;
     }
 
+    private String setting;
+
     @Basic
-    @Column(name = "setting")
+    @javax.persistence.Column(name = "setting", nullable = false, insertable = true, updatable = true, length = 16777215)
     public String getSetting() {
         return setting;
     }
@@ -225,8 +238,10 @@ public class V9Category {
         this.setting = setting;
     }
 
+    private short listorder;
+
     @Basic
-    @Column(name = "listorder")
+    @javax.persistence.Column(name = "listorder", nullable = false, insertable = true, updatable = true)
     public short getListorder() {
         return listorder;
     }
@@ -235,8 +250,10 @@ public class V9Category {
         this.listorder = listorder;
     }
 
+    private byte ismenu;
+
     @Basic
-    @Column(name = "ismenu")
+    @javax.persistence.Column(name = "ismenu", nullable = false, insertable = true, updatable = true)
     public byte getIsmenu() {
         return ismenu;
     }
@@ -245,8 +262,10 @@ public class V9Category {
         this.ismenu = ismenu;
     }
 
+    private byte sethtml;
+
     @Basic
-    @Column(name = "sethtml")
+    @javax.persistence.Column(name = "sethtml", nullable = false, insertable = true, updatable = true)
     public byte getSethtml() {
         return sethtml;
     }
@@ -255,8 +274,10 @@ public class V9Category {
         this.sethtml = sethtml;
     }
 
+    private String letter;
+
     @Basic
-    @Column(name = "letter")
+    @javax.persistence.Column(name = "letter", nullable = false, insertable = true, updatable = true, length = 30)
     public String getLetter() {
         return letter;
     }
@@ -265,8 +286,10 @@ public class V9Category {
         this.letter = letter;
     }
 
+    private String usableType;
+
     @Basic
-    @Column(name = "usable_type")
+    @javax.persistence.Column(name = "usable_type", nullable = false, insertable = true, updatable = true, length = 255)
     public String getUsableType() {
         return usableType;
     }
@@ -275,8 +298,10 @@ public class V9Category {
         this.usableType = usableType;
     }
 
+    private String rgroup;
+
     @Basic
-    @Column(name = "rgroup")
+    @javax.persistence.Column(name = "rgroup", nullable = false, insertable = true, updatable = true, length = 20)
     public String getRgroup() {
         return rgroup;
     }

@@ -1,273 +1,322 @@
 package com.xst.entity;
 
-import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by sl on 16-4-30.
+ * Created by sl on 16-5-1.
  */
 @Entity
-@Table(name = "v9_news", schema = "db_xst_new")
-public class V9News implements java.io.Serializable {
+@javax.persistence.Table(name = "v9_news", schema = "", catalog = "db_xst_new")
+public class V9News {
+    private String type;
 
-	private Integer id;
-	private short catid;
-	private short typeid;
-	private String title;
-	private String style;
-	private String thumb;
-	private String keywords;
-	private String description;
-	private boolean posids;
-	private String url;
-	private byte listorder;
-	private byte status;
-	private boolean sysadd;
-	private boolean islink;
-	private String username;
-	private String inputtime;
-	private String updatetime;
-	private String arr_group_id;
-	private String type;
-	private String content;
+    @Basic
+    @javax.persistence.Column(name = "type", nullable = true, insertable = true, updatable = true, length = 10)
+    public String getType() {
+        return type;
+    }
 
-	public V9News() {
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public V9News(String title, String description, String content, String arr_group_id, String type, String username) {
-		this.title = title;
-		this.description = description;
-		this.content = content;
-		this.arr_group_id = arr_group_id;
-		this.type = type;
-		this.username = username;
-	}
+    private int id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	public Integer getId() {
-		return this.id;
-	}
+    @Id
+    @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	@Column(name = "catid", nullable = true)
-	public short getCatid() {
-		return this.catid;
-	}
+    private Short catid;
 
-	public void setCatid(short catid) {
-		this.catid = catid;
-	}
+    @Basic
+    @javax.persistence.Column(name = "catid", nullable = true, insertable = true, updatable = true)
+    public Short getCatid() {
+        return catid;
+    }
 
-	@Column(name = "typeid", nullable = true)
-	public short getTypeid() {
-		return this.typeid;
-	}
+    public void setCatid(Short catid) {
+        this.catid = catid;
+    }
 
-	public void setTypeid(short typeid) {
-		this.typeid = typeid;
-	}
+    private Short typeid;
 
-	@Column(name = "title", nullable = true, length = 80)
-	public String getTitle() {
-		return this.title;
-	}
+    @Basic
+    @javax.persistence.Column(name = "typeid", nullable = true, insertable = true, updatable = true)
+    public Short getTypeid() {
+        return typeid;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTypeid(Short typeid) {
+        this.typeid = typeid;
+    }
 
-	@Column(name = "style", nullable = true, length = 24)
-	public String getStyle() {
-		return this.style;
-	}
+    private String title;
 
-	public void setStyle(String style) {
-		this.style = style;
-	}
+    @Basic
+    @javax.persistence.Column(name = "title", nullable = true, insertable = true, updatable = true, length = 80)
+    public String getTitle() {
+        return title;
+    }
 
-	@Column(name = "thumb", nullable = true, length = 100)
-	public String getThumb() {
-		return this.thumb;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setThumb(String thumb) {
-		this.thumb = thumb;
-	}
+    private String style;
 
-	@Column(name = "keywords", nullable = true, length = 40)
-	public String getKeywords() {
-		return this.keywords;
-	}
+    @Basic
+    @javax.persistence.Column(name = "style", nullable = true, insertable = true, updatable = true, length = 24)
+    public String getStyle() {
+        return style;
+    }
 
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
+    public void setStyle(String style) {
+        this.style = style;
+    }
 
-	@Column(name = "description", nullable = true, length = 16777215)
-	public String getDescription() {
-		return this.description;
-	}
+    private String thumb;
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @Basic
+    @javax.persistence.Column(name = "thumb", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getThumb() {
+        return thumb;
+    }
 
-	@Column(name = "posids", nullable = true)
-	public boolean isPosids() {
-		return this.posids;
-	}
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
 
-	public void setPosids(boolean posids) {
-		this.posids = posids;
-	}
+    private String keywords;
 
-	@Column(name = "url", nullable = true, length = 100)
-	public String getUrl() {
-		return this.url;
-	}
+    @Basic
+    @javax.persistence.Column(name = "keywords", nullable = true, insertable = true, updatable = true, length = 40)
+    public String getKeywords() {
+        return keywords;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
 
-	@Column(name = "listorder", nullable = true)
-	public byte getListorder() {
-		return this.listorder;
-	}
+    private String description;
 
-	public void setListorder(byte listorder) {
-		this.listorder = listorder;
-	}
+    @Basic
+    @javax.persistence.Column(name = "description", nullable = true, insertable = true, updatable = true, length = 16777215)
+    public String getDescription() {
+        return description;
+    }
 
-	@Column(name = "status", nullable = true)
-	public byte getStatus() {
-		return this.status;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setStatus(byte status) {
-		this.status = status;
-	}
+    private Byte posids;
 
-	@Column(name = "sysadd", nullable = true)
-	public boolean isSysadd() {
-		return this.sysadd;
-	}
+    @Basic
+    @javax.persistence.Column(name = "posids", nullable = true, insertable = true, updatable = true)
+    public Byte getPosids() {
+        return posids;
+    }
 
-	public void setSysadd(boolean sysadd) {
-		this.sysadd = sysadd;
-	}
+    public void setPosids(Byte posids) {
+        this.posids = posids;
+    }
 
-	@Column(name = "islink", nullable = true)
-	public boolean isIslink() {
-		return this.islink;
-	}
+    private String url;
 
-	public void setIslink(boolean islink) {
-		this.islink = islink;
-	}
+    @Basic
+    @javax.persistence.Column(name = "url", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getUrl() {
+        return url;
+    }
 
-	@Column(name = "username", nullable = true, length = 20)
-	public String getUsername() {
-		return this.username;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private Byte listorder;
 
-	@Column(name = "inputtime", nullable = true)
-	public String getInputtime() {
-//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+    @Basic
+    @javax.persistence.Column(name = "listorder", nullable = true, insertable = true, updatable = true)
+    public Byte getListorder() {
+        return listorder;
+    }
 
-//        String sd = sdf.format(new Date(Long.valueOf(this.inputtime)));
-//		return sd;
-		return this.inputtime;
-	}
+    public void setListorder(Byte listorder) {
+        this.listorder = listorder;
+    }
 
-	public void setInputtime(String inputtime) {
-		this.inputtime = inputtime;
-	}
+    private Byte status;
 
-	@Column(name = "updatetime", nullable = true)
-	public String getUpdatetime() {
-//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+    @Basic
+    @javax.persistence.Column(name = "status", nullable = true, insertable = true, updatable = true)
+    public Byte getStatus() {
+        return status;
+    }
 
-//        String sd = sdf.format(new Date(Long.valueOf(this.updatetime)));
-//        return sd;
-		return this.updatetime;
-	}
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
 
-	public void setUpdatetime(String updatetime) {
-		this.updatetime = updatetime;
-	}
+    private Byte sysadd;
 
-	@Column(name = "arr_group_id", nullable = true)
-	public String getArr_group_id() {
-		return this.arr_group_id;
-	}
+    @Basic
+    @javax.persistence.Column(name = "sysadd", nullable = true, insertable = true, updatable = true)
+    public Byte getSysadd() {
+        return sysadd;
+    }
 
-	public void setArr_group_id(String arr_group_id) {
-		this.arr_group_id = arr_group_id;
-	}
+    public void setSysadd(Byte sysadd) {
+        this.sysadd = sysadd;
+    }
 
-/*	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", nullable = true)
-	public V9NewsData getV9NewsData(){
-		return v9NewsData;
-	}
-	public void setV9NewsData(V9NewsData v9NewsData){
-		this.v9NewsData=v9NewsData;
-	}*/
+    private Byte islink;
 
+    @Basic
+    @javax.persistence.Column(name = "islink", nullable = true, insertable = true, updatable = true)
+    public Byte getIslink() {
+        return islink;
+    }
 
-	@Column(name = "type", nullable = true, length = 10)
-	public String getType() {
-		return type;
-	}
+    public void setIslink(Byte islink) {
+        this.islink = islink;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    private String username;
 
-	@Column(name = "content", nullable = true, length = 16777215)
-	public String getContent() {
-		return content;
-	}
+    @Basic
+    @javax.persistence.Column(name = "username", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getUsername() {
+        return username;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
+    private Integer inputtime;
 
-	@Override
-	public String toString() {
-		return "V9News{" +
-				"id=" + id +
-				", catid=" + catid +
-				", typeid=" + typeid +
-				", title='" + title + '\'' +
-				", style='" + style + '\'' +
-				", thumb='" + thumb + '\'' +
-				", keywords='" + keywords + '\'' +
-				", description='" + description + '\'' +
-				", posids=" + posids +
-				", url='" + url + '\'' +
-				", listorder=" + listorder +
-				", status=" + status +
-				", sysadd=" + sysadd +
-				", islink=" + islink +
-				", username='" + username + '\'' +
-				", inputtime=" + inputtime +
-				", updatetime=" + updatetime +
-				", arr_group_id='" + arr_group_id + '\'' +
-				", v9NewsData="  +'\''+
-				",type= " + type+
-				'}';
-	}
+    @Basic
+    @javax.persistence.Column(name = "inputtime", nullable = true, insertable = true, updatable = true)
+    public Integer getInputtime() {
+        return inputtime;
+    }
+
+    public void setInputtime(Integer inputtime) {
+        this.inputtime = inputtime;
+    }
+
+    private Integer updatetime;
+
+    @Basic
+    @javax.persistence.Column(name = "updatetime", nullable = true, insertable = true, updatable = true)
+    public Integer getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Integer updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    private String arrGroupId;
+
+    @Basic
+    @javax.persistence.Column(name = "arr_group_id", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getArrGroupId() {
+        return arrGroupId;
+    }
+
+    public void setArrGroupId(String arrGroupId) {
+        this.arrGroupId = arrGroupId;
+    }
+
+    private String content;
+
+    @Basic
+    @javax.persistence.Column(name = "content", nullable = true, insertable = true, updatable = true, length = 16777215)
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    private String createname;
+
+    @Basic
+    @javax.persistence.Column(name = "createname", nullable = true, insertable = true, updatable = true, length = 10)
+    public String getCreatename() {
+        return createname;
+    }
+
+    public void setCreatename(String createname) {
+        this.createname = createname;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        V9News v9News = (V9News) o;
+
+        if (id != v9News.id) return false;
+        if (type != null ? !type.equals(v9News.type) : v9News.type != null) return false;
+        if (catid != null ? !catid.equals(v9News.catid) : v9News.catid != null) return false;
+        if (typeid != null ? !typeid.equals(v9News.typeid) : v9News.typeid != null) return false;
+        if (title != null ? !title.equals(v9News.title) : v9News.title != null) return false;
+        if (style != null ? !style.equals(v9News.style) : v9News.style != null) return false;
+        if (thumb != null ? !thumb.equals(v9News.thumb) : v9News.thumb != null) return false;
+        if (keywords != null ? !keywords.equals(v9News.keywords) : v9News.keywords != null) return false;
+        if (description != null ? !description.equals(v9News.description) : v9News.description != null) return false;
+        if (posids != null ? !posids.equals(v9News.posids) : v9News.posids != null) return false;
+        if (url != null ? !url.equals(v9News.url) : v9News.url != null) return false;
+        if (listorder != null ? !listorder.equals(v9News.listorder) : v9News.listorder != null) return false;
+        if (status != null ? !status.equals(v9News.status) : v9News.status != null) return false;
+        if (sysadd != null ? !sysadd.equals(v9News.sysadd) : v9News.sysadd != null) return false;
+        if (islink != null ? !islink.equals(v9News.islink) : v9News.islink != null) return false;
+        if (username != null ? !username.equals(v9News.username) : v9News.username != null) return false;
+        if (inputtime != null ? !inputtime.equals(v9News.inputtime) : v9News.inputtime != null) return false;
+        if (updatetime != null ? !updatetime.equals(v9News.updatetime) : v9News.updatetime != null) return false;
+        if (arrGroupId != null ? !arrGroupId.equals(v9News.arrGroupId) : v9News.arrGroupId != null) return false;
+        if (content != null ? !content.equals(v9News.content) : v9News.content != null) return false;
+        if (createname != null ? !createname.equals(v9News.createname) : v9News.createname != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type != null ? type.hashCode() : 0;
+        result = 31 * result + id;
+        result = 31 * result + (catid != null ? catid.hashCode() : 0);
+        result = 31 * result + (typeid != null ? typeid.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (style != null ? style.hashCode() : 0);
+        result = 31 * result + (thumb != null ? thumb.hashCode() : 0);
+        result = 31 * result + (keywords != null ? keywords.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (posids != null ? posids.hashCode() : 0);
+        result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + (listorder != null ? listorder.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (sysadd != null ? sysadd.hashCode() : 0);
+        result = 31 * result + (islink != null ? islink.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (inputtime != null ? inputtime.hashCode() : 0);
+        result = 31 * result + (updatetime != null ? updatetime.hashCode() : 0);
+        result = 31 * result + (arrGroupId != null ? arrGroupId.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (createname != null ? createname.hashCode() : 0);
+        return result;
+    }
 }

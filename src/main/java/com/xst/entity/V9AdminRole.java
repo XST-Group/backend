@@ -3,7 +3,7 @@ package com.xst.entity;
 import javax.persistence.*;
 
 /**
- * Created by sl on 16-4-15.
+ * Created by sl on 16-5-1.
  */
 @Entity
 @Table(name = "v9_admin_role", schema = "", catalog = "db_xst_new")
