@@ -32,37 +32,19 @@ public class V9News implements java.io.Serializable {
 	private String arr_group_id;
 	private String type;
 	private String content;
-	private String createName;
 
 	//private V9NewsData v9NewsData;
 
 	public V9News() {
 	}
 
-	public V9News(short catid, short typeid, String title, String style,
-			String thumb, String keywords, String description, boolean posids,
-			String url, byte listorder, byte status, boolean sysadd,
-			boolean islink, String username, int inputtime, int updatetime,String arr_group_id,String type,String content,String createName) {
-		this.catid = catid;
-		this.typeid = typeid;
+	public V9News(String title, String description, String content, String arr_group_id, String type, String username) {
 		this.title = title;
-		this.style = style;
-		this.thumb = thumb;
-		this.keywords = keywords;
 		this.description = description;
-		this.posids = posids;
-		this.url = url;
-		this.listorder = listorder;
-		this.status = status;
-		this.sysadd = sysadd;
-		this.islink = islink;
+		this.content = content;
+		this.arr_group_id = arr_group_id;
+		this.type = type;
 		this.username = username;
-		this.inputtime = inputtime;
-		this.updatetime = updatetime;
-		this.arr_group_id=arr_group_id;
-		this.type=type;
-		this.content=content;
-		this.createName=createName;
 	}
 
 	@Id
@@ -76,7 +58,7 @@ public class V9News implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "catid", nullable = false)
+	@Column(name = "catid", nullable = true)
 	public short getCatid() {
 		return this.catid;
 	}
@@ -85,7 +67,7 @@ public class V9News implements java.io.Serializable {
 		this.catid = catid;
 	}
 
-	@Column(name = "typeid", nullable = false)
+	@Column(name = "typeid", nullable = true)
 	public short getTypeid() {
 		return this.typeid;
 	}
@@ -94,7 +76,7 @@ public class V9News implements java.io.Serializable {
 		this.typeid = typeid;
 	}
 
-	@Column(name = "title", nullable = false, length = 80)
+	@Column(name = "title", nullable = true, length = 80)
 	public String getTitle() {
 		return this.title;
 	}
@@ -103,7 +85,7 @@ public class V9News implements java.io.Serializable {
 		this.title = title;
 	}
 
-	@Column(name = "style", nullable = false, length = 24)
+	@Column(name = "style", nullable = true, length = 24)
 	public String getStyle() {
 		return this.style;
 	}
@@ -112,7 +94,7 @@ public class V9News implements java.io.Serializable {
 		this.style = style;
 	}
 
-	@Column(name = "thumb", nullable = false, length = 100)
+	@Column(name = "thumb", nullable = true, length = 100)
 	public String getThumb() {
 		return this.thumb;
 	}
@@ -121,7 +103,7 @@ public class V9News implements java.io.Serializable {
 		this.thumb = thumb;
 	}
 
-	@Column(name = "keywords", nullable = false, length = 40)
+	@Column(name = "keywords", nullable = true, length = 40)
 	public String getKeywords() {
 		return this.keywords;
 	}
@@ -130,7 +112,7 @@ public class V9News implements java.io.Serializable {
 		this.keywords = keywords;
 	}
 
-	@Column(name = "description", nullable = false, length = 16777215)
+	@Column(name = "description", nullable = true, length = 16777215)
 	public String getDescription() {
 		return this.description;
 	}
@@ -139,7 +121,7 @@ public class V9News implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "posids", nullable = false)
+	@Column(name = "posids", nullable = true)
 	public boolean isPosids() {
 		return this.posids;
 	}
@@ -148,7 +130,7 @@ public class V9News implements java.io.Serializable {
 		this.posids = posids;
 	}
 
-	@Column(name = "url", nullable = false, length = 100)
+	@Column(name = "url", nullable = true, length = 100)
 	public String getUrl() {
 		return this.url;
 	}
@@ -157,7 +139,7 @@ public class V9News implements java.io.Serializable {
 		this.url = url;
 	}
 
-	@Column(name = "listorder", nullable = false)
+	@Column(name = "listorder", nullable = true)
 	public byte getListorder() {
 		return this.listorder;
 	}
@@ -166,7 +148,7 @@ public class V9News implements java.io.Serializable {
 		this.listorder = listorder;
 	}
 
-	@Column(name = "status", nullable = false)
+	@Column(name = "status", nullable = true)
 	public byte getStatus() {
 		return this.status;
 	}
@@ -175,7 +157,7 @@ public class V9News implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@Column(name = "sysadd", nullable = false)
+	@Column(name = "sysadd", nullable = true)
 	public boolean isSysadd() {
 		return this.sysadd;
 	}
@@ -184,7 +166,7 @@ public class V9News implements java.io.Serializable {
 		this.sysadd = sysadd;
 	}
 
-	@Column(name = "islink", nullable = false)
+	@Column(name = "islink", nullable = true)
 	public boolean isIslink() {
 		return this.islink;
 	}
@@ -193,7 +175,7 @@ public class V9News implements java.io.Serializable {
 		this.islink = islink;
 	}
 
-	@Column(name = "username", nullable = false, length = 20)
+	@Column(name = "username", nullable = true, length = 20)
 	public String getUsername() {
 		return this.username;
 	}
@@ -202,7 +184,7 @@ public class V9News implements java.io.Serializable {
 		this.username = username;
 	}
 
-	@Column(name = "inputtime", nullable = false)
+	@Column(name = "inputtime", nullable = true)
 	public int getInputtime() {
 		return this.inputtime;
 	}
@@ -211,7 +193,7 @@ public class V9News implements java.io.Serializable {
 		this.inputtime = inputtime;
 	}
 
-	@Column(name = "updatetime", nullable = false)
+	@Column(name = "updatetime", nullable = true)
 	public int getUpdatetime() {
 		return this.updatetime;
 	}
@@ -220,7 +202,7 @@ public class V9News implements java.io.Serializable {
 		this.updatetime = updatetime;
 	}
 
-	@Column(name = "arr_group_id", nullable = false)
+	@Column(name = "arr_group_id", nullable = true)
 	public String getArr_group_id() {
 		return this.arr_group_id;
 	}
@@ -238,7 +220,7 @@ public class V9News implements java.io.Serializable {
 		this.v9NewsData=v9NewsData;
 	}*/
 
-	@Column(name = "type", nullable = false, length = 10)
+	@Column(name = "type", nullable = true, length = 10)
 	public String getType() {
 		return type;
 	}
@@ -254,15 +236,6 @@ public class V9News implements java.io.Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	@Column(name = "createusename", nullable = true, length = 10)
-	public String getCreateName() {
-		return createName;
-	}
-
-	public void setCreateName(String createName) {
-		this.createName = createName;
 	}
 
 	@Override
