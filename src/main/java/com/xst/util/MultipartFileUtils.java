@@ -23,6 +23,9 @@ public class MultipartFileUtils {
         long unixTime = System.currentTimeMillis();
         String name = HashUtils.HashPath(multipartFile.getOriginalFilename()+unixTime);
         String multipartUrl = path+"/"+name;
+
+        System.out.println("filePath : "+multipartUrl);
+
         File file = null;
         try {
             file = new File(path);
@@ -32,6 +35,7 @@ public class MultipartFileUtils {
             byte[] buffer = multipartFile.getBytes();
             FileOutputStream fStream = new FileOutputStream(multipartUrl);
             fStream.write(buffer);
+            System.out.println(buffer);
             fStream.close();
         } catch (IOException e) {
             multipartUrl = "";

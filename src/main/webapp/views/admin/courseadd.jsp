@@ -82,15 +82,15 @@
 
             <!--  课程添加   -->
             <h2 class="dash-head">课程添加</h2>
-            <form class="video-add" name="form1" id="form1" action="UploadServlet" method="post" enctype="multipart/form-data" target="if" onsubmit="return go()">
+            <form class="video-add" name="form1" id="form1" action="${rootPath}/admin/resource/add" method="post" enctype="multipart/form-data" target="if" onsubmit="return go()">
                 <div class="form-group form-info">
                     <label for="courseName">课程名称</label>
-                    <input type="text" class="form-control" id="courseName" value="">
+                    <input type="text" class="form-control" id="courseName" name="title" value="">
                 </div>
                 <div class="select">
                     <div class="">
                         <span>&nbsp;&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;&nbsp;&nbsp;</span>
-                        <select class="form-control" id="category-select">
+                        <select class="form-control" id="category-select" name="cate1">
                             <option selected value="">请选择</option>
                             <c:forEach items="${firstCategorys}" var="category">
                                 <option value="${category.id}">${category.name}</option>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="">
                         <span>阶&nbsp;&nbsp;段</span>
-                        <select class="form-control" id="second-category-select" disabled="disabled">
+                        <select class="form-control" id="second-category-select" name="cate2" disabled="disabled">
                             <c:forEach items="${categoryList}" var="category2" >
                                 <c:if test="${categoryList != null}">
                                     <option value="${category2.id}">${category2.name}</option>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="">
                         <span>学&nbsp;&nbsp;科</span>
-                        <select class="form-control" id="third-category-select" disabled="disabled">
+                        <select class="form-control" id="third-category-select" name="cate3" disabled="disabled">
                             <c:forEach items="${categoryList}" var="category3">
                                 <c:if test="${categoryList != null}">
                                     <option value="${category3.id}">${category3.name}</option>
@@ -120,10 +120,10 @@
                 </div>
                 <div class="form-group inputFile">
                     <label for="inputFile">上传视频</label>
-                    <input type="file" id="inputFile" value="">
+                    <input type="file" id="inputFile" name="video" value=""/>
                     <p class="help-block">支持MP4格式</p>
                 </div>
-                <button type="submit" class="btn btn-success btn-course">确定</button>
+                <input type="submit" class="btn btn-success btn-course" value="上传" />
             </form>
             <!--  END 课程添加-->
             <iframe id="if" name="if" src="" style="display: none"></iframe>
@@ -164,7 +164,7 @@
               var prop = document.getElementById("prop");
               suspend.style.display = 'block';
               cname.innerHTML = courseName.value;
-              var timer = setInterval("getP()",50);
+//              var timer = setInterval("getP()",50);
             }
             function cancel() {
               document.getElementById("suspend").style.display = "none";
