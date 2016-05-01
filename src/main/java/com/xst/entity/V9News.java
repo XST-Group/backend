@@ -1,6 +1,8 @@
 package com.xst.entity;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by sl on 16-4-30.
@@ -24,13 +26,11 @@ public class V9News implements java.io.Serializable {
 	private boolean sysadd;
 	private boolean islink;
 	private String username;
-	private int inputtime;
-	private int updatetime;
+	private String inputtime;
+	private String updatetime;
 	private String arr_group_id;
 	private String type;
 	private String content;
-
-	//private V9NewsData v9NewsData;
 
 	public V9News() {
 	}
@@ -182,20 +182,28 @@ public class V9News implements java.io.Serializable {
 	}
 
 	@Column(name = "inputtime", nullable = true)
-	public int getInputtime() {
+	public String getInputtime() {
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+
+//        String sd = sdf.format(new Date(Long.valueOf(this.inputtime)));
+//		return sd;
 		return this.inputtime;
 	}
 
-	public void setInputtime(int inputtime) {
+	public void setInputtime(String inputtime) {
 		this.inputtime = inputtime;
 	}
 
 	@Column(name = "updatetime", nullable = true)
-	public int getUpdatetime() {
+	public String getUpdatetime() {
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+
+//        String sd = sdf.format(new Date(Long.valueOf(this.updatetime)));
+//        return sd;
 		return this.updatetime;
 	}
 
-	public void setUpdatetime(int updatetime) {
+	public void setUpdatetime(String updatetime) {
 		this.updatetime = updatetime;
 	}
 
@@ -217,6 +225,7 @@ public class V9News implements java.io.Serializable {
 		this.v9NewsData=v9NewsData;
 	}*/
 
+
 	@Column(name = "type", nullable = true, length = 10)
 	public String getType() {
 		return type;
@@ -234,6 +243,7 @@ public class V9News implements java.io.Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 
 	@Override
 	public String toString() {

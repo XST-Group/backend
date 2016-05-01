@@ -83,7 +83,6 @@ public class NewsController {
         Page<V9News> pageNews = newsDao.queryForTNewsListByPage(type1,pageNum,15);
         model.addAttribute("page",pageNews);                    //有addAttribute一定是从服务器得到数据
         model.addAttribute("currentPage", pageNum);
-
         model.addAttribute("type",type);
         return "news/list";
     }

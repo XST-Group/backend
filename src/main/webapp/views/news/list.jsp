@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -126,7 +127,15 @@
                                         </div>
                                         </c:when>
                                         <c:otherwise>
-                                            <div class="col-md-12">
+                                            <div class="col-md-3">
+                                                <a href="/xst/news/view/${news.id}" class="transition">
+                                                    <span class="image-wrapper">
+                                                        <img src="${assetsPath}/images/new_default_page.png" alt="${news.title}"/>
+                                                    </span>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-md-9">
                                                 <div class="title"><a href="/xst/news/view/${page.list.get(0).id}">${news.title}</a></div>
                                                 <div class="decs">${news.description}</div>
                                                 <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${news.inputtime}</div>
