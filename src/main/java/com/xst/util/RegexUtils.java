@@ -9,13 +9,19 @@ import java.util.regex.Pattern;
 public class RegexUtils {
 
     public static String getPicPath(String content){
-        Pattern pattern = Pattern.compile("src=\"[http|https]+[://]+[0-9A-Za-z:/[-]_#[?][=][.][&]]*");
-        Matcher matcher = pattern.matcher(content);
 
-        if(matcher.find()) {
-            return content.substring(matcher.start()+5,matcher.end());
-        }else{
-            return null;
+        Pattern pattern0 = Pattern.compile("<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>");
+        Matcher matcher0 = pattern0.matcher(content);
+
+        if(matcher0.find()) {
+            String stringOfImg = content.substring(matcher0.start(), matcher0.end());
+            Pattern pattern = Pattern.compile("src=\"[http|https]+[://]+[0-9A-Za-z:/[-]_#[?][=][.][&]]*");
+            Matcher matcher = pattern.matcher(stringOfImg);
+            if(matcher.find()) {
+                return stringOfImg.substring(matcher.start()+5,matcher.end());
+            }
         }
+
+        return null;
     }
 }
