@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -29,39 +28,11 @@
 --------------------->
 <div class="main">
     <div class="admin">
-        <div class="navbar" role="navigation">
-            <div class="navbar-header">
-                <a class="" href="index.html">
-            <span class="navbar-brand">
-                <span class="fa fa-book"></span> 校视通
-            </span>
-                </a>
-            </div>
 
-            <div class="navbar-user" style="height: 1px;">
-                <ul id="main-menu" class="nav navbar-nav navbar-right">
-                    <li class="dropdown hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> xuzhao***.com
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="./">个人中心</a></li>
-                            <li class="divider"></li>
-                            <li><a href="./">账号设置</a></li>
-                            <li><a href="./">意见反馈</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="sign-in.html">登出</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+        <jsp:include page="header.jsp" />
 
         <!--------------------
-               nav
+                nav
         --------------------->
         <div class="sidebar-nav">
             <ul>
@@ -76,7 +47,6 @@
                         <li><a href="#"><span class="fa fa-caret-right"></span> 注册审核</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="#" data-target="resourceManage" class="nav-header">
                         <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
@@ -87,11 +57,10 @@
                         <li><a href="web-latest.html"><span class="fa fa-caret-right"></span> 资源1</a></li>
                         <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
                         <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
-                        <li><a href="web-courselist.html"><span class="fa fa-caret-right"></span> 课程列表</a></li>
+                        <li><a href="courselist.jsp"><span class="fa fa-caret-right"></span> 课程列表</a></li>
                         <li><a href="courseadd.jsp"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="#" data-target="dashboard-menu3" class="nav-header">
                         <i class="fa fa-fw fa-group"></i>&nbsp;&nbsp;小组管理<i class="fa fa-collapse"></i>
@@ -102,12 +71,9 @@
                         <li><a href="users-change.html"><span class="fa fa-caret-right"></span>小组1</a></li>
                     </ul>
                 </li>
-
                 <li><a href="#" data-target="dashboard-menu4" class="nav-header"><i
                         class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                 <li>
-
-
             </ul>
         </div>
 
@@ -116,49 +82,48 @@
 
             <!--  课程添加   -->
             <h2 class="dash-head">课程添加</h2>
-            <form class="video-add" name="form1" id="form1" action="UploadServlet" method="post" enctype="multipart/form-data" target="if" onsubmit="return go()">
+            <form class="video-add" name="form1" id="form1" action="${rootPath}/admin/resource/add" method="post" enctype="multipart/form-data" target="if" onsubmit="return go()">
                 <div class="form-group form-info">
                     <label for="courseName">课程名称</label>
-                    <input type="text" class="form-control" id="courseName" value="">
+                    <input type="text" class="form-control" id="courseName" name="title" value="">
                 </div>
                 <div class="select">
                     <div class="">
-                        <span>一级目录</span>
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
+                        <span>&nbsp;&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;&nbsp;&nbsp;</span>
+                        <select class="form-control" id="category-select" name="cate1">
+                            <option selected value="">请选择</option>
+                            <c:forEach items="${firstCategorys}" var="category">
+                                <option value="${category.id}">${category.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="">
-                        <span>二级目录</span>
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
+                        <span>阶&nbsp;&nbsp;段</span>
+                        <select class="form-control" id="second-category-select" name="cate2" disabled="disabled">
+                            <c:forEach items="${categoryList}" var="category2" >
+                                <c:if test="${categoryList != null}">
+                                    <option value="${category2.id}">${category2.name}</option>
+                                </c:if>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="">
-                        <span>三级目录</span>
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
+                        <span>学&nbsp;&nbsp;科</span>
+                        <select class="form-control" id="third-category-select" name="cate3" disabled="disabled">
+                            <c:forEach items="${categoryList}" var="category3">
+                                <c:if test="${categoryList != null}">
+                                    <option value="${category3.id}">${category3.name}</option>
+                                </c:if>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
                 <div class="form-group inputFile">
                     <label for="inputFile">上传视频</label>
-                    <input type="file" id="inputFile" value="">
+                    <input type="file" id="inputFile" name="video" value=""/>
                     <p class="help-block">支持MP4格式</p>
                 </div>
-                <button type="submit" class="btn btn-success btn-course">确定</button>
+                <input type="submit" class="btn btn-success btn-course" value="上传" />
             </form>
             <!--  END 课程添加-->
             <iframe id="if" name="if" src="" style="display: none"></iframe>
@@ -199,7 +164,7 @@
               var prop = document.getElementById("prop");
               suspend.style.display = 'block';
               cname.innerHTML = courseName.value;
-              var timer = setInterval("getP()",50);
+//              var timer = setInterval("getP()",50);
             }
             function cancel() {
               document.getElementById("suspend").style.display = "none";
@@ -263,6 +228,75 @@
             });
         </script>
 
+       <script>
+           $(document).ready(function () {
+               $(".sidebar-nav a").click(function(){
+                   var tree="."+$(this).attr("data-target");
+                   $(tree).slideToggle(300);
+                   if($(this).hasClass("collapsed")){
+                       $(this).removeClass("collapsed");
+                   }else{
+                       $(this).addClass("collapsed");
+                   }
+               })
+
+               $('input').iCheck({
+                   checkboxClass: 'icheckbox_square-blue',
+                   radioClass: 'iradio_square-blue',
+                   increaseArea: '20%' // optional
+               });
+
+               var category_select = $("#category-select"),
+                       second_category_select = $("#second-category-select"),
+                       third_category_select = $("#third-category-select");
+
+               category_select.change(function(){
+                   if(category_select.val() == 1) {
+//                       if(second_category_select.attr("disabled")=="disabled"){
+                           second_category_select.attr("disabled",false);
+                           third_category_select.attr("disabled",false);
+
+//                       }
+                       loadCategory(category_select.val(),second_category_select);
+
+                   } else {
+                       second_category_select.attr("disabled","disabled");
+                       third_category_select.attr("disabled","disabled");
+                       clearCategory(second_category_select);
+                       clearCategory(third_category_select);
+                   }
+               });
+
+        //zqh:new
+
+               second_category_select.change(function(){
+                   if(second_category_select.val() != "") {
+                       loadCategory(second_category_select.val(),third_category_select);
+                   } else {
+                       clearCategory(third_category_select);
+                   }
+               });
+
+           });
+
+           function loadCategory(id , selector){
+//            var url = "http://" + host + uri + id + ".json";
+               var url = "http://localhost:8080/xst/category/node/"+id;
+               $.getJSON(url , function(data){
+                   selector.empty();
+                   $.each(data,function(i, category){
+                       var option = "<option value='" + category.id + "'>" + category.name + "</option>";
+                       selector.append(option);
+                   });
+               });
+           }
+
+           function clearCategory(selector) {
+               selector.empty();
+           }
+       </script>
+
+    </div>
 
 </body>
 </html>

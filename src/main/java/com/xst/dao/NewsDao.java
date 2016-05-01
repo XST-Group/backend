@@ -85,11 +85,16 @@ public class NewsDao  extends BaseDao {
 
 	public void addNews(String title, String description, String content,
 						String arr_group_id, String type, String username){
-		V9News news=new V9News(title,description,content,arr_group_id,type,username);
+		V9News news=new V9News();
 		long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
 		System.out.println("时间戳"+String.valueOf(currentTime));
-		news.setInputtime(String.valueOf(currentTime));
-		news.setUpdatetime(String.valueOf(currentTime));
+		news.setTitle(title);
+		news.setDescription(description);
+		news.setContent(content);
+		news.setType(type);
+		news.setUsername(username);
+		news.setInputtime((int) currentTime);
+		news.setUpdatetime((int) currentTime);
 		String thumb=RegexUtils.getPicPath(content);
 		if(thumb==null||thumb.length()==0){
 			thumb="";

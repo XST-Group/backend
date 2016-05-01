@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,14 +45,21 @@ public class AdminController {
     @Autowired
     private MemberVerifyDao MemVerifyDao;
 
+
     @Autowired
     private MemberDao MemberDao;
+
+
+    @RequestMapping(value = "/resource/list" , method = RequestMethod.GET)
+    public String listResource(Model model){
+
+        return "admin/courselist";
+    }
     /**
      * 添加课程，GET
      * @param model
      * @return 一级目录
      */
-   // @ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.GET)
     public String addResource(Model model){
 
@@ -63,18 +71,20 @@ public class AdminController {
     }
 
 
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.POST)
-    public String addResource(String title , int category1id , int category2id , int category3id ,
+    public String addResource(String title , int cate1 , int cate2 , int cate3 ,
                               MultipartFile video , RedirectAttributes redirectAttributes ,
                               HttpSession session){
 
+        System.out.println("addResource");
         if(!video.isEmpty()){
 
             String filePath = session.getAttribute("uploadFilePath").toString();
-            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
+//            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
+            String videoUrl = MultipartFileUtils.saveFile(video,"/usr/local/xst/video");
 
-            resourcesDao.addResource(title,category1id,category2id,category3id,videoUrl);
+            resourcesDao.addResource(title,cate1,cate2,cate3,videoUrl);
         }
 
         redirectAttributes.addAttribute("resourceMsg","添加课程成功");
@@ -129,6 +139,20 @@ public class AdminController {
     public String index(){
         return "admin/index";
     }
+
+
+
+
+
+
+
+
+    @RequestMapping(value = "/news/list" , method = RequestMethod.GET)
+    public String listNews(Model model){
+
+        return "admin/newslist";
+    }
+
 
     /**
      * 添加资讯
