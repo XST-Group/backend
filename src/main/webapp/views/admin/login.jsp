@@ -37,7 +37,7 @@
             <div class="modal-header">
                 <i class="fa fa-desktop fa-2x col-md-2"></i>
 
-                <h2 class="text-center col-md-4 col-md-offset-2">后台登录系统</h2>
+                <h2 class="text-center col-md-4 col-md-offset-2">后台系统登录</h2>
             </div>
             <div class="modal-body">
                 <form action="" class="form center-block center-block" method="post">

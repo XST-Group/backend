@@ -72,18 +72,20 @@ public class AdminController {
     }
 
 
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.POST)
-    public String addResource(String title , int category1id , int category2id , int category3id ,
+    public String addResource(String title , int cate1 , int cate2 , int cate3 ,
                               MultipartFile video , RedirectAttributes redirectAttributes ,
                               HttpSession session){
 
+        System.out.println("addResource");
         if(!video.isEmpty()){
 
             String filePath = session.getAttribute("uploadFilePath").toString();
-            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
+//            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
+            String videoUrl = MultipartFileUtils.saveFile(video,"/usr/local/xst/video");
 
-            resourcesDao.addResource(title,category1id,category2id,category3id,videoUrl);
+            resourcesDao.addResource(title,cate1,cate2,cate3,videoUrl);
         }
 
         redirectAttributes.addAttribute("resourceMsg","添加课程成功");
