@@ -129,7 +129,7 @@ public class NewsDao  extends BaseDao {
      * @return
      */
 	public Page<V9News> queryGroupNews(int groupId,int pageNum , int pageSize){
-		String hql="from V9News as news where news.arr_group_id like ?";
+		String hql="from V9News as news where news.arrGroupId like ?";
 		Query  query = query(hql);
 		query.setString(0,"%,"+groupId+",%");
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
@@ -149,6 +149,25 @@ public class NewsDao  extends BaseDao {
 		query.setString(0,type);
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;
+	}
+
+	/**
+	 * 批量或删除一条
+	 * @param id
+     */
+	public void deleteAll(int[] id){
+		String hql="";
+		for(int i=0;i<id.length;i++){
+				if(i==0){
+					hql="id="+id[i];
+				}
+				else{
+					hql=hql+" or id ="+id[i];
+				}
+		}
+
+		hql="delete from V9News where "+hql;
+		query(hql).executeUpdate();
 	}
 
 }

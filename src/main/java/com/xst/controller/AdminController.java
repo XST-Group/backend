@@ -2,19 +2,17 @@ package com.xst.controller;
 
 import com.xst.bean.CateBean;
 import com.xst.bean.StatusMessage;
-import com.xst.dao.AdminDao;
-import com.xst.dao.CategoryDao;
-import com.xst.dao.NewsDao;
-import com.xst.dao.ResourcesDao;
-import com.xst.entity.V9Admin;
+import com.xst.dao.*;
+import com.xst.entity.*;
 
+import com.xst.page.Page;
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,6 +42,12 @@ public class AdminController {
     @Qualifier("adminDao")
     private AdminDao adminDao;
 
+/*    @Autowired
+    private MemberVerifyDao MemVerifyDao;*/
+
+
+    @Autowired
+    private MemberDao memberDao;
 
 
     @RequestMapping(value = "/resource/list" , method = RequestMethod.GET)
@@ -51,8 +55,6 @@ public class AdminController {
 
         return "admin/courselist";
     }
-
-
     /**
      * 添加课程，GET
      * @param model
@@ -183,5 +185,105 @@ public class AdminController {
         model.addAttribute("Msg","添加成功！");
         return "news/success";
     }
+
+    /**
+     * 分页显示待验证用户
+     * @param model
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "/verify/list" ,method = RequestMethod.GET)
+    public String viewMemberVerify(Model model,String page){
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,0);
+        model.addAttribute("page",memberPage);
+        model.addAttribute("currentPage", pageNum);
+        return "admin/membercheck";
+    }
+
+    /**
+     * 分页显示通过验证用户
+     * @param model
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "/member/list",method = RequestMethod.GET)
+    public String viewMemberList(Model model, String page){
+
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,1);
+        model.addAttribute("page",memberPage);
+        model.addAttribute("currentPage", pageNum);
+        return "admin/memberlist";
+    }
+
+    /**
+     *批量拒绝一个待验证用户
+     * @param model
+     * @param userid
+     * @return
+     */
+    @RequestMapping(value = "/member/refuse",method = RequestMethod.GET)
+    public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
+        memberDao.refuseMember(userid);
+        model.addAttribute("verifyMsg","已拒绝！");
+        return "admin/verify";
+    }
+
+    /**
+     * 批量通过一个待验证的用户
+     * @param model
+     * @param userid
+     * @return
+     */
+    @RequestMapping(value = "/member/accept",method = RequestMethod.GET)
+    public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
+        memberDao.acceptMember(userid);
+        model.addAttribute("verifyMsg","已通过");
+        return "admin/verify";
+    }
+
+    /**
+     * 批量或删除新闻
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/news/delete",method = RequestMethod.GET)
+    public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id){
+        newsDao.deleteAll(id);
+        model.addAttribute("deleteNewsMsg","删除成功");
+        return "admin/deleteNewsSuccess";
+    }
+
+    /**
+     * 查看一条新闻
+     * @param model
+     * @param newsId
+     * @return
+     */
+    @RequestMapping(value= "/view/news/{newsId}",method = RequestMethod.GET)
+    public String viewNews(Model model,@PathVariable("newsId") int newsId){
+        V9News news=newsDao.getById(newsId);
+        model.addAttribute("news",news);
+        System.out.println(news);
+        return "news/view";
+    }
+
+    /**
+     * 编辑资讯
+     * @param model
+     * @param newsId
+     * @return
+     */
+    @RequestMapping(value = "/edit/news/{newsId}",method = RequestMethod.GET)
+    public String editNews(Model model,@PathVariable("newsId") int newsId){
+        V9News news=newsDao.getById(newsId);
+        model.addAttribute("news",news);
+        return "news/addNews";
+    }
+
+
+
 
 }
