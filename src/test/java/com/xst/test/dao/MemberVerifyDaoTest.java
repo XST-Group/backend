@@ -29,9 +29,9 @@ public class MemberVerifyDaoTest {
     private MemberVerifyDao verifyDao;
     @Test
     public void testAddMbVerify(){
-        V9MemberVerify verify=new V9MemberVerify("111@qq.com","123456","Qortfg","111",1316700992,"211.102.158.216",
-                "111@qq.com",(byte)10,(short)0,new BigDecimal(20),"",(byte)0,(byte)1,"","","");
-        verifyDao.addMbVerify(verify);
+//        V9MemberVerify verify=new V9MemberVerify("111@qq.com","123456","Qortfg","111",1316700992,"211.102.158.216",
+//                "111@qq.com",(byte)10,(short)0,new BigDecimal(20),"",(byte)0,(byte)1,"","","");
+//        verifyDao.addMbVerify(verify);
     }
 
     @Test

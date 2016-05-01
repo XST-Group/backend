@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 /**
- * Created by sl on 16-4-15.
+ * Created by sl on 16-5-1.
  */
 @Entity
 @javax.persistence.Table(name = "v9_member", schema = "", catalog = "db_xst_new")
@@ -22,18 +22,6 @@ public class V9Member {
 
     public void setUserid(int userid) {
         this.userid = userid;
-    }
-
-    private int phpssouid;
-
-    @Basic
-    @javax.persistence.Column(name = "phpssouid", nullable = false, insertable = true, updatable = true)
-    public int getPhpssouid() {
-        return phpssouid;
-    }
-
-    public void setPhpssouid(int phpssouid) {
-        this.phpssouid = phpssouid;
     }
 
     private String username;
@@ -713,72 +701,70 @@ public class V9Member {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        V9Member v9Member = (V9Member) o;
+        V9Member member = (V9Member) o;
 
-        if (userid != v9Member.userid) return false;
-        if (phpssouid != v9Member.phpssouid) return false;
-        if (regdate != v9Member.regdate) return false;
-        if (lastdate != v9Member.lastdate) return false;
-        if (loginnum != v9Member.loginnum) return false;
-        if (groupid != v9Member.groupid) return false;
-        if (areaid != v9Member.areaid) return false;
-        if (point != v9Member.point) return false;
-        if (modelid != v9Member.modelid) return false;
-        if (message != v9Member.message) return false;
-        if (islock != v9Member.islock) return false;
-        if (vip != v9Member.vip) return false;
-        if (overduedate != v9Member.overduedate) return false;
-        if (siteid != v9Member.siteid) return false;
-        if (relAdminUserid != v9Member.relAdminUserid) return false;
-        if (ktdate != v9Member.ktdate) return false;
-        if (relBank != v9Member.relBank) return false;
-        if (username != null ? !username.equals(v9Member.username) : v9Member.username != null) return false;
-        if (password != null ? !password.equals(v9Member.password) : v9Member.password != null) return false;
-        if (encrypt != null ? !encrypt.equals(v9Member.encrypt) : v9Member.encrypt != null) return false;
-        if (nickname != null ? !nickname.equals(v9Member.nickname) : v9Member.nickname != null) return false;
-        if (regip != null ? !regip.equals(v9Member.regip) : v9Member.regip != null) return false;
-        if (lastip != null ? !lastip.equals(v9Member.lastip) : v9Member.lastip != null) return false;
-        if (email != null ? !email.equals(v9Member.email) : v9Member.email != null) return false;
-        if (amount != null ? !amount.equals(v9Member.amount) : v9Member.amount != null) return false;
-        if (uparent != null ? !uparent.equals(v9Member.uparent) : v9Member.uparent != null) return false;
-        if (utype != null ? !utype.equals(v9Member.utype) : v9Member.utype != null) return false;
-        if (ustate != null ? !ustate.equals(v9Member.ustate) : v9Member.ustate != null) return false;
-        if (utel != null ? !utel.equals(v9Member.utel) : v9Member.utel != null) return false;
-        if (ubegin != null ? !ubegin.equals(v9Member.ubegin) : v9Member.ubegin != null) return false;
-        if (upower != null ? !upower.equals(v9Member.upower) : v9Member.upower != null) return false;
-        if (ucraete != null ? !ucraete.equals(v9Member.ucraete) : v9Member.ucraete != null) return false;
-        if (ustart != null ? !ustart.equals(v9Member.ustart) : v9Member.ustart != null) return false;
-        if (ustop != null ? !ustop.equals(v9Member.ustop) : v9Member.ustop != null) return false;
-        if (ugroup != null ? !ugroup.equals(v9Member.ugroup) : v9Member.ugroup != null) return false;
-        if (ulockip != null ? !ulockip.equals(v9Member.ulockip) : v9Member.ulockip != null) return false;
-        if (urequest != null ? !urequest.equals(v9Member.urequest) : v9Member.urequest != null) return false;
-        if (uanswer != null ? !uanswer.equals(v9Member.uanswer) : v9Member.uanswer != null) return false;
-        if (ugrade != null ? !ugrade.equals(v9Member.ugrade) : v9Member.ugrade != null) return false;
-        if (uoffice != null ? !uoffice.equals(v9Member.uoffice) : v9Member.uoffice != null) return false;
-        if (uorgan != null ? !uorgan.equals(v9Member.uorgan) : v9Member.uorgan != null) return false;
-        if (repass != null ? !repass.equals(v9Member.repass) : v9Member.repass != null) return false;
-        if (totaltime != null ? !totaltime.equals(v9Member.totaltime) : v9Member.totaltime != null) return false;
-        if (relAdminUsername != null ? !relAdminUsername.equals(v9Member.relAdminUsername) : v9Member.relAdminUsername != null)
+        if (userid != member.userid) return false;
+        if (regdate != member.regdate) return false;
+        if (lastdate != member.lastdate) return false;
+        if (loginnum != member.loginnum) return false;
+        if (groupid != member.groupid) return false;
+        if (areaid != member.areaid) return false;
+        if (point != member.point) return false;
+        if (modelid != member.modelid) return false;
+        if (message != member.message) return false;
+        if (islock != member.islock) return false;
+        if (vip != member.vip) return false;
+        if (overduedate != member.overduedate) return false;
+        if (siteid != member.siteid) return false;
+        if (relAdminUserid != member.relAdminUserid) return false;
+        if (ktdate != member.ktdate) return false;
+        if (relBank != member.relBank) return false;
+        if (username != null ? !username.equals(member.username) : member.username != null) return false;
+        if (password != null ? !password.equals(member.password) : member.password != null) return false;
+        if (encrypt != null ? !encrypt.equals(member.encrypt) : member.encrypt != null) return false;
+        if (nickname != null ? !nickname.equals(member.nickname) : member.nickname != null) return false;
+        if (regip != null ? !regip.equals(member.regip) : member.regip != null) return false;
+        if (lastip != null ? !lastip.equals(member.lastip) : member.lastip != null) return false;
+        if (email != null ? !email.equals(member.email) : member.email != null) return false;
+        if (amount != null ? !amount.equals(member.amount) : member.amount != null) return false;
+        if (uparent != null ? !uparent.equals(member.uparent) : member.uparent != null) return false;
+        if (utype != null ? !utype.equals(member.utype) : member.utype != null) return false;
+        if (ustate != null ? !ustate.equals(member.ustate) : member.ustate != null) return false;
+        if (utel != null ? !utel.equals(member.utel) : member.utel != null) return false;
+        if (ubegin != null ? !ubegin.equals(member.ubegin) : member.ubegin != null) return false;
+        if (upower != null ? !upower.equals(member.upower) : member.upower != null) return false;
+        if (ucraete != null ? !ucraete.equals(member.ucraete) : member.ucraete != null) return false;
+        if (ustart != null ? !ustart.equals(member.ustart) : member.ustart != null) return false;
+        if (ustop != null ? !ustop.equals(member.ustop) : member.ustop != null) return false;
+        if (ugroup != null ? !ugroup.equals(member.ugroup) : member.ugroup != null) return false;
+        if (ulockip != null ? !ulockip.equals(member.ulockip) : member.ulockip != null) return false;
+        if (urequest != null ? !urequest.equals(member.urequest) : member.urequest != null) return false;
+        if (uanswer != null ? !uanswer.equals(member.uanswer) : member.uanswer != null) return false;
+        if (ugrade != null ? !ugrade.equals(member.ugrade) : member.ugrade != null) return false;
+        if (uoffice != null ? !uoffice.equals(member.uoffice) : member.uoffice != null) return false;
+        if (uorgan != null ? !uorgan.equals(member.uorgan) : member.uorgan != null) return false;
+        if (repass != null ? !repass.equals(member.repass) : member.repass != null) return false;
+        if (totaltime != null ? !totaltime.equals(member.totaltime) : member.totaltime != null) return false;
+        if (relAdminUsername != null ? !relAdminUsername.equals(member.relAdminUsername) : member.relAdminUsername != null)
             return false;
-        if (contacts != null ? !contacts.equals(v9Member.contacts) : v9Member.contacts != null) return false;
-        if (qq != null ? !qq.equals(v9Member.qq) : v9Member.qq != null) return false;
-        if (telphone != null ? !telphone.equals(v9Member.telphone) : v9Member.telphone != null) return false;
-        if (schoolmaster != null ? !schoolmaster.equals(v9Member.schoolmaster) : v9Member.schoolmaster != null)
+        if (contacts != null ? !contacts.equals(member.contacts) : member.contacts != null) return false;
+        if (qq != null ? !qq.equals(member.qq) : member.qq != null) return false;
+        if (telphone != null ? !telphone.equals(member.telphone) : member.telphone != null) return false;
+        if (schoolmaster != null ? !schoolmaster.equals(member.schoolmaster) : member.schoolmaster != null)
             return false;
-        if (schoolAddress != null ? !schoolAddress.equals(v9Member.schoolAddress) : v9Member.schoolAddress != null)
+        if (schoolAddress != null ? !schoolAddress.equals(member.schoolAddress) : member.schoolAddress != null)
             return false;
-        if (servicemoney != null ? !servicemoney.equals(v9Member.servicemoney) : v9Member.servicemoney != null)
+        if (servicemoney != null ? !servicemoney.equals(member.servicemoney) : member.servicemoney != null)
             return false;
-        if (invoicetitle != null ? !invoicetitle.equals(v9Member.invoicetitle) : v9Member.invoicetitle != null)
+        if (invoicetitle != null ? !invoicetitle.equals(member.invoicetitle) : member.invoicetitle != null)
             return false;
-        if (postalcode != null ? !postalcode.equals(v9Member.postalcode) : v9Member.postalcode != null) return false;
-        if (renewtime != null ? !renewtime.equals(v9Member.renewtime) : v9Member.renewtime != null) return false;
-        if (remark != null ? !remark.equals(v9Member.remark) : v9Member.remark != null) return false;
-        if (vouchStatus != null ? !vouchStatus.equals(v9Member.vouchStatus) : v9Member.vouchStatus != null)
-            return false;
-        if (vouchTime != null ? !vouchTime.equals(v9Member.vouchTime) : v9Member.vouchTime != null) return false;
-        if (moneyInfo != null ? !moneyInfo.equals(v9Member.moneyInfo) : v9Member.moneyInfo != null) return false;
-        if (visitOpinion != null ? !visitOpinion.equals(v9Member.visitOpinion) : v9Member.visitOpinion != null)
+        if (postalcode != null ? !postalcode.equals(member.postalcode) : member.postalcode != null) return false;
+        if (renewtime != null ? !renewtime.equals(member.renewtime) : member.renewtime != null) return false;
+        if (remark != null ? !remark.equals(member.remark) : member.remark != null) return false;
+        if (vouchStatus != null ? !vouchStatus.equals(member.vouchStatus) : member.vouchStatus != null) return false;
+        if (vouchTime != null ? !vouchTime.equals(member.vouchTime) : member.vouchTime != null) return false;
+        if (moneyInfo != null ? !moneyInfo.equals(member.moneyInfo) : member.moneyInfo != null) return false;
+        if (visitOpinion != null ? !visitOpinion.equals(member.visitOpinion) : member.visitOpinion != null)
             return false;
 
         return true;
@@ -787,7 +773,6 @@ public class V9Member {
     @Override
     public int hashCode() {
         int result = userid;
-        result = 31 * result + phpssouid;
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (encrypt != null ? encrypt.hashCode() : 0);

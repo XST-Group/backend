@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by sl on 16-4-6.
+ * Created by sl on 16-5-1.
  */
 @Entity
 @javax.persistence.Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
@@ -13,7 +13,7 @@ public class V9Resources {
     private int id;
 
     @Id
-    @javax.persistence.Column(name = "id")
+    @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class V9Resources {
     private String title;
 
     @Basic
-    @javax.persistence.Column(name = "title")
+    @javax.persistence.Column(name = "title", nullable = true, insertable = true, updatable = true, length = 200)
     public String getTitle() {
         return title;
     }
@@ -37,7 +37,7 @@ public class V9Resources {
     private String creatime;
 
     @Basic
-    @javax.persistence.Column(name = "creatime")
+    @javax.persistence.Column(name = "creatime", nullable = true, insertable = true, updatable = true, length = 11)
     public String getCreatime() {
         return creatime;
     }
@@ -49,7 +49,7 @@ public class V9Resources {
     private String url;
 
     @Basic
-    @javax.persistence.Column(name = "url")
+    @javax.persistence.Column(name = "url", nullable = true, insertable = true, updatable = true, length = 65535)
     public String getUrl() {
         return url;
     }
@@ -61,7 +61,7 @@ public class V9Resources {
     private String category1;
 
     @Basic
-    @javax.persistence.Column(name = "category_1")
+    @javax.persistence.Column(name = "category_1", nullable = true, insertable = true, updatable = true, length = 100)
     public String getCategory1() {
         return category1;
     }
@@ -73,7 +73,7 @@ public class V9Resources {
     private String category2;
 
     @Basic
-    @javax.persistence.Column(name = "category_2")
+    @javax.persistence.Column(name = "category_2", nullable = true, insertable = true, updatable = true, length = 100)
     public String getCategory2() {
         return category2;
     }
@@ -85,7 +85,7 @@ public class V9Resources {
     private String category3;
 
     @Basic
-    @javax.persistence.Column(name = "category_3")
+    @javax.persistence.Column(name = "category_3", nullable = true, insertable = true, updatable = true, length = 100)
     public String getCategory3() {
         return category3;
     }
@@ -97,7 +97,7 @@ public class V9Resources {
     private String rgroup;
 
     @Basic
-    @javax.persistence.Column(name = "rgroup")
+    @javax.persistence.Column(name = "rgroup", nullable = true, insertable = true, updatable = true, length = 10)
     public String getRgroup() {
         return rgroup;
     }
@@ -109,7 +109,7 @@ public class V9Resources {
     private Integer rstatus;
 
     @Basic
-    @javax.persistence.Column(name = "rstatus")
+    @javax.persistence.Column(name = "rstatus", nullable = true, insertable = true, updatable = true)
     public Integer getRstatus() {
         return rstatus;
     }
@@ -121,7 +121,7 @@ public class V9Resources {
     private Integer category1Id;
 
     @Basic
-    @javax.persistence.Column(name = "category_1_id")
+    @javax.persistence.Column(name = "category_1_id", nullable = true, insertable = true, updatable = true)
     public Integer getCategory1Id() {
         return category1Id;
     }
@@ -133,7 +133,7 @@ public class V9Resources {
     private Integer category2Id;
 
     @Basic
-    @javax.persistence.Column(name = "category_2_id")
+    @javax.persistence.Column(name = "category_2_id", nullable = true, insertable = true, updatable = true)
     public Integer getCategory2Id() {
         return category2Id;
     }
@@ -145,7 +145,7 @@ public class V9Resources {
     private Integer category3Id;
 
     @Basic
-    @javax.persistence.Column(name = "category_3_id")
+    @javax.persistence.Column(name = "category_3_id", nullable = true, insertable = true, updatable = true)
     public Integer getCategory3Id() {
         return category3Id;
     }
@@ -157,7 +157,7 @@ public class V9Resources {
     private Integer category4Id;
 
     @Basic
-    @javax.persistence.Column(name = "category_4_id")
+    @javax.persistence.Column(name = "category_4_id", nullable = true, insertable = true, updatable = true)
     public Integer getCategory4Id() {
         return category4Id;
     }
@@ -169,7 +169,7 @@ public class V9Resources {
     private Integer category5Id;
 
     @Basic
-    @javax.persistence.Column(name = "category_5_id")
+    @javax.persistence.Column(name = "category_5_id", nullable = true, insertable = true, updatable = true)
     public Integer getCategory5Id() {
         return category5Id;
     }
@@ -181,7 +181,7 @@ public class V9Resources {
     private String category4;
 
     @Basic
-    @javax.persistence.Column(name = "category_4")
+    @javax.persistence.Column(name = "category_4", nullable = true, insertable = true, updatable = true, length = 100)
     public String getCategory4() {
         return category4;
     }
@@ -193,7 +193,7 @@ public class V9Resources {
     private String category5;
 
     @Basic
-    @javax.persistence.Column(name = "category_5")
+    @javax.persistence.Column(name = "category_5", nullable = true, insertable = true, updatable = true, length = 100)
     public String getCategory5() {
         return category5;
     }
@@ -205,7 +205,7 @@ public class V9Resources {
     private String thumb;
 
     @Basic
-    @javax.persistence.Column(name = "thumb")
+    @javax.persistence.Column(name = "thumb", nullable = true, insertable = true, updatable = true, length = 500)
     public String getThumb() {
         return thumb;
     }
@@ -217,7 +217,7 @@ public class V9Resources {
     private Integer hits;
 
     @Basic
-    @javax.persistence.Column(name = "hits")
+    @javax.persistence.Column(name = "hits", nullable = true, insertable = true, updatable = true)
     public Integer getHits() {
         return hits;
     }
@@ -229,7 +229,7 @@ public class V9Resources {
     private String arrGroupId;
 
     @Basic
-    @javax.persistence.Column(name = "arr_group_id")
+    @javax.persistence.Column(name = "arr_group_id", nullable = true, insertable = true, updatable = true, length = 255)
     public String getArrGroupId() {
         return arrGroupId;
     }
@@ -241,40 +241,12 @@ public class V9Resources {
     private String description;
 
     @Basic
-    @javax.persistence.Column(name = "description")
+    @javax.persistence.Column(name = "description", nullable = true, insertable = true, updatable = true, length = 65535)
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public V9Resources() {
-    }
-
-    public V9Resources(String title, String creatime, String url, String category1, String category2,
-                       String category3, String rgroup, Integer rstatus, Integer category1Id,
-                       Integer category2Id, Integer category3Id, Integer category4Id, Integer category5Id,
-                       String category4, String category5, String thumb, Integer hits, String arrGroupId, String description) {
-        this.title = title;
-        this.creatime = creatime;
-        this.url = url;
-        this.category1 = category1;
-        this.category2 = category2;
-        this.category3 = category3;
-        this.rgroup = rgroup;
-        this.rstatus = rstatus;
-        this.category1Id = category1Id;
-        this.category2Id = category2Id;
-        this.category3Id = category3Id;
-        this.category4Id = category4Id;
-        this.category5Id = category5Id;
-        this.category4 = category4;
-        this.category5 = category5;
-        this.thumb = thumb;
-        this.hits = hits;
-        this.arrGroupId = arrGroupId;
         this.description = description;
     }
 

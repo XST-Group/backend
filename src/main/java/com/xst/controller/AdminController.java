@@ -7,8 +7,6 @@ import com.xst.dao.CategoryDao;
 import com.xst.dao.NewsDao;
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Admin;
-import com.xst.entity.V9News;
-import com.xst.entity.V9NewsData;
 
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,12 +45,19 @@ public class AdminController {
     private AdminDao adminDao;
 
 
+
+    @RequestMapping(value = "/resource/list" , method = RequestMethod.GET)
+    public String listResource(Model model){
+
+        return "admin/courselist";
+    }
+
+
     /**
      * 添加课程，GET
      * @param model
      * @return 一级目录
      */
-   // @ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.GET)
     public String addResource(Model model){
 
@@ -61,22 +65,24 @@ public class AdminController {
 
         model.addAttribute("firstCategorys",fisrtCategorys);
 
-        return "admin/addresource";
+        return "admin/courseadd";
     }
 
 
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.POST)
-    public String addResource(String title , int category1id , int category2id , int category3id ,
+    public String addResource(String title , int cate1 , int cate2 , int cate3 ,
                               MultipartFile video , RedirectAttributes redirectAttributes ,
                               HttpSession session){
 
+        System.out.println("addResource");
         if(!video.isEmpty()){
 
             String filePath = session.getAttribute("uploadFilePath").toString();
-            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
+//            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
+            String videoUrl = MultipartFileUtils.saveFile(video,"/usr/local/xst/video");
 
-            resourcesDao.addResource(title,category1id,category2id,category3id,videoUrl);
+            resourcesDao.addResource(title,cate1,cate2,cate3,videoUrl);
         }
 
         redirectAttributes.addAttribute("resourceMsg","添加课程成功");
@@ -132,40 +138,34 @@ public class AdminController {
         return "admin/index";
     }
 
+
+
+
+
+
+
+
+    @RequestMapping(value = "/news/list" , method = RequestMethod.GET)
+    public String listNews(Model model){
+
+        return "admin/newslist";
+    }
+
+
     /**
      * 添加资讯
-     * @param catid
-     * @param typeid
      * @param title
-     * @param style
-     * @param thumb
-     * @param keywords
      * @param description
-     * @param url
-     * @param listorder
-     * @param status
-     * @param username
      * @param redirectAttributes
      * @return
      */
     @RequestMapping(value = "/news/add" , method = RequestMethod.POST)
-    public String addNews( int catid, int typeid,String title, String style, String thumb,
-                           String keywords, String description, String url, int listorder,byte status, String username,
-                           RedirectAttributes redirectAttributes,String arr_group_id,String type,String content, HttpSession session){
-
-        long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
-        System.out.println("时间戳"+currentTime);
+    public String addNews( String title, String description,String content,
+                           RedirectAttributes redirectAttributes,String arr_group_id,String type, HttpSession session){
 
         System.out.println(content);
-
-        V9Admin admin = (V9Admin) session.getAttribute("loginUser");
-        V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
-                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,
-                arr_group_id,type,content,admin.getUsername());
-        //news.setV9NewsData(newsData);
-        //newsData.setId(new Integer(news.getId()));
-        //news.setV9NewsData(newsData);
-        newsDao.addNews(news);
+        String username=(String)session.getAttribute("loginUser");
+        newsDao.addNews(title,description,content,arr_group_id,type,username);
         redirectAttributes.addFlashAttribute("addNewsMsg","资讯添加成功");//session在跳到页面后马上移除对象
         return "redirect:/admin/news/success";
     }

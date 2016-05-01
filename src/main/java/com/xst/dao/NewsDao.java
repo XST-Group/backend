@@ -4,10 +4,17 @@ import com.xst.entity.V9Group;
 import com.xst.entity.V9News;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
+import com.xst.util.DateTurn;
+import com.xst.util.RegexUtils;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,6 +83,28 @@ public class NewsDao  extends BaseDao {
 		//save(news.getV9NewsData());
 	}
 
+	public void addNews(String title, String description, String content,
+						String arr_group_id, String type, String username){
+		V9News news=new V9News();
+		long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
+		System.out.println("时间戳"+String.valueOf(currentTime));
+		news.setTitle(title);
+		news.setDescription(description);
+		news.setContent(content);
+		news.setType(type);
+		news.setUsername(username);
+		news.setInputtime((int) currentTime);
+		news.setUpdatetime((int) currentTime);
+		String thumb=RegexUtils.getPicPath(content);
+		if(thumb==null||thumb.length()==0){
+			thumb="";
+		}
+		news.setThumb(thumb);
+		//System.out.println("时间戳"+currentTime);
+		news.setListorder((byte)1);
+		addNews(news);
+	}
+
 	/**
 	 * 删除News
 	 * @param news
@@ -121,4 +150,5 @@ public class NewsDao  extends BaseDao {
 		Page<V9News> newsPage = newsPageHandler.getPage(pageNum, pageSize, V9News.class, query);
 		return newsPage;
 	}
+
 }
