@@ -134,24 +134,14 @@ public class AdminController {
 
     /**
      * 添加资讯
-     * @param catid
-     * @param typeid
      * @param title
-     * @param style
-     * @param thumb
-     * @param keywords
      * @param description
-     * @param url
-     * @param listorder
-     * @param status
-     * @param username
      * @param redirectAttributes
      * @return
      */
     @RequestMapping(value = "/news/add" , method = RequestMethod.POST)
-    public String addNews( int catid, int typeid,String title, String style, String thumb,
-                           String keywords, String description, String url, int listorder,byte status, String username,
-                           RedirectAttributes redirectAttributes,String arr_group_id,String type,String content, HttpSession session){
+    public String addNews(String title, String type, String description,String content,
+                           RedirectAttributes redirectAttributes, HttpSession session){
 
         long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
         System.out.println("时间戳"+currentTime);
@@ -159,14 +149,14 @@ public class AdminController {
         System.out.println(content);
 
         V9Admin admin = (V9Admin) session.getAttribute("loginUser");
-        V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
-                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,
-                arr_group_id,type,content,admin.getUsername());
+//        V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
+//                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,
+//                arr_group_id,type,content,admin.getUsername());
         //news.setV9NewsData(newsData);
         //newsData.setId(new Integer(news.getId()));
         //news.setV9NewsData(newsData);
-        newsDao.addNews(news);
-        redirectAttributes.addFlashAttribute("addNewsMsg","资讯添加成功");//session在跳到页面后马上移除对象
+//        newsDao.addNews(news);
+        redirectAttributes.addFlashAttribute("addNewsMsg", "资讯添加成功");//session在跳到页面后马上移除对象
         return "redirect:/admin/news/success";
     }
 
