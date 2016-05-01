@@ -17,34 +17,18 @@
 </head>
 <body>
 <form action="/xst/admin/news/add" method="post">
-    <br border="0">
+    <table border="0">
         <th colspan="2">添加资讯</th>
-        <tr>
-            <td>catid</td>
-            <td><input type="text" name="catid"/></td>
-        </tr>
-        <tr>
-            <td>typeid</td>
-            <td><input type="text" name="typeid"/></td>
-        </tr>
         <tr>
             <td>标题</td>
             <td><input type="text" name="title"/></td>
         </tr>
-        <tr>
-            <td>style</td>
-            <td><input type="text" name="style"/></td>
-        </tr>
-        <tr>
+<%--        <tr>
             <td>图片URL</td>
             <td><input type="text" name="thumb"/></td>
-        </tr>
-        <tr>
-            <td>keywords</td>
-            <td><input type="text" name="keywords"/></td>
-        </tr>
+        </tr>--%>
          </tr>
-            <td>描述</td>
+            <td>资讯概要</td>
             <td><input type="text" name="description"/>
             </td>
         <tr>
@@ -56,27 +40,12 @@
         </tr>
 
         <tr>
-            <td>url</td>
-            <td><input type="text" name="url"/></td>
+            <td>资讯分组</td>
+            <td><input type="text" name="arr_group_id"/>
+            </td>
         </tr>
         <tr>
-            <td>listorder</td>
-            <td><input type="text" name="listorder"/></td>
-        </tr>
-        <tr>
-            <td>status</td>
-            <td><input type="text" name="status"/></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td><input type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>所属分组</td>
-            <td><input type="text" name="arr_group_id"/></td>
-        </tr>
-        <tr>
-            <td>类别</td>
+            <td>资讯类别</td>
             <td><input type="text" name="type"/></td>
         </tr>
     </table>

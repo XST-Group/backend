@@ -140,23 +140,13 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/news/add" , method = RequestMethod.POST)
-    public String addNews(String title, String type, String description,String content,
-                           RedirectAttributes redirectAttributes, HttpSession session){
-
-        long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
-        System.out.println("时间戳"+currentTime);
+    public String addNews( String title, String description,String content,
+                           RedirectAttributes redirectAttributes,String arr_group_id,String type, HttpSession session){
 
         System.out.println(content);
-
-        V9Admin admin = (V9Admin) session.getAttribute("loginUser");
-//        V9News news= new V9News((short)catid, (short)typeid, title, style, thumb, keywords,  description
-//                , false, url, (byte)listorder, status, false, false, username, (int)currentTime, (int)currentTime,
-//                arr_group_id,type,content,admin.getUsername());
-        //news.setV9NewsData(newsData);
-        //newsData.setId(new Integer(news.getId()));
-        //news.setV9NewsData(newsData);
-//        newsDao.addNews(news);
-        redirectAttributes.addFlashAttribute("addNewsMsg", "资讯添加成功");//session在跳到页面后马上移除对象
+        String username=(String)session.getAttribute("loginUser");
+        newsDao.addNews(title,description,content,arr_group_id,type,username);
+        redirectAttributes.addFlashAttribute("addNewsMsg","资讯添加成功");//session在跳到页面后马上移除对象
         return "redirect:/admin/news/success";
     }
 

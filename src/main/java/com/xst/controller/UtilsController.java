@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by sl on 16-4-5.
  */
 
-@Controller
+/*@Controller
 public class UtilsController implements HandlerExceptionResolver {
 
 
@@ -24,4 +24,4 @@ public class UtilsController implements HandlerExceptionResolver {
     }
 
 
-}
+}*/
