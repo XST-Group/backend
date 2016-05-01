@@ -86,7 +86,7 @@
                             <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
                             <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
                             <li><a href="web-courselist.html"><span class="fa fa-caret-right"></span> 课程列表</a></li>
-                            <li><a href="web-courseadd.html"><span class="fa fa-caret-right"></span> 课程添加</a></li>
+                            <li><a href="${rootPath}/admin/resource/add"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                         </ul>
                     </li>
 
