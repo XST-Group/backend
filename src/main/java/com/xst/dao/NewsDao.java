@@ -4,6 +4,7 @@ import com.xst.entity.V9Group;
 import com.xst.entity.V9News;
 import com.xst.page.Page;
 import com.xst.page.PageHandler;
+import com.xst.util.RegexUtils;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -84,7 +85,7 @@ public class NewsDao  extends BaseDao {
 		long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
 		news.setInputtime((int)currentTime);
 		news.setUpdatetime((int)currentTime);
-
+		news.setThumb(new RegexUtils().getPicPath(content));
 		System.out.println("时间戳"+currentTime);
 		news.setListorder((byte)1);
 		addNews(news);
