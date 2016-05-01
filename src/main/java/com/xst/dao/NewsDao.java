@@ -7,7 +7,9 @@ import com.xst.page.PageHandler;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -74,6 +76,18 @@ public class NewsDao  extends BaseDao {
 		save(news);
 
 		//save(news.getV9NewsData());
+	}
+
+	public void addNews(String title, String description, String content,
+						String arr_group_id, String type, String username){
+		V9News news=new V9News(title,description,content,arr_group_id,type,username);
+		long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
+		news.setInputtime((int)currentTime);
+		news.setUpdatetime((int)currentTime);
+
+		System.out.println("时间戳"+currentTime);
+		news.setListorder((byte)1);
+		addNews(news);
 	}
 
 	/**

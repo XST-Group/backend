@@ -51,6 +51,7 @@ public class NewsDaoTest {
 //                ,"http://e.36krcnd.com/nil_class/bfbdbaca-8213-48e5-ad13-9aea66c50b10/QQ20160301-12.png!slider"
 //        ,"","高考",false,"",(byte)8,(byte)1,false,false,"",1416498100,1429505965,",1,5,6,","教研","hdsj");
 //        newsDao.addNews(news);
+
     }
     @Test
     public void testDeleteNews(){
