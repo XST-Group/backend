@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -115,6 +116,19 @@
                                         <div class="col-md-3">
                                             <a href="/xst/news/view/${news.id}" class="transition">
                                             <span class="image-wrapper">
+                                                <%--<img src="${news.thumb}" alt="${news.title}"/>--%>
+                             <%--                   <c:set var="str" value="${news.thumb}"/>
+
+                                                <c:if test="${news.thumb==null}">
+                                                    <img src="${assetsPath}/images/00.jpeg" alt="${news.title}"/>
+                                                </c:if>
+
+                                                <c:if test="${fn:length(str)=='0'}">
+                                                    <img src="${assetsPath}/images/00.jpeg" alt="${news.title}"/>
+                                                </c:if>
+                                                    <c:if test="${news.thumb!=null}">
+                                                        <img src="${news.thumb}" alt="${news.title}"/>
+                                                    </c:if>--%>
                                                 <img src="${news.thumb}" alt="${news.title}"/>
                                             </span>
                                             </a>
