@@ -73,4 +73,9 @@ public class NewsDaoTest {
         }
         System.out.println(groupNews);
     }
+
+    @Test
+    public void testDeleteAll(){
+        newsDao.deleteAll(new int[]{68,69,70,71,72,73,74,75,76});
+    }
 }
