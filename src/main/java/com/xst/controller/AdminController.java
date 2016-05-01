@@ -61,7 +61,7 @@ public class AdminController {
 
         model.addAttribute("firstCategorys",fisrtCategorys);
 
-        return "admin/addresource";
+        return "admin/courseadd";
     }
 
 

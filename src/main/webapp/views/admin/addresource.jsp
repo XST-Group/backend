@@ -2,8 +2,6 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -16,6 +14,7 @@
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="${assetsPath}/css/app.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
     <%--<link rel="stylesheet" href="css/admin_manage.css"/>--%>
     <link rel="stylesheet" href="//cdn.bootcss.com/iCheck/1.0.2/skins/square/blue.css"/>
 </head>
@@ -85,7 +84,7 @@
                     <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
                     <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
                     <li><a href="web-courselist.html"><span class="fa fa-caret-right"></span> 课程列表</a></li>
-                    <li><a href="web-courseadd.html"><span class="fa fa-caret-right"></span> 课程添加</a></li>
+                    <li><a href="courseadd.jsp"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                 </ul>
             </li>
 
