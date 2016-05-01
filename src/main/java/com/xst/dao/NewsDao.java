@@ -92,7 +92,7 @@ public class NewsDao  extends BaseDao {
 		news.setUpdatetime(String.valueOf(currentTime));
 		String thumb=RegexUtils.getPicPath(content);
 		if(thumb==null||thumb.length()==0){
-			thumb="${assetsPath}/images/new_default_page.png";
+			thumb="";
 		}
 		news.setThumb(thumb);
 		//System.out.println("时间戳"+currentTime);

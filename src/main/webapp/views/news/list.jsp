@@ -116,19 +116,6 @@
                                         <div class="col-md-3">
                                             <a href="/xst/news/view/${news.id}" class="transition">
                                             <span class="image-wrapper">
-                                                <%--<img src="${news.thumb}" alt="${news.title}"/>--%>
-                             <%--                   <c:set var="str" value="${news.thumb}"/>
-
-                                                <c:if test="${news.thumb==null}">
-                                                    <img src="${assetsPath}/images/00.jpeg" alt="${news.title}"/>
-                                                </c:if>
-
-                                                <c:if test="${fn:length(str)=='0'}">
-                                                    <img src="${assetsPath}/images/00.jpeg" alt="${news.title}"/>
-                                                </c:if>
-                                                    <c:if test="${news.thumb!=null}">
-                                                        <img src="${news.thumb}" alt="${news.title}"/>
-                                                    </c:if>--%>
                                                 <img src="${news.thumb}" alt="${news.title}"/>
                                             </span>
                                             </a>
@@ -140,7 +127,15 @@
                                         </div>
                                         </c:when>
                                         <c:otherwise>
-                                            <div class="col-md-12">
+                                            <div class="col-md-3">
+                                                <a href="/xst/news/view/${news.id}" class="transition">
+                                                    <span class="image-wrapper">
+                                                        <img src="${assetsPath}/images/new_default_page.png" alt="${news.title}"/>
+                                                    </span>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-md-9">
                                                 <div class="title"><a href="/xst/news/view/${page.list.get(0).id}">${news.title}</a></div>
                                                 <div class="decs">${news.description}</div>
                                                 <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${news.inputtime}</div>
