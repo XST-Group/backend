@@ -69,7 +69,7 @@ public class NewsDaoTest {
         Page<V9News> groupNews = newsDao.queryGroupNews(1,1,10);
         Assert.assertNotNull(groupNews);
         for(int i=0;i<groupNews.getList().size();i++){
-            System.out.println(groupNews.getList().get(i).getArr_group_id());
+//            System.out.println(groupNews.getList().get(i).getArr_group_id());
         }
         System.out.println(groupNews);
     }
