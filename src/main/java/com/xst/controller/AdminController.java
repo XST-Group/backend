@@ -9,6 +9,7 @@ import com.xst.page.Page;
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -73,11 +76,14 @@ public class AdminController {
 
     //@ResponseBody
     @RequestMapping(value = "/resource/add" , method = RequestMethod.POST)
-    public String addResource(String title , int cate1 , int cate2 , int cate3 ,
-                              MultipartFile video , RedirectAttributes redirectAttributes ,
-                              HttpSession session){
+    public String addResource(String title , int cate1,int cate2,int cate3,
+                              MultipartFile video , HttpSession session){
 
-        System.out.println("addResource");
+//        String title = request.getParameter("title");
+        System.out.println("addResource : " + title);
+        System.out.println("cates : "+cate1+" "+cate2+" "+cate3);
+        System.out.println("video size : "+video.getSize());
+
         if(!video.isEmpty()){
 
             String filePath = session.getAttribute("uploadFilePath").toString();
@@ -87,8 +93,8 @@ public class AdminController {
             resourcesDao.addResource(title,cate1,cate2,cate3,videoUrl);
         }
 
-        redirectAttributes.addAttribute("resourceMsg","添加课程成功");
-        return "redirect:/resource/view";
+//        redirectAttributes.addAttribute("resourceMsg","添加课程成功");
+        return "redirect:/admin/resource/list";
     }
 
 
@@ -200,7 +206,7 @@ public class AdminController {
     public String viewMemberVerify(Model model,String page){
         int pageNum = page == null ? 1 : Integer.valueOf(page);
         Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,0);
-        model.addAttribute("page",memberPage);
+        model.addAttribute("page", memberPage);
         model.addAttribute("currentPage", pageNum);
         return "admin/membercheck";
     }
@@ -230,7 +236,7 @@ public class AdminController {
     @RequestMapping(value = "/member/refuse",method = RequestMethod.GET)
     public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
         memberDao.refuseMember(userid);
-        model.addAttribute("verifyMsg","已拒绝！");
+        model.addAttribute("verifyMsg", "已拒绝！");
         return "admin/verify";
     }
 
@@ -269,7 +275,7 @@ public class AdminController {
     @RequestMapping(value= "/view/news/{newsId}",method = RequestMethod.GET)
     public String viewNews(Model model,@PathVariable("newsId") int newsId){
         V9News news=newsDao.getById(newsId);
-        model.addAttribute("news",news);
+        model.addAttribute("news", news);
         System.out.println(news);
         return "news/view";
     }

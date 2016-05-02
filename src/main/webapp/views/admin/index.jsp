@@ -41,8 +41,8 @@
                     </li>
                     <li>
                         <ul class="userManage nav nav-list" style="display: none;border-bottom: 1px solid #ccc;">
-                            <li><a href="#"><span class="fa fa-caret-right"></span> 用户列表</a></li>
-                            <li><a href="#"><span class="fa fa-caret-right"></span> 注册审核</a></li>
+                            <li><a href="${rootPath}/admin/member/list"><span class="fa fa-caret-right"></span> 用户列表</a></li>
+                            <li><a href="${rootPath}/admin/verify/list"><span class="fa fa-caret-right"></span> 注册审核</a></li>
                         </ul>
                     </li>
                     <li>

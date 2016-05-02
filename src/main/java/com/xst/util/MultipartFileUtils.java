@@ -35,7 +35,7 @@ public class MultipartFileUtils {
             byte[] buffer = multipartFile.getBytes();
             FileOutputStream fStream = new FileOutputStream(multipartUrl);
             fStream.write(buffer);
-            System.out.println(buffer);
+//            System.out.println(buffer);
             fStream.close();
         } catch (IOException e) {
             multipartUrl = "";
