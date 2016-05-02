@@ -141,15 +141,19 @@ public class AdminController {
     }
 
 
-
-
-
-
-
-
+    /**
+     * 分页显示资讯
+     * @param model
+     * @param page
+     * @return
+     */
     @RequestMapping(value = "/news/list" , method = RequestMethod.GET)
-    public String listNews(Model model){
-
+    public String listNews(Model model,String page){
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        Page<V9News> newsPage=newsDao.queryForNewsListByPage(pageNum,15);
+        System.out.println(newsPage.getList().get(0).getDescription());
+        model.addAttribute("page",newsPage);
+        model.addAttribute("currentPage", pageNum);
         return "admin/newslist";
     }
 
@@ -183,7 +187,7 @@ public class AdminController {
         System.out.println(map.get("addNewsMsg"));
         model.addAttribute("addNewsMsg",map.get("addNewsMsg"));
         model.addAttribute("Msg","添加成功！");
-        return "news/success";
+        return "news/addnewsuccess";
     }
 
     /**
