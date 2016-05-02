@@ -46,7 +46,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="${rootPath}/admin/news/list" data-target="resourceManage" class="nav-header">
+                        <a href="#" data-target="resourceManage" class="nav-header">
                             <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
                         </a>
                     </li>
@@ -59,19 +59,7 @@
                             <li><a href="${rootPath}/admin/resource/add"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                         </ul>
                     </li>
-                    <script>
-                        $(document).ready(function () {
-                            $(".sidebar-nav a").click(function(){
-                                var tree="."+$(this).attr("data-target");
-                                $(tree).slideToggle(300);
-                                if($(this).hasClass("collapsed")){
-                                    $(this).removeClass("collapsed");
-                                }else{
-                                    $(this).addClass("collapsed");
-                                }
-                            })
-                        });
-                    </script>
+
                     <li>
                         <a href="#" data-target="dashboard-menu3" class="nav-header">
                             <i class="fa fa-fw fa-group"></i>&nbsp;&nbsp;小组管理<i class="fa fa-collapse"></i>
@@ -82,8 +70,8 @@
                             <li><a href="users-change.html"><span class="fa fa-caret-right"></span>小组1</a></li>
                         </ul>
                     </li>
-                    <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header"><i
-                            class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
+                    <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header">
+                        <i class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                     <li>
                 </ul>
             </div>
@@ -102,7 +90,19 @@
 
 </div>
 
-
+<script>
+    $(document).ready(function () {
+        $(".sidebar-nav a").click(function(){
+            var tree="."+$(this).attr("data-target");
+            $(tree).slideToggle(300);
+            if($(this).hasClass("collapsed")){
+                $(this).removeClass("collapsed");
+            }else{
+                $(this).addClass("collapsed");
+            }
+        })
+    });
+</script>
 
 </body>
 </html>

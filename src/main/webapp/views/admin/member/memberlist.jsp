@@ -51,10 +51,10 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="./">个人中心</a></li>
+                            <li><a href="../">个人中心</a></li>
                             <li class="divider"></li>
-                            <li><a href="./">账号设置</a></li>
-                            <li><a href="./">意见反馈</a></li>
+                            <li><a href="../">账号设置</a></li>
+                            <li><a href="../">意见反馈</a></li>
                             <li class="divider"></li>
                             <li><a tabindex="-1" href="sign-in.html">登出</a></li>
                         </ul>

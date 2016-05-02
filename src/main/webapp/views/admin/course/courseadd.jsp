@@ -13,9 +13,9 @@
     <meta name="author" content="">
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="${assetsPath}/css/app.css"/>
+    <%--<link rel="stylesheet" href="${assetsPath}/css/app.css"/>--%>
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
-    <link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>
+    <%--<link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>--%>
 
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -29,7 +29,7 @@
 <div class="main">
     <div class="admin">
 
-        <jsp:include page="header.jsp" />
+        <jsp:include page="../header.jsp" />
 
         <!--------------------
                 nav
@@ -43,8 +43,8 @@
                 </li>
                 <li>
                     <ul class="userManage nav nav-list" style="display: none;border-bottom: 1px solid #ccc;">
-                        <li><a href="#"><span class="fa fa-caret-right"></span> 用户列表</a></li>
-                        <li><a href="#"><span class="fa fa-caret-right"></span> 注册审核</a></li>
+                        <li><a href="${rootPath}/admin/member/list"><span class="fa fa-caret-right"></span> 用户列表</a></li>
+                        <li><a href="${rootPath}/admin/verify/list"><span class="fa fa-caret-right"></span> 注册审核</a></li>
                     </ul>
                 </li>
                 <li>
@@ -57,10 +57,11 @@
                         <li><a href="web-latest.html"><span class="fa fa-caret-right"></span> 资源1</a></li>
                         <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
                         <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
-                        <li><a href="courselist.jsp"><span class="fa fa-caret-right"></span> 课程列表</a></li>
-                        <li><a href="courseadd.jsp"><span class="fa fa-caret-right"></span> 课程添加</a></li>
+                        <li><a href="${rootPath}/admin/resource/list"><span class="fa fa-caret-right"></span> 课程列表</a></li>
+                        <li><a href="${rootPath}/admin/resource/add"><span class="fa fa-caret-right"></span> 课程添加</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="#" data-target="dashboard-menu3" class="nav-header">
                         <i class="fa fa-fw fa-group"></i>&nbsp;&nbsp;小组管理<i class="fa fa-collapse"></i>
@@ -71,7 +72,7 @@
                         <li><a href="users-change.html"><span class="fa fa-caret-right"></span>小组1</a></li>
                     </ul>
                 </li>
-                <li><a href="#" data-target="dashboard-menu4" class="nav-header"><i
+                <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header"><i
                         class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                 <li>
             </ul>
@@ -144,20 +145,25 @@
        </div>
        <button type="reset" class="btn btn-danger" onclick="cancel()">取消上传</button>
      </div>
+   </div>
+
+       <script>
+           $(document).ready(function () {
+               $(".sidebar-nav a").click(function(){
+                   var tree="."+$(this).attr("data-target");
+                   $(tree).slideToggle(300);
+                   if($(this).hasClass("collapsed")){
+                       $(this).removeClass("collapsed");
+                   }else{
+                       $(this).addClass("collapsed");
+                   }
+               })
+           });
+       </script>
+
 
 
         <script>
-            $(document).ready(function () {
-                $(".sidebar-nav a").click(function(){
-                    var tree="."+$(this).attr("data-target");
-                    $(tree).slideToggle(300);
-                    if($(this).hasClass("collapsed")){
-                        $(this).removeClass("collapsed");
-                    }else{
-                        $(this).addClass("collapsed");
-                    }
-                })
-            });
             function go(){
               form1.submit();
               var courseName = document.getElementById('courseName');
@@ -238,17 +244,6 @@
        </script>
 
        <script>
-           $(document).ready(function () {
-               $(".sidebar-nav a").click(function(){
-                   var tree="."+$(this).attr("data-target");
-                   $(tree).slideToggle(300);
-                   if($(this).hasClass("collapsed")){
-                       $(this).removeClass("collapsed");
-                   }else{
-                       $(this).addClass("collapsed");
-                   }
-               })
-
                $('input').iCheck({
                    checkboxClass: 'icheckbox_square-blue',
                    radioClass: 'iradio_square-blue',
@@ -305,7 +300,6 @@
            }
        </script>
 
-    </div>
 
 </body>
 </html>

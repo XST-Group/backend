@@ -28,7 +28,7 @@
 <div class="main">
     <div class="admin">
 
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="../header.jsp"/>
 
         <!--------------------
                nav
