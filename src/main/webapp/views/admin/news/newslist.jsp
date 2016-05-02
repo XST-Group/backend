@@ -78,106 +78,110 @@
         <!--于此分左右层次-->
         <div class="content">
             <div class="container-fluid">
-                <div class="row button-group">
-                    <div class="col-md-2">
-                        <button class="btn btn-info">全选</button>
-                        <button class="btn btn-danger"><i class="fa fa-trash-o"></i>批量删除</button>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="${rootPath}/views/admin/news/addNews.jsp" ><button class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;新增</button></a>
-                        <button class="btn btn-info"><i class="fa fa-share"></i>&nbsp;导入</button>
-                        <button class="btn btn-info"><i class="fa fa-share fa-rotate-180"></i>&nbsp;导出</button>
-                    </div>
-                    <div class="col-md-3">
-                        <form class="form-group" action="">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i>搜索</span>
-                                <input type="text" class="form-control" placeholder="搜索..."
-                                       aria-describedby="basic-addon1">
-                            </div>
-                            <button class="btn btn-warning pull-right">查询</button>
+                <div class="advisory-manage-content">
+
+                    <div class="row button-group">
+                        <div class="col-md-3">
+                            <button id="allChoose" class="btn btn-sm btn-info">全选</button>
+                            <button id="toggleChoose" class="btn btn-sm btn-info">反选</button>
+                            <button id="allDel" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i>批量删除</button>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="${rootPath}/views/admin/news/addNews.jsp" ><button class="btn btn-sm btn-info"><i class="fa fa-plus"></i>&nbsp;新增</button></a>
+                            <button class="btn btn-sm btn-info"><i class="fa fa-share"></i>&nbsp;导入</button>
+                            <button class="btn btn-sm btn-info"><i class="fa fa-share fa-rotate-180"></i>&nbsp;导出</button>
+                        </div>
+                        <div class="col-md-4">
+                            <form class="form-group" action="">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i>搜索</span>
+                                    <input type="text" class="form-control" placeholder="搜索..."
+                                           aria-describedby="basic-addon1">
+                                </div>
+                                <button class="btn btn-sm btn-warning pull-right">查询</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-sm btn-warning pull-right">高级查询</button>
                             <div class="clearfix"></div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="col-md-1">
-                        <button class="btn btn-warning pull-right">高级查询</button>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table" width="100%">
-                            <thead>
-                            <tr class="active">
-                                <th width="10%">
-                                    <br/>选择
-                                </th>
-                                <th width="10%">
-                                    序号
-                                </th>
-                                <th width="20%">
-                                    标题
-                                </th>
-                                <th width="10%">
-                                    作者
-                                </th>
-                                <th width="25%">
-                                    内容
-                                </th>
-                                <th style="text-align: center">
-                                    基本操作
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-
-                            <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="news">
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" value="1" name=""/>
-                                    </td>
-                                    <td>
-                                        ${news.id}
-                                    </td>
-                                    <td>
-                                        <div class="title">
-                                            ${news.title}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        ${news.username}
-                                    </td>
-                                    <td class="text">
-                                        <!--<div class="text">-->
-                                        ${news.description}
-                                        <!--</div>-->
-                                    </td>
-                                    <td style="text-align: center">
-                                       <a href="${rootPath}/admin/news/view/${news.id}"> <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button></a>
-                                        <a href="${rootPath}/admin/news/edit/${news.id}">  <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button></a>
-                                        <a href="${rootPath}/admin/news/delete/${news.id}"> <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button></a>
-                                    </td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table" width="100%">
+                                <thead>
+                                <tr class="active">
+                                    <th width="10%">
+                                        <br/>选择
+                                    </th>
+                                    <th width="10%">
+                                        序号
+                                    </th>
+                                    <th width="20%">
+                                        标题
+                                    </th>
+                                    <th width="10%">
+                                        作者
+                                    </th>
+                                    <th width="25%">
+                                        内容
+                                    </th>
+                                    <th style="text-align: center">
+                                        基本操作
+                                    </th>
                                 </tr>
-                            </c:forEach>
+                                </thead>
+                                <tbody>
 
-                            </tbody>
-                        </table>
 
-                        <nav>
-                            <ul class="pagination">
-                                <li><a href="#">上一页</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#">下一页</a>
-                                </li>
-                            </ul>
-                        </nav>
+                                <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="news">
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" value="1" name=""/>
+                                        </td>
+                                        <td>
+                                            ${news.id}
+                                        </td>
+                                        <td>
+                                            <div class="title">
+                                                ${news.title}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            ${news.username}
+                                        </td>
+                                        <td class="text">
+                                            <!--<div class="text">-->
+                                            ${news.description}
+                                            <!--</div>-->
+                                        </td>
+                                        <td style="text-align: center">
+                                           <a href="${rootPath}/admin/news/view/${news.id}"> <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button></a>
+                                            <a href="${rootPath}/admin/news/edit/${news.id}">  <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button></a>
+                                            <a href="${rootPath}/admin/news/delete/${news.id}"> <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+
+                                </tbody>
+                            </table>
+
+                            <nav>
+                                <ul class="pagination">
+                                    <li><a href="#">上一页</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#">下一页</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -210,6 +214,15 @@
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
+    });
+</script>
+<!--全选-->
+<script>
+    $("#allChoose").click(function(){
+        $('input').iCheck('check');
+    });
+    $("#toggleChoose").click(function(){
+        $('input').iCheck('toggle');
     });
 </script>
 
