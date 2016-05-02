@@ -9,7 +9,6 @@ import com.xst.page.Page;
 import com.xst.util.MultipartFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by sl on 16-4-4.
@@ -56,7 +52,7 @@ public class AdminController {
     @RequestMapping(value = "/resource/list" , method = RequestMethod.GET)
     public String listResource(Model model){
 
-        return "admin/courselist";
+        return "admin/course/courselist";
     }
     /**
      * 添加课程，GET
@@ -70,7 +66,7 @@ public class AdminController {
 
         model.addAttribute("firstCategorys",fisrtCategorys);
 
-        return "admin/courseadd";
+        return "admin/course/courseadd";
     }
 
 
@@ -160,7 +156,7 @@ public class AdminController {
         System.out.println(newsPage.getList().get(0).getDescription());
         model.addAttribute("page",newsPage);
         model.addAttribute("currentPage", pageNum);
-        return "admin/newslist";
+        return "admin/news/newslist";
     }
 
 
@@ -196,7 +192,7 @@ public class AdminController {
         //System.out.println(map.get("addNewsMsg"));
        // model.addAttribute("addNewsMsg",map.get("addNewsMsg"));
         model.addAttribute("Msg","添加成功！");
-        return "admin/addnewsuccess";
+        return "admin/news/addnewsuccess";
     }
 
     /**
@@ -211,7 +207,7 @@ public class AdminController {
         Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,0);
         model.addAttribute("page", memberPage);
         model.addAttribute("currentPage", pageNum);
-        return "admin/membercheck";
+        return "admin/member/membercheck";
     }
 
     /**
@@ -227,7 +223,7 @@ public class AdminController {
         Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,1);
         model.addAttribute("page",memberPage);
         model.addAttribute("currentPage", pageNum);
-        return "admin/memberlist";
+        return "admin/member/memberlist";
     }
 
     /**
@@ -240,8 +236,8 @@ public class AdminController {
     public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
         memberDao.refuseMember(userid);
 
-        model.addAttribute("verifyMsg","已拒绝！");
-        return "admin/refusesuccess";
+        model.addAttribute("verifyMsg", "已拒绝！");
+        return "admin/member/refusesuccess";
     }
 
 
@@ -254,9 +250,9 @@ public class AdminController {
     @RequestMapping(value = "/member/refuse/{userid}",method = RequestMethod.GET)
     public String refuseOneMember(Model model ,@PathVariable("userid")int  userid){
 
-        memberDao.refuseMember(new int[] {userid});
+        memberDao.refuseMember(new int[]{userid});
         model.addAttribute("verifyMsg","已拒绝！");
-        return "admin/refusesuccess";
+        return "admin/member/refusesuccess";
     }
 
     /**
@@ -269,7 +265,7 @@ public class AdminController {
     public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
         memberDao.acceptMember(userid);
         model.addAttribute("verifyMsg","已通过");
-        return "admin/acceptsuccess";
+        return "admin/member/acceptsuccess";
     }
 
     /**
@@ -281,9 +277,9 @@ public class AdminController {
     @RequestMapping(value = "/member/accept/{userid}",method = RequestMethod.GET)
     public String acceptOneMember(Model model ,@PathVariable("userid")int  userid){
 
-        memberDao.acceptMember(new int[] {userid});
+        memberDao.acceptMember(new int[]{userid});
         model.addAttribute("verifyMsg","已通过！");
-        return "admin/acceptsuccess";
+        return "admin/member/acceptsuccess";
     }
 
     /**
@@ -296,14 +292,14 @@ public class AdminController {
     public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id){
         newsDao.deleteAll(id);
         model.addAttribute("deleteNewsMsg","删除成功");
-        return "admin/deleteNewsSuccess";
+        return "admin/news/deleteNewsSuccess";
     }
 
     @RequestMapping(value = "/news/delete/{newsId}",method = RequestMethod.GET)
     public String deleteOneNews(Model model,@PathVariable("newsId") int newsId){
         newsDao.deleteAll(new int[]{newsId});
         model.addAttribute("deleteNewsMsg","删除成功");
-        return "admin/deleteNewsSuccess";
+        return "admin/news/deleteNewsSuccess";
     }
 
     /**
@@ -317,7 +313,7 @@ public class AdminController {
         V9News news=newsDao.getById(newsId);
         model.addAttribute("news", news);
         System.out.println(news);
-        return "admin/viewnews";
+        return "admin/news/viewnews";
     }
 
     /**
@@ -329,9 +325,10 @@ public class AdminController {
     @RequestMapping(value = "/news/edit/{newsId}",method = RequestMethod.GET)
     public String editNews(Model model,@PathVariable("newsId") int newsId){
         V9News news=newsDao.getById(newsId);
-        model.addAttribute("news",news);
-        return "admin/editnews";
+        model.addAttribute("news", news);
+        return "admin/news/editnews";
     }
+
 
     /**
      * 编辑之后进行更新

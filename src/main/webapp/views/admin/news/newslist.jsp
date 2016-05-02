@@ -1,13 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: CrazyCodess
-  Date: 2016/5/1
-  Time: 20:51
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,53 +14,18 @@
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
-    <link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>
 
-    <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 
-<!--------------------
-        header
---------------------->
 <div class="main">
     <div class="admin">
-        <div class="navbar" role="navigation">
-            <div class="navbar-header">
-                <a class="" href="index.html">
-            <span class="navbar-brand">
-                <span class="fa fa-book"></span> 校视通
-            </span>
-                </a>
-            </div>
 
-            <div class="navbar-user" style="height: 1px;">
-                <ul id="main-menu" class="nav navbar-nav navbar-right">
-                    <li class="dropdown hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> xuzhao***.com
-                            <i class="fa fa-caret-down"></i>
-                        </a>
+        <jsp:include page="../header.jsp"/>
 
-                        <ul class="dropdown-menu">
-                            <li><a href="./">个人中心</a></li>
-                            <li class="divider"></li>
-                            <li><a href="./">账号设置</a></li>
-                            <li><a href="./">意见反馈</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="sign-in.html">登出</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-
-        <!--------------------
-               nav
-        --------------------->
         <div class="sidebar-nav">
             <ul>
                 <li>
@@ -82,7 +41,7 @@
                 </li>
 
                 <li>
-                    <a href="${rootPath}/admin/news/list" data-target="resourceManage" class="nav-header">
+                    <a href="#" data-target="resourceManage" class="nav-header">
                         <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
                     </a>
                 </li>
@@ -119,51 +78,88 @@
         <!--于此分左右层次-->
         <div class="content">
             <div class="container-fluid">
+                <div class="row button-group">
+                    <div class="col-md-2">
+                        <button class="btn btn-info">全选</button>
+                        <button class="btn btn-danger"><i class="fa fa-trash-o"></i>批量删除</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="${rootPath}/views/admin/news/addNews.jsp" ><button class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;新增</button></a>
+                        <button class="btn btn-info"><i class="fa fa-share"></i>&nbsp;导入</button>
+                        <button class="btn btn-info"><i class="fa fa-share fa-rotate-180"></i>&nbsp;导出</button>
+                    </div>
+                    <div class="col-md-3">
+                        <form class="form-group" action="">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i>搜索</span>
+                                <input type="text" class="form-control" placeholder="搜索..."
+                                       aria-describedby="basic-addon1">
+                            </div>
+                            <button class="btn btn-warning pull-right">查询</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-warning pull-right">高级查询</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
                 <div class="row">
-                    <div>
+                    <div class="col-md-12">
                         <table class="table" width="100%">
                             <thead>
-                            <tr>
-                                <th width="16%">
-                                    用户名
+                            <tr class="active">
+                                <th width="10%">
+                                    <br/>选择
                                 </th>
-                                <th width="22%">
-                                    邮箱
+                                <th width="10%">
+                                    序号
                                 </th>
-                                <th width="18%">
-                                    审核日期
+                                <th width="20%">
+                                    标题
                                 </th>
-                                <th width="24%">
-                                    单位
+                                <th width="10%">
+                                    作者
                                 </th>
-                                <th>
+                                <th width="25%">
+                                    内容
+                                </th>
+                                <th style="text-align: center">
                                     基本操作
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="verify">
+
+
+                            <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="news">
                                 <tr>
                                     <td>
-                                            ${verify.username}
+                                        <input type="checkbox" value="1" name=""/>
                                     </td>
                                     <td>
-                                            ${verify.email}
-
+                                        ${news.id}
                                     </td>
                                     <td>
-                                            ${verify.regdate}
+                                        <div class="title">
+                                            ${news.title}
+                                        </div>
                                     </td>
                                     <td>
-                                            ${verify.schoolAddress}
+                                        ${news.username}
                                     </td>
-                                    <td>
-                                       <a href="${rootPath}/admin/member/accept/${verify.userid}" ><button class="btn btn-primary btn-sm">同意</button></a>
-                                        <a href="${rootPath}/admin/member/refuse/${verify.userid}" > <button class="btn btn-danger btn-sm">拒绝</button></a>
+                                    <td class="text">
+                                        <!--<div class="text">-->
+                                        ${news.description}
+                                        <!--</div>-->
+                                    </td>
+                                    <td style="text-align: center">
+                                       <a href="${rootPath}/admin/news/view/${news.id}"> <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button></a>
+                                        <a href="${rootPath}/admin/news/edit/${news.id}">  <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button></a>
+                                        <a href="${rootPath}/admin/news/delete/${news.id}"> <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button></a>
                                     </td>
                                 </tr>
-
-
                             </c:forEach>
 
                             </tbody>
@@ -187,39 +183,35 @@
             </div>
         </div>
 
-      </div>
-   </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".sidebar-nav a").click(function () {
+            var tree = "." + $(this).attr("data-target");
+            $(tree).slideToggle(300);
+            if ($(this).hasClass("collapsed")) {
+                $(this).removeClass("collapsed");
+            } else {
+                $(this).addClass("collapsed");
+            }
+        })
+    });
+</script>
 
+<link rel="stylesheet" href="//cdn.bootcss.com/iCheck/1.0.2/skins/square/blue.css"/>
 
-
-        <script>
-            $(document).ready(function () {
-                $(".sidebar-nav a").click(function(){
-                    var tree="."+$(this).attr("data-target");
-                    $(tree).slideToggle(300);
-                    if($(this).hasClass("collapsed")){
-                        $(this).removeClass("collapsed");
-                    }else{
-                        $(this).addClass("collapsed");
-                    }
-                })
-            });
-        </script>
-
-        <link rel="stylesheet" href="//cdn.bootcss.com/iCheck/1.0.2/skins/square/blue.css"/>
-
-        <script src="//cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
-        <!--icheck-->
-        <script>
-            $(document).ready(function(){
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
-            });
-        </script>
-
+<script src="//cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
+<!--icheck-->
+<script>
+    $(document).ready(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
 
 </body>
 </html>

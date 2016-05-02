@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body>
-<jsp:include page="../common/header.jsp" />
+<jsp:include page="../../common/header.jsp" />
 <div class="main">
     <div class="container">
         <div class="breadcrumb-wrapper">
@@ -255,7 +255,7 @@
 
 
 
-<jsp:include page="../common/footer.jsp" />
+<jsp:include page="../../common/footer.jsp" />
 <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>
 <script type="text/javascript">
