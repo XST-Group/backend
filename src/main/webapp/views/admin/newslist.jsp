@@ -131,136 +131,36 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="1" name=""/>
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <div class="title">
-                                        标题标题标题标题标题标题标题标题标题标题标题标题
-                                    </div>
-                                </td>
-                                <td>
-                                    作者
-                                </td>
-                                <td class="text">
-                                    <!--<div class="text">-->
-                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                    <!--</div>-->
-                                </td>
-                                <td style="text-align: center">
-                                    <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
-                                    <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="1" name=""/>
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <div class="title">
-                                        标题标题标题标题标题标题标题标题标题标题标题标题
-                                    </div>
-                                </td>
-                                <td>
-                                    作者
-                                </td>
-                                <td class="text">
-                                    <!--<div class="text">-->
-                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                    <!--</div>-->
-                                </td>
-                                <td style="text-align: center">
-                                    <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
-                                    <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="1" name=""/>
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <div class="title">
-                                        标题标题标题标题标题标题标题标题标题标题标题标题
-                                    </div>
-                                </td>
-                                <td>
-                                    作者
-                                </td>
-                                <td class="text">
-                                    <!--<div class="text">-->
-                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                    <!--</div>-->
-                                </td>
-                                <td style="text-align: center">
-                                    <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
-                                    <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="1" name=""/>
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <div class="title">
-                                        标题标题标题标题标题标题标题标题标题标题标题标题
-                                    </div>
-                                </td>
-                                <td>
-                                    作者
-                                </td>
-                                <td class="text">
-                                    <!--<div class="text">-->
-                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                    <!--</div>-->
-                                </td>
-                                <td style="text-align: center">
-                                    <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
-                                    <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="1" name=""/>
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <div class="title">
-                                        标题标题标题标题标题标题标题标题标题标题标题标题
-                                    </div>
-                                </td>
-                                <td>
-                                    作者
-                                </td>
-                                <td class="text">
-                                    <!--<div class="text">-->
-                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                    <!--</div>-->
-                                </td>
-                                <td style="text-align: center">
-                                    <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
-                                    <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
-                                </td>
-                            </tr>
+
+
+                            <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="news">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" value="1" name=""/>
+                                    </td>
+                                    <td>
+                                        ${news.id}
+                                    </td>
+                                    <td>
+                                        <div class="title">
+                                            ${news.title}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        ${news.username}
+                                    </td>
+                                    <td class="text">
+                                        <!--<div class="text">-->
+                                        ${news.description}
+                                        <!--</div>-->
+                                    </td>
+                                    <td style="text-align: center">
+                                        <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
+                                        <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
+                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
                             </tbody>
                         </table>
