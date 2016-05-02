@@ -1,6 +1,10 @@
 package com.xst.android;
 
 import com.sun.deploy.net.HttpResponse;
+import com.xst.dao.MemberDao;
+import com.xst.entity.V9Member;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +23,16 @@ import java.util.Map;
 @RequestMapping("/android")
 public class AndroidTestController {
 
+    @Autowired
+    @Qualifier("memberDao")
+    private MemberDao memberDao;
+
     @RequestMapping(value="/login",method = RequestMethod.POST)
-    public void success(HttpServletResponse response,String name,String psd,RedirectAttributes redirectAttributes){
+    public void login(HttpServletResponse response,String name,String psd,RedirectAttributes redirectAttributes){
         System.out.println("username : " + name+"password : "+psd);
         try {
-            if(name.equals("123")&&psd.equals("123"))
+            V9Member member = memberDao.getByName(name);
+            if(member.getPassword().equals(psd))
                 response.getWriter().write("true");
             else
                 response.getWriter().write("false");
@@ -31,4 +40,6 @@ public class AndroidTestController {
             e.printStackTrace();
         }
     }
+
+
 }
