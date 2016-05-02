@@ -10,7 +10,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>课程</title>
+    <title>小组</title>
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">

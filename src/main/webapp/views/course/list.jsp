@@ -10,7 +10,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>小组</title>
+    <title>课程</title>
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">
@@ -24,23 +24,73 @@
                 </ol>
             </div>
             <div class="row">
-                <div class="col-xs-3">
-                    <div class="aside">
-                        <div id="treedata">
-                            <ul>
-                                <c:forEach items="${rootCategories}" var="category">
-                                    <li data-id="${category.id}">${category.name}</li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                        <div id="treeview"></div>
+
+                <%--<div class="col-xs-3">--%>
+                    <%--<div class="aside">--%>
+                        <%--<div id="treedata">--%>
+                            <%--<ul>--%>
+                                <%--<c:forEach items="${rootCategories}" var="category">--%>
+                                    <%--<li data-id="${category.id}">${category.name}</li>--%>
+                                <%--</c:forEach>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
+                        <%--<div id="treeview"></div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+
+                <div class="col-xs-12">
+                    <div class="select-menu">
+                        <ul class="select">
+                            <li class="select-list">
+                                <dl id="select1">
+                                    <dt>分类：</dt>
+                                    <dd class="select-all selected"><a href="#">全部</a></dd>
+                                    <dd><a href="#">教研</a></dd>
+                                    <dd><a href="#">管理</a></dd>
+                                    <dd><a href="#">海外</a></dd>
+                                    <dd><a href="#">综合</a></dd>
+                                    <!--<dd><a href="#">升学考研</a></dd>-->
+                                </dl>
+                            </li>
+
+                            <li class="select-list">
+                                <dl id="select2">
+                                    <dt>阶段：</dt>
+                                    <dd class="select-all selected"><a href="#">全部</a></dd>
+                                    <dd><a href="#">小学</a></dd>
+                                    <dd><a href="#">初中</a></dd>
+                                    <dd><a href="#">高中</a></dd>
+                                    <dd><a href="#">大学</a></dd>
+                                    <!--<dd><a href="#">图像处理</a></dd>-->
+                                </dl>
+                            </li>
+                            <li class="select-list">
+                                <dl id="select3">
+                                    <dt>学科：</dt>
+                                    <dd class="select-all selected"><a href="#">全部</a></dd>
+                                    <dd><a href="#">语文</a></dd>
+                                    <dd><a href="#">数学</a></dd>
+                                    <dd><a href="#">英语</a></dd>
+                                    <dd><a href="#">物理</a></dd>
+                                    <dd><a href="#">化学</a></dd>
+                                    <dd><a href="#">生物</a></dd>
+                                    <dd><a href="#">体育</a></dd>
+                                </dl>
+                            </li>
+                            <li class="select-result">
+                                <dl>
+                                    <dt>已选条件：</dt>
+                                    <dd class="select-no">暂时没有选择过滤条件</dd>
+                                </dl>
+                            </li>
+
+                        </ul>
                     </div>
-                </div>
-                <div class="col-xs-9">
+
                     <div class="course-list course">
                         <div class="row">
                             <c:forEach items="${page.list}" var="resource">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="course-item">
                                         <div class="course-thumb">
                                             <a href="/xst/resources/${resource.id}"><img src="${resource.thumb}" alt=""></a>
