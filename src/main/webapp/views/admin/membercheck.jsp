@@ -1,3 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%--
+  Created by IntelliJ IDEA.
+  User: CrazyCodess
+  Date: 2016/5/1
+  Time: 20:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,8 +19,8 @@
     <meta name="author" content="">
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="css/app.min.css"/>
-    <link rel="stylesheet" href="css/admin_manage.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>
 
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -66,13 +76,13 @@
                 </li>
                 <li>
                     <ul class="userManage nav nav-list" style="display: none;border-bottom: 1px solid #ccc;">
-                        <li><a href="memberlist.jsp"><span class="fa fa-caret-right"></span> 用户列表</a></li>
-                        <li><a href="membercheck.jsp"><span class="fa fa-caret-right"></span> 注册审核</a></li>
+                        <li><a href="${rootPath}/admin/member/list"><span class="fa fa-caret-right"></span> 用户列表</a></li>
+                        <li><a href="${rootPath}/admin/verify/list"><span class="fa fa-caret-right"></span> 注册审核</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#" data-target="resourceManage" class="nav-header">
+                    <a href="${rootPath}/admin/news/list" data-target="resourceManage" class="nav-header">
                         <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
                     </a>
                 </li>
@@ -97,7 +107,7 @@
                     </ul>
                 </li>
 
-                <li><a href="#" data-target="dashboard-menu4" class="nav-header"><i
+                <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header"><i
                         class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                 <li>
 
@@ -132,24 +142,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    xxxx
-                                </td>
-                                <td>
-                                    xxxxxxxx@xx.com
-                                </td>
-                                <td>
-                                    xxxx-xx-xx
-                                </td>
-                                <td>
-                                    xxxxxxxxxxxxxxxx
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">同意</button>
-                                    <button class="btn btn-danger btn-sm">拒绝</button>
-                                </td>
-                            </tr>
+                            <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="verify">
+                                <tr>
+                                    <td>
+                                            ${verify.username}
+                                    </td>
+                                    <td>
+                                            ${verify.email}
+
+                                    </td>
+                                    <td>
+                                            ${verify.regdate}
+                                    </td>
+                                    <td>
+                                            ${verify.schoolAddress}
+                                    </td>
+                                    <td>
+                                       <a href="${rootPath}/admin/member/accept/${verify.userid}" ><button class="btn btn-primary btn-sm">同意</button></a>
+                                        <a href="${rootPath}/admin/member/refuse/${verify.userid}" > <button class="btn btn-danger btn-sm">拒绝</button></a>
+                                    </td>
+                                </tr>
+
+
+                            </c:forEach>
 
                             </tbody>
                         </table>

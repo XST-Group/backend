@@ -56,6 +56,7 @@ public class MemberDaoTest {
         member.setInvoicetitle("1213");
         member.setIslock((byte) 123);
         member.setVerify("0");
+        member.setSchoolAddress("河海大学");
         memberDao.save(member);
     }
 

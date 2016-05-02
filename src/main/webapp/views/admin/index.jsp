@@ -46,7 +46,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" data-target="resourceManage" class="nav-header">
+                        <a href="${rootPath}/admin/news/list" data-target="resourceManage" class="nav-header">
                             <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
                         </a>
                     </li>
@@ -82,7 +82,7 @@
                             <li><a href="users-change.html"><span class="fa fa-caret-right"></span>小组1</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" data-target="dashboard-menu4" class="nav-header"><i
+                    <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header"><i
                             class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                     <li>
                 </ul>

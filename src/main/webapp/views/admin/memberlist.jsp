@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -9,15 +10,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户列表</title>
-</head>
-<body>
-${page}
-<!doctype html>
-<html lang="en">
-<head>
+
     <meta charset="utf-8">
-    <title>校视通</title>
+    <title>用户列表</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -81,13 +76,13 @@ ${page}
                 </li>
                 <li>
                     <ul class="userManage nav nav-list" style="display: none;border-bottom: 1px solid #ccc;">
-                        <li><a href="memberlist.jsp"><span class="fa fa-caret-right"></span> 用户列表</a></li>
-                        <li><a href="membercheck.jsp"><span class="fa fa-caret-right"></span> 注册审核</a></li>
+                        <li><a href="${rootPath}/admin/member/list"><span class="fa fa-caret-right"></span> 用户列表</a></li>
+                        <li><a href="${rootPath}/admin/verify/list"><span class="fa fa-caret-right"></span> 注册审核</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#" data-target="resourceManage" class="nav-header">
+                    <a href="${rootPath}/admin/news/list" data-target="resourceManage" class="nav-header">
                         <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
                     </a>
                 </li>
@@ -112,7 +107,7 @@ ${page}
                     </ul>
                 </li>
 
-                <li><a href="#" data-target="dashboard-menu4" class="nav-header"><i
+                <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header"><i
                         class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                 <li>
 
@@ -144,20 +139,28 @@ ${page}
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    xxxx
-                                </td>
-                                <td>
-                                    xxxxxxxx@xx.com
-                                </td>
-                                <td>
-                                    xxxx-xx-xx
-                                </td>
-                                <td>
-                                    xxxxxxxxxxxxxxxx
-                                </td>
-                            </tr>
+
+
+                            <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="member">
+                                <tr>
+                                    <td>
+                                        ${member.username}
+                                    </td>
+                                    <td>
+                                            ${member.email}
+
+                                    </td>
+                                    <td>
+                                            ${member.regdate}
+                                    </td>
+                                    <td>
+                                            ${member.schoolAddress}
+                                    </td>
+                                </tr>
+
+
+                            </c:forEach>
+
 
                             </tbody>
                         </table>
