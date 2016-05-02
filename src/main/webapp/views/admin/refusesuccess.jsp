@@ -12,12 +12,12 @@
     <script language="javascript">
 
         setTimeout(function(){
-            location.href="${rootPath}/admin/news/list";
+            location.href="${rootPath}/admin/verify/list";
 
         },1000);
     </script>
 </head>
 <body>
-${Msg}
+${verifyMsg}
 </body>
 </html>

@@ -83,6 +83,15 @@ public class NewsDao  extends BaseDao {
 		//save(news.getV9NewsData());
 	}
 
+	/**
+	 * 添加资讯
+	 * @param title
+	 * @param description
+	 * @param content
+	 * @param arr_group_id
+	 * @param type
+     * @param username
+     */
 	public void addNews(String title, String description, String content,
 						String arr_group_id, String type, String username){
 		V9News news=new V9News();
@@ -103,6 +112,39 @@ public class NewsDao  extends BaseDao {
 		//System.out.println("时间戳"+currentTime);
 		news.setListorder((byte)1);
 		addNews(news);
+	}
+
+	/**
+	 * 编辑资讯
+	 * @param id
+	 * @param title
+	 * @param description
+	 * @param content
+	 * @param arr_group_id
+	 * @param type
+     * @param username
+     */
+	public void updateNews(int id,String title, String description, String content,
+						   String arr_group_id, String type, String username){
+		V9News news=getById(id);
+		long currentTime=System.currentTimeMillis()/1000;//Java里面获取的是毫秒，除以1000，单位为秒，不然存的时候会超出int
+		System.out.println("时间戳"+String.valueOf(currentTime));
+		news.setTitle(title);
+		news.setDescription(description);
+		news.setContent(content);
+		news.setType(type);
+		news.setUsername(username);
+		news.setInputtime((int) currentTime);
+		news.setUpdatetime((int) currentTime);
+		news.setArrGroupId(arr_group_id);
+		String thumb=RegexUtils.getPicPath(content);
+		if(thumb==null||thumb.length()==0){
+			thumb="";
+		}
+		news.setThumb(thumb);
+		//System.out.println("时间戳"+currentTime);
+		news.setListorder((byte)1);
+		update(news);
 	}
 
 	/**

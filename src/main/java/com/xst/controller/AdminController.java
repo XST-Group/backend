@@ -171,6 +171,9 @@ public class AdminController {
 
         System.out.println(content);
         String username=(String)session.getAttribute("loginUser");
+        if(username==null){
+            username="admin";
+        }
         newsDao.addNews(title,description,content,arr_group_id,type,username);
         redirectAttributes.addFlashAttribute("addNewsMsg","资讯添加成功");//session在跳到页面后马上移除对象
         return "redirect:/admin/news/success";
@@ -183,11 +186,11 @@ public class AdminController {
      */
     @RequestMapping(value="/news/success",method = RequestMethod.GET)
     public String success(Model model,RedirectAttributes redirectAttributes){
-        Map<String,String> map=(Map<String, String>)redirectAttributes.getFlashAttributes();
-        System.out.println(map.get("addNewsMsg"));
-        model.addAttribute("addNewsMsg",map.get("addNewsMsg"));
+        //Map<String,String> map=(Map<String, String>)redirectAttributes.getFlashAttributes();
+        //System.out.println(map.get("addNewsMsg"));
+       // model.addAttribute("addNewsMsg",map.get("addNewsMsg"));
         model.addAttribute("Msg","添加成功！");
-        return "news/addnewsuccess";
+        return "admin/addnewsuccess";
     }
 
     /**
@@ -222,29 +225,58 @@ public class AdminController {
     }
 
     /**
-     *批量拒绝一个待验证用户
+     *批量拒绝待验证用户
      * @param model
      * @param userid
      * @return
      */
-    @RequestMapping(value = "/member/refuse",method = RequestMethod.GET)
+    @RequestMapping(value = "/member/refuse",method = RequestMethod.POST)
     public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
         memberDao.refuseMember(userid);
         model.addAttribute("verifyMsg","已拒绝！");
-        return "admin/verify";
+        return "admin/refusesuccess";
     }
 
+
     /**
-     * 批量通过一个待验证的用户
+     *拒绝一个待验证用户
      * @param model
      * @param userid
      * @return
      */
-    @RequestMapping(value = "/member/accept",method = RequestMethod.GET)
+    @RequestMapping(value = "/member/refuse/{userid}",method = RequestMethod.GET)
+    public String refuseOneMember(Model model ,@PathVariable("userid")int  userid){
+
+        memberDao.refuseMember(new int[] {userid});
+        model.addAttribute("verifyMsg","已拒绝！");
+        return "admin/refusesuccess";
+    }
+
+    /**
+     * 批量通过待验证的用户
+     * @param model
+     * @param userid
+     * @return
+     */
+    @RequestMapping(value = "/member/accept",method = RequestMethod.POST)
     public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
         memberDao.acceptMember(userid);
         model.addAttribute("verifyMsg","已通过");
-        return "admin/verify";
+        return "admin/acceptsuccess";
+    }
+
+    /**
+     *通过一个待验证用户
+     * @param model
+     * @param userid
+     * @return
+     */
+    @RequestMapping(value = "/member/accept/{userid}",method = RequestMethod.GET)
+    public String acceptOneMember(Model model ,@PathVariable("userid")int  userid){
+
+        memberDao.acceptMember(new int[] {userid});
+        model.addAttribute("verifyMsg","已通过！");
+        return "admin/acceptsuccess";
     }
 
     /**
@@ -253,9 +285,16 @@ public class AdminController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/news/delete",method = RequestMethod.GET)
+    @RequestMapping(value = "/news/delete",method = RequestMethod.POST)
     public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id){
         newsDao.deleteAll(id);
+        model.addAttribute("deleteNewsMsg","删除成功");
+        return "admin/deleteNewsSuccess";
+    }
+
+    @RequestMapping(value = "/news/delete/{newsId}",method = RequestMethod.GET)
+    public String deleteOneNews(Model model,@PathVariable("newsId") int newsId){
+        newsDao.deleteAll(new int[]{newsId});
         model.addAttribute("deleteNewsMsg","删除成功");
         return "admin/deleteNewsSuccess";
     }
@@ -266,27 +305,52 @@ public class AdminController {
      * @param newsId
      * @return
      */
-    @RequestMapping(value= "/view/news/{newsId}",method = RequestMethod.GET)
+    @RequestMapping(value= "/news/view/{newsId}",method = RequestMethod.GET)
     public String viewNews(Model model,@PathVariable("newsId") int newsId){
         V9News news=newsDao.getById(newsId);
         model.addAttribute("news",news);
         System.out.println(news);
-        return "news/view";
+        return "admin/viewnews";
     }
 
     /**
-     * 编辑资讯
+     * 编辑资讯,获取待编辑的内容
      * @param model
      * @param newsId
      * @return
      */
-    @RequestMapping(value = "/edit/news/{newsId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/news/edit/{newsId}",method = RequestMethod.GET)
     public String editNews(Model model,@PathVariable("newsId") int newsId){
         V9News news=newsDao.getById(newsId);
         model.addAttribute("news",news);
-        return "news/addNews";
+        return "admin/editnews";
     }
 
+    /**
+     * 编辑之后进行更新
+     * @param model
+     * @param newsId
+     * @param title
+     * @param description
+     * @param content
+     * @param redirectAttributes
+     * @param arr_group_id
+     * @param type
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/news/update/{newsId}" ,method = RequestMethod.POST)
+    public String update(Model model,@PathVariable("newsId") int newsId,String title, String description,String content,
+                         RedirectAttributes redirectAttributes,String arr_group_id,String type, HttpSession session){
+
+        String username=(String)session.getAttribute("loginUser");
+        if(username==null){
+            username="admin";
+        }
+        newsDao.updateNews(newsId,title,description,content,arr_group_id,type,username);
+        model.addAttribute("Msg","编辑成功！");
+        return "redirect:/admin/news/success";
+    }
 
 
 

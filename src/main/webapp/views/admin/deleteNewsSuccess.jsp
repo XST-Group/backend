@@ -9,6 +9,13 @@
 <html>
 <head>
     <title>删除成功</title>
+    <script language="javascript">
+
+        setTimeout(function(){
+            location.href="${rootPath}/admin/news/list";
+
+        },1000);
+    </script>
 </head>
 <body>
 ${deleteNewsMsg}

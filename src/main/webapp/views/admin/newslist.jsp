@@ -35,8 +35,8 @@
                 </li>
                 <li>
                     <ul class="userManage nav nav-list" style="display: none;border-bottom: 1px solid #ccc;">
-                        <li><a href="#"><span class="fa fa-caret-right"></span> 用户列表</a></li>
-                        <li><a href="#"><span class="fa fa-caret-right"></span> 注册审核</a></li>
+                        <li><a href="${rootPath}/admin/member/list"><span class="fa fa-caret-right"></span> 用户列表</a></li>
+                        <li><a href="${rootPath}/admin/verify/list"><span class="fa fa-caret-right"></span> 注册审核</a></li>
                     </ul>
                 </li>
 
@@ -66,7 +66,7 @@
                     </ul>
                 </li>
 
-                <li><a href="#" data-target="dashboard-menu4" class="nav-header"><i
+                <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header"><i
                         class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
                 <li>
 
@@ -84,7 +84,7 @@
                         <button class="btn btn-danger"><i class="fa fa-trash-o"></i>批量删除</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;新增</button>
+                        <a href="${rootPath}/views/admin/addNews.jsp" ><button class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;新增</button></a>
                         <button class="btn btn-info"><i class="fa fa-share"></i>&nbsp;导入</button>
                         <button class="btn btn-info"><i class="fa fa-share fa-rotate-180"></i>&nbsp;导出</button>
                     </div>
@@ -155,9 +155,9 @@
                                         <!--</div>-->
                                     </td>
                                     <td style="text-align: center">
-                                        <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button>
-                                        <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button>
+                                       <a href="${rootPath}/admin/news/view/${news.id}"> <button class="btn btn-warning btn-sm"><i class="fa fa-search"></i>查看</button></a>
+                                        <a href="${rootPath}/admin/news/edit/${news.id}">  <button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i>编辑</button></a>
+                                        <a href="${rootPath}/admin/news/delete/${news.id}"> <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>删除</button></a>
                                     </td>
                                 </tr>
                             </c:forEach>
