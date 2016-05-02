@@ -33,10 +33,10 @@
               <h2><span>推荐课程</span></h2>
               <div class="pull-right clearfix">
                 <ul class="nav">
-                  <li><a href=""  class="active">学习资源</a></li>
-                  <li><a href="">专题辅导</a></li>
-                  <li><a href="">海外调研</a></li>
-                  <li><a href="">名师讲解</a></li>
+                  <li><a href=""  class="active">教研</a></li>
+                  <li><a href="">管理</a></li>
+                  <li><a href="">海外</a></li>
+                  <li><a href="">综合</a></li>
                 </ul>
               </div>
             </div>

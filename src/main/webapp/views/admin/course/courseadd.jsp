@@ -281,7 +281,7 @@
                    }
                });
 
-           });
+
 
            function loadCategory(id , selector){
 //            var url = "http://" + host + uri + id + ".json";
