@@ -3,9 +3,10 @@ package com.xst.entity;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Time;
 
 /**
- * Created by sl on 16-5-1.
+ * Created by sl on 16-5-2.
  */
 @Entity
 @javax.persistence.Table(name = "v9_resources", schema = "", catalog = "db_xst_new")
@@ -37,7 +38,7 @@ public class V9Resources {
     private String creatime;
 
     @Basic
-    @javax.persistence.Column(name = "creatime", nullable = true, insertable = true, updatable = true, length = 11)
+    @javax.persistence.Column(name = "creatime", nullable = true, insertable = true, updatable = true)
     public String getCreatime() {
         return creatime;
     }

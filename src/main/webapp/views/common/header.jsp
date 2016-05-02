@@ -16,7 +16,9 @@
             <ul class="navbar-nav nav topmenu">
                 <li><a href="${rootPath}/course/list">课程</a></li>
                 <li><a href="${rootPath}/group/list">小组</a></li>
+                <li><a href="#">活动</a></li>
                 <li><a href="${rootPath}/news/list">资讯</a></li>
+                <li><a href="#">文库</a></li>
             </ul>
         </nav>
         <div class="pull-right user-nav clearfix">
