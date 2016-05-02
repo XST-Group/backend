@@ -3,6 +3,7 @@ package com.xst.test.dao;
 import com.xst.dao.MemberDao;
 import com.xst.entity.V9Admin;
 import com.xst.entity.V9Member;
+import com.xst.page.Page;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +41,11 @@ public class MemberDaoTest {
     @Test
     public void testAddMember(){
         V9Member member = new V9Member();
-        member.setUserid(11111);
+
+        member.setUsername("张三"+System.currentTimeMillis());
+        member.setNickname("小张");
+        member.setPassword("123456");
+        //member.setUserid(11111);
         member.setAmount(BigDecimal.valueOf(123));
         member.setEmail("123@123.com");
         member.setAreaid((short) 123);
@@ -50,6 +55,7 @@ public class MemberDaoTest {
         member.setEncrypt("123");
         member.setInvoicetitle("1213");
         member.setIslock((byte) 123);
+        member.setVerify("0");
         memberDao.save(member);
     }
 
@@ -60,4 +66,25 @@ public class MemberDaoTest {
         System.out.println(member.getUsername()+"  "+member.getPassword());
     }
 
+    @Test
+    public void testQueryForMemList(){
+        Page<V9Member> memberPage=memberDao.queryForMemList(1,5,1);
+        Assert.assertNotNull(memberPage);
+        for(int i=0;i<memberPage.getList().size();i++){
+            System.out.println(memberPage.getList().get(i));
+        }
+
+    }
+
+    @Test
+    public void testAcceptMember(){
+            memberDao.acceptMember(new int[]{4831,4832});
+
+    }
+
+    @Test
+    public void testRefuseMember(){
+
+        memberDao.refuseMember(new int[]{4834,4833});
+    }
 }

@@ -1,3 +1,18 @@
+
+<%--
+  Created by IntelliJ IDEA.
+  User: CrazyCodess
+  Date: 2016/5/1
+  Time: 20:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>用户列表</title>
+</head>
+<body>
+${page}
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,8 +24,8 @@
     <meta name="author" content="">
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="css/app.min.css"/>
-    <link rel="stylesheet" href="css/admin_manage.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
+    <link rel="stylesheet" href="${assetsPath}/css/admin_manage.css"/>
 
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -197,7 +212,5 @@
                 });
             });
         </script>
-
-
 </body>
 </html>
