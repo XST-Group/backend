@@ -3,7 +3,6 @@ package com.xst.controller;
 import com.xst.bean.StatusMessage;
 import com.xst.dao.MemberDao;
 import com.xst.dao.MemberVerifyDao;
-import com.xst.entity.V9Admin;
 import com.xst.entity.V9Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * Created by sl on 16-4-5.
  */
 @Controller
-//@RequestMapping("/user")
+@RequestMapping("/member")
 public class MemberController {
 
 
@@ -34,7 +34,7 @@ public class MemberController {
 
     @RequestMapping(value = "/register" , method = RequestMethod.GET)
     public String register(){
-        return "register";
+        return "member/register";
     }
 
 
@@ -60,39 +60,40 @@ public class MemberController {
 
     }
 
-    @RequestMapping(value = "/user/login" , method = RequestMethod.POST)
-    public String login(String username , String password , HttpSession session){
+    @RequestMapping(value = "/login" , method = RequestMethod.POST)
+    public String login(String username , String password ,
+                        RedirectAttributes redirectAttributes,HttpSession session){
         int status = 0;
-        String message = "";
-        StatusMessage statusMessage = new StatusMessage(status,message);
+        String loginMsg = "";
+//        StatusMessage statusMessage = new StatusMessage(status,message);
 
 
-        System.out.println("1111111111111111111111"+username+"  "+password);
+        System.out.println("1111111111111111111111   "+username+"  "+password);
 
         if(username == ""){
-            message = "请输入用户名";
+            loginMsg = "请输入用户名";
         }else{
             V9Member member = memberDao.getByName(username);
             if(password == ""){
-                message = "请输入密码";
+                loginMsg = "请输入密码";
             }else if(!member.getPassword().equals(password)){
-                message = "密码错误";
+                loginMsg = "密码错误";
             }else {
                 status = 1;
-                message = "用户登陆成功";
+                loginMsg = "用户登陆成功";
                 session.setAttribute("loginUser",member);
-                statusMessage.setStatus(status);
-                statusMessage.setMessage(message);
-                System.out.println("message1 : "+message);
-                // redirectAttributes.addAttribute("loginMsg",message);
+//                statusMessage.setStatus(status);
+//                statusMessage.setMessage(message);
+                System.out.println("message1 : "+loginMsg);
+                 redirectAttributes.addAttribute("loginMsg",loginMsg);
                 return "redirect:/index";
             }
         }
 
-        System.out.println("message : "+message);
-        statusMessage.setStatus(status);
-        statusMessage.setMessage(message);
-//        redirectAttributes.addAttribute("loginMsg","登录失败");
+        System.out.println("message : "+loginMsg);
+//        statusMessage.setStatus(status);
+//        statusMessage.setMessage(message);
+        redirectAttributes.addAttribute("loginMsg",loginMsg);
         return "redirect:/index";
     }
 

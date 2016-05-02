@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${assetsPath}/css/app.css">
 </head>
 <body>
-<jsp:include page="common/header.jsp" />
+<jsp:include page="../common/header.jsp" />
 
 <div class="main register-bg">
     <div class="container">
@@ -76,6 +76,6 @@
     </div>
 </div>
 
-<jsp:include page="common/footer.jsp" />
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

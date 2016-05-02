@@ -84,8 +84,7 @@
             <!--  课程添加   -->
             <h2 class="dash-head">课程添加</h2>
             <form class="video-add" name="form1" id="form1" action="${rootPath}/admin/resource/add"
-                  method="post" enctype="multipart/form-data" >
-                <%--target="if" onsubmit="return go()">--%>
+                  method="post" enctype="multipart/form-data" target="if" onsubmit="return go()">
                 <div class="form-group form-info">
                     <label for="courseName">课程名称</label>
                     <input type="text" class="form-control" id="courseName" name="title" value="">
