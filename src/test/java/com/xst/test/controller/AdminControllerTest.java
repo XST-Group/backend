@@ -1,8 +1,10 @@
 package com.xst.test.controller;
 
 import com.xst.entity.V9Category;
+import com.xst.entity.V9MemberVerify;
 import com.xst.entity.V9News;
 import com.xst.entity.V9Resources;
+import com.xst.page.Page;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -74,6 +76,51 @@ public class AdminControllerTest {
         mockMvc.perform(post("/admin/login","test","123456"))
                 .andExpect(status().isOk())
                 .andDo(print());
+    }
+
+    @Test
+    public void testList()throws Exception{
+        MvcResult result = mockMvc
+                .perform(get("/admin/verify/list"))
+                .andExpect(view().name("admin/verifylist"))
+                .andExpect(forwardedUrl("/views/admin/verifylist.jsp"))
+                .andExpect(model().attributeExists("page"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+
+
+        mockMvc
+                .perform(get("/index"))
+                .andExpect(view().name("index"))
+                .andExpect(forwardedUrl("/views/index.jsp"))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+
+       Page<V9MemberVerify> cates =  (Page<V9MemberVerify>)result.getModelAndView().getModel().get("page");
+
+        Assert.assertNotNull(cates);
+    }
+
+
+    public void testDeleteNews()throws Exception{
+        MvcResult result = mockMvc
+                .perform(get("/admin/news/delete"))
+                .andExpect(view().name("admin/deleteNewsSuccess"))
+                .andExpect(forwardedUrl("/views/admin/deleteNewsSuccess.jsp"))
+                .andExpect(model().attributeExists("deleteNewsMsg"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+
+
+       /// Page<V9News> newsPage =  (Page<V9News>)result.getModelAndView().getModel().get("newsPageBean");
+        String msg=(String)result.getModelAndView().getModel().get("deleteNewsMsg");
+        Assert.assertNotNull(msg);
+
+
+
     }
 
 }
