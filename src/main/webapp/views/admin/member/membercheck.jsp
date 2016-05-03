@@ -82,7 +82,7 @@
                 </li>
 
                 <li>
-                    <a href="${rootPath}/admin/news/list" data-target="resourceManage" class="nav-header">
+                    <a href="#" data-target="resourceManage" class="nav-header">
                         <i class="fa fa-folder"></i> 资源管理<i class="fa fa-collapse"></i>
                     </a>
                 </li>
