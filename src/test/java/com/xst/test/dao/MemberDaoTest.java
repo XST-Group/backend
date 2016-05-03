@@ -50,7 +50,7 @@ public class MemberDaoTest {
         member.setEmail("123@123.com");
         member.setAreaid((short) 123);
         member.setContacts("123");
-        member.setRegdate(123);
+        member.setRegdate((int)(System.currentTimeMillis()/1000));
         member.setGroupid((byte) 123);
         member.setEncrypt("123");
         member.setInvoicetitle("1213");
