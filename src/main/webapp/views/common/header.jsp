@@ -18,13 +18,13 @@
                 <li><a href="${rootPath}/group/list">小组</a></li>
                 <li><a href="#">活动</a></li>
                 <li><a href="${rootPath}/news/list">资讯</a></li>
-                <li><a href="#">文库</a></li>
+                <li><a href="${rootPath}/library/list">文库</a></li>
             </ul>
         </nav>
         <div class="pull-right user-nav clearfix">
             <ul class="nav nav-login">
                 <li><a href="#" id="loginButton">登录</a></li>
-                <li><a href="${rootPath}/user/register">注册</a></li>
+                <li><a href="${rootPath}/member/register">注册</a></li>
             </ul>
         </div>
         <form class="header-search  pull-right " action="index.html" method="post">
