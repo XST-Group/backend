@@ -18,7 +18,7 @@
                 <li><a href="${rootPath}/group/list">小组</a></li>
                 <li><a href="#">活动</a></li>
                 <li><a href="${rootPath}/news/list">资讯</a></li>
-                <li><a href="#">文库</a></li>
+                <li><a href="${rootPath}/library/list">文库</a></li>
             </ul>
         </nav>
         <div class="pull-right user-nav clearfix">

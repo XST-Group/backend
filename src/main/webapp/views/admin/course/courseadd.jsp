@@ -171,7 +171,7 @@
               var prop = document.getElementById("prop");
               suspend.style.display = 'block';
               cname.innerHTML = courseName.value;
-//              var timer = setInterval("getP()",50);
+              var timer = setInterval("getP()",50);
             }
             function cancel() {
               document.getElementById("suspend").style.display = "none";

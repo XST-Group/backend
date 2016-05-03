@@ -63,7 +63,7 @@ public class MemberController {
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
     public String login(String username , String password ,
                         RedirectAttributes redirectAttributes,HttpSession session){
-        int status = 0;
+//        int status = 0;
         String loginMsg = "";
 //        StatusMessage statusMessage = new StatusMessage(status,message);
 
@@ -79,7 +79,7 @@ public class MemberController {
             }else if(!member.getPassword().equals(password)){
                 loginMsg = "密码错误";
             }else {
-                status = 1;
+//                status = 1;
                 loginMsg = "用户登陆成功";
                 session.setAttribute("loginUser",member);
 //                statusMessage.setStatus(status);
