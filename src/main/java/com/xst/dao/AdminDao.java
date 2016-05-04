@@ -1,5 +1,6 @@
 package com.xst.dao;
 
+import com.xst.entity.V9Member;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -22,4 +23,30 @@ public class AdminDao extends BaseDao {
 		return admin.get(0);
 	}
 
+	/**
+	 * 判断用户名是否存在
+	 * @param username
+	 * @return
+	 */
+	public boolean isUsernameExit(String username){
+		if(HQuery("username",username) == null){
+			return false;
+		}
+
+		return true;
+	}
+	/**
+	 * 查询
+	 * @param colume
+	 * @param value
+	 * @return
+	 */
+	private V9Admin HQuery(String colume , String value){
+		String hql = "from V9Admin  where "+colume+"=?";
+		Query query = query(hql);
+		//query.setString(0, String.valueOf(value));
+		query.setString(0, value);
+		V9Admin results = (V9Admin) query.uniqueResult();
+		return results;
+	}
 }
