@@ -180,7 +180,7 @@ public class AdminController {
             username="admin";
         }
         newsDao.addNews(title,description,content,arr_group_id,type,username);
-        redirectAttributes.addAttribute("Msg","添加成功！");//session在跳到页面后马上移除对象
+        redirectAttributes.addFlashAttribute("Msg","添加成功！");//session在跳到页面后马上移除对象
         return "redirect:/admin/news/list";
     }
 
@@ -226,7 +226,7 @@ public class AdminController {
     public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid,RedirectAttributes redirectAttributes){
         memberDao.refuseMember(userid);
 
-        redirectAttributes.addAttribute("Msg","已拒绝!");
+        redirectAttributes.addFlashAttribute("Msg","已拒绝!");
         return "redirect:/admin/verify/list";
     }
 
@@ -241,7 +241,7 @@ public class AdminController {
     public String refuseOneMember(Model model ,@PathVariable("userid")int  userid,RedirectAttributes redirectAttributes){
 
         memberDao.refuseMember(new int[]{userid});
-        redirectAttributes.addAttribute("Msg","已拒绝!");
+        redirectAttributes.addFlashAttribute("Msg","已拒绝!");
         return "redirect:/admin/verify/list";
     }
 
@@ -254,7 +254,7 @@ public class AdminController {
     @RequestMapping(value = "/member/accept",method = RequestMethod.POST)
     public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid,RedirectAttributes redirectAttributes){
         memberDao.acceptMember(userid);
-        redirectAttributes.addAttribute("Msg","已通过!");
+        redirectAttributes.addFlashAttribute("Msg","已通过!");
         return "redirect:/admin/verify/list";
     }
 
@@ -268,7 +268,7 @@ public class AdminController {
     public String acceptOneMember(Model model ,@PathVariable("userid")int  userid,RedirectAttributes redirectAttributes){
 
         memberDao.acceptMember(new int[]{userid});
-        redirectAttributes.addAttribute("Msg","已通过!");
+        redirectAttributes.addFlashAttribute("Msg","已通过!");
         return "redirect:/admin/verify/list";
     }
 
@@ -343,7 +343,7 @@ public class AdminController {
             username="admin";
         }
         newsDao.updateNews(newsId,title,description,content,arr_group_id,type,username);
-        redirectAttributes.addAttribute("Msg","编辑成功！!");
+        redirectAttributes.addFlashAttribute("Msg","编辑成功！!");
         return "redirect:/admin/news/list";
     }
 
