@@ -98,50 +98,63 @@ public class AdminController {
 
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
-    public String login(){
+    public String login(Model model){
         return "admin/login";
     }
 
-    //@ResponseBody
+   // @ResponseBody
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
-    public String  login(String username , String password , HttpSession session ,
-                         RedirectAttributes redirectAttributes){
-        int status = 0;
+    public String  login(String username , String password , HttpSession session,RedirectAttributes redirectAttributes){
+
         String message = "";
-        StatusMessage statusMessage = new StatusMessage(status,message);
+        //StatusMessage statusMessage = null;
 
         if(username == ""){
-            message = "请输入用户名";
-        }else{
+            message = "请输入用户名!";
+            //statusMessage=new StatusMessage(0,message);
+
+        }
+        else if(!adminDao.isUsernameExit(username)){
+            message="用户名不存在!";
+            //statusMessage=new StatusMessage(0,message);
+
+        }
+        else{
             V9Admin admin = adminDao.getByName(username);
             System.out.println(admin.getUsername()+"   "+admin.getPassword());
             if(password == ""){
-                message = "请输入密码";
+                message = "请输入密码!";
+//                statusMessage=new StatusMessage(0,message);
             }else if(!admin.getPassword().equals(password)){
-                message = "密码错误";
+                message = "密码错误!";
+//                statusMessage=new StatusMessage(0,message);
             }else {
-                status = 1;
-                message = "管理员登陆成功";
+
+                message = "管理员登陆成功!";
                 session.setAttribute("loginUser",admin);
-                statusMessage.setStatus(status);
-                statusMessage.setMessage(message);
-                System.out.println("message1 : "+message);
-               // redirectAttributes.addAttribute("loginMsg",message);
+//                statusMessage=new StatusMessage(1,message);
+//                System.out.println("message1 : "+message);
+                redirectAttributes.addFlashAttribute("loginMsg",message);
                 return "redirect:index";
             }
         }
 
-        System.out.println("message : "+message);
-        statusMessage.setStatus(status);
-        statusMessage.setMessage(message);
-//        redirectAttributes.addAttribute("loginMsg","登录失败");
-        return "redirect:login";
+//        System.out.println("message : "+message);
+        //statusMessage.setStatus(status);
+        //statusMessage.setMessage(message);
+        redirectAttributes.addFlashAttribute("loginMsg",message);
+        return "redirect:/admin/login";
+        //return statusMessage;
     }
 
 
     //@ResponseBody
     @RequestMapping(value = "/index" , method = RequestMethod.GET)
-    public String index(){
+    public String index(HttpSession session,RedirectAttributes redirectAttributes){
+        V9Admin admin = (V9Admin) session.getAttribute("loginUser");
+        if(admin==null){
+            return "redirect:login";
+        }
         return "admin/index";
     }
 
@@ -153,12 +166,12 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/news/list" , method = RequestMethod.GET)
-    public String listNews(Model model, String page,@ModelAttribute("Msg") String Msg){
+    public String listNews(Model model, String page){
         int pageNum = page == null ? 1 : Integer.valueOf(page);
         Page<V9News> newsPage=newsDao.queryForNewsListByPage(pageNum,15);
         model.addAttribute("page",newsPage);
         model.addAttribute("currentPage", pageNum);
-        model.addAttribute("Msg",Msg);
+        //model.addAttribute("Msg",Msg);
         return "admin/news/newslist";
     }
 
@@ -174,8 +187,12 @@ public class AdminController {
     public String addNews( String title, String description,String content,
                            RedirectAttributes redirectAttributes,String arr_group_id,String type, HttpSession session){
 
-        System.out.println(content);
-        String username=(String)session.getAttribute("loginUser");
+        V9Admin admin=(V9Admin)session.getAttribute("loginUser");
+        String username=null;
+        if(admin!=null){
+            username=admin.getUsername();
+        }
+
         if(username==null){
             username="admin";
         }
@@ -191,12 +208,12 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/verify/list" ,method = RequestMethod.GET)
-    public String viewMemberVerify(Model model,String page,@ModelAttribute("Msg") String Msg){
+    public String viewMemberVerify(Model model,String page){
         int pageNum = page == null ? 1 : Integer.valueOf(page);
         Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,0);
         model.addAttribute("page", memberPage);
         model.addAttribute("currentPage", pageNum);
-        model.addAttribute("Msg",Msg);
+        //model.addAttribute("Msg",Msg);
         return "admin/member/membercheck";
     }
 
@@ -338,7 +355,11 @@ public class AdminController {
     public String update(Model model,@PathVariable("newsId") int newsId,String title, String description,String content,
                          RedirectAttributes redirectAttributes,String arr_group_id,String type, HttpSession session){
 
-        String username=(String)session.getAttribute("loginUser");
+        String username =null;
+        V9Admin admin=(V9Admin) session.getAttribute("loginUser");
+        if(admin!=null){
+            username=admin.getUsername();
+        }
         if(username==null){
             username="admin";
         }

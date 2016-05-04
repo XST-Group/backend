@@ -7,6 +7,8 @@ import com.xst.entity.V9Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,77 +25,93 @@ public class MemberController {
 
 
     @Autowired
-    @Qualifier("memberVerifyDao")
-    private MemberVerifyDao memberVerifyDao;
-
-    @Autowired
     @Qualifier("memberDao")
     private MemberDao memberDao;
 
 
 
     @RequestMapping(value = "/register" , method = RequestMethod.GET)
-    public String register(){
+    public String register(Model model){
         return "member/register";
     }
 
 
-
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
-    public StatusMessage register(String userName , String email , String password,
-                                  String captcha , HttpSession session){
+    public String register(String email , String  username , String password,String password2,
+                                  /*String captcha ,*/ HttpSession session,RedirectAttributes redirectAttributes){
 
-        StatusMessage statusMessage;
+        System.out.println("=====register===========");
+//        StatusMessage statusMessage;
         String message = null;
 
-        if(memberVerifyDao.isEmailExit(email)){
+        if(memberDao.isEmailExit(email)){
             message = "该邮箱已被注册";
-            statusMessage = new StatusMessage(0,message);
+//            statusMessage = new StatusMessage(0,message);
         }//else if(!captcha.equals())验证码没搞呢
-        else {
-            //zqh:未完待续
-            statusMessage = new StatusMessage(1,message);
+        else if(memberDao.isUsernameExit(username)){
+            message="用户名已存在";
+//            statusMessage = new StatusMessage(0,message);
+        }else if(password==""){
+            message="请输入密码！";
+        }else if(!password.equals(password2)){
+            message="两次输入密码不一致！";
+        }else if(email==""||email==null){
+            message="请输入邮箱！";
         }
-
-        return statusMessage;
+        else {
+            V9Member member=new V9Member(username,password,email);
+            memberDao.addMember(member);
+            message="注册成功,您已登录！";
+            //zqh:未完待续
+//            statusMessage = new StatusMessage(1,message);
+            //session.setAttribute("statusMessage",statusMessage);
+            session.setAttribute("memberUser",member);
+            redirectAttributes.addFlashAttribute("loginMsg",message);
+            return "redirect:/index";
+        }
+        redirectAttributes.addFlashAttribute("loginMsg",message);
+       return "redirect:/member/register";
 
     }
-
+//    @ResponseBody
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
     public String login(String username , String password ,
-                        RedirectAttributes redirectAttributes,HttpSession session){
-//        int status = 0;
-        String loginMsg = "";
-//        StatusMessage statusMessage = new StatusMessage(status,message);
-
+                        HttpSession session,RedirectAttributes redirectAttributes){
+        
+//        StatusMessage statusMessage;
+        String message=null;
 
         System.out.println("1111111111111111111111   "+username+"  "+password);
 
         if(username == ""){
-            loginMsg = "请输入用户名";
-        }else{
+            message = "请输入用户名!";
+//            statusMessage=new StatusMessage(0,message);
+        }
+        else if(!memberDao.isUsernameExit(username)){
+            message="用户名不存在!";
+//            statusMessage=new StatusMessage(0,message);
+        }
+        else{
             V9Member member = memberDao.getByName(username);
             if(password == ""){
-                loginMsg = "请输入密码";
+                message = "请输入密码!";
+//                statusMessage=new StatusMessage(0,message);
             }else if(!member.getPassword().equals(password)){
-                loginMsg = "密码错误";
+                message = "密码错误!";
+//                statusMessage=new StatusMessage(0,message);
+
             }else {
-//                status = 1;
-                loginMsg = "用户登陆成功";
-                session.setAttribute("loginUser",member);
-//                statusMessage.setStatus(status);
-//                statusMessage.setMessage(message);
-                System.out.println("message1 : "+loginMsg);
-                 redirectAttributes.addAttribute("loginMsg",loginMsg);
-                return "redirect:/index";
+                message = "用户登陆成功!";
+//                statusMessage=new StatusMessage(1,message);
+                session.setAttribute("memberUser",member);
             }
         }
 
-        System.out.println("message : "+loginMsg);
+        //System.out.println("message : "+message);
 //        statusMessage.setStatus(status);
 //        statusMessage.setMessage(message);
-        redirectAttributes.addAttribute("loginMsg",loginMsg);
+        redirectAttributes.addFlashAttribute("loginMsg",message);
         return "redirect:/index";
     }
 

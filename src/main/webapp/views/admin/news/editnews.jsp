@@ -16,7 +16,6 @@
 
 </head>
 <body>
-${page}
 <form action="${rootPath}/admin/news/update/${news.id}" method="post">
     <table border="0">
         <th colspan="2">添加资讯</th>
