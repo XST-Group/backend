@@ -153,15 +153,12 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/news/list" , method = RequestMethod.GET)
-    public String listNews(Model model, String page, RedirectAttributes redirectAttributes, String Msg){
+    public String listNews(Model model, String page,@ModelAttribute("Msg") String Msg){
         int pageNum = page == null ? 1 : Integer.valueOf(page);
         Page<V9News> newsPage=newsDao.queryForNewsListByPage(pageNum,15);
-        System.out.println(newsPage.getList().get(0).getDescription());
-        //Map<String,String> map= (Map<String,String>)redirectAttributes.getFlashAttributes();
         model.addAttribute("page",newsPage);
         model.addAttribute("currentPage", pageNum);
         model.addAttribute("Msg",Msg);
-        System.out.println("删除信息"+Msg);
         return "admin/news/newslist";
     }
 
@@ -183,20 +180,9 @@ public class AdminController {
             username="admin";
         }
         newsDao.addNews(title,description,content,arr_group_id,type,username);
-        redirectAttributes.addAttribute("Msg","add success！");//session在跳到页面后马上移除对象
+        redirectAttributes.addAttribute("Msg","添加成功！");//session在跳到页面后马上移除对象
         return "redirect:/admin/news/list";
     }
-
-/*
-    @RequestMapping(value="/news/success",method = RequestMethod.GET)
-    public String success(Model model,RedirectAttributes redirectAttributes){
-        //Map<String,String> map=(Map<String, String>)redirectAttributes.getFlashAttributes();
-        //System.out.println(map.get("addNewsMsg"));
-       // model.addAttribute("addNewsMsg",map.get("addNewsMsg"));
-        //model.addAttribute("Msg","添加成功！");
-        //model.addAttribute("")
-        return "admin/news/addnewsuccess";
-    }*/
 
     /**
      * 分页显示待验证用户
@@ -205,7 +191,7 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/verify/list" ,method = RequestMethod.GET)
-    public String viewMemberVerify(Model model,String page,String Msg){
+    public String viewMemberVerify(Model model,String page,@ModelAttribute("Msg") String Msg){
         int pageNum = page == null ? 1 : Integer.valueOf(page);
         Page<V9Member> memberPage=memberDao.queryForMemList(pageNum,15,0);
         model.addAttribute("page", memberPage);
@@ -237,11 +223,11 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/member/refuse",method = RequestMethod.POST)
-    public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
+    public String refuseMember(Model model , @RequestParam(value = "userid[]")int[]  userid,RedirectAttributes redirectAttributes){
         memberDao.refuseMember(userid);
 
-        model.addAttribute("verifyMsg", "已拒绝！");
-        return "admin/member/refusesuccess";
+        redirectAttributes.addAttribute("Msg","已拒绝!");
+        return "redirect:/admin/verify/list";
     }
 
 
@@ -255,7 +241,7 @@ public class AdminController {
     public String refuseOneMember(Model model ,@PathVariable("userid")int  userid,RedirectAttributes redirectAttributes){
 
         memberDao.refuseMember(new int[]{userid});
-        redirectAttributes.addAttribute("Msg","Refuse Success!");
+        redirectAttributes.addAttribute("Msg","已拒绝!");
         return "redirect:/admin/verify/list";
     }
 
@@ -266,10 +252,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/member/accept",method = RequestMethod.POST)
-    public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid){
+    public String acceptMember(Model model , @RequestParam(value = "userid[]")int[]  userid,RedirectAttributes redirectAttributes){
         memberDao.acceptMember(userid);
-        model.addAttribute("verifyMsg","已通过");
-        return "admin/member/acceptsuccess";
+        redirectAttributes.addAttribute("Msg","已通过!");
+        return "redirect:/admin/verify/list";
     }
 
     /**
@@ -282,8 +268,7 @@ public class AdminController {
     public String acceptOneMember(Model model ,@PathVariable("userid")int  userid,RedirectAttributes redirectAttributes){
 
         memberDao.acceptMember(new int[]{userid});
-        model.addAttribute("verifyMsg","已通过！");
-        redirectAttributes.addAttribute("Msg","Accept Success !");
+        redirectAttributes.addAttribute("Msg","已通过!");
         return "redirect:/admin/verify/list";
     }
 
@@ -294,19 +279,17 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/news/delete",method = RequestMethod.POST)
-    public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id){
+    public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id,RedirectAttributes redirectAttributes){
         newsDao.deleteAll(id);
-        model.addAttribute("Msg","删除成功");
-        return "admin/news/deleteNewsSuccess";
+        redirectAttributes.addFlashAttribute("Msg", "删除成功！");
+        return "redirect:/admin/news/list";
     }
 
 
     @RequestMapping(value = "/news/delete/{newsId}",method = RequestMethod.GET)
     public String deleteOneNews(Model model,@PathVariable("newsId") int newsId,RedirectAttributes redirectAttributes){
         newsDao.deleteAll(new int[]{newsId});
-        String msg="删除";
-        model.addAttribute("deleteNewsMsg","123456");
-        redirectAttributes.addAttribute("Msg", "delete success!");
+        redirectAttributes.addFlashAttribute("Msg", "删除成功！");
         return "redirect:/admin/news/list";
     }
 
@@ -360,7 +343,7 @@ public class AdminController {
             username="admin";
         }
         newsDao.updateNews(newsId,title,description,content,arr_group_id,type,username);
-        redirectAttributes.addAttribute("Msg","edit success!");
+        redirectAttributes.addAttribute("Msg","编辑成功！!");
         return "redirect:/admin/news/list";
     }
 
