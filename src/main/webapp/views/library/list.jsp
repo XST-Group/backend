@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>文库</title>
     <!--<script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>-->
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css"/>
 </head>
