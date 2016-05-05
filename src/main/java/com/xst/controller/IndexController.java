@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,7 +35,7 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
 
-    public String index(Model model , HttpSession session) {
+    public String index(Model model , HttpSession session,@ModelAttribute("loginMsg") String loginMsg) {
 
         Page<V9Resources> resources = resourcesDao.getPageResources(1,8);
         Page<V9Group> groups = groupDao.queryGpListByPage(1,8);
@@ -44,7 +45,7 @@ public class IndexController {
 
         String path=session
                 .getServletContext().getRealPath("/usr/local/xst/video");
-
+        model.addAttribute("loginMsg",loginMsg);
         System.out.println("11111111   "+path);
         return "index";
     }

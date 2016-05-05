@@ -40,7 +40,7 @@
                 <h2 class="text-center col-md-4 col-md-offset-2">后台系统登录</h2>
             </div>
             <div class="modal-body">
-                <form action="" class="form center-block center-block" method="post">
+                <form action="${rootPath}/admin/login" id="loginForm" class="form center-block center-block" method="post">
                     <div class="input-group col-md-6">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                         <input type="text" class="form-control input-lg" id="examInputEmail1" name="username"
@@ -51,9 +51,9 @@
                         <input type="password" class="form-control input-lg" id="examInputPassword1" name="password"
                                placeholder="请输入您的密码"/>
                     </div>
-
+                    <div class="errorMsg"></div>
                     <div class="input-group col-md-6">
-                        <input type="submit" class="btn btn-lg" value="登录" id="login-in">
+                        <input type="submit" class="btn btn-lg"  onclick="return userLoginSubmit()" value="登录" id="login-in">
                         <span><a href="#" style="text-align: right" class="forget">忘记密码?</a></span>
                     </div>
                 </form>
@@ -64,6 +64,29 @@
 
     </div>
 </div>
+<script>
 
+    function userLoginSubmit() {
+        console.log('loginSubmit')
+        $.ajax({
+            type: 'post',
+            url: '${rootPath}/admin/login',    //  填进你要处理表单信息的Servlet
+            data: $('#loginForm').serialize(),    //   字符串  name1=value1&name2=value2
+            success: function(loginMsg) {
+                console.log(loginMsg)
+                if( loginMsg.status ) {
+                    alert('登陆成功');
+                    location.href='${rootPath}/admin/index';    //  路径不对的话改一下
+                }
+                else {
+                    $('.errorMsg').html(loginMsg.message);
+                }
+            }
+        });
+        loginForm.reset();
+        return false;
+    }
+
+</script>
 </body>
 </html>
