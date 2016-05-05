@@ -40,7 +40,7 @@
                 <h2 class="text-center col-md-4 col-md-offset-2">后台系统登录</h2>
             </div>
             <div class="modal-body">
-                <form action="${rootPath}/admin/login" class="form center-block center-block" method="post">
+                <form action="${rootPath}/admin/login" id="loginForm" class="form center-block center-block" method="post">
                     <div class="input-group col-md-6">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                         <input type="text" class="form-control input-lg" id="examInputEmail1" name="username"
@@ -51,9 +51,9 @@
                         <input type="password" class="form-control input-lg" id="examInputPassword1" name="password"
                                placeholder="请输入您的密码"/>
                     </div>
-
+                    <div class="errorMsg"></div>
                     <div class="input-group col-md-6">
-                        <input type="submit" class="btn btn-lg" value="登录" id="login-in">
+                        <input type="submit" class="btn btn-lg"  onclick="return userLoginSubmit()" value="登录" id="login-in">
                         <span><a href="#" style="text-align: right" class="forget">忘记密码?</a></span>
                     </div>
                 </form>
@@ -66,34 +66,26 @@
 </div>
 <script>
 
-    $(function(){
-        function alertMessage(message) {
-            var insert =
-                    "<div class='suspend' style='width: 100%;height: 100%;display: none;z-index: 2;background-color: rgba(0,0,0,.6);position: fixed;top: 0;left: 0;'>" +
-                    "<div class='suspend-content' style='text-align:right;padding: 30px 40px;width: 400px;height: 200px;background-color: #fff;border-radius: 4px;position: fixed;top: 26%;left: 36%;'>" +
-                    "<p class='alertMessage' style='text-align:left;font-size: 22px;height: 80px;color: #000;font-weight: bold;margin-bottom: 30px;'></p>" +
-                    " <button type='button' class='btn btn-success'>确定</button>" +
-                    "</div>" +
-                    "</div>";
-            $('body').append(insert);
-            $('.alertMessage').html(message);
-            $('.suspend').css('display','block');
-            $('.btn').on('click',function(){
-                $('.suspend').css('display','none');
-            });
-
-
-        };
-        $(document).ready(function () {
-            var loginMsg="${loginMsg}";
-//            var msg="abc";
-
-            if(loginMsg!=''){
-                alertMessage(loginMsg);
+    function userLoginSubmit() {
+        console.log('loginSubmit')
+        $.ajax({
+            type: 'post',
+            url: '${rootPath}/admin/login',    //  填进你要处理表单信息的Servlet
+            data: $('#loginForm').serialize(),    //   字符串  name1=value1&name2=value2
+            success: function(loginMsg) {
+                console.log(loginMsg)
+                if( loginMsg.status ) {
+                    alert('登陆成功');
+                    location.href='${rootPath}/admin/index';    //  路径不对的话改一下
+                }
+                else {
+                    $('.errorMsg').html(loginMsg.message);
+                }
             }
         });
-    });
-
+        loginForm.reset();
+        return false;
+    }
 
 </script>
 </body>

@@ -11,7 +11,10 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
-<script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css"/>       <!--这个为该页面特殊引入,为适应bootstrap的图标-->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<%--<script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>--%>
 <div class="main register-bg">
     <div class="container">
         <div id="register">
@@ -20,7 +23,7 @@
                 <div class="regist-body">
                     <div class="regist-main">
 
-                        <form action="${rootPath}/member/register" class="form-horizontal col-md-offset-1" role="form" method="post">
+                        <form action="${rootPath}/member/register" id="registerForm" class="form-horizontal col-md-offset-1" role="form" method="post">
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label"><span class="regist-star">*</span>登录邮箱</label>
 
@@ -62,9 +65,10 @@
                                 <img src="http://img.mukewang.com/545308540001678401500040.jpg" alt="" class="col-sm-2"/>
                             </div>
 
+                            <div class="errorMsg"></div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="regist-btn">立即注册</button>
+                                    <button type="submit" onclick="return userLoginSubmit()" class="regist-btn">立即注册</button>
                                 </div>
                             </div>
                         </form>
@@ -77,33 +81,27 @@
 </div>
 <script>
 
-    $(function(){
-        function alertMessage(message) {
-            var insert =
-                    "<div class='suspend' style='width: 100%;height: 100%;display: none;z-index: 2;background-color: rgba(0,0,0,.6);position: fixed;top: 0;left: 0;'>" +
-                    "<div class='suspend-content' style='text-align:right;padding: 30px 40px;width: 400px;height: 200px;background-color: #fff;border-radius: 4px;position: fixed;top: 26%;left: 36%;'>" +
-                    "<p class='alertMessage' style='text-align:left;font-size: 22px;height: 80px;color: #000;font-weight: bold;margin-bottom: 30px;'></p>" +
-                    " <button type='button' class='btn btn-success'>确定</button>" +
-                    "</div>" +
-                    "</div>";
-            $('body').append(insert);
-            $('.alertMessage').html(message);
-            $('.suspend').css('display','block');
-            $('.btn').on('click',function(){
-                $('.suspend').css('display','none');
+        function userLoginSubmit() {
+
+            console.log('loginSubmit')
+            $.ajax({
+                type: 'post',
+                url: '${rootPath}/member/register',    //  填进你要处理表单信息的Servlet
+                data: $('#registerForm').serialize(),    //   字符串  name1=value1&name2=value2
+                success: function(loginMsg) {
+                    console.log(loginMsg)
+                    if( loginMsg.status ) {
+                        alert('登陆成功');
+                        location.href='${rootPath}/index';    //  路径不对的话改一下
+                    }
+                    else {
+                        $('.errorMsg').html(loginMsg.message);
+                    }
+                }
             });
-
-
-        };
-        $(document).ready(function () {
-            var loginMsg="${loginMsg}";
-//            var msg="abc";
-
-            if(loginMsg!=''){
-                alertMessage(loginMsg);
-            }
-        });
-    });
+            registerForm.reset();
+            return false;
+        }
 
 
 </script>

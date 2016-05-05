@@ -90,6 +90,7 @@
 
 </div>
 
+
 <script>
     $(document).ready(function () {
         $(".sidebar-nav a").click(function(){
@@ -104,7 +105,7 @@
     });
 </script>
 
-<script>
+<%--<script>
 
     $(function(){
         function alertMessage(message) {
@@ -135,7 +136,7 @@
     });
 
 
-</script>
+</script>--%>
 
 </body>
 </html>

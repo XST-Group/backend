@@ -1,5 +1,20 @@
 function showLoginBox(){
-	login_box_template = '<div id="login-modal"><div style="width:100%;height:100%;position:fixed;z-index:2000;top:0;left:0;overflow:hidden" onclick="hideLoginBox()"><div style="height:100%;opacity:.4;background:#000"></div></div><div class="modal"><div class="modal-header clearfix"><h2 class="l">登录</h2><div class="register pull-right">      没有账号？<a href="/xst/member/register"><strong>立即注册</strong></a></div></div><div class="modal-body"><form id="loginForm" action="/xst/member/login" method="post"><div class="control-group"><div class="user-id"><input type="text" placeholder="请输入邮箱/用户名" name="username" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" /></div></div><div class="control-group"><div class="user-pw"><input type="password" name="password" placeholder="请输入密码" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" /></div></div><div class="errorMsg"><c:if test="${loginMsg!=null}"><p>${loginMsg}</p></c:if><p></p></div><div class="control-group"><div class="r"><button type="submit" onclick="userLogin()" class="btn btn-primary btn-login">登录</inp></div></div></form></div></div></div>'
+	login_box_template = '<div id="login-modal">' +
+		'<div style="width:100%;height:100%;position:fixed;z-index:2000;top:0;left:0;overflow:hidden" onclick="hideLoginBox()">' +
+		'<div style="height:100%;opacity:.4;background:#000"></div>' +
+		'</div>' +
+		'<div class="modal">' +
+		'<div class="modal-header clearfix">' +
+		'<h2 class="l">登录</h2>' +
+		'<div class="register pull-right">      没有账号？<a href="/xst/member/register"><strong>立即注册</strong></a></div>' +
+		'</div><div class="modal-body">' +
+		'<form id="loginForm" action="/xst/member/login" method="post">' +
+		'<div class="control-group">' +
+		'<div class="user-id">' +
+		'<input type="text" placeholder="请输入邮箱/用户名" name="username" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" />' +
+		'</div></div>' +
+		'<div class="control-group"><div class="user-pw"><input type="password" name="password" placeholder="请输入密码" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" />' +
+		'</div></div><div class="errorMsg"></div><div class="control-group"><div class="r"><button type="submit" onclick="return userLoginSubmit()" class="btn btn-primary btn-login">登录</inp></div></div></form></div></div></div>'
 	$("body").append(login_box_template);
 }
 
@@ -20,6 +35,32 @@ function hideLoginBox(){
 $('#loginButton').click(function() {
 	showLoginBox();
 })
+
+
+
+function userLoginSubmit() {
+
+	console.log('loginSubmit')
+	$.ajax({
+		 type: 'post',
+		 url: '/xst/member/login',    //  填进你要处理表单信息的Servlet
+		 data: $('#loginForm').formSerialize(),    //   字符串  name1=value1&name2=value2
+		 success: function(loginMsg) {
+			 console.log(loginMsg)
+			 if( loginMsg.status ) {
+				alert('登陆成功');
+				location.href='/xst/index';    //  路径不对的话改一下
+			 }
+			 else {
+				$('.errorMsg').html(loginMsg.message);
+			 }
+		 }
+	 });
+    loginForm.reset();
+	return false;
+}
+
+
 var cg={};
 function getFlashHtml(playUrl,replaceObj){
 	var config = {};

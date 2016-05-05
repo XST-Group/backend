@@ -102,21 +102,21 @@ public class AdminController {
         return "admin/login";
     }
 
-   // @ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
-    public String  login(String username , String password , HttpSession session,RedirectAttributes redirectAttributes){
+    public StatusMessage  login(String username , String password , HttpSession session){
 
         String message = "";
-        //StatusMessage statusMessage = null;
+        StatusMessage statusMessage = null;
 
         if(username == ""){
             message = "请输入用户名!";
-            //statusMessage=new StatusMessage(0,message);
+            statusMessage=new StatusMessage(0,message);
 
         }
         else if(!adminDao.isUsernameExit(username)){
             message="用户名不存在!";
-            //statusMessage=new StatusMessage(0,message);
+            statusMessage=new StatusMessage(0,message);
 
         }
         else{
@@ -124,27 +124,27 @@ public class AdminController {
             System.out.println(admin.getUsername()+"   "+admin.getPassword());
             if(password == ""){
                 message = "请输入密码!";
-//                statusMessage=new StatusMessage(0,message);
+                statusMessage=new StatusMessage(0,message);
             }else if(!admin.getPassword().equals(password)){
                 message = "密码错误!";
-//                statusMessage=new StatusMessage(0,message);
+                statusMessage=new StatusMessage(0,message);
             }else {
 
                 message = "管理员登陆成功!";
                 session.setAttribute("loginUser",admin);
-//                statusMessage=new StatusMessage(1,message);
-//                System.out.println("message1 : "+message);
-                redirectAttributes.addFlashAttribute("loginMsg",message);
-                return "redirect:index";
+                statusMessage=new StatusMessage(1,message);
+                System.out.println("message1 : "+message);
+                //redirectAttributes.addFlashAttribute("loginMsg",message);
+                //return "redirect:index";
             }
         }
 
 //        System.out.println("message : "+message);
         //statusMessage.setStatus(status);
         //statusMessage.setMessage(message);
-        redirectAttributes.addFlashAttribute("loginMsg",message);
-        return "redirect:/admin/login";
-        //return statusMessage;
+        //redirectAttributes.addFlashAttribute("loginMsg",message);
+        //return "redirect:/admin/login";
+        return statusMessage;
     }
 
 

@@ -174,9 +174,11 @@
     <!-- end of index ad -->
 
     <jsp:include page="common/footer.jsp" />
+
     <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript"src="${assetsPath}/js/main.js"></script>
     <script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
+    <script type="text/javascript"src="${assetsPath}/js/check_login.js"></script>
     <script>
         $(function() {
             var unslider = $('.banner').unslider({
