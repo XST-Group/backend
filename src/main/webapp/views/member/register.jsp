@@ -44,7 +44,7 @@
                                 <label for="password" class="col-sm-2 control-label"><span class="regist-star">*</span>登录密码</label>
 
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" id="password" name="password" />
+                                    <input type="password" class="form-control" id="password" name="password" />
                                 </div>
                                 <span class="col-sm-5 tip">请输入6-16位密码，区分大小写，不能使用空格</span>
                             </div>
@@ -53,7 +53,7 @@
                                 <label for="password2" class="col-sm-2 control-label"><span class="regist-star">*</span>确认密码</label>
 
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" id="password2"  name="password2"/>
+                                    <input type="password" class="form-control" id="password2"  name="password2"/>
                                 </div>
                             </div>
 
@@ -65,9 +65,11 @@
                                 <img src="http://img.mukewang.com/545308540001678401500040.jpg" alt="" class="col-sm-2"/>
                             </div>
 
-                            <div class="errorMsg"></div>
+
                             <div class="form-group">
+
                                 <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="errorMsg" style="color:#ff6f56"></div>
                                     <button type="submit" onclick="return userLoginSubmit()" class="regist-btn">立即注册</button>
                                 </div>
                             </div>
@@ -91,7 +93,7 @@
                 success: function(loginMsg) {
                     console.log(loginMsg)
                     if( loginMsg.status ) {
-                        alert('登陆成功');
+                        //alert('登陆成功');
                         location.href='${rootPath}/index';    //  路径不对的话改一下
                     }
                     else {

@@ -37,7 +37,7 @@
             <div class="modal-header">
                 <i class="fa fa-desktop fa-2x col-md-2"></i>
 
-                <h2 class="text-center col-md-4 col-md-offset-2">后台系统登录</h2>
+                <h3 class="text-center col-md-4 col-md-offset-2">后台系统登录</h3>
             </div>
             <div class="modal-body">
                 <form action="${rootPath}/admin/login" id="loginForm" class="form center-block center-block" method="post">
@@ -51,8 +51,9 @@
                         <input type="password" class="form-control input-lg" id="examInputPassword1" name="password"
                                placeholder="请输入您的密码"/>
                     </div>
-                    <div class="errorMsg"></div>
+
                     <div class="input-group col-md-6">
+                        <div class="errorMsg" style="color:#ff6f56"></div>
                         <input type="submit" class="btn btn-lg"  onclick="return userLoginSubmit()" value="登录" id="login-in">
                         <span><a href="#" style="text-align: right" class="forget">忘记密码?</a></span>
                     </div>
@@ -75,7 +76,7 @@
             success: function(loginMsg) {
                 console.log(loginMsg)
                 if( loginMsg.status ) {
-                    alert('登陆成功');
+                    //alert('登陆成功');
                     location.href='${rootPath}/admin/index';    //  路径不对的话改一下
                 }
                 else {

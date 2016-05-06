@@ -105,12 +105,14 @@ public class NewsDao  extends BaseDao {
 		news.setInputtime((int) currentTime);
 		news.setUpdatetime((int) currentTime);
 		String thumb=RegexUtils.getPicPath(content);
+
 		if(thumb==null||thumb.length()==0){
 			thumb="";
 		}
 		news.setThumb(thumb);
 		//System.out.println("时间戳"+currentTime);
 		news.setListorder((byte)1);
+		news.setArrGroupId(","+arr_group_id+",");
 		addNews(news);
 	}
 

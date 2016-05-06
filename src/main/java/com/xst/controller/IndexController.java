@@ -35,7 +35,7 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
 
-    public String index(Model model , HttpSession session,@ModelAttribute("loginMsg") String loginMsg) {
+    public String index(Model model , HttpSession session) {
 
         Page<V9Resources> resources = resourcesDao.getPageResources(1,8);
         Page<V9Group> groups = groupDao.queryGpListByPage(1,8);
@@ -45,7 +45,6 @@ public class IndexController {
 
         String path=session
                 .getServletContext().getRealPath("/usr/local/xst/video");
-        model.addAttribute("loginMsg",loginMsg);
         System.out.println("11111111   "+path);
         return "index";
     }
