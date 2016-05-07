@@ -24,7 +24,9 @@
 
 <div class="main">
     <div class="admin">
-
+        <!--------------------
+                header
+        --------------------->
         <jsp:include page="../header.jsp"/>
 
         <!--------------------

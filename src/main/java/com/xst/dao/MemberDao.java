@@ -30,13 +30,16 @@ public class MemberDao extends BaseDao{
         save(member);
     }
 
-    public void addMember(String username,String email,String password){
+    public V9Member addMember(String username,String email,String password){
         V9Member member=new V9Member();
         member.setUsername(username);
         member.setEmail(email);
         member.setPassword(password);
+        member.setVerify("0");
+        member.setRegdate((int)(System.currentTimeMillis()/1000));
+        member.setSchoolAddress("河海大学");
         addMember(member);
-
+        return member;
     }
 
     public V9Member getByName(String username){

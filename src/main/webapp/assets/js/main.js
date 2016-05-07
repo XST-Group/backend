@@ -48,7 +48,7 @@ function userLoginSubmit() {
 		 success: function(loginMsg) {
 			 console.log(loginMsg)
 			 if( loginMsg.status ) {
-				alert('登陆成功');
+				//alert('登陆成功');
 				location.href='/xst/index';    //  路径不对的话改一下
 			 }
 			 else {
@@ -420,7 +420,7 @@ function getFlashHtml(playUrl,replaceObj){
 		index nodes in a flattened structure
 	*/
 	Tree.prototype.setInitialStates = function (node, level) {
-		if (!node.nodes) return;	
+		if (!node.nodes) return;
 		level += 1;
 
 		var parent = node;
@@ -485,7 +485,7 @@ function getFlashHtml(playUrl,replaceObj){
 	// 	var target = $(event.target);
 	// 	var node = this.findNode(target);
 	// 	if (!node || node.state.disabled) return;
-		
+
 	// 	var classList = target.attr('class') ? target.attr('class').split(' ') : [];
 	// 	if ((classList.indexOf('expand-icon') !== -1)) {
 
@@ -493,12 +493,12 @@ function getFlashHtml(playUrl,replaceObj){
 	// 		this.render();
 	// 	}
 	// 	else if ((classList.indexOf('check-icon') !== -1)) {
-			
+
 	// 		this.toggleCheckedState(node, _default.options);
 	// 		this.render();
 	// 	}
 	// 	else {
-			
+
 	// 		if (node.selectable) {
 	// 			this.toggleSelectedState(node, _default.options);
 	// 		} else {
@@ -524,7 +524,7 @@ function getFlashHtml(playUrl,replaceObj){
 			this.render();
 		}
 		else if ((classList.indexOf('check-icon') !== -1)) {
-			
+
 			this.toggleCheckedState(node, _default.options);
 			this.render();
 		}
@@ -547,7 +547,7 @@ function getFlashHtml(playUrl,replaceObj){
 		var parent = node,
 			_this = this;
 		$.getJSON(this.options.categoryUrl + id, function(data) {
-			var subtree = new Array();	
+			var subtree = new Array();
 			$.each(data, function(i, item) {
 				if (i > 0) {
 					if(item.existChild) {
@@ -747,7 +747,7 @@ function getFlashHtml(playUrl,replaceObj){
 				.addClass(node.state.checked ? 'node-checked' : '')
 				.addClass(node.state.disabled ? 'node-disabled': '')
 				.addClass(node.state.selected ? 'node-selected' : '')
-				.addClass(node.searchResult ? 'search-result' : '') 
+				.addClass(node.searchResult ? 'search-result' : '')
 				.attr('data-nodeid', node.nodeId)
 				.attr('style', _this.buildStyleOverride(node));
 
@@ -779,13 +779,13 @@ function getFlashHtml(playUrl,replaceObj){
 
 			// Add node icon
 			if (_this.options.showIcon) {
-				
+
 				var classList = ['node-icon'];
 
 				classList.push(node.icon || _this.options.nodeIcon);
 				if (node.state.selected) {
 					classList.pop();
-					classList.push(node.selectedIcon || _this.options.selectedIcon || 
+					classList.push(node.selectedIcon || _this.options.selectedIcon ||
 									node.icon || _this.options.nodeIcon);
 				}
 
@@ -800,7 +800,7 @@ function getFlashHtml(playUrl,replaceObj){
 
 				var classList = ['check-icon'];
 				if (node.state.checked) {
-					classList.push(_this.options.checkedIcon); 
+					classList.push(_this.options.checkedIcon);
 				}
 				else {
 					classList.push(_this.options.uncheckedIcon);
@@ -1166,7 +1166,7 @@ function getFlashHtml(playUrl,replaceObj){
 		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
 			this.toggleExpandedState(node, options);
 		}, this));
-		
+
 		this.render();
 	};
 
@@ -1316,7 +1316,7 @@ function getFlashHtml(playUrl,replaceObj){
 
 		$.each(identifiers, $.proxy(function (index, identifier) {
 			callback(this.identifyNode(identifier), options);
-		}, this));	
+		}, this));
 	};
 
 	/*
@@ -1387,9 +1387,9 @@ function getFlashHtml(playUrl,replaceObj){
 		});
 
 		if (options.render) {
-			this.render();	
+			this.render();
 		}
-		
+
 		this.$element.trigger('searchCleared', $.extend(true, {}, results));
 	};
 

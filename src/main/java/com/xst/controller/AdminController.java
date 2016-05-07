@@ -171,7 +171,6 @@ public class AdminController {
         Page<V9News> newsPage=newsDao.queryForNewsListByPage(pageNum,15);
         model.addAttribute("page",newsPage);
         model.addAttribute("currentPage", pageNum);
-        //model.addAttribute("Msg",Msg);
         return "admin/news/newslist";
     }
 

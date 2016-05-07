@@ -39,27 +39,33 @@ public class MemberController {
     @ResponseBody
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
     public StatusMessage register(String email , String  username , String password,String password2,
-                                  /*String captcha ,*/ HttpSession session,RedirectAttributes redirectAttributes){
-
-        System.out.println("=====register===========");
+                                  /*String captcha ,*/ HttpSession session){
         StatusMessage statusMessage=null;
         String message = null;
-
-        if(memberDao.isEmailExit(email)){
+        if(email==""||email==null){
+            message = "请输入邮箱！";
+            statusMessage = new StatusMessage(0,message);
+        }
+        else if(memberDao.isEmailExit(email)){
             message = "该邮箱已被注册";
             statusMessage = new StatusMessage(0,message);
         }//else if(!captcha.equals())验证码没搞呢
+        else if(username==""||username==null){
+            message="请输入用户名！";
+            statusMessage = new StatusMessage(0,message);
+        }
         else if(memberDao.isUsernameExit(username)){
             message="用户名已存在";
-            statusMessage = new StatusMessage(0,message);
-        }else if(username==""||username==null){
-            message="请输入用户名！";
             statusMessage = new StatusMessage(0,message);
         }
         else if(password==""){
             message="请输入密码！";
             statusMessage = new StatusMessage(0,message);
-        }else if(!password.equals(password2)){
+        }else if(password.length()<6||password.length()>16||password.contains(" ")){
+            message="输入的密码格式不正确！";
+            statusMessage = new StatusMessage(0,message);
+        }
+        else if(!password.equals(password2)){
             message="两次输入密码不一致！";
             statusMessage = new StatusMessage(0,message);
         }
@@ -68,17 +74,13 @@ public class MemberController {
             statusMessage = new StatusMessage(0,message);
         }
         else {
-            V9Member member=new V9Member(username,password,email);
-            memberDao.addMember(member);
+            V9Member member = memberDao.addMember(username,email,password);
             message="注册成功,您已登录！";
             //zqh:未完待续
             statusMessage = new StatusMessage(1,message);
-            //session.setAttribute("statusMessage",statusMessage);
             session.setAttribute("memberUser",member);
-           // redirectAttributes.addFlashAttribute("loginMsg",message);
-            //return "redirect:/index";
         }
-        //redirectAttributes.addFlashAttribute("loginMsg",message);
+
        return statusMessage;
 
     }
@@ -91,7 +93,6 @@ public class MemberController {
         String message=null;
 
         System.out.println("1111111111111111111111   "+username+"  "+password);
-
         if(username == ""){
             message = "请输入用户名!";
             statusMessage=new StatusMessage(0,message);
@@ -117,26 +118,8 @@ public class MemberController {
             }
         }
 
-        //System.out.println("message : "+message);
-//        statusMessage.setStatus(status);
-//        statusMessage.setMessage(message);
-        //redirectAttributes.addFlashAttribute("loginMsg",message);
+
         return  statusMessage;
-        //"redirect:/index";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

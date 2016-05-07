@@ -42,6 +42,5 @@
     </li>
     <li><a href="${rootPath}/admin/news/list" data-target="dashboard-menu4" class="nav-header">
       <i class="fa fa-fw fa-volume-up"></i>&nbsp;&nbsp;资讯管理</a></li>
-    <li>
   </ul>
 </div>
