@@ -62,10 +62,12 @@ function userLoginSubmit() {
 
 $(document).ready(function(){
 
-	$("#select1 dd").click(function () {
+	//$("#select1 dd").click(function () {
+	$(document).on("click","#select1 dd",function(){
 		$(this).addClass("selected").siblings().removeClass("selected");
 		if ($(this).hasClass("select-all")) {
 			$("#selectA").remove();
+			$(".select-result dl").empty();
 		} else {
 			var copyThisA = $(this).clone();
 			if ($("#selectA").length > 0) {
@@ -76,7 +78,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#select2 dd").click(function () {
+	/*$(document).on("click","#select2 dd",function(){
 		$(this).addClass("selected").siblings().removeClass("selected");
 		if ($(this).hasClass("select-all")) {
 			$("#selectB").remove();
@@ -88,21 +90,9 @@ $(document).ready(function(){
 				$(".select-result dl").append(copyThisB.attr("id", "selectB"));
 			}
 		}
-	});
+	});*/
 
-	$("#select3 dd").click(function () {
-		$(this).addClass("selected").siblings().removeClass("selected");
-		if ($(this).hasClass("select-all")) {
-			$("#selectC").remove();
-		} else {
-			var copyThisC = $(this).clone();
-			if ($("#selectC").length > 0) {
-				$("#selectC a").html($(this).text());
-			} else {
-				$(".select-result dl").append(copyThisC.attr("id", "selectC"));
-			}
-		}
-	});
+
 
 	//$(document).on("click","#selectA",function(){
 	//	$(this).remove();

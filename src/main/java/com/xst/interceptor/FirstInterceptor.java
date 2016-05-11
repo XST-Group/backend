@@ -30,8 +30,8 @@ public class FirstInterceptor extends HandlerInterceptorAdapter {
             Map<String, String> variables = globalVar.getAll();
             for (Map.Entry<String, String> entry : variables.entrySet()) {
                 session.setAttribute(entry.getKey(), entry.getValue());
+                System.out.println(entry.getValue());
             }
-            System.out.println(session.getAttribute("index"));
         }
         return  true;
     }
