@@ -48,7 +48,7 @@ public class CategoryDaoTest {
     public void findChild(){
 //        V9Category category = categoryDao.getById((short)3849);
 
-        List<CateBean> children = categoryDao.getChildren((short)3849);
+        List<CateBean> children = categoryDao.getChildren((short)11);
 
         for(CateBean child : children){
             V9Category v9Category = categoryDao.getById(child.getId());
@@ -56,7 +56,7 @@ public class CategoryDaoTest {
 //            System.out.println(v9Category);
             Assert.assertNotNull(v9Category);
 
-            Assert.assertEquals(v9Category.getCatname(), "不要让爱你的人失望");
+//            Assert.assertEquals(v9Category.getCatname(), "不要让爱你的人失望");
         }
 
 

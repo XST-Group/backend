@@ -18,6 +18,7 @@ public class GlobalVariable {
         this.map.put("assetsPath", "/xst/assets");
         this.map.put("uploadFilePath", "/usr/local/xst");
         this.map.put("rootPath", "/xst");
+        this.map.put("requestPath","http://localhost:8080/xst");
     }
 
     public Map<String , String> getAll() {
