@@ -35,10 +35,16 @@ public class CategoryDao extends BaseDao{
         String[] childrenID = this.getChildrenString(id);
 
         for(String childID : childrenID){
+            if(childID==""){
+                break;
+            }
+
             CateBean cateBean = new CateBean();
 
             short childIDTurn = new Short(childID);
-            System.out.println(childIDTurn);
+//            short childIDTurn = Short.valueOf(childID);
+
+            System.out.println("childIDTurn : "+childIDTurn);
 
             cateBean.setId(childIDTurn);
             cateBean.setName(this.getById(childIDTurn).getCatname());
@@ -85,6 +91,10 @@ public class CategoryDao extends BaseDao{
         String childrenString = v9Category.getArrchildid();
 
         String[] childrenID = childrenString.split(",");
+
+        if(childrenString==null){
+            return null;
+        }
 
         return childrenID;
     }
