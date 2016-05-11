@@ -1,5 +1,20 @@
-function showLoginBox(){
-	login_box_template = '<div id="login-modal"><div style="width:100%;height:100%;position:fixed;z-index:2000;top:0;left:0;overflow:hidden" onclick="hideLoginBox()"><div style="height:100%;opacity:.4;background:#000"></div></div><div class="modal"><div class="modal-header clearfix"><h2 class="l">登录</h2><div class="register pull-right">      没有账号？<a href="${rootPath}/register"><strong>立即注册</strong></a></div></div><div class="modal-body"><form id="loginForm"><div class="control-group"><div class="user-id"><input type="text" placeholder="请输入邮箱/用户名" name="email" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" /></div></div><div class="control-group"><div class="user-pw"><input type="password" name="password" placeholder="请输入密码" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" /></div></div><div class="errorMsg" "=""></div><div class="control-group"><div class="r"><button type="button" onclick="userLogin()" class="btn btn-primary btn-login">登录</button></div></div></form></div></div></div>'
+﻿function showLoginBox(){
+	login_box_template = '<div id="login-modal">' +
+		'<div style="width:100%;height:100%;position:fixed;z-index:2000;top:0;left:0;overflow:hidden" onclick="hideLoginBox()">' +
+		'<div style="height:100%;opacity:.4;background:#000"></div>' +
+		'</div>' +
+		'<div class="modal">' +
+		'<div class="modal-header clearfix">' +
+		'<h2 class="l">登录</h2>' +
+		'<div class="register pull-right">      没有账号？<a href="/xst/member/register"><strong>立即注册</strong></a></div>' +
+		'</div><div class="modal-body">' +
+		'<form id="loginForm" action="/xst/member/login" method="post">' +
+		'<div class="control-group">' +
+		'<div class="user-id">' +
+		'<input type="text" placeholder="请输入邮箱/用户名" name="username" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" />' +
+		'</div></div>' +
+		'<div class="control-group"><div class="user-pw"><input type="password" name="password" placeholder="请输入密码" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" />' +
+		'</div></div><div class="errorMsg"></div><div class="control-group"><div class="r"><button type="submit" onclick="return userLoginSubmit()" class="btn btn-primary btn-login">登录</inp></div></div></form></div></div></div>'
 	$("body").append(login_box_template);
 }
 
@@ -20,6 +35,31 @@ function hideLoginBox(){
 $('#loginButton').click(function() {
 	showLoginBox();
 })
+
+
+
+function userLoginSubmit() {
+
+	console.log('loginSubmit')
+	$.ajax({
+		 type: 'post',
+		 url: '/xst/member/login',    //  填进你要处理表单信息的Servlet
+		 data: $('#loginForm').formSerialize(),    //   字符串  name1=value1&name2=value2
+		 success: function(loginMsg) {
+			 console.log(loginMsg)
+			 if( loginMsg.status ) {
+				//alert('登陆成功');
+				location.href='/xst/index';    //  路径不对的话改一下
+			 }
+			 else {
+				$('.errorMsg').html(loginMsg.message);
+			 }
+		 }
+	 });
+    loginForm.reset();
+	return false;
+}
+
 $(document).ready(function(){
 
 	//$("#select1 dd").click(function () {
@@ -370,7 +410,7 @@ function getFlashHtml(playUrl,replaceObj){
 		index nodes in a flattened structure
 	*/
 	Tree.prototype.setInitialStates = function (node, level) {
-		if (!node.nodes) return;	
+		if (!node.nodes) return;
 		level += 1;
 
 		var parent = node;
@@ -435,7 +475,7 @@ function getFlashHtml(playUrl,replaceObj){
 	// 	var target = $(event.target);
 	// 	var node = this.findNode(target);
 	// 	if (!node || node.state.disabled) return;
-		
+
 	// 	var classList = target.attr('class') ? target.attr('class').split(' ') : [];
 	// 	if ((classList.indexOf('expand-icon') !== -1)) {
 
@@ -443,12 +483,12 @@ function getFlashHtml(playUrl,replaceObj){
 	// 		this.render();
 	// 	}
 	// 	else if ((classList.indexOf('check-icon') !== -1)) {
-			
+
 	// 		this.toggleCheckedState(node, _default.options);
 	// 		this.render();
 	// 	}
 	// 	else {
-			
+
 	// 		if (node.selectable) {
 	// 			this.toggleSelectedState(node, _default.options);
 	// 		} else {
@@ -474,7 +514,7 @@ function getFlashHtml(playUrl,replaceObj){
 			this.render();
 		}
 		else if ((classList.indexOf('check-icon') !== -1)) {
-			
+
 			this.toggleCheckedState(node, _default.options);
 			this.render();
 		}
@@ -497,7 +537,7 @@ function getFlashHtml(playUrl,replaceObj){
 		var parent = node,
 			_this = this;
 		$.getJSON(this.options.categoryUrl + id, function(data) {
-			var subtree = new Array();	
+			var subtree = new Array();
 			$.each(data, function(i, item) {
 				if (i > 0) {
 					if(item.existChild) {
@@ -697,7 +737,7 @@ function getFlashHtml(playUrl,replaceObj){
 				.addClass(node.state.checked ? 'node-checked' : '')
 				.addClass(node.state.disabled ? 'node-disabled': '')
 				.addClass(node.state.selected ? 'node-selected' : '')
-				.addClass(node.searchResult ? 'search-result' : '') 
+				.addClass(node.searchResult ? 'search-result' : '')
 				.attr('data-nodeid', node.nodeId)
 				.attr('style', _this.buildStyleOverride(node));
 
@@ -729,13 +769,13 @@ function getFlashHtml(playUrl,replaceObj){
 
 			// Add node icon
 			if (_this.options.showIcon) {
-				
+
 				var classList = ['node-icon'];
 
 				classList.push(node.icon || _this.options.nodeIcon);
 				if (node.state.selected) {
 					classList.pop();
-					classList.push(node.selectedIcon || _this.options.selectedIcon || 
+					classList.push(node.selectedIcon || _this.options.selectedIcon ||
 									node.icon || _this.options.nodeIcon);
 				}
 
@@ -750,7 +790,7 @@ function getFlashHtml(playUrl,replaceObj){
 
 				var classList = ['check-icon'];
 				if (node.state.checked) {
-					classList.push(_this.options.checkedIcon); 
+					classList.push(_this.options.checkedIcon);
 				}
 				else {
 					classList.push(_this.options.uncheckedIcon);
@@ -1116,7 +1156,7 @@ function getFlashHtml(playUrl,replaceObj){
 		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
 			this.toggleExpandedState(node, options);
 		}, this));
-		
+
 		this.render();
 	};
 
@@ -1266,7 +1306,7 @@ function getFlashHtml(playUrl,replaceObj){
 
 		$.each(identifiers, $.proxy(function (index, identifier) {
 			callback(this.identifyNode(identifier), options);
-		}, this));	
+		}, this));
 	};
 
 	/*
@@ -1337,9 +1377,9 @@ function getFlashHtml(playUrl,replaceObj){
 		});
 
 		if (options.render) {
-			this.render();	
+			this.render();
 		}
-		
+
 		this.$element.trigger('searchCleared', $.extend(true, {}, results));
 	};
 

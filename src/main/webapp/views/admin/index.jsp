@@ -48,6 +48,7 @@
 
 </div>
 
+
 <script>
     $(document).ready(function () {
         $(".sidebar-nav a").click(function(){
@@ -61,6 +62,5 @@
         })
     });
 </script>
-
 </body>
 </html>

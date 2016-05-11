@@ -30,6 +30,17 @@ public class MemberDao extends BaseDao{
         save(member);
     }
 
+    public V9Member addMember(String username,String email,String password){
+        V9Member member=new V9Member();
+        member.setUsername(username);
+        member.setEmail(email);
+        member.setPassword(password);
+        member.setVerify("0");
+        member.setRegdate((int)(System.currentTimeMillis()/1000));
+        member.setSchoolAddress("河海大学");
+        addMember(member);
+        return member;
+    }
 
     public V9Member getByName(String username){
         String hql = "from V9Member as admin where admin.username=?";
@@ -39,6 +50,18 @@ public class MemberDao extends BaseDao{
         return member.get(0);
     }
 
+    /**
+     * 判断用户名是否存在
+     * @param username
+     * @return
+     */
+    public boolean isUsernameExit(String username){
+        if(HQuery("username",username) == null){
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * 判断邮箱是否存在，V9Member
@@ -62,11 +85,12 @@ public class MemberDao extends BaseDao{
      * @param value
      * @return
      */
-    private List<V9Member> HQuery(String colume , String value){
-        String hql = "from V9Member as member where member."+colume+"=?";
+    private V9Member HQuery(String colume , String value){
+        String hql = "from V9Member  where "+colume+"=?";
         Query query = query(hql);
-        query.setString(0, String.valueOf(value));
-        List<V9Member> results = query.list();
+        //query.setString(0, String.valueOf(value));
+        query.setString(0, value);
+        V9Member results = (V9Member) query.uniqueResult();
         return results;
     }
 

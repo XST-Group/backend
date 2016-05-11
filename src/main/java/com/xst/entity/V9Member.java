@@ -708,6 +708,15 @@ public class V9Member {
         this.verify = verify;
     }
 
+    public V9Member() {
+    }
+
+    public V9Member(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
