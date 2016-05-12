@@ -3,9 +3,11 @@ package com.xst.controller;
 import com.xst.bean.StatusMessage;
 import com.xst.dao.GroupDao;
 import com.xst.dao.MemberDao;
+import com.xst.dao.NewsDao;
 import com.xst.dao.ResourcesDao;
 import com.xst.entity.V9Group;
 import com.xst.entity.V9Member;
+import com.xst.entity.V9News;
 import com.xst.entity.V9Resources;
 import com.xst.page.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class IndexController {
     private GroupDao groupDao;
 
     @Autowired
+    private NewsDao newsDao;
+    @Autowired
     @Qualifier("memberDao")
     private MemberDao memberDao;
 
@@ -39,7 +43,7 @@ public class IndexController {
 
         Page<V9Resources> resources = resourcesDao.getPageResources(1,8);
         Page<V9Group> groups = groupDao.queryGpListByPage(1,8);
-
+        Page<V9News> newsPage = newsDao.queryForNewsListByPage(1,15);
         model.addAttribute("resources", resources);
         model.addAttribute("groups", groups);
 
