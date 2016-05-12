@@ -31,7 +31,7 @@
 
                 　　<li><a href="#"> ${sessionScope.memberUser.username}</a></li>
                     <li><a href="${rootPath}/member/logout">退出登陆</a></li>
-                　　</c:if>
+                　</c:if>
                 　<c:if test="${sessionScope.memberUser ==null}">
 
                     　<li><a href="#" id="loginButton">登录</a></li>

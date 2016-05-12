@@ -94,7 +94,7 @@
                 success: function(loginMsg) {
                     console.log(loginMsg)
                     if( loginMsg.status ) {
-                        //alert('登陆成功');
+                        alert('注册成功');
                         location.href='${rootPath}/index';    //  路径不对的话改一下
                     }
                     else {
