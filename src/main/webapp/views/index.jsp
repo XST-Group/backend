@@ -28,22 +28,14 @@
                         <c:otherwise>
                             <li  onclick="return clickThumb(${news.id})" style="background-image: url('${assetsPath}/images/new_default_page.png');"></li>
                         </c:otherwise>
-
-
-
-
                     </c:choose>
                 </c:forEach>
-
-
             </ul>
         </div>
         <a href="#" class="unslider-arrow prev"><i class="fa fa-angle-left"></i></a>
         <a href="#" class="unslider-arrow next"><i class="fa fa-angle-right"></i></a>
     </div>
-
 </section>
-<!-- end of poster -->
 <script>
     function clickThumb(id) {
         var id1=id;
@@ -51,7 +43,9 @@
         return false;
     }
 </script>
-<section class="index-course in加dex-section">
+<!-- end of poster -->
+
+<section class="index-course index-section">
     <div class="container">
         <div class="head-course">
             <h2><span>推荐课程</span></h2>
@@ -210,7 +204,6 @@
         });
         $('.unslider-arrow').click(function() {
             var fn = this.className.split(' ')[1];
-
             //  Either do unslider.data('unslider').next() or .prev() depending on the className
             unslider.data('unslider')[fn]();
         });
@@ -219,7 +212,6 @@
 
 
 <script>
-
     $(function(){
         function alertMessage(message) {
             var insert =
@@ -235,20 +227,15 @@
             $('.btn').on('click',function(){
                 $('.suspend').css('display','none');
             });
-
-
         };
         $(document).ready(function () {
             var msg="${Msg}";
 //            var msg="abc";
-
             if(msg!=''){
                 alertMessage(msg);
             }
         });
     });
-
-
 </script>
 </body>
 </html>
