@@ -48,6 +48,7 @@
                                     </div>
                                 </div>                            
                                 <c:forEach begin="1" end="5" items="${page.list}" var="news">
+
                                 <div class="item">
                                     <div class="img-block">
                                          <a href="/xst/news/view/${news.id}"><img src="${news.thumb}" alt=""/></a>
