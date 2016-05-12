@@ -87,7 +87,7 @@ public class AdminController {
 
             String filePath = session.getAttribute("uploadFilePath").toString();
 //            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
-            String videoUrl = MultipartFileUtils.saveFile(video,"/usr/local/xst/video");
+            String videoUrl = MultipartFileUtils.saveFile(video,"../webapp/assets/video");
 
             resourcesDao.addResource(title,cate1,cate2,cate3,videoUrl);
         }
@@ -98,7 +98,7 @@ public class AdminController {
 
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
-    public String login(Model model){
+    public String login(){
         return "admin/login";
     }
 
