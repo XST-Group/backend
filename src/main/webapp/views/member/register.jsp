@@ -61,9 +61,14 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"><span class="regist-star">*</span>验证码</label>
                                 <div class="regist-cell col-md-3">
-                                    <input class="form-control">
+
+
+
+                                    <input id="codevalue" class="form-control" type="text" name="codenum" placeholder="验证码">
+
                                 </div>
-                                <img src="http://img.mukewang.com/545308540001678401500040.jpg" alt="" class="col-sm-2"/>
+                                <img id="imgObj" src="${rootPath}/code.html" alt="" onclick="changeImg()" class="col-sm-2">
+                               <%-- <img src="http://img.mukewang.com/545308540001678401500040.jpg" alt="" class="col-sm-2"/>--%>
                             </div>
 
 
@@ -101,37 +106,80 @@
 
 
     }
-
-
-
         function userRegisterSubmit() {
 
-            console.log('loginSubmit')
             $.ajax({
                 type: 'post',
                 url: '${rootPath}/member/register',    //  填进你要处理表单信息的Servlet
                 data: $('#registerForm').serialize(),    //   字符串  name1=value1&name2=value2
                 success: function(loginMsg) {
-                    console.log(loginMsg)
                     if( loginMsg.status ) {
                         alertMessage('注册成功！');
                         location.href='${rootPath}/index';    //  路径不对的话改一下
+                        //changeImg();
                     }
                     else {
+                        changeImg();
                         $('.errorMsg').html(loginMsg.message);
+
                     }
                 }
             });
-            registerForm.reset();
+            //registerForm.reset();
+            //changeImg();
             return false;
         }
 
+//验证码刷新
+    var blue="#3498DB";
+    var grey2="#bdc3c7";
+    var toColor=function(obj,color,status){
+        if(status){
+            obj.addClass("input-focus",200);
+        }else{
+            obj.removeClass("input-focus",200);
+        }
+        obj.siblings("i").eq(0).animate({    //jquery对象，，，[0]为DOM对象
+            color: color,
+        },400)
+    }
+    //获得焦点
+    $("input[type='text']").focus(function(){
+        toColor($(this),blue,true);
+    })
+    //失去焦点
+    $("input[type='text']").blur(function(){
+        toColor($(this),grey2,false);
+    })
 
+
+
+
+    //用来更换图片
+    function changeImg() {
+        var imgSrc = $("#imgObj");
+        var src = imgSrc.attr("src");
+        imgSrc.attr("src", chgUrl(src));
+    }
+    //时间戳
+    //为了使每次生成图片不一致，即不让浏览器读缓存，所以需要加上时间戳
+    function chgUrl(url) {
+        var timestamp = (new Date()).valueOf();
+        url = url.substring(0, 17);
+        if ((url.indexOf("&") >= 0)) {
+            url = url + "×tamp=" + timestamp;
+        } else {
+            url = url + "?timestamp=" + timestamp;
+        }
+        return url;
+    }
 </script>
 <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript"src="${assetsPath}/js/main.js"></script>
 <script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
 <script type="text/javascript"src="${assetsPath}/js/check_login.js"></script>
+<script src="//cdn.bootcss.com/jquery/2.2.0/jquery.js"></script>
+<script src="//cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.js"></script>
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>
