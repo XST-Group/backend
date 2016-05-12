@@ -107,7 +107,7 @@
 
     }
         function userRegisterSubmit() {
-            changeImg();
+
             $.ajax({
                 type: 'post',
                 url: '${rootPath}/member/register',    //  填进你要处理表单信息的Servlet
@@ -116,14 +116,17 @@
                     if( loginMsg.status ) {
                         alertMessage('注册成功！');
                         location.href='${rootPath}/index';    //  路径不对的话改一下
+                        //changeImg();
                     }
                     else {
-
+                        changeImg();
                         $('.errorMsg').html(loginMsg.message);
+
                     }
                 }
             });
-            registerForm.reset();
+            //registerForm.reset();
+            //changeImg();
             return false;
         }
 

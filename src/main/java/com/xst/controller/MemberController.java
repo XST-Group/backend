@@ -43,6 +43,7 @@ public class MemberController {
                                   String codenum , HttpSession session){
         StatusMessage statusMessage=null;
         String message = null;
+        codenum=codenum.toLowerCase();
         if(email==""||email==null){
             message = "请输入邮箱！";
             statusMessage = new StatusMessage(0,message);
@@ -73,7 +74,7 @@ public class MemberController {
             message="请输入验证！";
             statusMessage = new StatusMessage(0,message);
         }
-        else if(!codenum.trim().equals((String)session.getAttribute("code"))){
+        else if(!codenum.trim().equals(((String)session.getAttribute("code")).trim())){
             message="输入的验证不正确！";
             statusMessage = new StatusMessage(0,message);
         }
