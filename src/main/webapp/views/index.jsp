@@ -20,6 +20,7 @@
                 <li style="background-image: url('${assetsPath}/images/03.jpg');"></li>
                 <li style="background-image: url('${assetsPath}/images/02.jpg');"></li>
                 <li style="background-image: url('${assetsPath}/images/04.jpg');"></li>
+
             </ul>
         </div>
         <a href="#" class="unslider-arrow prev"><i class="fa fa-angle-left"></i></a>

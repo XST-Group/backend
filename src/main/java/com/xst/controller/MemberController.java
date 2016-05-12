@@ -40,7 +40,7 @@ public class MemberController {
     @ResponseBody
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
     public StatusMessage register(String email , String  username , String password,String password2,
-                                  /*String captcha ,*/ HttpSession session){
+                                  String codenum , HttpSession session){
         StatusMessage statusMessage=null;
         String message = null;
         if(email==""||email==null){
@@ -69,9 +69,12 @@ public class MemberController {
         else if(!password.equals(password2)){
             message="两次输入密码不一致！";
             statusMessage = new StatusMessage(0,message);
+        }else if(codenum==""||codenum==null){
+            message="请输入验证！";
+            statusMessage = new StatusMessage(0,message);
         }
-        else if(email==""||email==null){
-            message="请输入邮箱！";
+        else if(!codenum.trim().equals((String)session.getAttribute("code"))){
+            message="输入的验证不正确！";
             statusMessage = new StatusMessage(0,message);
         }
         else {
