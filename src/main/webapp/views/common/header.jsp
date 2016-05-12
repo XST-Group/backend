@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 <header>
     <div class="container">
@@ -22,9 +24,21 @@
             </ul>
         </nav>
         <div class="pull-right user-nav clearfix">
+
             <ul class="nav nav-login">
-                <li><a href="#" id="loginButton">登录</a></li>
-                <li><a href="${rootPath}/member/register">注册</a></li>
+
+                　<c:if test="${sessionScope.memberUser!=null}">
+
+                　　<li><a href="#"> ${sessionScope.memberUser.username}</a></li>
+                    <li><a href="${rootPath}/member/logout">退出登陆</a></li>
+                　</c:if>
+                　<c:if test="${sessionScope.memberUser ==null}">
+
+                    　<li><a href="#" id="loginButton">登录</a></li>
+                      <li><a href="${rootPath}/member/register">注册</a></li>
+
+                　</c:if>
+
             </ul>
         </div>
         <form class="header-search  pull-right " action="index.html" method="post">

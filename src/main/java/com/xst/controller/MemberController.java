@@ -4,6 +4,7 @@ import com.xst.bean.StatusMessage;
 import com.xst.dao.MemberDao;
 import com.xst.dao.MemberVerifyDao;
 import com.xst.entity.V9Member;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -119,7 +120,15 @@ public class MemberController {
         }
 
 
+
         return  statusMessage;
     }
 
+
+    @RequestMapping(value = "/logout" ,method = RequestMethod.GET)
+    public String logout(Model model,HttpSession session){
+        session.removeAttribute("memberUser");
+        model.addAttribute("Msg","登出成功！");
+        return "index";
+    }
 }

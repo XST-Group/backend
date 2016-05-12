@@ -8,13 +8,14 @@
     <meta charset="utf-8">
     <title>注册</title>
     <link rel="stylesheet" href="${assetsPath}/css/app.css">
+    <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
-<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css"/>       <!--这个为该页面特殊引入,为适应bootstrap的图标-->
+<%--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css"/>--%>       <!--这个为该页面特殊引入,为适应bootstrap的图标-->
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<%--<script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>--%>
+<script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
 <div class="main register-bg">
     <div class="container">
         <div id="register">
@@ -70,7 +71,7 @@
 
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <div class="errorMsg" style="color:#ff6f56"></div>
-                                    <button type="submit" onclick="return userLoginSubmit()" class="regist-btn">立即注册</button>
+                                    <button type="submit" onclick="return userRegisterSubmit()" class="regist-btn">立即注册</button>
                                 </div>
                             </div>
                         </form>
@@ -83,7 +84,27 @@
 </div>
 <script>
 
-        function userLoginSubmit() {
+    function alertMessage(message) {
+        var insert =
+                "<div class='suspend' style='width: 100%;height: 100%;display: none;z-index: 2;background-color: rgba(0,0,0,.6);position: fixed;top: 0;left: 0;'>" +
+                "<div class='suspend-content' style='text-align:right;padding: 30px 40px;width: 400px;height: 200px;background-color: #fff;border-radius: 4px;position: fixed;top: 26%;left: 36%;'>" +
+                "<p class='alertMessage' style='text-align:left;font-size: 22px;height: 80px;color: #000;font-weight: bold;margin-bottom: 30px;'></p>" +
+                " <button type='button' class='btn btn-success'>确定</button>" +
+                "</div>" +
+                "</div>";
+        $('body').append(insert);
+        $('.alertMessage').html(message);
+        $('.suspend').css('display','block');
+        $('.btn').on('click',function(){
+            $('.suspend').css('display','none');
+        });
+
+
+    }
+
+
+
+        function userRegisterSubmit() {
 
             console.log('loginSubmit')
             $.ajax({
@@ -93,7 +114,7 @@
                 success: function(loginMsg) {
                     console.log(loginMsg)
                     if( loginMsg.status ) {
-                        //alert('登陆成功');
+                        alertMessage('注册成功！');
                         location.href='${rootPath}/index';    //  路径不对的话改一下
                     }
                     else {
@@ -107,6 +128,10 @@
 
 
 </script>
+<script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript"src="${assetsPath}/js/main.js"></script>
+<script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
+<script type="text/javascript"src="${assetsPath}/js/check_login.js"></script>
 <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

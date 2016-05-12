@@ -138,7 +138,7 @@ public class NewsDao  extends BaseDao {
 		news.setUsername(username);
 		news.setInputtime((int) currentTime);
 		news.setUpdatetime((int) currentTime);
-		news.setArrGroupId(arr_group_id);
+		news.setArrGroupId(","+arr_group_id+",");
 		String thumb=RegexUtils.getPicPath(content);
 		if(thumb==null||thumb.length()==0){
 			thumb="";
