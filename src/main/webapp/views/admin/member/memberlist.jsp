@@ -90,7 +90,7 @@
                         </table>
 
                         <nav>
-                            <ul class="pagination">
+<%--                            <ul class="pagination">
                                 <li><a href="#">上一页</a></li>
                                 <li class="active"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
@@ -100,7 +100,8 @@
                                 <li>
                                     <a href="#">下一页</a>
                                 </li>
-                            </ul>
+                            </ul>--%>
+    <jsp:include page="../../common/pagination.jsp" />
                         </nav>
                     </div>
                 </div>

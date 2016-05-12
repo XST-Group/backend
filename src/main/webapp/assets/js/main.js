@@ -48,7 +48,7 @@ function userLoginSubmit() {
 		 success: function(loginMsg) {
 			 console.log(loginMsg)
 			 if( loginMsg.status ) {
-				//alert('登陆成功');
+				alert('登陆成功');
 				location.href='/xst/index';    //  路径不对的话改一下
 			 }
 			 else {

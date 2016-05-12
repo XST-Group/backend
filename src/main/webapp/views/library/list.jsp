@@ -29,18 +29,21 @@
             <div class="submenu">
                 <ul>
                     <span>学段：</span>
-                    <li class="active"><a href="">小学</a></li>
+                    <li class="active"><a href="">全部</a></li>
+                    <li><a href="">学前</a></li>
+                    <li><a href="">小学</a></li>
                     <li><a href="">初中</a></li>
                     <li><a href="">高中</a></li>
                 </ul>
                 <ul>
                     <span>学科：</span>
+                    <li class="active"><a href="">全部</a></li>
                     <li><a href="">语文</a></li>
                     <li><a href="">数学</a></li>
                     <li><a href="">英语</a></li>
                     <li><a href="">物理</a></li>
                     <li><a href="">化学</a></li>
-                    <li class="active"><a href="">生物</a></li>
+                    <li><a href="">生物</a></li>
                     <li><a href="">政治</a></li>
                     <li><a href="">历史</a></li>
                     <li><a href="">地理</a></li>
@@ -48,6 +51,7 @@
                 </ul>
                 <ul>
                     <span>版本：</span>
+                    <li class="active"><a href="">全部</a></li>
                     <li><a href="">人教版</a></li>
                     <li><a href="">苏教版</a></li>
                     <li><a href="">冀教版</a></li>
@@ -57,7 +61,7 @@
                     <li><a href="">长春版</a></li>
                     <li><a href="">鲁教版</a></li>
                     <li><a href="">鄂教版</a></li>
-                    <li class="active"><a href="">湘教版</a></li>
+                    <li><a href="">湘教版</a></li>
                     <li><a href="">北京版</a></li>
                     <li><a href="">语文A版</a></li>
                     <li><a href="">语文S版</a></li>
@@ -65,6 +69,7 @@
                 </ul>
                 <ul>
                     <span>年级：</span>
+                    <li class="active"><a href="">全部</a></li>
                     <li><a href="">一年级上</a></li>
                     <li><a href="">一年级下</a></li>
                     <li><a href="">二年级上</a></li>
@@ -72,7 +77,7 @@
                     <li><a href="">三年级上</a></li>
                     <li><a href="">三年级下</a></li>
                     <li><a href="">四年级上</a></li>
-                    <li class="active"><a href="">四年级下</a></li>
+                    <li><a href="">四年级下</a></li>
                     <li><a href="">五年级上</a></li>
                     <li><a href="">五年级下</a></li>
                     <li><a href="">六年级上</a></li>
@@ -143,7 +148,9 @@
                                 <span><i class="fa fa-download"></i>1002</span>
                                 <span><i class="fa fa-clock-o"></i>2016-02-12</span>
                                 <button class="btn btn-primary pull-right">
-                                    <i class="fa fa-download"></i>下载
+                                    <i class="fa fa-download"></i>
+                                    下载
+                                    下载
                                 </button>
                             </div>
                         </div>
