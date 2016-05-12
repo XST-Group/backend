@@ -16,20 +16,42 @@
     <div class="slider">
         <div class="banner">
             <ul>
-                <li style="background-image: url('${assetsPath}/images/01.jpg');"></li>
+<%--                <li style="background-image: url('${assetsPath}/images/01.jpg');"></li>
                 <li style="background-image: url('${assetsPath}/images/03.jpg');"></li>
                 <li style="background-image: url('${assetsPath}/images/02.jpg');"></li>
-                <li style="background-image: url('${assetsPath}/images/04.jpg');"></li>
+                <li style="background-image: url('${assetsPath}/images/04.jpg');"></li>--%>
+                <c:forEach begin="1" end="5" items="${newsPage.list}" var="news">
+                    <c:choose>
+                        <c:when test="${news.thumb != ''}" >
+                            <li   onclick="return clickThumb(${news.id})"  style="background-image: url('${news.thumb}');"></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li  onclick="return clickThumb(${news.id})" style="background-image: url('${assetsPath}/images/new_default_page.png');"></li>
+                        </c:otherwise>
+
+
+
+
+                    </c:choose>
+                </c:forEach>
+
 
             </ul>
         </div>
         <a href="#" class="unslider-arrow prev"><i class="fa fa-angle-left"></i></a>
         <a href="#" class="unslider-arrow next"><i class="fa fa-angle-right"></i></a>
     </div>
+
 </section>
 <!-- end of poster -->
-
-<section class="index-course index-section">
+<script>
+    function clickThumb(id) {
+        var id1=id;
+        location.href="/xst/news/view/"+id1;
+        return false;
+    }
+</script>
+<section class="index-course in加dex-section">
     <div class="container">
         <div class="head-course">
             <h2><span>推荐课程</span></h2>

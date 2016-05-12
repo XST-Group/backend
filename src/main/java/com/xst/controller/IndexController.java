@@ -46,7 +46,7 @@ public class IndexController {
         Page<V9News> newsPage = newsDao.queryForNewsListByPage(1,15);
         model.addAttribute("resources", resources);
         model.addAttribute("groups", groups);
-
+        model.addAttribute("newsPage", newsPage);
         String path=session
                 .getServletContext().getRealPath("/usr/local/xst/video");
         System.out.println("11111111   "+path);
