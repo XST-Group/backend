@@ -87,7 +87,7 @@ public class AdminController {
 
             String filePath = session.getAttribute("uploadFilePath").toString();
 //            String videoUrl = MultipartFileUtils.saveFile(video,filePath);
-            String videoUrl = MultipartFileUtils.saveFile(video,"../webapp/assets/video");
+            String videoUrl = MultipartFileUtils.saveFile(video,"src/main/webapp/assets/video",session);
 
             resourcesDao.addResource(title,cate1,cate2,cate3,videoUrl);
         }
