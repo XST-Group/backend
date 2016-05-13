@@ -58,30 +58,35 @@
                     <li><a href="">教科版</a></li>
                     <li><a href="">北师大版</a></li>
                     <li><a href="">沪教版</a></li>
-                    <li><a href="">长春版</a></li>
+<%--                    <li><a href="">长春版</a></li>
                     <li><a href="">鲁教版</a></li>
                     <li><a href="">鄂教版</a></li>
                     <li><a href="">湘教版</a></li>
                     <li><a href="">北京版</a></li>
                     <li><a href="">语文A版</a></li>
                     <li><a href="">语文S版</a></li>
-                    <li><a href="">西师大版</a></li>
+                    <li><a href="">西师大版</a></li>--%>
                 </ul>
                 <ul>
                     <span>年级：</span>
                     <li class="active"><a href="">全部</a></li>
-                    <li><a href="">一年级上</a></li>
-                    <li><a href="">一年级下</a></li>
-                    <li><a href="">二年级上</a></li>
-                    <li><a href="">二年级下</a></li>
-                    <li><a href="">三年级上</a></li>
-                    <li><a href="">三年级下</a></li>
-                    <li><a href="">四年级上</a></li>
-                    <li><a href="">四年级下</a></li>
-                    <li><a href="">五年级上</a></li>
-                    <li><a href="">五年级下</a></li>
-                    <li><a href="">六年级上</a></li>
-                    <li><a href="">六年级下</a></li>
+                    <li><a href="">一年级</a></li>
+                  <%--  <li><a href="">一年级下</a></li>--%>
+                    <li><a href="">二年级</a></li>
+                    <%--<li><a href="">二年级下</a></li>--%>
+                    <li><a href="">三年级</a></li>
+                    <%--<li><a href="">三年级下</a></li>--%>
+                    <li><a href="">四年级</a></li>
+                    <%--<li><a href="">四年级下</a></li>--%>
+                    <li><a href="">五年级</a></li>
+                    <%--<li><a href="">五年级下</a></li>--%>
+                    <li><a href="">六年级</a></li>
+                    <li><a href="">初一</a></li>
+                    <li><a href="">初二</a></li>
+                    <li><a href="">初三</a></li>
+                    <li><a href="">高一</a></li>
+                    <li><a href="">高二</a></li>
+                    <li><a href="">高三</a></li>
                 </ul>
             </div> 
         </div>    
@@ -125,7 +130,7 @@
                                 <span><i class="fa fa-download"></i>1002</span>
                                 <span><i class="fa fa-clock-o"></i>2016-02-12</span>
                                 <button class="btn btn-primary pull-right">
-                                    <i class="fa fa-download"></i>下载
+                                    <i class="fa fa-download"><a href="${assetsPath}/doc/计算机网络.ppt" download="计算机网络.ppt"> 下载</a></i>
                                 </button>
                             </div>
                         </div>
@@ -148,9 +153,8 @@
                                 <span><i class="fa fa-download"></i>1002</span>
                                 <span><i class="fa fa-clock-o"></i>2016-02-12</span>
                                 <button class="btn btn-primary pull-right">
-                                    <i class="fa fa-download"></i>
-                                    下载
-                                    下载
+                                    <i class="fa fa-download"><a href="${assetsPath}/doc/计算机网络.ppt" download="计算机网络.ppt"> 下载</a></i>
+
                                 </button>
                             </div>
                         </div>
@@ -173,7 +177,7 @@
                                 <span><i class="fa fa-download"></i>1002</span>
                                 <span><i class="fa fa-clock-o"></i>2016-02-12</span>
                                 <button class="btn btn-primary pull-right">
-                                    <i class="fa fa-download"></i>下载
+                                    <i class="fa fa-download"><a href="${assetsPath}/doc/计算机网络.ppt" download="计算机网络.ppt"> 下载</a></i>
                                 </button>
                             </div>
                         </div>
@@ -196,7 +200,7 @@
                                 <span><i class="fa fa-download"></i>1002</span>
                                 <span><i class="fa fa-clock-o"></i>2016-02-12</span>
                                 <button class="btn btn-primary pull-right">
-                                    <i class="fa fa-download"></i>下载
+                                    <i class="fa fa-download"><a href="${assetsPath}/doc/计算机网络.ppt" en download="计算机网络.ppt"> 下载</a></i>
                                 </button>
                             </div>
                         </div>

@@ -31,53 +31,67 @@
             <div class="row">
                 <div class="col-md-6 no-gap">
                     <div class="img-left">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <c:choose>
+                            <c:when test="${empty page.list}" >
+                            </c:when>
+                            <c:otherwise>
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
-                            <ul class="img-listButton list-inline carousel-indicators">        <!--赋予了图形-->
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>     <!--改写active?-->
-                                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                            </ul>
+                                    <ul class="img-listButton list-inline carousel-indicators">        <!--赋予了图形-->
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>     <!--改写active?-->
+                                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                                    </ul>
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <div class="img-block">
-                                    <a href="/xst/news/view/${page.list.get(0).id}"><img src="${page.list.get(0).thumb}" alt=""/></a>
-                                        <p>${page.list.get(0).title}</p>                        <!--与carousel-caption无法共存-->
-                                    </div>
-                                </div>                            
-                                <c:forEach begin="1" end="5" items="${page.list}" var="news">
+                                    <!-- Wrapper for slides -->
 
-                                <div class="item">
-                                    <div class="img-block">
-                                         <a href="/xst/news/view/${news.id}"><img src="${news.thumb}" alt=""/></a>
-                                        <p>${news.title}</p>                        <!--与carousel-caption无法共存-->
-                                    </div>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+
+                                                    <div class="img-block">
+                                                        <a href="/xst/news/view/${page.list.get(0).id}"><img src="${page.list.get(0).thumb}" alt=""/></a>
+                                                        <p>${page.list.get(0).title}</p>                        <!--与carousel-caption无法共存-->
+                                                    </div>
+
+                                                </div>
+                                                <c:forEach begin="1" end="5" items="${page.list}" var="news">
+
+                                                    <div class="item">
+                                                        <div class="img-block">
+                                                            <a href="/xst/news/view/${news.id}"><img src="${news.thumb}" alt=""/></a>
+                                                            <p>${news.title}</p>                        <!--与carousel-caption无法共存-->
+                                                        </div>
+                                                    </div>
+
+                                                </c:forEach>
+                                            </div>
                                 </div>
-
-                                </c:forEach>
-                            </div>
-
-                        </div>
+                        </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
 
                 <div class="col-md-6 no-gap">
                     <div class="img-right">
-                        <ul>
-                            <div class="title">主标题</div>
-                                <div class="item active">
-                                    <li><a href="/xst/news/view/${page.list.get(0).id}">${page.list.get(0).title}</a></li>
-                                </div>
-                                <c:forEach begin="1" end="5" items="${page.list}" var="news" varStatus="status">
+                        <c:choose>
+                        <c:when test="${empty page.list}" >
+                        </c:when>
+                        <c:otherwise>
+                                <ul>
+                                    <div class="title">主标题</div>
+                                    <div class="item active">
+                                        <li><a href="/xst/news/view/${page.list.get(0).id}">${page.list.get(0).title}</a></li>
+                                    </div>
+                                    <c:forEach begin="1" end="5" items="${page.list}" var="news" varStatus="status">
 
-                                <div class="item">
-                                    <li><a href="/xst/news/view/${news.id}">${news.title}</a></li>
-                                </div>
+                                        <div class="item">
+                                            <li><a href="/xst/news/view/${news.id}">${news.title}</a></li>
+                                        </div>
 
-                                </c:forEach>                            
-                        </ul>
+                                    </c:forEach>
+                                </ul>
+                        </c:otherwise>
+                        </c:choose>
                     </div>
 
                 </div>
@@ -122,7 +136,7 @@
                                             </a>
                                         </div>
                                         <div class="col-md-9">
-                                            <div class="title"><a href="/xst/news/view/${page.list.get(0).id}">${news.title}</a></div>
+                                            <div class="title"><a href="/xst/news/view/${news.id}">${news.title}</a></div>
                                             <div class="decs">${news.description}</div>
                                             <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${news.inputtime}</div>
                                         </div>
@@ -137,7 +151,7 @@
                                             </div>
 
                                             <div class="col-md-9">
-                                                <div class="title"><a href="/xst/news/view/${page.list.get(0).id}">${news.title}</a></div>
+                                                <div class="title"><a href="/xst/news/view/${news.id}">${news.title}</a></div>
                                                 <div class="decs">${news.description}</div>
                                                 <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${news.inputtime}</div>
                                             </div>

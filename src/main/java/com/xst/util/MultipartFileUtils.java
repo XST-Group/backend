@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by sl on 16-4-4.
  */
@@ -18,11 +21,16 @@ public class MultipartFileUtils {
      * @param path 存储的路径
      * @return 文件的绝对路径
      */
-    public static String saveFile(MultipartFile multipartFile,String path){
+    public static String saveFile(MultipartFile multipartFile,String path,HttpSession session){
 
         long unixTime = System.currentTimeMillis();
         String name = HashUtils.HashPath(multipartFile.getOriginalFilename()+unixTime);
-        String multipartUrl = path+"/"+name;
+
+        String projectPath = session.getServletContext().getRealPath("/");
+
+        projectPath = getProjectRealPath(projectPath);
+
+        String multipartUrl = projectPath + path + "/" +name;
 
         System.out.println("filePath : "+multipartUrl);
 
@@ -43,13 +51,13 @@ public class MultipartFileUtils {
         }
         return multipartUrl;
     }
-    public static String updateFile(MultipartFile multipartFile, String path){
+    public static String updateFile(MultipartFile multipartFile, String path , HttpSession session){
         removeFile(path);
         int lastIndex = path.lastIndexOf("/");
         path = path.substring(0, lastIndex);
         long unixTime = System.currentTimeMillis();
         path += HashUtils.HashPath(multipartFile.getOriginalFilename()+unixTime);
-        String multipartUrl = saveFile(multipartFile, path);
+        String multipartUrl = saveFile(multipartFile, path , session);
         return multipartUrl;
     }
     /**
@@ -85,6 +93,21 @@ public class MultipartFileUtils {
             for (File f : files)
                 deleteFile(f);
         file.delete();
+    }
+
+
+    public static String getProjectRealPath(String path){
+
+        int index;
+        int cnt=3;
+        while(cnt>0){
+            index = path.lastIndexOf("/");
+            System.out.println("index = "+index);
+            path = path.substring(0,index);
+            cnt--;
+        }
+
+        return path+"/";
     }
 
 }

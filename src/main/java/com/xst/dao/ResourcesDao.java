@@ -183,7 +183,7 @@ public class ResourcesDao extends BaseDao {
 
         resource.setUrl(url);
 
-        resource.setCreatime(String.valueOf(System.currentTimeMillis()));
+        //resource.setCreatime(String.valueOf(System.currentTimeMillis()));
         save(resource);
     }
 
