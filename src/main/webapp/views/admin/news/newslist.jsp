@@ -96,7 +96,7 @@
                                 <tbody>
 
 
-                                <c:forEach begin="1" end="${page.list.size()}" items="${page.list}" var="news">
+                                <c:forEach begin="${listStart}" end="${page.list.size()}" items="${page.list}" var="news">
                                     <tr>
                                         <td>
                                             <input type="checkbox" value="1" name=""/>

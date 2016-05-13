@@ -16,11 +16,11 @@
     <div class="slider">
         <div class="banner">
             <ul>
-<%--                <li style="background-image: url('${assetsPath}/images/01.jpg');"></li>
-                <li style="background-image: url('${assetsPath}/images/03.jpg');"></li>
-                <li style="background-image: url('${assetsPath}/images/02.jpg');"></li>
-                <li style="background-image: url('${assetsPath}/images/04.jpg');"></li>--%>
-                <c:forEach begin="1" end="5" items="${newsPage.list}" var="news">
+                <li onclick="return clickThumb(69)" style="background-image: url('${assetsPath}/images/01.jpg');"></li>
+                <li onclick="return clickThumb(70)" style="background-image: url('${assetsPath}/images/03.jpg');"></li>
+                <li onclick="return clickThumb(71)" style="background-image: url('${assetsPath}/images/02.jpg');"></li>
+                <li onclick="return clickThumb(72)"  style="background-image: url('${assetsPath}/images/04.jpg');"></li>
+<%--                <c:forEach begin="1" end="5" items="${newsPage.list}" var="news">
                     <c:choose>
                         <c:when test="${news.thumb != ''}" >
                             <li   onclick="return clickThumb(${news.id})"  style="background-image: url('${news.thumb}');"></li>
@@ -29,7 +29,7 @@
                             <li  onclick="return clickThumb(${news.id})" style="background-image: url('${assetsPath}/images/new_default_page.png');"></li>
                         </c:otherwise>
                     </c:choose>
-                </c:forEach>
+                </c:forEach>--%>
             </ul>
         </div>
         <a href="#" class="unslider-arrow prev"><i class="fa fa-angle-left"></i></a>
