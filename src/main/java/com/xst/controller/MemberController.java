@@ -97,7 +97,6 @@ public class MemberController {
         StatusMessage statusMessage;
         String message=null;
 
-        System.out.println("1111111111111111111111   "+username+"  "+password);
         if(username == ""){
             message = "请输入用户名!";
             statusMessage=new StatusMessage(0,message);

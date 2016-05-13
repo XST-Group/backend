@@ -51,10 +51,25 @@
             <h2><span>推荐课程</span></h2>
             <div class="pull-right clearfix">
                 <ul class="nav">
-                    <li><a href=""  class="active">教研</a></li>
-                    <li><a href="">管理</a></li>
-                    <li><a href="">海外</a></li>
-                    <li><a href="">综合</a></li>
+                    <c:if test="${recommendCourseId.catid==1}">
+                        <c:set var="activeClass1" value="active"/>
+                    </c:if>
+                    <li><a href="${rootPath}/recommend/course/1" class="${activeClass1}">教研</a></li>
+
+                    <c:if test="${recommendCourseId.catid==7}">
+                        <c:set var="activeClass2" value="active"/>
+                    </c:if>
+                    <li><a href="${rootPath}/recommend/course/7" class="${activeClass2}">管理</a></li>
+
+                    <c:if test="${recommendCourseId.catid==8}">
+                        <c:set var="activeClass3" value="active"/>
+                    </c:if>
+                    <li><a href="${rootPath}/recommend/course/8" class="${activeClass3}">海外</a></li>
+
+                    <c:if test="${recommendCourseId.catid==9}">
+                        <c:set var="activeClass4" value="active"/>
+                    </c:if>
+                    <li><a href="${rootPath}/recommend/course/9" class="${activeClass4}">综合</a></li>
                 </ul>
             </div>
         </div>
@@ -63,25 +78,7 @@
         </div>
         <div class="index-course-list course">
             <div class="row clearfix">
-                <c:forEach var="resource" items="${resources.list}" begin="0" end="3">
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="course-item">
-                            <div class="course-thumb">
-                                <a href="${rootPath}/resources/${resource.id}"><img src="${resource.thumb}" alt=""></a>
-                            </div>
-                            <div class="course-info">
-                                <div class="title"><a href="">${resource.title}</a></div>
-                                <div class="addon">
-                                    <span class="author">作者</span>
-                                    <span class="pull-right free">免费</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="row clearfix">
-                <c:forEach var="resource" items="${resources.list}" begin="4" end="7">
+                <c:forEach var="resource" items="${recommendCourses}" begin="0" end="7">
                     <div class="col-sm-3 col-xs-6">
                         <div class="course-item">
                             <div class="course-thumb">

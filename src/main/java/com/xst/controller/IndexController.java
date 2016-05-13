@@ -1,10 +1,7 @@
 package com.xst.controller;
 
 import com.xst.bean.StatusMessage;
-import com.xst.dao.GroupDao;
-import com.xst.dao.MemberDao;
-import com.xst.dao.NewsDao;
-import com.xst.dao.ResourcesDao;
+import com.xst.dao.*;
 import com.xst.entity.V9Group;
 import com.xst.entity.V9Member;
 import com.xst.entity.V9News;
@@ -28,10 +25,17 @@ public class IndexController {
     private ResourcesDao resourcesDao;
 
     @Autowired
+    private RecommendDao recommendDao;
+
+    @Autowired
     private GroupDao groupDao;
 
     @Autowired
+    private CategoryDao categoryDao;
+
+    @Autowired
     private NewsDao newsDao;
+
     @Autowired
     @Qualifier("memberDao")
     private MemberDao memberDao;
@@ -41,13 +45,18 @@ public class IndexController {
 
     public String index(Model model , HttpSession session) {
 
-        Page<V9Resources> resources = resourcesDao.getPageResources(1,8);
         Page<V9Group> groups = groupDao.queryGpListByPage(1,8);
         Page<V9News> newsPage = newsDao.queryForNewsListByPage(1,15);
-        model.addAttribute("resources", resources);
-        model.addAttribute("groups", groups);
 
+        model.addAttribute("groups", groups);
         model.addAttribute("newsPage", newsPage);
+
+        if(session.getAttribute("recommendCourses") == null){
+            session.setAttribute("recommendCourses", recommendDao.getByFirstCateId(1));
+            session.setAttribute("recommendCourseId", categoryDao.getById((short)1));
+            System.out.println("resources get ed");
+        }
+
 
         return "index";
     }

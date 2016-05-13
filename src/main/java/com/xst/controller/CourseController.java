@@ -68,9 +68,10 @@ public class CourseController {
 
 
 
-    @RequestMapping(value = "/{cateId}/{pageNum}", method = RequestMethod.GET)
-    public String course(@PathVariable("cateId") int cateid , @PathVariable("pageNum") int pageNum ,
+    @RequestMapping(value = "/{cateId}", method = RequestMethod.GET)
+    public String course(@PathVariable("cateId") int cateid , String page ,
                         Model model , HttpSession session){
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
         V9Category category = categoryDao.getById((short)cateid);
 
         if(category.getParentid() == 0){    //一级目录
