@@ -36,7 +36,7 @@
                                         <c:if test="${nowFirstCate.catid == category.id}">
                                             <c:set var="selectedOfClass11" value="select-all selected"></c:set>
                                         </c:if>
-                                        <dd class="${selectedOfClass11}"><a href="${rootPath}/course/${category.id}/1">${category.name}</a></dd>
+                                        <dd class="${selectedOfClass11}"><a href="${rootPath}/course/${category.id}">${category.name}</a></dd>
                                         <c:set var="selectedOfClass11" value=""></c:set>
                                     </c:forEach>
                                 </dl>
@@ -48,13 +48,13 @@
                                     <c:if test="${nowSecondCate==null}">
                                         <c:set var="selectedOfClass2" value="select-all selected"></c:set>
                                     </c:if>
-                                    <dd class="${selectedOfClass2}"><a href='${rootPath}/course/${nowFirstCate.catid}/1'>全部</a></dd>
+                                    <dd class="${selectedOfClass2}"><a href='${rootPath}/course/${nowFirstCate.catid}'>全部</a></dd>
                                     <c:forEach items="${secondCates}" var="category2">
                                         <c:if test="${nowSecondCate.catid == category2.id}">
                                             <c:set var="selectedOfClass22" value="select-all selected"></c:set>
                                         </c:if>
                                         <dd class="${selectedOfClass22}">
-                                            <a href="${rootPath}/course/${category2.id}/1">${category2.name}</a>
+                                            <a href="${rootPath}/course/${category2.id}">${category2.name}</a>
                                         </dd>
                                         <c:set var="selectedOfClass22" value=""></c:set>
                                     </c:forEach>
@@ -67,12 +67,12 @@
                                     <c:if test="${nowThirdCate==null}">
                                         <c:set var="selectedOfClass3" value="select-all selected"></c:set>
                                     </c:if>
-                                    <dd class="${selectedOfClass3}" data-num='0'><a href='${rootPath}/course/${nowSecondCate.catid}/1'>全部</a></dd>
+                                    <dd class="${selectedOfClass3}" data-num='0'><a href='${rootPath}/course/${nowSecondCate.catid}'>全部</a></dd>
                                     <c:forEach items="${thirdCates}" var="category3">
                                         <c:if test="${nowThirdCate.catid == category3.id}">
                                             <c:set var="selectedOfClass33" value="select-all selected"></c:set>
                                         </c:if>
-                                        <dd class="${selectedOfClass33}"><a href="${rootPath}/course/${category3.id}/1">${category3.name}</a></dd>
+                                        <dd class="${selectedOfClass33}"><a href="${rootPath}/course/${category3.id}">${category3.name}</a></dd>
                                         <c:set var="selectedOfClass33" value=""></c:set>
                                     </c:forEach>
                                 </dl>
