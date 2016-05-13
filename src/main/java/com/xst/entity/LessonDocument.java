@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "lesson_document", schema = "db_xst_new")
 public class LessonDocument {
     private int id;
-    private Byte docType;
+    private String docType;
     private String fileName;
     private String fileExt;
     private int fileSize;
@@ -35,11 +35,11 @@ public class LessonDocument {
 
     @Basic
     @Column(name = "doc_type", nullable = true)
-    public Byte getDocType() {
+    public String getDocType() {
         return docType;
     }
 
-    public void setDocType(Byte docType) {
+    public void setDocType(String docType) {
         this.docType = docType;
     }
 
