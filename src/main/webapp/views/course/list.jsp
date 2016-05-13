@@ -29,15 +29,15 @@
                                 <dl id="select1">
                                     <dt>分类：</dt>
                                     <c:if test="${nowFirstCate==null}">
-                                        <c:set var="selectedOfClass" value="select-all selected"></c:set>
+                                        <c:set var="selectedOfClass1" value="select-all selected"></c:set>
                                     </c:if>
-                                    <dd class="${selectedOfClass}"><a href="${rootPath}/course/list">全部</a></dd>
+                                    <dd class="${selectedOfClass1}"><a href="${rootPath}/course/list">全部</a></dd>
                                     <c:forEach items="${rootCategories}" var="category">
                                         <c:if test="${nowFirstCate.catid == category.id}">
-                                            <c:set var="selectedOfClass1" value="select-all selected"></c:set>
+                                            <c:set var="selectedOfClass11" value="select-all selected"></c:set>
                                         </c:if>
-                                        <dd class="${selectedOfClass1}"><a href="${rootPath}/course/${category.id}/1">${category.name}</a></dd>
-                                        <c:set var="selectedOfClass1" value=""></c:set>
+                                        <dd class="${selectedOfClass11}"><a href="${rootPath}/course/${category.id}/1">${category.name}</a></dd>
+                                        <c:set var="selectedOfClass11" value=""></c:set>
                                     </c:forEach>
                                 </dl>
                             </li>
@@ -45,11 +45,18 @@
                             <li class="select-list">
                                 <dl id="select2">
                                     <dt>阶段：</dt>
-                                    <dd class='select-all selected' data-num='0'><a href='#'>全部</a></dd>
+                                    <c:if test="${nowSecondCate==null}">
+                                        <c:set var="selectedOfClass2" value="select-all selected"></c:set>
+                                    </c:if>
+                                    <dd class="${selectedOfClass2}"><a href='${rootPath}/course/${nowFirstCate.catid}/1'>全部</a></dd>
                                     <c:forEach items="${secondCates}" var="category2">
-                                        <dd data-num="${category2.id}">
+                                        <c:if test="${nowSecondCate.catid == category2.id}">
+                                            <c:set var="selectedOfClass22" value="select-all selected"></c:set>
+                                        </c:if>
+                                        <dd class="${selectedOfClass22}">
                                             <a href="${rootPath}/course/${category2.id}/1">${category2.name}</a>
                                         </dd>
+                                        <c:set var="selectedOfClass22" value=""></c:set>
                                     </c:forEach>
                                 </dl>
                             </li>
@@ -57,17 +64,43 @@
                             <li class="select-list">
                                 <dl id="select3">
                                     <dt>学科：</dt>
-                                    <dd class='select-all selected' data-num='0'><a href='#'>全部</a></dd>
+                                    <c:if test="${nowThirdCate==null}">
+                                        <c:set var="selectedOfClass3" value="select-all selected"></c:set>
+                                    </c:if>
+                                    <dd class="${selectedOfClass3}" data-num='0'><a href='${rootPath}/course/${nowSecondCate.catid}/1'>全部</a></dd>
                                     <c:forEach items="${thirdCates}" var="category3">
-                                        <dd data-num="${category3.id}"><a href="${rootPath}/course/${category3.id}/1">${category3.name}</a></dd>
+                                        <c:if test="${nowThirdCate.catid == category3.id}">
+                                            <c:set var="selectedOfClass33" value="select-all selected"></c:set>
+                                        </c:if>
+                                        <dd class="${selectedOfClass33}"><a href="${rootPath}/course/${category3.id}/1">${category3.name}</a></dd>
+                                        <c:set var="selectedOfClass33" value=""></c:set>
                                     </c:forEach>
                                 </dl>
                             </li>
 
                             <li class="select-result">
                                 <dl>
+                                    <c:set var="selectResult" value="0"></c:set>
                                     <dt>已选条件：</dt>
-                                    <dd class="select-no">暂时没有选择过滤条件</dd>
+
+                                    <c:if test="${nowFirstCate.catname!='全部' && nowFirstCate!=null}">
+                                        <dd id="selectA" class="selected"><a href="">${nowFirstCate.catname}</a></dd>
+                                        <c:set var="selectResult" value="1"></c:set>
+                                    </c:if>
+
+                                    <c:if test="${nowSecondCate.catname!='全部' && nowSecondCate!=null}">
+                                        <dd id="selectB" class="selected"><a href="">${nowSecondCate.catname}</a></dd>
+                                        <c:set var="selectResult" value="1"></c:set>
+                                    </c:if>
+
+                                    <c:if test="${nowThirdCate.catname!='全部' && nowThirdCate!=null}">
+                                        <dd id="selectC" class="selected"><a href="">${nowThirdCate.catname}</a></dd>
+                                        <c:set var="selectResult" value="1"></c:set>
+                                    </c:if>
+
+                                    <c:if test="${selectResult!='1'}">
+                                        <dd class="select-no">暂时没有选择过滤条件</dd>
+                                    </c:if>
                                 </dl>
                             </li>
 

@@ -1,0 +1,5 @@
+.idea/
+target/
+src/main/resources/conf/mysql.properties
+*.iml
+classes/

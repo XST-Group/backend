@@ -44,6 +44,8 @@ public class CourseController {
 
         model.addAttribute("page", pageCourse);
         model.addAttribute("currentPage", pageNum);
+        session.setAttribute("secondCates",null);
+        session.setAttribute("thirdCates",null);
         session.setAttribute("rootCategories", firstCategories);
         return "course/list";
     }
@@ -73,11 +75,26 @@ public class CourseController {
 
         if(category.getParentid() == 0){    //一级目录
             model.addAttribute("nowFirstCate",category);
-            session.setAttribute("secondCates",categoryDao.getChildren((short)cateid));
-//            model.addAttribute("secondCates",categoryDao.getChildren((short)cateid));
-        }else if(category.getArrchildid() != null){     //二级目录
+            if(category.getCatname().equals("教研")){
+                session.setAttribute("secondCates",categoryDao.getChildren((short)cateid));
+            }else{
+                session.setAttribute("secondCates",null);
+            }
+            session.setAttribute("thirdCates",null);
+
+        }else if(category.getParentid()!=0 && category.getChild()!=0){     //二级目录
+            model.addAttribute("nowFirstCate",categoryDao.getById(category.getParentid()));
             model.addAttribute("nowSecondCate",category);
-            model.addAttribute("thirdCates",categoryDao.getChildren((short)cateid));
+
+            session.setAttribute("thirdCates",categoryDao.getChildren((short)cateid));
+//            if(session.getAttribute("th"))
+
+        }else{ //三级目录
+            V9Category nowSecondCate = categoryDao.getById(category.getParentid());
+            model.addAttribute("nowSecondCate",nowSecondCate);
+            model.addAttribute("nowFirstCate",categoryDao.getById(nowSecondCate.getParentid()));
+            model.addAttribute("nowThirdCate",category);
+
         }
 
 
