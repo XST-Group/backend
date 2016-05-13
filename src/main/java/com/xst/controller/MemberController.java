@@ -130,6 +130,6 @@ public class MemberController {
     public String logout(Model model,HttpSession session){
         session.removeAttribute("memberUser");
         model.addAttribute("Msg","登出成功！");
-        return "index";
+        return "redirect:/index";
     }
 }
