@@ -5,9 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import it.sauronsoftware.jave.AudioAttributes;
+import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.FFmpegUtils;
+import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -113,13 +115,20 @@ public class MultipartFileUtils {
     }
 
 
-//    public void test(){
-//
-//        File file = new File("/");
-//
-//        AudioAttributes attributes =
-//
-//
-//    }
+    public void test() throws IOException {
+
+        File file = new File("/");
+
+        FFmpeg fFmpeg = new FFmpeg();
+
+        FFmpegOutputBuilder fFmpegOutputBuilder = new FFmpegOutputBuilder();
+
+//        fFmpegOutputBuilder.
+
+        FFmpegUtils utils;
+
+
+
+    }
 
 }

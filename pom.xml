@@ -215,6 +215,13 @@
     </dependency>
 
 
+    <!-- ffmpeg : jave-->
+    <dependency>
+      <groupId>net.bramp.ffmpeg</groupId>
+      <artifactId>ffmpeg</artifactId>
+      <version>0.4</version>
+    </dependency>
+
   </dependencies>
 
 </project>
