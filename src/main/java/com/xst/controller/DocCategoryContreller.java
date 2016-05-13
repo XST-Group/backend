@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by CrazyCodess on 2016/5/13.
  */
 @Controller
-@RequestMapping("/lessonDoc")
-public class LessonDocController {
+@RequestMapping("/docCategory")
+public class DocCategoryContreller {
 
 }
