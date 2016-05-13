@@ -62,7 +62,7 @@ function userLoginSubmit() {
 	console.log('loginSubmit')
 	$.ajax({
 		 type: 'post',
-		 url: '/xst/member/login',    //  填进你要处理表单信息的Servlet
+		 url: '${rootPath}/member/login',    //  填进你要处理表单信息的Servlet
 		 data: $('#loginForm').formSerialize(),    //   字符串  name1=value1&name2=value2
 		 success: function(loginMsg) {
 			 console.log(loginMsg)

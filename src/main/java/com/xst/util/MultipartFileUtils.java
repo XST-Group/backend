@@ -3,9 +3,11 @@ package com.xst.util;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.FFmpegUtils;
+import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -49,7 +51,7 @@ public class MultipartFileUtils {
             multipartUrl = "";
             e.printStackTrace();
         }
-        return multipartUrl;
+        return name;
     }
     public static String updateFile(MultipartFile multipartFile, String path , HttpSession session){
         removeFile(path);
@@ -108,6 +110,24 @@ public class MultipartFileUtils {
         }
 
         return path+"/";
+    }
+
+
+
+    public void test() throws IOException {
+
+        File file = new File("/");
+
+        FFmpeg fFmpeg = new FFmpeg();
+
+        FFmpegOutputBuilder fFmpegOutputBuilder = new FFmpegOutputBuilder();
+
+//        fFmpegOutputBuilder.
+
+        FFmpegUtils utils;
+
+
+
     }
 
 }

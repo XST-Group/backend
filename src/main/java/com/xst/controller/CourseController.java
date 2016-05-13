@@ -40,7 +40,7 @@ public class CourseController {
 
         List<CateBean> firstCategories = categoryDao.getFirstCategory();
 
-        Page<V9Resources> pageCourse = resourcesDao.getPageResources(pageNum,15);
+        Page<V9Resources> pageCourse = resourcesDao.getPageResources(pageNum,12);
 
         model.addAttribute("page", pageCourse);
         model.addAttribute("currentPage", pageNum);
@@ -81,7 +81,7 @@ public class CourseController {
         }
 
 
-        model.addAttribute("page",resourcesDao.getPageResourcesOfLeaf(cateid,pageNum,20));
+        model.addAttribute("page",resourcesDao.getPageResourcesOfLeaf(cateid,pageNum,12));
         System.out.println("cateid : "+cateid);
         model.addAttribute("currentPage", pageNum);
         return "course/list";
