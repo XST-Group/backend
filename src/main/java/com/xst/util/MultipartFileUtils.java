@@ -3,6 +3,8 @@ package com.xst.util;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import it.sauronsoftware.jave.AudioAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -49,7 +51,7 @@ public class MultipartFileUtils {
             multipartUrl = "";
             e.printStackTrace();
         }
-        return multipartUrl;
+        return name;
     }
     public static String updateFile(MultipartFile multipartFile, String path , HttpSession session){
         removeFile(path);
@@ -109,5 +111,15 @@ public class MultipartFileUtils {
 
         return path+"/";
     }
+
+
+//    public void test(){
+//
+//        File file = new File("/");
+//
+//        AudioAttributes attributes =
+//
+//
+//    }
 
 }
