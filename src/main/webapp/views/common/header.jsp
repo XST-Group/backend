@@ -46,5 +46,6 @@
           <button type="submit" name="button"><i class="fa fa-search"></i></button>
         </form>        
     </div>
+
 </header>
 <!-- end of header -->

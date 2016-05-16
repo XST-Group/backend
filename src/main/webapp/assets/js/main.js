@@ -8,7 +8,7 @@
 		'<h2 class="l">登录</h2>' +
 		'<div class="register pull-right">      没有账号？<a href="${rootPath}/member/register"><strong>立即注册</strong></a></div>' +
 		'</div><div class="modal-body">' +
-		'<form id="loginForm" action="${rootPath}/member/login" method="post">' +
+		'<form id="loginForm" action="/xst/member/login" method="post">' +
 		'<div class="control-group">' +
 		'<div class="user-id">' +
 		'<input type="text" placeholder="请输入邮箱/用户名" name="username" onfocus="loginInputFocus(this)" onblur="loginInputBlur(this)" />' +
@@ -62,7 +62,7 @@ function userLoginSubmit() {
 	console.log('loginSubmit')
 	$.ajax({
 		 type: 'post',
-		 url: '${rootPath}/member/login',    //  填进你要处理表单信息的Servlet
+		 url: '/xst/member/login',    //  填进你要处理表单信息的Servlet
 		 data: $('#loginForm').formSerialize(),    //   字符串  name1=value1&name2=value2
 		 success: function(loginMsg) {
 			 console.log(loginMsg)

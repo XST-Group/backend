@@ -44,6 +44,9 @@ public class AdminController {
     @Qualifier("adminDao")
     private AdminDao adminDao;
 
+    @Autowired
+    private LessonDocDao docDao;
+
 /*    @Autowired
     private MemberVerifyDao MemVerifyDao;*/
 
@@ -96,6 +99,41 @@ public class AdminController {
         return "redirect:/admin/resource/list";
     }
 
+    @RequestMapping(value = "/library/list" , method = RequestMethod.GET)
+    public String listLibrary(Model model,String page){
+
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+
+
+        Page<LessonDocument> pageDoc = docDao.queryDocPage(pageNum,15);
+        model.addAttribute("page",pageDoc);
+        model.addAttribute("currentPage", pageNum);
+
+        return "admin/library/librarylist";
+    }
+
+    @RequestMapping(value = "/library/add" ,method = RequestMethod.GET)
+    public String addLibrary(Model model){
+
+        //model.addAttribute("")
+
+        return "admin/library/libraryadd";
+    }
+
+
+    @RequestMapping(value = "/library/add" ,method = RequestMethod.POST)
+    public String addLibrary(Model model,String doctype ,int cate1,int  cate2,MultipartFile doc){
+
+        System.out.println("file size : "+doc.getSize());
+
+        if(!doc.isEmpty()){
+            docDao.saveFile(doctype,doc,cate1,cate2);
+
+        }
+
+
+        return "redirect:/admin/library/list";
+    }
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
     public String login(){
@@ -295,7 +333,7 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/news/delete",method = RequestMethod.POST)
-    public String deleteNews(Model model,@RequestParam(value = "id[]")int[]  id,RedirectAttributes redirectAttributes){
+    public String deleteNews(Model model,@RequestParam(value = "id")int  id[],RedirectAttributes redirectAttributes){
         newsDao.deleteAll(id);
         redirectAttributes.addFlashAttribute("Msg", "删除成功！");
         return "redirect:/admin/news/list";

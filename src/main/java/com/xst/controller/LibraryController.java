@@ -27,6 +27,26 @@ public class LibraryController {
     @Autowired
     private LessonCatgoryDao categoryDao;
 
+    @RequestMapping(value = "/list/{id}" , method = RequestMethod.GET)
+    public String list(Model model, @PathVariable("id") int id,String page){
+
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+        DocCategory docCategory=null;
+        if(id==0){
+            docCategory = categoryDao.getDocCategory(1);
+        }
+        else{
+            docCategory = categoryDao.getDocCategory(id);
+        }
+        Page<LessonDocument> docPage = docDao.queryAllDocPage(pageNum,15,id);
+
+        model.addAttribute("docCategory",docCategory);
+        model.addAttribute("page",docPage);
+        model.addAttribute("currentPage", pageNum);
+        model.addAttribute("id",id);
+        return "/library/list";
+    }
+
     @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
     public String findList(Model model, @PathVariable("id") int id,String page){
 
@@ -45,7 +65,7 @@ public class LibraryController {
 
     @RequestMapping(value = "/list" ,method = RequestMethod.GET)
     public String list(Model model){
-        return "redirect:/library/1";
+        return "redirect:/library/list/0";
     }
 
 }
