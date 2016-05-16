@@ -25,101 +25,122 @@
             </ol>
             </div>
         </div>
+
+
+
         <div class="resource-menu">
-            <div class="submenu">
-                <ul>
-                    <span>学段：</span>
-                    <li class="active"><a href="">全部</a></li>
-                    <li><a href="${rootPath}/library/1">学前</a></li>
-                    <li><a href="${rootPath}/library/2">小学</a></li>
-                    <li><a href="${rootPath}/library/3">初中</a></li>
-                    <li><a href="${rootPath}/library/4">高中</a></li>
-                </ul>
-                <ul>
-                    <span>学科：</span>
-                    <li class="active"><a href="">全部</a></li>
-                    <c:choose>
-                        <c:when test="${empty docCategory.children}" >
+
+
+            <div class="select-menu">
+                <ul class="select">
+
+                    <li class="select-list">
+                        <dl id="select1">
+
+                            <dt>学段：</dt>
                             <c:choose>
-                            <c:when test="${id ==5||id==6}">
-
-                                <li data-value="5" ><a href="${rootPath}/library/5">学前语文</a></li>
-                                <li><a href="${rootPath}/library/6">学前数学</a></li>
+                            <c:when test="${id ==0 }">
+                                <c:set var="selectedOfClass" value="select-all selected"></c:set>
                             </c:when>
-
-                                <c:when test="${id >=7&&id<=9}">
-
-                                    <li><a href="${rootPath}/library/7">小学语文</a></li>
-                                    <li><a href="${rootPath}/library/8">小学数学</a></li>
-                                    <li><a href="${rootPath}/library/9">小学英语</a></li>
+                                <c:when test="${id ==1 }">
+                                    <c:set var="selectedOfClass1" value="select-all selected"></c:set>
                                 </c:when>
-
-                                <c:when test="${id >=10&&id<=18}">
-                                    <li><a href="${rootPath}/library/11">初中数学</a></li>
-                                    <li><a href="${rootPath}/library/12">初中英语</a></li>
-                                    <li><a href="${rootPath}/library/13">初中物理</a></li>
-                                    <li><a href="${rootPath}/library/14">初中化学</a></li>
-                                    <li><a href="${rootPath}/library/15">初中生物</a></li>
-                                    <li><a href="${rootPath}/library/16">初中政治</a></li>
-                                    <li><a href="${rootPath}/library/17">初中历史</a></li>
-                                    <li><a href="${rootPath}/library/18">初中地理</a></li>
+                                <c:when test="${id ==2 }">
+                                    <c:set var="selectedOfClass2" value="select-all selected"></c:set>
                                 </c:when>
-
-                                <c:when test="${id >=19&&id<=28}">
-                                    <li><a href="${rootPath}/library/19">高中语文</a></li>
-                                    <li><a href="${rootPath}/library/20">高中数学</a></li>
-                                    <li><a href="${rootPath}/library/21">高中英语</a></li>
-                                    <li><a href="${rootPath}/library/22">高中物理</a></li>
-                                    <li><a href="${rootPath}/library/23">高中化学</a></li>
-                                    <li><a href="${rootPath}/library/24">高中生物</a></li>
-                                    <li><a href="${rootPath}/library/25">高中政治</a></li>
-                                    <li><a href="${rootPath}/library/26">高中历史</a></li>
-                                    <li><a href="${rootPath}/library/27">高中地理</a></li>
-                                    <li><a href="${rootPath}/library/28">信息技术</a></li>
+                                <c:when test="${id ==3 }">
+                                    <c:set var="selectedOfClass3" value="select-all selected"></c:set>
                                 </c:when>
-
-                                <c:otherwise>
-                                    <li data-value="5" ><a href="${rootPath}/library/5">学前语文</a></li>
-                                    <li><a href="${rootPath}/library/6">学前数学</a></li>
-                                </c:otherwise>
+                                <c:when test="${id ==4 }">
+                                    <c:set var="selectedOfClass4" value="select-all selected"></c:set>
+                                </c:when>
                             </c:choose>
+                            <dd class="${selectedOfClass}"><a href="${rootPath}/library/list">全部</a></dd>
+                            <dd class="${selectedOfClass1}"><a href="${rootPath}/library/1">学前</a></dd>
+                            <dd class="${selectedOfClass2}"><a href="${rootPath}/library/2">小学</a></dd>
+                            <dd class="${selectedOfClass3}"><a href="${rootPath}/library/3">初中</a></dd>
+                            <dd class="${selectedOfClass4}"><a href="${rootPath}/library/4">高中</a></dd>
+                        <%--<a href="${rootPath}/library/list">全部</a>--%>
+
+                        </dl>
+                    </li>
 
 
 
-                            <%--                           <c:when test="${id >=7||id==6}">
-                                                           Salary is very good.
-                                                           <li><a href="">学前语文</a></li>
-                                                           <li><a href="">学前数学</a></li>
-                                                       </c:when>--%>
-                        </c:when>
-                        <c:otherwise>
-                            <c:forEach items="${docCategory.children}" var="firstCate">
-                                <li><a href="${rootPath}/library/${firstCate.id}">${firstCate.name}</a></li>
-                            </c:forEach>
-                        </c:otherwise>
-                    </c:choose>
+                    <li class="select-list">
+                        <dl id="select2">
+
+                                <dt>学科：</dt>
+                                <dd class='select-all selected' data-num='0'><a href='${rootPath}/library/list/${id}'>全部</a></dd>
+                                <c:choose>
+                                    <c:when test="${empty docCategory.children}" >
+                                        <c:choose>
+                                            <c:when test="${id ==5||id==6}">
+
+                                                <dd data-num="5" ><a href="${rootPath}/library/5">学前语文</a></dd>
+                                                <dd  data-num="6"><a href="${rootPath}/library/6">学前数学</a></dd>
+                                            </c:when>
+
+                                            <c:when test="${id >=7&&id<=9}">
+
+                                                <dd date-num="7"><a href="${rootPath}/library/7">小学语文</a></dd>
+                                                <dd date-num="8"><a href="${rootPath}/library/8">小学数学</a></dd>
+                                                <dd date-num="9"><a href="${rootPath}/library/9">小学英语</a></dd>
+                                            </c:when>
+
+                                          <c:when test="${id >=10&&id<=18}">
 
 
+                                                <dd date-num="10"><a href="${rootPath}/library/10">初中语文</a></dd>
+                                                <dd date-num="11"><a href="${rootPath}/library/11">初中数学</a></dd>
+                                                <dd date-num="12"><a href="${rootPath}/library/12">初中英语</a></dd>
+                                                <dd date-num="13"><a href="${rootPath}/library/13">初中物理</a></dd>
+                                                <dd date-num="14"><a href="${rootPath}/library/14">初中化学</a></dd>
+                                                <dd date-num="15"><a href="${rootPath}/library/15">初中生物</a></dd>
+                                                <dd date-num="16"><a href="${rootPath}/library/16">初中政治</a></dd>
+                                                <dd date-num="17"><a href="${rootPath}/library/17">初中历史</a></dd>
+                                                <dd date-num="18"><a href="${rootPath}/library/18">初中地理</a></dd>
+                                            </c:when>
 
+                                            <c:when test="${id >=19&&id<=28}">
+                                                <dd date-num="19"><a href="${rootPath}/library/19">高中语文</a></dd>
+                                                <dd date-num="20"><a href="${rootPath}/library/20">高中数学</a></dd>
+                                                <dd date-num="21"><a href="${rootPath}/library/21">高中英语</a></dd>
+                                                <dd date-num="22"><a href="${rootPath}/library/22">高中物理</a></dd>
+                                                <dd date-num="23"><a href="${rootPath}/library/23">高中化学</a></dd>
+                                                <dd date-num="24"><a href="${rootPath}/library/24">高中生物</a></dd>
+                                                <dd date-num="25"><a href="${rootPath}/library/25">高中政治</a></dd>
+                                                <dd date-num="26"><a href="${rootPath}/library/26">高中历史</a></dd>
+                                                <dd date-num="27"><a href="${rootPath}/library/27">高中地理</a></dd>
+                                                <dd date-num="28"><a href="${rootPath}/library/28">信息技术</a></dd>
+                                            </c:when>
 
+                                            <c:otherwise>
+                                                <dd data-num="5" ><a href="${rootPath}/library/5">学前语文</a></dd>
+                                                <dd data-num="5"><a href="${rootPath}/library/6">学前数学</a></dd>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach items="${docCategory.children}" var="firstCate">
+                                            <dd data-num="${firstCate.id}"><a href="${rootPath}/library/${firstCate.id}">${firstCate.name}</a></dd>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                        </dl>
+                    </li>
 
+                    <li class="select-result">
+                        <dl>
+                            <dt>已选条件：</dt>
+                            <dd class="select-no">暂时没有选择过滤条件</dd>
+                        </dl>
+                    </li>
 
-
-<%--                    <li><a href="">语文</a></li>
-                    <li><a href="">数学</a></li>
-                    <li><a href="">英语</a></li>
-                    <li><a href="">物理</a></li>
-                    <li><a href="">化学</a></li>
-                    <li><a href="">生物</a></li>
-                    <li><a href="">政治</a></li>
-                    <li><a href="">历史</a></li>
-                    <li><a href="">地理</a></li>
-                    <li><a href="">信息技术</a></li>--%>
                 </ul>
 
 
-
-
+<%--
                 <ul>
                     <span>版本：</span>
                     <li class="active"><a href="">全部</a></li>
@@ -129,28 +150,28 @@
                     <li><a href="">教科版</a></li>
                     <li><a href="">北师大版</a></li>
                     <li><a href="">沪教版</a></li>
-<%--                    <li><a href="">长春版</a></li>
+&lt;%&ndash;                    <li><a href="">长春版</a></li>
                     <li><a href="">鲁教版</a></li>
                     <li><a href="">鄂教版</a></li>
                     <li><a href="">湘教版</a></li>
                     <li><a href="">北京版</a></li>
                     <li><a href="">语文A版</a></li>
                     <li><a href="">语文S版</a></li>
-                    <li><a href="">西师大版</a></li>--%>
+                    <li><a href="">西师大版</a></li>&ndash;%&gt;
                 </ul>
                 <ul>
                     <span>年级：</span>
                     <li class="active"><a href="">全部</a></li>
                     <li><a href="">一年级</a></li>
-                  <%--  <li><a href="">一年级下</a></li>--%>
+                  &lt;%&ndash;  <li><a href="">一年级下</a></li>&ndash;%&gt;
                     <li><a href="">二年级</a></li>
-                    <%--<li><a href="">二年级下</a></li>--%>
+                    &lt;%&ndash;<li><a href="">二年级下</a></li>&ndash;%&gt;
                     <li><a href="">三年级</a></li>
-                    <%--<li><a href="">三年级下</a></li>--%>
+                    &lt;%&ndash;<li><a href="">三年级下</a></li>&ndash;%&gt;
                     <li><a href="">四年级</a></li>
-                    <%--<li><a href="">四年级下</a></li>--%>
+                    &lt;%&ndash;<li><a href="">四年级下</a></li>&ndash;%&gt;
                     <li><a href="">五年级</a></li>
-                    <%--<li><a href="">五年级下</a></li>--%>
+                    &lt;%&ndash;<li><a href="">五年级下</a></li>&ndash;%&gt;
                     <li><a href="">六年级</a></li>
                     <li><a href="">初一</a></li>
                     <li><a href="">初二</a></li>
@@ -158,8 +179,8 @@
                     <li><a href="">高一</a></li>
                     <li><a href="">高二</a></li>
                     <li><a href="">高三</a></li>
-                </ul>
-            </div> 
+                </ul>--%>
+            <%--</div>--%>
         </div>    
         <!-- end of menu -->
 
@@ -198,12 +219,12 @@
                                     ${doc.fileName}${doc.fileExt}
                                 </div>
                                 <div class="desc">
-                                    ${doc.fileSize}
+                                    文件大小：${doc.fileSize}
                                 </div>
                                 <div class="addon">
                                     <span><i class="fa fa-eye"></i>483</span>
-                                    <span><i class="fa fa-download"></i>1002</span>
-                                    <span><i class="fa fa-clock-o"></i>2016-02-12</span>
+                                    <span><i class="fa fa-download"></i>${doc.downloads}</span>
+                                    <span><i class="fa fa-clock-o"></i>2016-05-12</span>
                                     <button class="btn btn-primary pull-right">
                                         <i class="fa fa-download"><a href="${assetsPath}/${doc.filePath}/${doc.fileName}${doc.fileExt}" download="${doc.fileName}${doc.fileExt}"> 下载</a></i>
                                     </button>
@@ -212,30 +233,21 @@
 
                         <div class="clear"></div>
                     </div>
-                    </c:forEach>
+                </div>
+            </div>
+            </c:forEach>
 
             <!-- end of result list -->
 
             <nav>
-              <ul class="pagination">
-                <li><a href="#">上一页</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                  <a href="#">下一页</a>
-                </li>
-              </ul>
+                <jsp:include page="../common/pagination.jsp" />
             </nav>
+            </div>
         </div>    
     </div>   
 </div>
-</div>
-
 <jsp:include page="../common/footer.jsp" />
-</div>
+
 <script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="${assetsPath}/js/main.min.js"></script>
 

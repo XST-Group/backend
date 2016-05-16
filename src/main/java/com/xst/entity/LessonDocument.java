@@ -12,7 +12,7 @@ public class LessonDocument {
     private String docType;
     private String fileName;
     private String fileExt;
-    private int fileSize;
+    private String fileSize;
     private String filePath;
     private int pageCount;
     private int downloads;
@@ -65,11 +65,11 @@ public class LessonDocument {
 
     @Basic
     @Column(name = "file_size", nullable = true)
-    public int getFileSize() {
+    public String getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(int fileSize) {
+    public void setFileSize(String fileSize) {
         this.fileSize = fileSize;
     }
 
@@ -163,6 +163,7 @@ public class LessonDocument {
         this.category5Id = category5Id;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -171,7 +172,6 @@ public class LessonDocument {
         LessonDocument that = (LessonDocument) o;
 
         if (id != that.id) return false;
-        if (fileSize != that.fileSize) return false;
         if (pageCount != that.pageCount) return false;
         if (downloads != that.downloads) return false;
         if (uploadTime != that.uploadTime) return false;
@@ -183,6 +183,7 @@ public class LessonDocument {
         if (!docType.equals(that.docType)) return false;
         if (!fileName.equals(that.fileName)) return false;
         if (!fileExt.equals(that.fileExt)) return false;
+        if (!fileSize.equals(that.fileSize)) return false;
         return filePath.equals(that.filePath);
 
     }
@@ -193,7 +194,7 @@ public class LessonDocument {
         result = 31 * result + docType.hashCode();
         result = 31 * result + fileName.hashCode();
         result = 31 * result + fileExt.hashCode();
-        result = 31 * result + fileSize;
+        result = 31 * result + fileSize.hashCode();
         result = 31 * result + filePath.hashCode();
         result = 31 * result + pageCount;
         result = 31 * result + downloads;

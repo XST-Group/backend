@@ -26,7 +26,9 @@
         <li><a href="web-parameter.html"><span class="fa fa-caret-right"></span> 资源2</a></li>
         <li><a href="web-bug.html"><span class="fa fa-caret-right"></span> 资源3</a></li>
         <li><a href="${rootPath}/admin/resource/list"><span class="fa fa-caret-right"></span> 课程列表</a></li>
+        <li><a href="${rootPath}/admin/library/list"><span class="fa fa-caret-right"></span> 文库列表</a></li>
         <li><a href="${rootPath}/admin/resource/add"><span class="fa fa-caret-right"></span> 课程添加</a></li>
+        <li><a href="${rootPath}/views/admin/library/libraryadd.jsp"><span class="fa fa-caret-right"></span> 文库添加</a></li>
       </ul>
     </li>
 

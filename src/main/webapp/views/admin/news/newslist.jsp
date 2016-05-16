@@ -52,7 +52,7 @@
                             <button class="btn btn-sm btn-info"><i class="fa fa-share fa-rotate-180"></i>&nbsp;导出</button>
                         </div>
                         <div class="col-md-4">
-                            <form class="form-group" action="">
+                            <form class="form-group" action="" method="post">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i>搜索</span>
                                     <input type="text" class="form-control" placeholder="搜索..."
@@ -99,7 +99,7 @@
                                 <c:forEach begin="${listStart}" end="${page.list.size()}" items="${page.list}" var="news">
                                     <tr>
                                         <td>
-                                            <input type="checkbox" value="1" name=""/>
+                                            <input type="checkbox" value="" />
                                         </td>
                                         <td>
                                             ${news.id}
